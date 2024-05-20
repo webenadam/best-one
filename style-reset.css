@@ -1,0 +1,89 @@
+ 
+  /* Basic CSS Reset */
+  html {
+    box-sizing: border-box;
+    font-size: 16px; /* Set the base font-size for better accessibility */
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit; /* Inherit box-sizing from html */
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  body {
+    line-height: 1.6; /* Improves readability */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: inherit; /* Ensures heading tags don't inflate in size */
+    font-weight: normal; /* Removes bold styling from headings */
+  }
+
+  ul,
+  ol {
+    list-style: none; /* Removes default list styling */
+  }
+
+  a {
+    text-decoration: none; /* Removes underline from all links */
+    color: inherit; /* Ensures links don't inherit browser-specific colors */
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit; /* Ensures form elements use the body's font */
+  }
+
+  img {
+    max-width: 100%; /* Ensures images are never wider than their container */
+    height: auto; /* Maintains the original aspect ratio after resizing images */
+  }
+
+  /* Removes focus outline around elements when they are clicked by mouse */
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+  }
+
+  /* Resetting table styles */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  /* Accessibility improvements */
+  a,
+  button {
+    cursor: pointer;
+  }
+
+  /* Visually hides elements but keeps them accessible to screen readers */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }

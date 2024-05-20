@@ -1,0 +1,142 @@
+:root {
+    --black: #161c2d;
+    --light-black: #2e3648;
+    --lighter-black: #404956;
+    --blue: #473bf0;
+    --dark-blue: #3a2fd0;
+    --light-blue: #5b47ff;
+    --green: #68d585;
+    --dark-green: #5aa76d;
+    --light-green: #76e295;
+    --gray: #888888;
+    --dark-gray: #5c606c;
+    --light-gray: #EDEDED;
+    --soft-background: #f4f7fa;
+    --radius-s: 8px;
+    --radius-m: 10px;
+    --radius-l: 14px;
+    --font-xs: 15px;
+    --font-s: 17px;
+    --font-m: 21px;
+    --font-l: 36px;
+    --font-xl: 48px;
+    --font-w-400: 400;
+    --font-w-500: 500;
+    --font-w-600: 600;
+    --font-w-700: 700;
+    --shadow-s: 0 10px 13px 0 rgba(0, 0, 0, 0.06);
+    --shadow-m: 0 20px 23px 0 rgba(0, 0, 0, 0.06);
+    --shadow-l: 0 30px 33px 0 rgba(0, 0, 0, 0.06);
+    --gap-s: 15px;
+    --gap-m: 30px;
+    --gap-l: 45px;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap');
+
+/* Apply the Arimo font to the body and other elements as needed */
+body.login {
+    font-family: 'Arimo', sans-serif;
+}
+  
+  body.login {
+    background-color: var(--black);
+  }
+
+  label {
+    color:white;
+    font-size: var(--font-s);
+    font-weight: var(--font-w-400);
+  }
+  
+  body.login #login {
+    width: 100%;
+    max-width: 380px;
+    padding: var(--gap-m);
+    margin: var(--gap-m) auto;
+    margin-top: 9%;
+    background: unset;
+    border-radius: var(--radius-s);
+    box-shadow: unset;
+  }
+  
+  body.login #loginform {
+    padding: var(--gap-m);
+    box-shadow: unset;
+    text-align:center;
+  }
+  
+  body.login #loginform p label {
+    font-size: var(--font-s);
+    color: white;
+    font-weight: var(--font-w-500);
+  }
+  
+  body.login #loginform input[type="text"],
+  body.login #loginform input[type="password"],
+  body.login #loginform input[type="submit"] {
+    border: unset;
+    padding: var(--gap-s);
+    border-radius: var(--radius-s);
+    font-size: var(--font-s);
+    width: 100%;
+    margin-top: var(--gap-s);
+  }
+  
+  body.login #loginform input[type="submit"] {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  body.login #loginform input[type="submit"]:hover {
+    background-color: var(--dark-blue);
+  }
+  
+  body.login #login form .forgetmenot label {
+    font-size: var(--font-xs);
+    color: white;
+  }
+
+  .login form {
+    background:unset;
+    border:unset;
+  }
+  
+  body.login #login form .forgetmenot input[type="checkbox"] {
+    margin-right: var(--gap-s);
+  }
+  
+  body.login #nav a, body.login #backtoblog a {
+    color: var(--blue);
+    font-weight: var(--font-w-500);
+  }
+  
+  body.login #nav a:hover, body.login #backtoblog a:hover {
+    color: var(--dark-blue);
+  }
+  
+  body.login h1 a {
+    background-image: url('../img/Logo_white.png'); /* Replace with your logo URL */
+    background-size: contain;
+    width: 100%;
+    height: 39px; /* Adjust based on your logo dimensions */
+  }
+
+  .login .button.wp-hide-pw {
+    left: 7px;
+    top: 21px;
+}
+
+.language-switcher,#backtoblog, .forgetmenot {
+    display: none;
+}
+
+.login #backtoblog, .login #nav {
+    font-size: var(--font-s);
+    padding: 0 24px;
+    text-align: center;
+}
+  

@@ -1,0 +1,308 @@
+/*
+Theme Name: Best-1
+Theme URI: http://best-1.co.il
+Author: BENADAM
+Author URI: http://benadam.co.il
+Description: Best-1 site's theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: simple, custom.
+Text Domain: best-1
+*/
+
+@import url('style-reset.css');
+@import url('style-base.css');
+
+.wp-link:hover {
+  opacity: 1!important;
+}
+
+h1 {
+  color: var(--black);
+  font-size: var(--font-xl);
+  font-weight: var(--font-w-700);
+  letter-spacing: -2px;
+  line-height: 55px;
+}
+h2 {
+  font-weight: var(--font-w-700);
+  font-size: 36px;
+  color: var(--black);
+}
+h3 {
+  font-size: var(--font-m);
+  font-weight: var(--font-w-700);
+}
+
+h6 {
+  font-size: var(--font-xs);
+  color: var(--dark-gray);
+}
+
+/* Header and Section Styles */
+header,
+section {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+header {
+  background-color: white;
+}
+
+/* Navigation Styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  font-size: var(--font-s);
+  font-weight: var(--font-w-600);
+  cursor: pointer;
+}
+nav ul li a:not(.button):hover {
+  color: var(--dark-blue);
+}
+
+/* Hero Section Styles */
+.hero .title {
+  font-size: 24px;
+  color: var(--black);
+}
+
+.hero .subtitle {
+  font-size: 16px;
+  color: var(--gray);
+}
+
+/* Search Form Styles */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.home .search-form select {
+  width: 240px;
+}
+
+.search-button {
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: var(--dark-blue);
+}
+
+/* Filters Section Styles */
+section {
+  background-color: white;
+}
+
+section.dark {
+  background-color: var(--black);
+}
+
+section.light {
+  background-color: var(--soft-background);
+}
+
+section inner > h1,
+section inner > h2,
+section inner > h3,
+section inner > h4 {
+  margin-bottom: 10px;
+}
+
+section.dark inner > h1,
+section.dark inner > h2,
+section.dark inner > h3,
+section.dark inner > h4 {
+  color: white;
+}
+
+section.light inner > h1,
+section.light inner > h2,
+section.light inner > h3,
+section.light inner > h4 {
+  color: var(--blue);
+}
+
+.category-block {
+  display: inline-block;
+  height: 97px;
+  background-color: white;
+  color: var(--black);
+  padding: 15px 23px;
+  border-radius: var(--radius-s);
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.category-block.accent {
+  background-color: var(--blue);
+}
+
+.category-block:hover {
+  transform: translateY(-5px);
+}
+
+.category-block::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 7.99998L1 7.77776' stroke='%23161C2D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3Cpath d='M8 15L0.999999 8L8 1' stroke='%23161C2D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.112);
+  border-radius: 50%;
+  image-rendering: pixelated;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.category-block.accent::before {
+  background-color: rgba(255, 255, 255, 0.227);
+  opacity: 1;
+}
+
+.category-block:hover::before {
+  opacity: 1;
+}
+
+.category-block h3 {
+  color: var(--black);
+  margin-bottom: 6px;
+}
+
+.category-block.accent h3 {
+  color: white;
+}
+
+.category-block.accent h6 {
+  color: #bfbafa;
+}
+
+/* change autocomplet color */
+.tt-hint, tt-highlight {
+  color: var(--gray);
+}
+
+/* Hide autocomplete dropdown */
+.tt-menu {
+  display: none!important;
+}
+
+.places-input {
+  background: url('data:image/svg+xml;utf8,%3Csvg width="11" height="18" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M5.33333 0C2.71184 0 0 1.97836 0 5.28889C0 8.79978 4.90259 13.702 5.11153 13.9088C5.1702 13.9673 5.2502 14 5.33333 14C5.41647 14 5.49647 13.9673 5.55514 13.9088C5.76408 13.702 10.6667 8.79978 10.6667 5.28889C10.6667 1.97836 7.95482 0 5.33333 0ZM5.33548 7.15557C4.29736 7.15557 3.45312 6.31837 3.45312 5.28891C3.45312 4.25944 4.29736 3.42224 5.33548 3.42224C6.3736 3.42224 7.21783 4.25944 7.21783 5.28891C7.21783 6.31837 6.3736 7.15557 5.33548 7.15557Z" fill="%2368D585"/%3E%3C/svg%3E') no-repeat;
+  background-position: right 1.3em top 53%, 0 0;
+  background-size: 0.75em auto, 100%;
+  padding-right: 42px;
+}
+
+.places-input::placeholder {
+  color:var(--black);
+}
+
+.places-input:focus::placeholder {
+  color:var(--gray);
+}
+.ajax-done {
+  filter:blur(0px);
+  opacity:1;
+  transition: all 0.3s ease-in-out;
+}
+
+.ajax-loading {
+  filter:blur(4px);
+  opacity:0.6;
+}
+
+section.setcion-main-feed::before {
+  content: "";
+  width: 170px;
+  height: 170px;
+  position: absolute;
+  top: 840px;
+  right: -100px;
+  border-radius: 33px;
+  border: 9px solid var(--green);
+  transform: rotate(-10deg);
+}
+
+
+/* Add any necessary styles for the footer here if not using inline styles */
+#site-footer .footer-container {
+  display: flex;
+  gap: var(--gap-m);
+}
+
+#site-footer .footer-column {
+  flex: 1;
+  margin: 0 10px;
+}
+
+#site-footer .footer-column img {
+  max-width: 100%;
+  height: auto;
+}
+
+#site-footer .footer-column p {
+  margin: 10px 0;
+}
+
+#site-footer .footer-column .social-icons {
+  display: flex;
+  gap: var(--gap-m);
+}
+
+#site-footer .footer-column .social-icons a img {
+  width: 24px;
+  height: 24px;
+}
+
+#site-footer .footer-column h3 {
+  font-size: var(--font-m);
+  font-weight: var(--font-w-700);
+  margin-bottom: 10px;
+}
+
+#site-footer .footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+#site-footer .footer-column ul li {
+  margin-bottom: 5px;
+}
+
+#site-footer .footer-column ul li a {
+  color: var(--dark-gray);
+  text-decoration: none;
+}
+
+#site-footer .footer-column ul li a:hover {
+  color: var(--blue);
+}
