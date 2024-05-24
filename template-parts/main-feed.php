@@ -28,7 +28,7 @@ $initial_post_ids = array();
 ?>
 <section class="section-main-feed relative" style="overflow:hidden;">
     <div class="dots_ico absolute" style="top: 330px;left: -26px;">
-        <?php echo get_svg_icon('dots'); ?>
+        <?php echo svg_icon('dots'); ?>
     </div>
     <inner>
         <filters class="flex gap-m" style="width:100%; margin-bottom:40px;">
@@ -62,7 +62,7 @@ $initial_post_ids = array();
             ?>
         </grid>
         <div class="load_more_section flex justify-center" style="margin-top:75px;">
-            <button class="button load_more_main_feed">טען בעלי מקצוע נוספים <?php echo get_svg_icon('left-arrow', 'white'); ?></button>
+            <button class="button load_more_main_feed">טען בעלי מקצוע נוספים <?php echo svg_icon('left-arrow', 'white'); ?></button>
         </div>
     </inner>
 </section>

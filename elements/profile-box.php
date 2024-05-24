@@ -1,9 +1,8 @@
 <?php
 
-
 // Function to render the profile box
-function profile_box($post_id, $dark = false) {
-
+function profile_box($post_id, $dark = false)
+{
     // Enqueue the CSS for the profile box (only once even when used multiple times on page)
     if (!wp_style_is('profile-box-styles', 'enqueued')) {
         wp_enqueue_style('profile-box-styles', get_template_directory_uri() . '/elements/profile-box.css');
@@ -29,7 +28,7 @@ function profile_box($post_id, $dark = false) {
 
     // Get the expertise from the "expert" taxonomy
     $expertise_terms = get_the_terms($post_id, 'expert');
-    $expertise = ($expertise_terms && !is_wp_error($expertise_terms)) ? wp_list_pluck($expertise_terms, 'name') : array();
+    $expertise = ($expertise_terms && !is_wp_error($expertise_terms)) ? $expertise_terms : array();
 
     // Add dark class if the dark option is set to true
     $box_class = $dark ? 'profile-box shadow-l flex-column float-up dark' : 'profile-box shadow-l flex-column float-up';
@@ -41,16 +40,16 @@ function profile_box($post_id, $dark = false) {
     ?>
     <box class="<?php echo esc_attr($box_class); ?>">
         <a href="<?php echo get_permalink($post_id); ?>" class="absolute" style="top: 20px; left: 20px">
-            <?php echo get_svg_icon('link'); ?>
+            <?php echo svg_icon('link'); ?>
         </a>
-        <a href="<?php echo get_permalink( $post_id ); ?>" class="top flex" style="gap: 20px; margin-top:5px;">
+        <a href="<?php echo get_permalink($post_id); ?>" class="top flex" style="gap: 20px; margin-top:5px;">
             <avatar style="background-image: url('<?php echo esc_url($avatar_url); ?>')"></avatar>
             <datas style="margin-bottom: 30px">
                 <h3 class="name" style="font-weight: var(--font-w-600)">
                     <?php echo esc_html($name); ?>
                 </h3>
                 <h6 class="place flex align-center" style="gap: 5px">
-                    <?php echo get_svg_icon('place'); ?>
+                    <?php echo svg_icon('place'); ?>
                     <?php echo esc_html($location); ?>
                 </h6>
             </datas>
@@ -70,14 +69,18 @@ function profile_box($post_id, $dark = false) {
                 <data>
                     <h6 style="color:var(--black);margin-bottom:10px;">תחומי התמחות</h6>
                     <exprties>
-                        <?php foreach ($expertise as $expert): ?>
-                            <tag><?php echo esc_html($expert); ?></tag>
-                        <?php endforeach; ?>
+                        <?php 
+                        foreach ($expertise as $expert): 
+                            $expert_link = get_term_link($expert);
+                            tag_label(esc_html($expert->name), esc_url($expert_link));
+                        endforeach;
+                        ?>
                     </exprties>
                 </data>
             </bottom-bottom>
         </bottom>
     </box>
 
-    <?php }
-    ?>
+    <?php
+}
+?>

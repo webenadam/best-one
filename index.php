@@ -4,38 +4,8 @@
 $total_pros = wp_count_posts('pros')->publish;
 ?>
 
-  <section class="section-hero" style="height:673px;background-image: url('<?php echo theme_uri('/img/hero_bg.jpg'); ?>');background-position: top right;background-repeat: no-repeat;background-color:var(--soft-background);overflow:hidden;">
-    <inner style="padding:0;">
-      <div class="header flex justify-between align-center" style="padding:20px 0; z-index:1;">
-        <a class="float-up" href="<?php echo site_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/Logo.png" alt="Logo" /></a>
-        <nav>
-          <ul>
-          <?php if (have_rows('top_nav_links', 'option')): ?>
-      <?php while (have_rows('top_nav_links', 'option')): the_row();?>
-								        <?php
-    // Get the link title
-    $link_title = get_sub_field('top_nav_link_title');
-    // Get the link type
-    $link_type = get_sub_field('top_nav_link_type');
-    // Determine the URL based on the link type
-    if ($link_type == 'עמוד') {
-        $link_url = get_permalink(get_sub_field('top_nav_link_page'));
-    } elseif ($link_type == 'פוסט') {
-    $link_url = get_permalink(get_sub_field('top_nav_link_post'));
-} elseif ($link_type == 'קישור מותאם') {
-    $link_url = get_sub_field('top_nav_link_custom');
-} else {
-    $link_url = '#';
-}
-?>
-        <li><a href="<?php echo esc_url($link_url); ?>"><?php echo esc_html($link_title); ?></a></li>
-      <?php endwhile;?>
-    <?php endif;?>
-            <li><a class="button">הוסף בעל מקצוע / התחבר</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="hero-content relative flex align-center" style="height: calc(100% - 85px);">
+<section id="hero" class="header-padding" style="height:673px;background-image: url('<?php echo theme_uri('/img/hero_bg.jpg'); ?>');background-position: top right;background-repeat: no-repeat;background-color:var(--soft-background);overflow:hidden;">
+    <inner class="relative flex align-center">
         <div class="right" style="z-index:1;">
           <h1 class="title" style="width:450px; margin-bottom:20px;">מצא את בעל המקצוע הטוב ביותר עבורך!</h1>
           <p class="subtitle" style="width:480px;">
@@ -77,10 +47,11 @@ $expert_terms = get_terms(array(
         <div class="left">
           <img class="hero_guy absolute" style="bottom:0;left:0;" src="<?php echo theme_uri('/img/HeroGuy.png'); ?>" alt="בעלי מקצוע מומלצים">
         </div>
-      </div>
+  
     </inner>
   </section>
-  <section class="section-categories dark full">
+  
+  <section id="expert-terms" class="dark full">
     <inner>
       <h2>סנן לפי תחום</h2>
       <grid class="grid-3" style="margin-bottom:10px">
@@ -117,17 +88,15 @@ if (!empty($expert_terms) && !is_wp_error($expert_terms)) {
             <h6><?php echo esc_html($expert_term->count); ?> בעלי מקצוע</h6>
         </a>
         <?php
-}
+    }
 }
 ?>
-
-
       </grid>
-      <a class="show-all-link" style="color:var(--green); float:left; font-size:var(--font-s); font-weight:var(--font-w-600);">הצג את כל התחומים <?php echo get_svg_icon('left-arrow'); ?>
+      <a class="show-all-link" style="color:var(--green); float:left; font-size:var(--font-s); font-weight:var(--font-w-600);">הצג את כל התחומים <?php echo svg_icon('left-arrow'); ?></a>
     </inner>
   </section>
 
-  <section class="setcion-featured light align-center">
+  <section id="featured-pros" class="light align-center">
     <inner>
       <h2 style="margin-bottom:30px;">המומלצים שלנו</h2>
       <grid class="grid-3">
@@ -160,10 +129,10 @@ if ($query->have_posts()) {
 wp_reset_postdata();
 ?>
 </grid>
-
     </inner>
   </section>
-  <section class="setcion-datas" style="border-bottom:2px solid var(--soft-background);">
+
+  <section id="site-datas" style="border-bottom:2px solid var(--soft-background);">
     <inner style="padding:var(--gap-l)">
       <grid class="home-stats grid-3 gap-l">
         <style>
@@ -206,8 +175,7 @@ wp_reset_postdata();
 get_template_part('template-parts/main-feed', null, array('featured_pros' => $featured_pros));
 ?>
 
-
-  <section class="setcion-features">
+  <section id="features">
     <inner class="flex gap-l align-center" style="padding-bottom:0;">
       <right class="flex"><img src="<?php echo theme_uri('/img/whyus_man.jpg'); ?>" alt="למה אצלנו?"></right>
       <left style="margin-top:-10px;">
@@ -215,7 +183,7 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
         <p style="color:var(--dark-gray); width:480px;margin-bottom: 40px;">באתר BEST1 תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
         <grid class="grid-2 gap-s">
           <style>
-            .setcion-features h3.check::before {
+            #features h3.check::before {
               content: url('data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2218%22%20height%3D%2213%22%20viewBox%3D%220%200%2018%2013%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M6.57216%2012.4615C6.2614%2012.4615%205.95124%2012.3449%205.71392%2012.1109L0%206.47876L1.71648%204.78623L6.57216%209.57245L16.2835%200L18%201.69253L7.4304%2012.1109C7.19308%2012.3449%206.88292%2012.4615%206.57216%2012.4615Z%22%20fill%3D%22%23473BF0%22%20%2F%3E%0A%3C%2Fsvg%3E');
               margin-left:13px;
 
@@ -232,13 +200,15 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
       </left>
     </inner>
   </section>
-  <section class="setcion-advertise-now" style="background-color:var(--green);">
+  
+  <section id="advertise-now" style="background-color:var(--green);">
     <inner class="flex gap-l justify-center align-center" style="padding:var(--gap-l);">
       <h2 style="color:white;margin-bottom:0;">בעל מקצוע, רוצה לקבל חשיפה רצינית?</h2>
       <a href="#" class="button light" style="width:220px;">פרסם עכשיו</a>
     </inner>
   </section>
-  <section class="setcion-blog light" style="padding-top:50px;">
+  
+  <section id="blog" class="light" style="padding-top:50px;">
     <inner class="flex-column align-center" style="text-align:center;">
     <?php // Function to display post block
 function post_block($post_id)
@@ -302,11 +272,10 @@ wp_reset_postdata();
         </grid>
     </inner>
   </section>
-  <section class="setcion-we-here dark">
-    <style>.setcion-we-here {color:var(--dark-white); font-size:var(--font-s);} .setcion-we-here h3 {color:white;}</style>
+  
+  <section id="we-here" class="dark">
+    <style>#we-here {color:var(--dark-white); font-size:var(--font-s);} #we-here h3 {color:white;}</style>
     <inner class="flex gap-l">
-
-
       <right class="flex-column flex-1"><h2 style="color:white;font-size:var(--font-xl);">אנחנו כאן בשבילכם.</h2>
       <p style="width: 350px;">חשוב לנו שתקבלו את כל המידע שאתם צריכים כדי להיות רגועים ובטוחים שאתם מקבלים את הטוב ביותר.</p>
       <check>
@@ -318,7 +287,6 @@ wp_reset_postdata();
       <p>כל בעלי המקצוע באתר בעלי הסמכה ותעודה בתוקף. זה תנאי סף אצלנו.</p>
           </check>
           </right>
-
 
       <left class="flex-1">
         <div class="accordion">
@@ -351,6 +319,5 @@ wp_reset_postdata();
 
     </inner>
   </section>
-
 
 <?php get_footer();?>

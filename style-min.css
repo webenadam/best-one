@@ -59,6 +59,7 @@ header {
 
 body:not(.home) header {
   background-color: #ffffff75;
+  -webkit-backdrop-filter: blur(1px);
   backdrop-filter: blur(1px);
   border-bottom: 1px solid var(--light-gray);
 }
@@ -233,8 +234,16 @@ section.light inner > h4 {
   padding-right: 42px;
 }
 
+.places-input::-moz-placeholder {
+  color:var(--black);
+}
+
 .places-input::placeholder {
   color:var(--black);
+}
+
+.places-input:focus::-moz-placeholder {
+  color:var(--gray);
 }
 
 .places-input:focus::placeholder {

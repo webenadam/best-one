@@ -1,5 +1,5 @@
-<footer id="site-footer" style="background-color: var(--light-gray); padding: var(--gap-m) 0;">
-    <div class="footer-container flex gap-m" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+<footer id="site-footer" style="background-color: white;">
+    <inner class="flex gap-m" style="max-width: 1200px; margin: 0 auto;">
         <!-- Column 1: Site Logo, About Paragraph, and Social Icons -->
         <div class="footer-column flex-1" style="margin: 0 10px;">
             <img src="<?php echo theme_uri(); ?>/img/Logo.png" alt="Site Logo" style="max-width: 100%; height: auto;">
@@ -50,7 +50,7 @@
                 </div>
             <?php endif; ?>
         <?php endfor; ?>
-    </div>
+    </inner>
 </footer>
 <?php wp_footer(); ?>
 </body>
