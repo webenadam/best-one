@@ -6,6 +6,7 @@ jQuery(document).ready(function($) {
     // Initialize Bloodhound for typeahead
     var places = mainFeedAjaxData.places;
 
+
     
     var placesBloodhound = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -37,11 +38,11 @@ jQuery(document).ready(function($) {
         var loaded_post_ids = currentFilters.loaded_post_ids;
         var current_post_count = reset ? 0 : $('.main-feed .profile-box').length;
 
-        // console.log('Place Input:', place_input);
-        // console.log('Expert ID:', expert_id);
-        // console.log('Sort By:', sort_by);
-        // console.log('Loaded Post IDs:', loaded_post_ids);
-        // console.log('Current Post Count:', current_post_count);
+        console.log('Place Input:', place_input);
+        console.log('Expert ID:', expert_id);
+        console.log('Sort By:', sort_by);
+        console.log('Loaded Post IDs:', loaded_post_ids);
+        console.log('Current Post Count:', current_post_count);
 
         // Add ajax-loading class
         $('.main-feed').addClass('ajax-loading');

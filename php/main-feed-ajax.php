@@ -16,12 +16,7 @@ function filter_sort_posts()
     $loaded_post_ids = isset($_POST['loaded_post_ids']) ? array_map('intval', $_POST['loaded_post_ids']) : array();
     $current_post_count = isset($_POST['current_post_count']) ? intval($_POST['current_post_count']) : 9;
 
-    // Debugging to verify parameters
-    error_log('Place Input: ' . $place_input);
-    error_log('Expert ID: ' . $expert);
-    error_log('Sort By: ' . $sort_by);
-    error_log('Loaded Post IDs: ' . implode(', ', $loaded_post_ids));
-    error_log('Current Post Count: ' . $current_post_count);
+
 
     // Determine the number of posts per load
     $posts_per_load = max(9 - $current_post_count, 3);
@@ -35,31 +30,52 @@ function filter_sort_posts()
 
     // Initialize tax query array
     $tax_query = array();
-
+error_log('Place Input before places: ' . $place_input);
     // Fetch matching place and area terms and add their IDs to the query if a place is chosen
     if (!empty($place_input)) {
         $matching_places = get_terms(array(
             'taxonomy' => 'places',
-            'name__like' => $place_input,
+            'search' => $place_input, // Use wildcard to match terms that start with the input
             'fields' => 'ids'
         ));
 
         $matching_areas = get_terms(array(
             'taxonomy' => 'areas',
-            'name__like' => $place_input,
+            'search' => $place_input, // Use wildcard to match terms that start with the input
             'fields' => 'ids'
         ));
+        // Debugging to verify parameters
+        // error_log('Expert ID: ' . $expert);
+        // error_log('Sort By: ' . $sort_by);
+        // error_log('Loaded Post IDs: ' . implode(', ', $loaded_post_ids));
+        // error_log('Current Post Count: ' . $current_post_count);
+        // error_log('place input: ' . $place_input);
 
-        $matching_terms = array_merge($matching_places, $matching_areas);
+        // error_log('Matching Places: ' . print_r($matching_places, true));
+        // error_log('Matching Areas: ' . print_r($matching_areas, true));
 
-        if (!empty($matching_terms) && !is_wp_error($matching_terms)) {
+        // Initialize a relation OR for the tax query
+        $tax_query = array('relation' => 'AND');
+
+        if (!empty($matching_places) && !is_wp_error($matching_places)) {
             $tax_query[] = array(
                 'taxonomy' => 'places',
                 'field' => 'term_id',
-                'terms' => $matching_terms,
+                'terms' => $matching_places,
                 'operator' => 'IN'
             );
-        } else {
+        }
+
+        if (!empty($matching_areas) && !is_wp_error($matching_areas)) {
+            $tax_query[] = array(
+                'taxonomy' => 'areas',
+                'field' => 'term_id',
+                'terms' => $matching_areas,
+                'operator' => 'IN'
+            );
+        }
+
+        if (empty($matching_places) && empty($matching_areas)) {
             // If no matching places or areas, ensure no posts are returned
             $tax_query[] = array(
                 'taxonomy' => 'places',
@@ -69,6 +85,7 @@ function filter_sort_posts()
             );
         }
     }
+
 
     // Tax query for expert
     if (!empty($expert)) {
@@ -96,11 +113,12 @@ function filter_sort_posts()
     }
 
     // Debugging the final query arguments
-    error_log('Query Args: ' . print_r($args, true));
+    // error_log('Query Args: ' . print_r($args, true));
 
     // Execute the query
     $query = new WP_Query($args);
 
+    // error_log('Query Result Count: ' . $query->found_posts);
     // Check if there are posts
     if ($query->have_posts()) {
         ob_start();
