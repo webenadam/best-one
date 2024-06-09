@@ -1,13 +1,9 @@
 jQuery(document).ready(function($) {
-
     // Define the offset variable for scrolling
     var loadMoreScrollOffset = 250; // Adjust this value as needed
 
     // Initialize Bloodhound for typeahead
     var places = mainFeedAjaxData.places;
-
-
-    
     var placesBloodhound = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -32,7 +28,7 @@ jQuery(document).ready(function($) {
             currentFilters.loaded_post_ids = [];
         }
 
-        var place_input = $('.places-typeahead').val().trim();
+        var place_input = $('.places-input.tt-input').val().trim();
         var expert_id = currentFilters.expert;
         var sort_by = currentFilters.sort_by;
         var loaded_post_ids = currentFilters.loaded_post_ids;
@@ -66,6 +62,9 @@ jQuery(document).ready(function($) {
             type: 'POST',
             data: requestData,
             success: function(response) {
+                // Remove existing notifications
+                $('.notification.info').remove();
+
                 if (response.success) {
                     if (reset) {
                         // Replace the main feed content with new posts
@@ -101,6 +100,13 @@ jQuery(document).ready(function($) {
 
                     // Update the loaded post IDs
                     currentFilters.loaded_post_ids = response.data.loaded_post_ids;
+
+                    // Check if the place filter was removed
+                    if (response.data.place_filter_removed) {
+                        // Display the notification message
+                        $('.main-feed').before(response.data.notification);
+                        console.log('No results for the place filter. Showing posts for the expert only.');
+                    }
                 } else {
                     if (reset) {
                         // Show message if no posts found after resetting
@@ -131,8 +137,22 @@ jQuery(document).ready(function($) {
     }
 
     // Function to check and trigger AJAX based on typeahead input
-    function checkAndTriggerAjax() {
-        var inputValue = $('.places-typeahead').val().trim();
+    function checkAndTriggerAjax($value = null) {
+        if (!$value) {
+        // Use the native input value
+        var inputValue = $('.places-input.tt-input').val();
+        } else {
+        // Use the passed value
+        var inputValue = $value;
+        }
+        console.log('Native Input Value:', inputValue);
+
+        if (typeof inputValue === 'string') {
+            inputValue = inputValue.trim();
+        } else {
+            inputValue = '';
+        }
+        console.log('Processed Input Value:', inputValue);
 
         if (inputValue === '') {
             // Clear place filter and show all posts
@@ -164,31 +184,16 @@ jQuery(document).ready(function($) {
                 }
             }
         }
-    ).on('typeahead:autocomplete', function(event, selection) {
-        // console.log('Typeahead autocomplete:', selection);
-    }).on('typeahead:selected', function(event, selection) {
-        // console.log('Typeahead selected:', selection);
-    });
+    );
 
-    // Function to check the visibility of .tt-menu and toggle the class
-    function checkDropdownVisibility() {
-        if ($('.tt-menu').is(':visible')) {
-            $('input.tt-input').addClass('drop-down-open');
-        } else {
-            $('input.tt-input').removeClass('drop-down-open');
-        }
-    }
-
-    // Event listeners for keystrokes and paste events using document delegation
-    $(document).on('input paste typeahead:open typeahead:close', '.tt-input', function() {
-        checkDropdownVisibility();
+    // Custom event listener for input changes
+    $('.places-typeahead.tt-input').on('input', function(event) {
+        console.log('Custom Input event:', event);
+        checkAndTriggerAjax($(this).val()); // Call checkAndTriggerAjax on input
+        // alert($(this).val());
     });
 
     // Event listeners for filters and load more button
-    $('.places-typeahead').on('input', function() {
-        checkAndTriggerAjax();
-    });
-
     $('.expert_select').on('change', function() {
         // Set expert filter and trigger AJAX
         currentFilters.expert = $(this).val();
@@ -203,7 +208,7 @@ jQuery(document).ready(function($) {
 
     $('.places-typeahead').on('blur', function() {
         var termId = $(this).data('term-id');
-        // console.log('Input blurred. Term ID:', termId);
+        console.log('Input blurred. Term ID:', termId);
     });
 
     $('.places-input').on('keypress', function(e) {

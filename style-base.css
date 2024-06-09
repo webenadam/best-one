@@ -709,7 +709,7 @@ input.tt-input.drop-down-open {
   border-top: none;
   width: 100%;
   overflow:hidden;
-  background-color:rgba(255, 255, 255, 0.681);
+  background-color:rgba(255, 255, 255, 0.83);
   backdrop-filter: blue(2px);
 }
 
@@ -717,8 +717,29 @@ input.tt-input.drop-down-open {
   padding: var(--gap-xs) var(--gap-m);
   white-space: nowrap;
   font-size:var(--font-s);
+  text-indent: 11px;
 }
 
 .tt-suggestion.tt-cursor {
   background-color:var(--soft-background);
+}
+
+
+.notification {
+  position: relative;
+  background-color: var(--soft-background);
+  border-radius: var(--radius-s);
+  font-size: var(--font-xs);
+  padding: var(--gap-xs) var(--gap-s);
+  overflow: hidden;
+}
+
+.notification::before {
+  content:'';
+  position: absolute;
+  top:0;
+  right:0;
+  height:100%;
+  width:3px;
+  background-color: var(--green);
 }
