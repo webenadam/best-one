@@ -38,6 +38,10 @@
     color: inherit; /* Ensures links don't inherit browser-specific colors */
   }
 
+  p {
+    text-align: right;;
+  }
+  
   button,
   input,
   textarea,

@@ -1,10 +1,11 @@
 <?php
 
 // AJAX handler for filtering and sorting posts
-function filter_sort_posts() {
+function filter_sort_posts()
+{
     // Check if necessary POST parameters are set
-    if (!isset($_POST['place'])) {
-        wp_send_json_error('Missing parameters: place');
+    if (!isset($_POST['expert'])) {
+        wp_send_json_error('Missing parameters: expert');
         wp_die();
     }
 
@@ -35,7 +36,7 @@ function filter_sort_posts() {
     // Initialize tax query array
     $tax_query = array();
 
-    // Fetch matching place terms and add their IDs to the query
+    // Fetch matching place and area terms and add their IDs to the query if a place is chosen
     if (!empty($place_input)) {
         $matching_places = get_terms(array(
             'taxonomy' => 'places',
@@ -43,15 +44,23 @@ function filter_sort_posts() {
             'fields' => 'ids'
         ));
 
-        if (!empty($matching_places) && !is_wp_error($matching_places)) {
+        $matching_areas = get_terms(array(
+            'taxonomy' => 'areas',
+            'name__like' => $place_input,
+            'fields' => 'ids'
+        ));
+
+        $matching_terms = array_merge($matching_places, $matching_areas);
+
+        if (!empty($matching_terms) && !is_wp_error($matching_terms)) {
             $tax_query[] = array(
                 'taxonomy' => 'places',
                 'field' => 'term_id',
-                'terms' => $matching_places,
+                'terms' => $matching_terms,
                 'operator' => 'IN'
             );
         } else {
-            // If no matching places, ensure no posts are returned
+            // If no matching places or areas, ensure no posts are returned
             $tax_query[] = array(
                 'taxonomy' => 'places',
                 'field' => 'term_id',

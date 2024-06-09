@@ -1,21 +1,27 @@
 jQuery(document).ready(function($) {
+
     // Define the offset variable for scrolling
     var loadMoreScrollOffset = 250; // Adjust this value as needed
 
     // Initialize Bloodhound for typeahead
-    var places = data.places;
+    var places = mainFeedAjaxData.places;
+
+    
     var placesBloodhound = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         local: places
     });
 
+    // Ensure initialLoadedPostIds is defined
+    var initialLoadedPostIds = typeof initialLoadedPostIds !== 'undefined' ? initialLoadedPostIds : [];
+
     // Object to store current filter values
     var currentFilters = {
         place: null,
         expert: null,
         sort_by: null,
-        loaded_post_ids: initialLoadedPostIds || [], // Initialize with IDs of initially loaded posts
+        loaded_post_ids: initialLoadedPostIds, // Initialize with IDs of initially loaded posts
         initial_load: 9 // Number of posts loaded initially
     };
 
@@ -31,26 +37,33 @@ jQuery(document).ready(function($) {
         var loaded_post_ids = currentFilters.loaded_post_ids;
         var current_post_count = reset ? 0 : $('.main-feed .profile-box').length;
 
-        console.log('Place Input:', place_input);
-        console.log('Expert ID:', expert_id);
-        console.log('Sort By:', sort_by);
-        console.log('Loaded Post IDs:', loaded_post_ids);
-        console.log('Current Post Count:', current_post_count);
+        // console.log('Place Input:', place_input);
+        // console.log('Expert ID:', expert_id);
+        // console.log('Sort By:', sort_by);
+        // console.log('Loaded Post IDs:', loaded_post_ids);
+        // console.log('Current Post Count:', current_post_count);
 
         // Add ajax-loading class
         $('.main-feed').addClass('ajax-loading');
 
+        // Prepare data for AJAX request
+        var requestData = {
+            action: 'filter_sort_posts',
+            expert: expert_id,
+            sort_by: sort_by,
+            loaded_post_ids: loaded_post_ids,
+            current_post_count: current_post_count
+        };
+
+        // Add place filter only if a place is chosen
+        if (place_input) {
+            requestData.place = place_input;
+        }
+
         $.ajax({
-            url: data.ajax_url,
+            url: mainFeedAjaxData.ajax_url,
             type: 'POST',
-            data: {
-                action: 'filter_sort_posts',
-                place: place_input,
-                expert: expert_id,
-                sort_by: sort_by,
-                loaded_post_ids: loaded_post_ids,
-                current_post_count: current_post_count
-            },
+            data: requestData,
             success: function(response) {
                 if (response.success) {
                     if (reset) {
@@ -96,7 +109,7 @@ jQuery(document).ready(function($) {
                         $('.no-more-posts-msg').remove();
                         $('.load_more_main_feed').hide();
                         // Show no more posts message
-                        $('.load_more_main_feed').after('<h5 class="no-more-posts-msg" style="color: var(--gray); text-align: center;">אלה כל בעלי המקצוע לחיפוש זה.</h5>');
+                        $('.load_more_main_feed').after('<h5 class="no-more-posts-msg" style="color: var (--gray); text-align: center;">אלה כל בעלי המקצוע לחיפוש זה.</h5>');
                         if (loadMore) {
                             // Scroll to no more posts message
                             $('html, body').animate({
@@ -151,9 +164,23 @@ jQuery(document).ready(function($) {
             }
         }
     ).on('typeahead:autocomplete', function(event, selection) {
-        console.log('Typeahead autocomplete:', selection);
+        // console.log('Typeahead autocomplete:', selection);
     }).on('typeahead:selected', function(event, selection) {
-        console.log('Typeahead selected:', selection);
+        // console.log('Typeahead selected:', selection);
+    });
+
+    // Function to check the visibility of .tt-menu and toggle the class
+    function checkDropdownVisibility() {
+        if ($('.tt-menu').is(':visible')) {
+            $('input.tt-input').addClass('drop-down-open');
+        } else {
+            $('input.tt-input').removeClass('drop-down-open');
+        }
+    }
+
+    // Event listeners for keystrokes and paste events using document delegation
+    $(document).on('input paste typeahead:open typeahead:close', '.tt-input', function() {
+        checkDropdownVisibility();
     });
 
     // Event listeners for filters and load more button
@@ -175,7 +202,7 @@ jQuery(document).ready(function($) {
 
     $('.places-typeahead').on('blur', function() {
         var termId = $(this).data('term-id');
-        console.log('Input blurred. Term ID:', termId);
+        // console.log('Input blurred. Term ID:', termId);
     });
 
     $('.places-input').on('keypress', function(e) {

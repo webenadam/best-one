@@ -1,7 +1,7 @@
 <?php
 
 // Function to render the profile box
-function profile_box($post_id, $dark = false, $featured = false)
+function profile_box($post_id, $dark = false)
 {
     // Enqueue the CSS for the profile box (only once even when used multiple times on page)
     if (!wp_style_is('profile-box-styles', 'enqueued')) {
@@ -30,59 +30,30 @@ function profile_box($post_id, $dark = false, $featured = false)
     $expertise_terms = get_the_terms($post_id, 'expert');
     $expertise = ($expertise_terms && !is_wp_error($expertise_terms)) ? $expertise_terms : array();
 
-    // Set basic classes
-    $box_class = 'profile-box shadow-l flex-column float-up';
-
     // Add dark class if the dark option is set to true
-    if ($dark) {
-        $box_class .= ' dark';
-    }
-
-    // Add featured class if the featured option is set to true
-    if ($featured) {
-        $box_class .= ' featured';
-    }
+    $box_class = $dark ? 'profile-box shadow-l flex-column float-up dark' : 'profile-box shadow-l flex-column float-up';
 
     // Dark mode borders
     $borders_color = $dark ? 'var(--light-gray)' : 'var(--soft-background)';
     $borders_width = $dark ? '1px' : '2px';
 
-?>
+    ?>
     <box class="<?= esc_attr($box_class); ?>">
         <a href="<?= get_permalink($post_id); ?>" class="absolute" style="top: 20px; left: 20px">
-            <?php if ($featured) {
-                echo svg_icon('link', "#473BF0");
-            } else {
-                echo svg_icon('link');
-            } ?>
+            <?= svg_icon('link'); ?>
         </a>
-        <div class="top flex" style="gap: 20px; margin-top:5px; padding-right: var(--gap-s);">
-            <a href="<?= get_permalink($post_id); ?>" style="position: relative;">
-                <?php if (!$featured) { ?>
-                    <avatar style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar>
-                <?php } else { ?>
-                    <span class="featured_trophy" style="
-    position: absolute;
-    top: -1px;
-    right: -7px;
-"><?= svg_icon('trophy'); ?></span>
-                    <avatar-l style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar-l>
-                <?php } ?>
-            </a>
+        <a href="<?= get_permalink($post_id); ?>" class="top flex" style="gap: 20px; margin-top:5px;">
+            <avatar style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar>
             <datas style="margin-bottom: 30px">
-                <h3 class="name" style="font-weight: var(--font-w-600); <?php if ($featured) {
-                                                                            echo 'font-size: var(--font-m);';
-                                                                        } ?>">
-                    <a href="<?= get_permalink($post_id); ?>"><?= esc_html($name); ?></a>
+                <h3 class="name" style="font-weight: var(--font-w-600)">
+                    <?= esc_html($name); ?>
                 </h3>
                 <h6 class="place flex align-center" style="gap: 5px">
-                    <a href="<?= get_term_link($location_terms[0]); ?>">
-                        <?= svg_icon('place'); ?>
-                        <?= esc_html($location); ?>
-                    </a>
+                    <?= svg_icon('place'); ?>
+                    <?= esc_html($location); ?>
                 </h6>
             </datas>
-        </div>
+        </a>
         <bottom class="radius-s" style="border: <?= $borders_width; ?> solid <?= $borders_color; ?>;">
             <bottom-top class="flex" style="width:100%;border-bottom:<?= $borders_width; ?> solid <?= $borders_color; ?>;">
                 <data style="border-left:<?= $borders_width; ?> solid <?= $borders_color; ?>;">
@@ -98,8 +69,8 @@ function profile_box($post_id, $dark = false, $featured = false)
                 <data>
                     <h6 style="color:var(--black);margin-bottom:10px;">תחומי התמחות</h6>
                     <exprties>
-                        <?php
-                        foreach ($expertise as $expert) :
+                        <?php 
+                        foreach ($expertise as $expert): 
                             $expert_link = get_term_link($expert);
                             tag_label(esc_html($expert->name), esc_url($expert_link));
                         endforeach;
@@ -110,6 +81,6 @@ function profile_box($post_id, $dark = false, $featured = false)
         </bottom>
     </box>
 
-<?php
+    <?php
 }
 ?>

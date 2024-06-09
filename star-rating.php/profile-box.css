@@ -41,6 +41,7 @@ box.profile-box.dark bottom {
     /* border:1px solid var(--light-gray)!important; */
 }
 
-.profile-box.featured {
-    border: 1px solid var(--blue);
-  }
+/* box.profile-box.dark bottom {
+    background-color: white;
+    border:1px solid var(--light-gray)!important;
+} */

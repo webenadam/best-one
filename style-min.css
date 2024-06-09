@@ -22,7 +22,7 @@ Text Domain: best-1
 
 h1 {
   color: var(--black);
-  font-size: var(--font-xl);
+  font-size: var(--font-xxl);
   font-weight: var(--font-w-700);
   letter-spacing: -2px;
   line-height: 55px;

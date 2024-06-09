@@ -2,13 +2,13 @@
     <inner class="flex gap-m" style="max-width: 1200px; margin: 0 auto;">
         <!-- Column 1: Site Logo, About Paragraph, and Social Icons -->
         <div class="footer-column flex-1" style="margin: 0 10px;">
-            <img src="<?php echo theme_uri(); ?>/img/Logo.png" alt="Site Logo" style="max-width: 100%; height: auto;">
-            <p style="margin: 10px 0;"><?php echo get_bloginfo('description'); ?></p>
+            <img src="<?= theme_uri(); ?>/img/Logo.png" alt="Site Logo" style="max-width: 100%; height: auto;">
+            <p style="margin: 10px 0;"><?= get_bloginfo('description'); ?></p>
             <div class="social-icons flex gap-m">
                 <!-- Replace with your social links -->
-                <a href="#"><img src="<?php echo theme_uri(); ?>/img/icons/facebook.svg" alt="Facebook" style="width: 18px; height: 18px;"></a>
-                <a href="#"><img src="<?php echo theme_uri(); ?>/img/icons/twitter.svg" alt="Twitter" style="width: 18px; height: 18px;"></a>
-                <a href="#"><img src="<?php echo theme_uri(); ?>/img/icons/instagram.svg" alt="Instagram" style="width: 18px; height: 18px;"></a>
+                <a href="#"><img src="<?= theme_uri(); ?>/img/icons/facebook.svg" alt="Facebook" style="width: 18px; height: 18px;"></a>
+                <a href="#"><img src="<?= theme_uri(); ?>/img/icons/twitter.svg" alt="Twitter" style="width: 18px; height: 18px;"></a>
+                <a href="#"><img src="<?= theme_uri(); ?>/img/icons/instagram.svg" alt="Instagram" style="width: 18px; height: 18px;"></a>
             </div>
         </div>
         <!-- Columns 2-5: Category Links using ACF Repeaters -->
@@ -41,8 +41,8 @@
                             }
                             ?>
                             <li style="margin-bottom: 5px;">
-                                <a href="<?php echo esc_url($link_url); ?>" style="color: var(--dark-gray); text-decoration: none;" class="hover:text-blue">
-                                    <?php echo esc_html($link_title); ?>
+                                <a href="<?= esc_url($link_url); ?>" style="color: var(--dark-gray); text-decoration: none;" class="hover:text-blue">
+                                    <?= esc_html($link_title); ?>
                                 </a>
                             </li>
                         <?php endwhile; ?>
