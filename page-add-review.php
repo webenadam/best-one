@@ -1,16 +1,25 @@
 <?php get_header(); ?>
 
-<?php get_template_part('template-parts/singular-hero') ?>
+<?php
+$pro_param = isset($_GET['pro']) ? $_GET['pro'] : null;
+if ($pro_param) {
+    $pro_post = get_post($pro_param);
+}
+if ($pro_post && $pro_post->post_type == 'pros') {
+    $page_title = 'הוספת המלצה ל' . $pro_post->post_title;
+} else {
+    $page_title = 'הוספת המלצה';
+}
+?>
+
+<?php get_template_part('template-parts/singular-hero', null, array('page_title' => $page_title)); ?>
 
 <section id="main_content">
     <inner style="padding-left: 30%; padding-top:30px; padding-bottom:160px;">
-    
-    <?php 
-    // Check if the 'pro' URL parameter exists
-    $pro_param = isset($_GET['pro']) ? $_GET['pro'] : null;
-    if ($pro_param) {
+
+        <?php
+
         // Check if a post with the 'pro' ID exists in the 'pros' post type
-        $pro_post = get_post($pro_param);
         if ($pro_post && $pro_post->post_type == 'pros') {
             // If the 'pro' parameter exists and a valid post is found, display the form
             acfe_form('add-review');
@@ -18,12 +27,9 @@
             // If 'pro' parameter exists but no valid post is found, display an error message
             echo '<p>כדי להוסיף המלצה לבעל מקצוע יש <a href="' . site_url() . '/#main-feed">לבחור בעל מקצוע</a>.</p>';
         }
-    } else {
-        // If 'pro' parameter does not exist, display the message with the link
-        echo '<p>כדי להוסיף המלצה לבעל מקצוע יש <a href="' . site_url() . '/#main-feed">לבחור בעל מקצוע</a>.</p>';
-    }
-    ?>
-        
+
+        ?>
+
     </inner>
 </section>
 

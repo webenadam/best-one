@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 <?php
 $pro_custom_background = get_field('pro_background_image');
+$pro_reviews_count = get_field('pro_recommended_count');
+
+
 if ($pro_custom_background) {
     $full_image_url = esc_url(wp_get_attachment_image_url($pro_custom_background, 'full'));
     $medium_image_url = esc_url(wp_get_attachment_image_url($pro_custom_background, 'medium_large'));
@@ -254,8 +257,10 @@ if ($pro_custom_background) {
 
 <section id="reviews" class="light" style="padding-top: 50px;">
     <inner class="flex-column align-center" style="text-align: center;">
-        <h2 style="color: var(--green); width: 500px; margin-bottom:70px;"><span style="border-bottom: 2px solid var(--blue);"><?= get_field('pro_recommended_count'); ?>
+    <?php if ($$pro_reviews_count > 0) {?>
+        <h2 style="color: var(--green); width: 500px; margin-bottom:70px;"><span style="border-bottom: 2px solid var(--blue);"><?= $pro_reviews_count; ?>
                 אנשים</span> שיתפו את החוויה שלהם עם <?= get_the_title(); ?></h2>
+                <?php } ?>
         <?php
         $current_post_id = get_the_ID();
         $args = array(
@@ -279,10 +284,11 @@ if ($pro_custom_background) {
                                             }
                                             wp_reset_postdata();
                                             ?></div>
-        <?php } else {
-            echo 'טרם נוספו המלצות לבעל המקצוע הזה.';
-        }
+        <?php } else { ?>
+            <div style="margin-bottom:40px;">טרם נוספו המלצות ל<?= get_the_title(); ?></div>
+        <? }
         ?>
+        <a href="<?= site_url('/add-review/?pro=') . get_the_ID(); ?>" class="button ">הוסף המלצה ל<?= get_the_title(); ?></a>
     </inner>
 </section>
 

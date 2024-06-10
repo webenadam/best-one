@@ -487,6 +487,11 @@ pointer-events:none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.lightbox-content .select2-container .select2-dropdown {
+  z-index:99999;
+}
+
+
 .lightbox-content.active {
   visibility: unset;
 position: relative;
