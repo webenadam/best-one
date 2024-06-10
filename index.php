@@ -199,7 +199,7 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
 <section id="advertise-now" style="background-color:var(--green);">
   <inner class="flex gap-l justify-center align-center" style="padding:var(--gap-l);">
     <h2 style="color:white;margin-bottom:0;">בעל מקצוע, רוצה לקבל חשיפה רצינית?</h2>
-    <a href="#" class="button light" style="width:220px;">פרסם עכשיו</a>
+    <span href="#" class="button light" style="width:220px;" lightbox-type="content" lightbox-content="#signin-signup-pop">פרסם עכשיו</span>
   </inner>
 </section>
 
