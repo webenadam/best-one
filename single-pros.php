@@ -28,6 +28,7 @@ if ($pro_custom_background) {
     }
 
     @media (max-width: 1024px) {
+
         /* Tablet */
         #hero {
             background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$medium_image_url}')" : "url('{$medium_image_url}')" ?>;
@@ -35,6 +36,7 @@ if ($pro_custom_background) {
     }
 
     @media (max-width: 768px) {
+
         /* Mobile */
         #hero {
             background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$thumbnail_image_url}')" : "url('{$thumbnail_image_url}')" ?>;
@@ -132,9 +134,9 @@ if ($pro_custom_background) {
                             }
                         </style>
                         <a href="#reviews" class="flex align-center">
-                        <p class="stat-value" style="color: var(--blue);"><?= $pro_review_total; ?></p>
+                            <p class="stat-value" style="color: var(--blue);"><?= $pro_review_total; ?></p>
 
-                        <?= star_rating($pro_review_total); ?>
+                            <?= star_rating($pro_review_total); ?>
                         </a>
                     </div>
                 </div>
@@ -153,12 +155,12 @@ if ($pro_custom_background) {
                     <a href="#" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/facebook.svg'); ?>" alt="Facebook" style="width: 18px; height: 18px;"></a>
                     <a href="#" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/linkedin.svg'); ?>" alt="LinkedIn" style="width: 18px; height: 18px;"></a>
                 </div>
-                <?php if ($pro_cert_card = get_field('pro_cert_card')) {?>
-                <div class="certificate">
-                    <img src="<?= wp_get_attachment_image_url($pro_cert_card, 'medium'); ?>" alt="תעודת הסמכה" class="float-up" style="width:170px;" lightbox-type="image" lightbox-content="<?= wp_get_attachment_image_url($pro_cert_card, 'full'); ?>">
+                <?php if ($pro_cert_card = get_field('pro_cert_card')) { ?>
+                    <div class="certificate">
+                        <img src="<?= wp_get_attachment_image_url($pro_cert_card, 'medium'); ?>" alt="תעודת הסמכה" class="float-up" style="width:170px;" lightbox-type="image" lightbox-content="<?= wp_get_attachment_image_url($pro_cert_card, 'full'); ?>">
 
-                </div>
-                <?php }?>
+                    </div>
+                <?php } ?>
                 <form id="pro-contact-form" action="/submit" method="post">
                     <style>
                         #pro-contact-form {
@@ -257,10 +259,10 @@ if ($pro_custom_background) {
 
 <section id="reviews" class="light" style="padding-top: 50px;">
     <inner class="flex-column align-center" style="text-align: center;">
-    <?php if ($$pro_reviews_count > 0) {?>
-        <h2 style="color: var(--green); width: 500px; margin-bottom:70px;"><span style="border-bottom: 2px solid var(--blue);"><?= $pro_reviews_count; ?>
-                אנשים</span> שיתפו את החוויה שלהם עם <?= get_the_title(); ?></h2>
-                <?php } ?>
+        <?php if ($pro_reviews_count > 0) { ?>
+            <h2 style="color: var(--green); width: 500px; margin-bottom:70px;"><span style="border-bottom: 2px solid var(--blue);"><?= $pro_reviews_count; ?>
+                    אנשים</span> שיתפו את החוויה שלהם עם <?= get_the_title(); ?></h2>
+        <?php } ?>
         <?php
         $current_post_id = get_the_ID();
         $args = array(
@@ -283,11 +285,11 @@ if ($pro_custom_background) {
                                                 pro_review(get_the_ID());
                                             }
                                             wp_reset_postdata();
+
                                             ?></div>
         <?php } else { ?>
             <div style="margin-bottom:40px;">טרם נוספו המלצות ל<?= get_the_title(); ?></div>
-        <? }
-        ?>
+        <?php } ?>
         <a href="<?= site_url('/add-review/?pro=') . get_the_ID(); ?>" class="button ">הוסף המלצה ל<?= get_the_title(); ?></a>
     </inner>
 </section>
