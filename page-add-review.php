@@ -4,33 +4,28 @@
 
 <section id="main_content">
     <inner style="padding-left: 30%; padding-top:30px; padding-bottom:160px;">
-            <?php the_content(); ?>
+    
+    <?php 
+    // Check if the 'pro' URL parameter exists
+    $pro_param = isset($_GET['pro']) ? $_GET['pro'] : null;
+    if ($pro_param) {
+        // Check if a post with the 'pro' ID exists in the 'pros' post type
+        $pro_post = get_post($pro_param);
+        if ($pro_post && $pro_post->post_type == 'pros') {
+            // If the 'pro' parameter exists and a valid post is found, display the form
+            acfe_form('add-review');
+        } else {
+            // If 'pro' parameter exists but no valid post is found, display an error message
+            echo '<p>כדי להוסיף המלצה לבעל מקצוע יש <a href="' . site_url() . '/#main-feed">לבחור בעל מקצוע</a>.</p>';
+        }
+    } else {
+        // If 'pro' parameter does not exist, display the message with the link
+        echo '<p>כדי להוסיף המלצה לבעל מקצוע יש <a href="' . site_url() . '/#main-feed">לבחור בעל מקצוע</a>.</p>';
+    }
+    ?>
         
-        <div id="certificates">
-            <grid class="grid-2 gap-l">
-                <?php
-                $certificates = get_field('pro_certs');
-                if ($certificates) {
-                    foreach ($certificates as $certificate) {
-                        $image_id = $certificate['pro_cert_img'];
-                        $image_url = wp_get_attachment_image_url($image_id, 'full');
-                        $image_thumb = wp_get_attachment_image_url($image_id, array(300, 300));
-                ?>
-                        <div class="box border certificate-box shadow-l float-up" lightbox-type="image" lightbox-content="<?= esc_url($image_url); ?>" style="padding:var(--gap-s);">
-                            <div class="cert_img radius-s" style="height:300px;background-image: url('<?= esc_url($image_thumb); ?>');background-size:cover;background-position:top center; margin-bottom:10px;"></div>
-                            <h5><?= esc_attr($certificate['pro_cert_title']); ?></h5>
-                        </div>
-                <?php
-                    }
-                }
-                ?>
-            </grid>
-        </div>
-    </inner>
     </inner>
 </section>
-
-
 
 <section id="featured-pros" class="light align-center">
     <inner>
