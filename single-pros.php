@@ -2,6 +2,7 @@
 <?php
 $pro_custom_background = get_field('pro_background_image');
 $pro_reviews_count = get_field('pro_recommended_count');
+$pro_post_id = get_the_ID();
 
 
 if ($pro_custom_background) {
@@ -51,7 +52,7 @@ if ($pro_custom_background) {
 
 
             <div class="areas">
-                <?php $location_terms = get_the_terms($post_id, 'areas');
+                <?php $location_terms = get_the_terms($pro_post_id, 'areas');
 
                 if ($location_terms && !is_wp_error($location_terms)) {
                     foreach ($location_terms as $location_term) {
@@ -72,7 +73,7 @@ if ($pro_custom_background) {
             <div id="expert-tags" class="flex gap-s" style="margin-bottom:86px;">
                 <?php
                 // Get the terms for the current post in the "expert" taxonomy
-                $experts = get_the_terms(get_the_ID(), 'expert');
+                $experts = get_the_terms($pro_post_id, 'expert');
 
                 // Check if terms are found and are not empty
                 if ($experts && !is_wp_error($experts)) {
@@ -115,7 +116,7 @@ if ($pro_custom_background) {
                     </div>
                     <div class="stat-item">
                         <p class="stat-label">שנות נסיון</p>
-                        <p class="stat-value"><?= get_pro_date($post_id, 'exp'); ?></p>
+                        <p class="stat-value"><?= get_pro_date($pro_post_id, 'exp'); ?></p>
                     </div>
                     <div class="stat-item">
                         <p class="stat-label">תחומי התמחות</p>
@@ -264,7 +265,7 @@ if ($pro_custom_background) {
                     אנשים</span> שיתפו את החוויה שלהם עם <?= get_the_title(); ?></h2>
         <?php } ?>
         <?php
-        $current_post_id = get_the_ID();
+        $current_post_id = $pro_post_id;
         $args = array(
             'post_type' => 'pro_reviews',
             'meta_query' => array(
@@ -282,7 +283,8 @@ if ($pro_custom_background) {
             <div class="flex-column gap-l"><?php
                                             while ($review_query->have_posts()) {
                                                 $review_query->the_post();
-                                                pro_review(get_the_ID());
+                                                $review_post_id = get_the_ID();
+                                                pro_review($review_post_id);
                                             }
                                             wp_reset_postdata();
 
@@ -290,7 +292,7 @@ if ($pro_custom_background) {
         <?php } else { ?>
             <div style="margin-bottom:40px;">טרם נוספו המלצות ל<?= get_the_title(); ?></div>
         <?php } ?>
-        <a href="<?= site_url('/add-review/?pro=') . get_the_ID(); ?>" class="button ">הוסף המלצה ל<?= get_the_title(); ?></a>
+        <a href="<?= site_url('/add-review/?pro=') . $pro_post_id; ?>" class="button ">הוסף המלצה ל<?= get_the_title(); ?></a>
     </inner>
 </section>
 
@@ -310,7 +312,7 @@ if ($pro_custom_background) {
             if ($query->have_posts()) {
                 while ($query->have_posts()) {
                     $query->the_post();
-                    profile_box(get_the_ID(), $dark_mode = false);
+                    profile_box($pro_post_id, $dark_mode = false);
                 }
             } else {
                 echo '<p>לא נמצאו בעלי מקצוע מומלצים.</p>';

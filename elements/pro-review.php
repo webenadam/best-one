@@ -3,9 +3,8 @@
 // Function to render the pro review
 function pro_review($post_id, $dark = false)
 {
-
     // Get the custom fields and taxonomies
-    $name = get_the_title($post_id);
+    $review_user_name = get_field('pro_review_user_name', $post_id) ? get_field('pro_review_user_name', $post_id) : get_the_title($post_id);
     $pro_review_business_date = get_field('pro_review_business_date', $post_id);
     $pro_review_place = get_field('pro_review_place', $post_id);
     $pro_review_quality = get_field('pro_review_quality', $post_id);
@@ -41,7 +40,7 @@ function pro_review($post_id, $dark = false)
             <p style="margin-bottom:6px;"><?= get_the_content($post_id); ?></p>
             <h6 class="place flex align-center" style="gap: 5px; margin-bottom:25px;">
                 <?= svg_icon('place'); ?>
-                <?= get_term($pro_review_place)->name; ?> | <?= esc_html($name); ?>
+                <?= get_term($pro_review_place)->name; ?> | <?= esc_html($review_user_name); ?>
             </h6>
             <div class="flex review-datas gap-m" style="font-size:var(--font-s); color:var(--gray);">
                 <style>
