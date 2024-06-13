@@ -46,7 +46,7 @@ $pro_post_id = isset($args['pro_post_id']) ? $args['pro_post_id'] : '';
                     <a href="<?= wp_logout_url(); ?>" style="color: var(--red);">התנתק</a>
 
                 </div>
-                <bottom class="radius-s" style="border: 1px solid var(--light-gray);width:100%">
+                <bottom class="radius-s" style="border: 1px solid var(--light-gray);width:100%; margin-bottom: var(--gap-m);">
                     <bottom-top class="flex" style="width:100%;border-bottom:1px solid var(--light-gray);">
                         <style>
                             data {
@@ -73,7 +73,54 @@ $pro_post_id = isset($args['pro_post_id']) ? $args['pro_post_id'] : '';
                         </data>
                     </bottom-bottom>
                 </bottom>
+                <div lightbox-type="content" lightbox-content="#share-pop" class="button"><span style="vertical-align: -4px; margin-left:13px;"><?= svg_icon('share', null, null, 19, 19); ?></span>שתף את העמוד שלך</div>
             </div>
         </div>
     </inner>
 </section>
+<div id="share-pop" class="lightbox-overlay">
+        <div class="lightbox-content" style="width:440px;">
+            <h3 class="flex justify-center align-center gap-xs"><?= svg_icon('share', '#000', null, 19, 19); ?> שתפו את העמוד שלכם!</h3>
+            <gap-m></gap-m>
+
+            <style>
+                #share-pop .sharing-links {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--gap-s);
+                }
+
+                #share-pop .sharing-links .button {
+                    display: flex;
+                    gap: var(--gap-s);
+                    align-items: center;
+                }
+                
+            </style>
+     <div class="sharing-links">
+    <div class="button" copy="<?= site_url('/add-review/?pro=' . $pro_post_id); ?>">
+        <?= svg_icon('profile', null, null, 19, 19); ?> העתק לינק להוספת המלצה
+    </div>
+    <gap-s class="line"></gap-s>
+    <div class="button green" copy="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($pro_post_id); ?>">
+        <?= svg_icon('facebook', null, null, 19, 19); ?> העתק לינק לשיתוף בפייסבוק
+    </div>
+    <div class="button green" copy="https://twitter.com/intent/tweet?text=<?= urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id)); ?>%20<?= get_permalink($pro_post_id); ?>">
+        <?= svg_icon('twitter', null, null, 19, 19); ?> העתק לינק לשיתוף בטוויטר
+    </div>
+    <div class="button green" copy="https://www.linkedin.com/shareArticle?mini=true&url=<?= get_permalink($pro_post_id); ?>&title=<?= urlencode(get_the_title($pro_post_id)); ?>&summary=<?= urlencode('בדקו את המקצוען הזה'); ?>&source=YourWebsite">
+        <?= svg_icon('linkedin', null, null, 19, 19); ?> העתק לינק לשיתוף בלינקדאין
+    </div>
+    <div class="button green" copy="https://api.whatsapp.com/send?text=<?= urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id)); ?>%20<?= get_permalink($pro_post_id); ?>">
+        <?= svg_icon('whatsapp', null, null, 19, 19); ?> העתק לינק לשיתוף בוואטסאפ
+    </div>
+    <div class="button green" copy="https://t.me/share/url?url=<?= get_permalink($pro_post_id); ?>&text=<?= urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id)); ?>">
+        <?= svg_icon('telegram', null, null, 19, 19); ?> העתק לינק לשיתוף בטלגרם
+    </div>
+    <div class="button green" copy="mailto:?subject=<?= urlencode('בדקו את המקצוען הזה'); ?>&body=<?= urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id)); ?>%20<?= get_permalink($pro_post_id); ?>">
+        <?= svg_icon('email', null, null, 19, 19); ?> העתק לינק לשיתוף באימייל
+    </div>
+</div>
+
+
+        </div></div>

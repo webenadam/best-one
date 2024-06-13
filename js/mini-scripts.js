@@ -237,8 +237,19 @@ $(document).ready(function() {
 
 
 
-
+// copy content from "copy"
   
+        $(document).on('click', '[copy]' ,function() {
+            var link = $(this).attr('copy');
+            var tempInput = $("<input>");
+            $("body").append(tempInput);
+            tempInput.val(link).select();
+            document.execCommand("copy");
+            tempInput.remove();
+            alert('לינק הועתק!');
+        });
+
+    
 
 
 

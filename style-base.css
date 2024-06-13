@@ -327,6 +327,14 @@ select {
   background-color: transparent;
 }
 
+.button.green {
+  background-color: var(--green);
+}
+
+.button.green:hover {
+  background-color: var(--dark-green);
+}
+
 
 
 box, .box {
@@ -422,6 +430,7 @@ avatar-xl {
 /* Gap elements */
 gap-s,gap-m,gap-l {
   display:block;
+  position:relative;
   width:100%;
 }
 gap-s {
@@ -434,6 +443,16 @@ gap-m {
 
 gap-l {
   height:var(--gap-l);
+}
+
+gap-s.line::before,gap-m.line::before,gap-l.line::before {
+  content:'';
+  height:1px;
+  width:100%;
+  position: absolute;
+  left:0;
+  top:50%;
+  background-color:var(--light-gray)
 }
 
 tag {
@@ -466,7 +485,7 @@ tag.big {
   pointer-events: none;
   justify-content: center;
   align-items: center; /* Center content vertically */
-  z-index: 1000;
+  z-index: 99999;
   padding: 2.5vh 0; /* Add padding to move content down */
 }
 

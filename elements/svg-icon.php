@@ -25,6 +25,16 @@ function svg_icon($icon_name, $icon_color = null, $flip = null, $width = null, $
         'circle_check' => array('width' => 30, 'height' => 30),
         'circle_cross' => array('width' => 30, 'height' => 30), // Added new icon dimensions
         'trophy' => array('width' => 25, 'height' => 25),
+        'share' => array('width' => 25, 'height' => 25),
+        'facebook' => array('width' => 25, 'height' => 25),
+        'twitter' => array('width' => 25, 'height' => 25),
+        'linkedin' => array('width' => 25, 'height' => 25),
+        'whatsapp' => array('width' => 25, 'height' => 25),
+        'telegram' => array('width' => 25, 'height' => 25),
+        'email' => array('width' => 25, 'height' => 25),
+        'pinterest' => array('width' => 25, 'height' => 25),
+        'reddit' => array('width' => 25, 'height' => 25),
+
     );
 
     // Set width and height to provided values or default to original values
@@ -78,6 +88,36 @@ function svg_icon($icon_name, $icon_color = null, $flip = null, $width = null, $
 <g fill="' . ($icon_color ? $icon_color : '#FB6D45') . '">
 <path d="M24,1C11.297,1,1,11.297,1,24s10.297,23,23,23,23-10.297,23-23S36.703,1,24,1Zm9.193,29.364c.391,.391,.391,1.024,0,1.414l-1.415,1.415c-.391,.391-1.024,.391-1.414,0l-6.364-6.365-6.364,6.365c-.391,.391-1.024,.391-1.414,0l-1.415-1.415c-.391-.391-.391-1.024,0-1.414l6.365-6.364-6.365-6.364c-.391-.391-.391-1.024,0-1.414l1.415-1.415c.391-.391,1.024-.391,1.414,0l6.364,6.365,6.364-6.365c.391-.391,1.024-.391,1.414,0l1.415,1.415c.391,.391,.391,1.024,0,1.414l-6.365,6.364,6.365,6.364Z" fill="' . ($icon_color ? $icon_color : '#FB6D45') . '"></path>
 </g>
+</svg>',
+        'share' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g fill="' . ($icon_color ? $icon_color : '#ffffff') . '">
+<line fill="none" stroke="' . ($icon_color ? $icon_color : '#ffffff') . '" stroke-linecap="round" stroke-linejoin="round" x1="6.12" y1="6.675" x2="9.881" y2="4.325"></line>
+<line fill="none" stroke="' . ($icon_color ? $icon_color : '#ffffff') . '" stroke-linecap="round" stroke-linejoin="round" x1="6.12" y1="9.325" x2="9.881" y2="11.675"></line>
+<circle fill="none" stroke="' . ($icon_color ? $icon_color : '#ffffff') . '" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="3" r="2.5"></circle>
+<circle fill="none" stroke="' . ($icon_color ? $icon_color : '#ffffff') . '" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="13" r="2.5"></circle>
+<circle fill="none" stroke="' . ($icon_color ? $icon_color : '#ffffff') . '" stroke-linecap="round" stroke-linejoin="round" cx="4" cy="8" r="2.5"></circle>
+</g>
+</svg>',
+
+        'facebook' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.675 0H1.325C0.595 0 0 0.595 0 1.325V22.675C0 23.405 0.595 24 1.325 24H12.82V14.706H9.692V11.24H12.82V8.745C12.82 5.841 14.67 4.204 17.237 4.204C18.483 4.204 19.791 4.391 19.791 4.391V7.435H18.082C16.399 7.435 16.18 8.258 16.18 9.252V11.24H19.658L19.146 14.706H16.18V24H22.675C23.405 24 24 23.405 24 22.675V1.325C24 0.595 23.405 0 22.675 0Z" fill="#ffffff"/>
+</svg>',
+        'twitter' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.953 4.57C23.162 4.95 22.332 5.2 21.478 5.308C22.345 4.725 23.002 3.888 23.338 2.916C22.508 3.392 21.605 3.772 20.662 4.002C19.865 3.193 18.728 2.75 17.515 2.75C14.935 2.75 12.924 4.761 12.924 7.341C12.924 7.68 12.965 8.007 13.046 8.314C8.65 8.091 4.805 6.136 2.059 3.146C1.612 3.802 1.356 4.57 1.356 5.393C1.356 6.889 2.187 8.206 3.388 8.896C2.642 8.875 1.934 8.671 1.32 8.322C1.32 8.34 1.32 8.359 1.32 8.377C1.32 10.523 2.895 12.276 5.004 12.688C4.596 12.808 4.152 12.873 3.688 12.873C3.344 12.873 3.012 12.842 2.686 12.786C3.364 14.507 5.009 15.754 6.938 15.787C5.383 16.916 3.42 17.588 1.356 17.588C0.906 17.588 0.461 17.56 0 17.5C1.937 18.719 4.24 19.5 6.75 19.5C17.515 19.5 22.74 12 22.74 7.767C22.74 7.58 22.74 7.391 22.726 7.206C23.562 6.638 24.303 5.917 24.953 5.07L23.953 4.57Z" fill="#ffffff"/>
+</svg>',
+        'linkedin' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.23 0H1.77C0.79 0 0 0.77 0 1.72V22.27C0 23.23 0.79 24 1.77 24H22.23C23.21 24 24 23.23 24 22.27V1.72C24 0.77 23.21 0 22.23 0ZM7.08 20.45H3.56V9H7.08V20.45ZM5.32 7.56C4.24 7.56 3.35 6.67 3.35 5.59C3.35 4.52 4.24 3.63 5.32 3.63C6.4 3.63 7.29 4.52 7.29 5.59C7.29 6.67 6.4 7.56 5.32 7.56ZM20.45 20.45H16.93V14.77C16.93 13.8 16.91 12.57 15.75 12.57C14.59 12.57 14.39 13.63 14.39 14.67V20.45H10.86V9H14.25V10.28H14.3C14.76 9.45 15.83 8.74 17.28 8.74C20.12 8.74 20.45 10.69 20.45 13.08V20.45Z" fill="#ffffff"/>
+</svg>',
+       'whatsapp' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.021 2.049C8.295 2.049 2.049 8.296 2.049 16.022c0 3.14 1.035 6.043 2.792 8.408L2 30l5.755-2.788a13.924 13.924 0 0 0 8.266 2.64c7.726 0 13.972-6.247 13.972-13.973 0-7.727-6.246-13.973-13.972-13.973zm8.095 20.182c-.335.945-1.92 1.801-2.63 1.913-.682.105-1.545.145-2.48-.159a22.416 22.416 0 0 1-1.806-.635c-3.178-1.387-5.253-4.812-5.41-5.03-.155-.218-1.292-1.72-1.292-3.285 0-1.563.818-2.34 1.11-2.656.29-.317.635-.398.845-.398.211 0 .422 0 .602.01.19.008.448-.072.702.533.278.662.944 2.29 1.026 2.453.08.163.135.347.03.561-.105.213-.155.347-.31.535-.155.19-.327.422-.468.563-.155.155-.317.327-.136.626.182.29.808 1.335 1.732 2.162 1.19 1.06 2.194 1.39 2.485 1.547.31.155.482.135.66-.083.19-.218.759-.88.962-1.184.201-.317.403-.265.671-.155.275.11 1.742.82 2.044.968.303.145.503.218.58.34.075.11.075.878-.26 1.823z" fill="#ffffff"/>
+</svg>',
+
+
+        'telegram' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.636 16.84L9.116 21.443C9.636 21.443 9.876 21.201 10.116 20.961L13.192 18.12L18.404 21.14C19.244 21.619 19.792 21.4 19.996 20.417L22.875 6.423C23.139 5.225 22.468 4.762 21.676 5.055L2.816 11.683C1.69 12.097 1.701 12.708 2.637 12.985L7.76 14.485L18.18 8.25C18.772 7.936 19.292 8.124 18.832 8.438L9.636 16.84Z" fill="#ffffff"/>
+</svg>',
+        'email' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.5 3H3.5C2.39543 3 1.5 3.89543 1.5 5V19C1.5 20.1046 2.39543 21 3.5 21H20.5C21.6046 21 22.5 20.1046 22.5 19V5C22.5 3.89543 21.6046 3 20.5 3ZM20.5 5V5.01L12 11L3.5 5.01V5H20.5ZM3.5 19V7.84L12 14L20.5 7.84V19H3.5Z" fill="#ffffff"/>
 </svg>',
 
 
