@@ -79,6 +79,9 @@ $pro_posts = new WP_Query($args);
                 echo 'טרם נוספו המלצות לבעל המקצוע הזה.';
             }
             ?>
+            <div class="button flex align-center gap-xs margin-t-l" copy="<?= site_url('/add-review/?pro=' . $pro_post_id); ?>">
+        <?= svg_icon('profile', null, null, 19, 19); ?> העתק לינק להוספת המלצה
+    </div>
         </inner>
     </section>
 
@@ -224,14 +227,16 @@ jQuery(document).ready(function($) {
             uncheckedList += `<span class="unchecked">לפחות פוסט אחד</span>`;
         }
 
-        // Check if there is at least one customer review
-        let userHasReviews = <?php echo json_encode($review_query->have_posts()); ?>;
-        if (userHasReviews) {
-            score += 5;
-            checkedList += `<span class="checked">יש לפחות ביקורת לקוחות אחת</span>`;
-        } else {
-            uncheckedList += `<span class="unchecked">אין ביקורות לקוחות עדיין</span>`;
-        }
+// Check if there is at least one customer review
+let userHasReviews = <?php echo json_encode($review_query->have_posts()); ?>;
+if (userHasReviews) {
+    score += 5;
+    checkedList += `<span class="checked">יש לפחות ביקורת לקוחות אחת</span>`;
+} else {
+    uncheckedList += `<span class="unchecked">אין ביקורות לקוחות עדיין.  <span style="margin-right:5px;text-decoration:underline;" copy="<?= site_url('/add-review/?pro=' . $pro_post_id); ?>">העתק לינק להוספת המלצה.</span>  </span>`;
+}
+
+
 
         // All other fields
         let excludedFields = 'div[data-name="pro_cert_card"] input, div[data-name="pro_promo_video"] input, div[data-name="pro_expert_terms"] select';

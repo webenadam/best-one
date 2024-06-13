@@ -455,6 +455,27 @@ gap-s.line::before,gap-m.line::before,gap-l.line::before {
   background-color:var(--light-gray)
 }
 
+/* margins */
+.margin-t-s {
+  margin-top:var(--gap-s);
+}
+.margin-t-m {
+  margin-top:var(--gap-m);
+}
+.margin-t-l {
+  margin-top:var(--gap-l);
+}
+.margin-b-s {
+  margin-bottom:var(--gap-s);
+}
+.margin-b-m {
+  margin-bottom:var(--gap-m);
+}
+.margin-b-l {
+  margin-bottom:var(--gap-l);
+}
+
+
 tag {
   border-radius:99px;
   color:var(--blue);
@@ -766,4 +787,8 @@ input.tt-input.drop-down-open {
   height:100%;
   width:3px;
   background-color: var(--green);
+}
+
+[copy] { 
+  cursor: pointer;
 }
