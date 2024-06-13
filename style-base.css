@@ -53,13 +53,13 @@ body {
   padding: 0;
 }
 
-section {
+section, header, footer, subfooter {
   overflow-x: hidden;
   max-width: 100%;
 }
 
 /* Inner Container Style */
-section inner, header inner, footer inner {
+section inner, header inner, footer inner, subfooter inner {
   max-width: 1200px;
   flex: 1;
   padding: var(--gap-m) 0px 160px 0px;
@@ -73,7 +73,7 @@ header inner {
   padding-top: 86px;
 }
 
-section inner.center-padding, header inner.center-padding, footer inner.center-padding {
+section inner.center-padding, header inner.center-padding, footer inner.center-padding, subfooter inner.center-padding {
   padding: var(--gap-m) 0px;
 }
 
@@ -375,6 +375,160 @@ box, .box {
 }
 .float-up:hover {
   transform: translateY(-5px);
+}
+
+
+.wp-link:hover {
+  opacity: 1!important;
+}
+
+h1 {
+  color: var(--black);
+  font-size: var(--font-xxl);
+  font-weight: var(--font-w-700);
+  letter-spacing: -2px;
+  line-height: 55px;
+}
+h2 {
+  font-weight: var(--font-w-700);
+  font-size: 36px;
+  color: var(--);
+}
+h3 {
+  font-size: var(--font-m);
+  font-weight: var(--font-w-700);
+  color:var(--)
+}
+
+h5 {
+  font-size: var(--font-s);
+  font-weight: var(--font-w-600);
+  color: var(--dark-gray);
+  line-height: 25px;
+}
+
+h6 {
+  font-size: var(--font-xs);
+  color: var(--dark-gray);
+}
+
+/* Header and Section Styles */
+header,
+section,
+footer,
+subfooter {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index:90;
+}
+
+body:not(.home) header {
+  position: fixed;
+  background-color: #ffffffc9;
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid var(--light-gray);
+}
+
+/* Navigation Styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  font-size: var(--font-s);
+  font-weight: var(--font-w-600);
+  cursor: pointer;
+}
+nav ul li a:not(.button):hover {
+  color: var(--dark-blue);
+}
+
+/* Hero Section Styles */
+.hero .title {
+  font-size: 24px;
+  color: var(--black);
+}
+
+.hero .subtitle {
+  font-size: 16px;
+  color: var(--gray);
+}
+
+/* Search Form Styles */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.home .search-form select {
+  width: 240px;
+}
+
+.search-button {
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: var(--dark-blue);
+}
+
+/* Filters Section Styles */
+section {
+  background-color: white;
+}
+
+section.dark {
+  background-color: var(--black);
+}
+
+section.light {
+  background-color: var(--soft-background);
+}
+
+section inner > h1,
+section inner > h2,
+section inner > h3,
+section inner > h4 {
+  margin-bottom: 10px;
+}
+
+section.dark inner > h1,
+section.dark inner > h2,
+section.dark inner > h3,
+section.dark inner > h4 {
+  color: white;
+}
+
+section.light inner > h1,
+section.light inner > h2,
+section.light inner > h3,
+section.light inner > h4 {
+  color: var(--blue);
 }
 
 avatar,
