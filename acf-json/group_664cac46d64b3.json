@@ -1,0 +1,328 @@
+{
+    "key": "group_664cac46d64b3",
+    "title": "המלצה",
+    "fields": [
+        {
+            "key": "field_6666a06c0a423",
+            "label": "שם הממליץ",
+            "name": "pro_review_user_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": {
+                "6666a0c1569a9": {
+                    "acfe_settings_location": "admin",
+                    "acfe_settings_settings": {
+                        "6666a0cd569aa": {
+                            "acfe_settings_setting_type": "hide_field",
+                            "acfe_settings_setting_operator": "true"
+                        }
+                    }
+                }
+            },
+            "acfe_validate": "",
+            "maxlength": "",
+            "acfe_permissions": "",
+            "placeholder": "שם הממליץ",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_664caf4be7e8c",
+            "label": "בעל מקצוע מומלץ",
+            "name": "pro_review_pro_is",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "pros"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "save_custom": 0,
+            "save_post_status": "publish",
+            "acfe_bidirectional": {
+                "acfe_bidirectional_enabled": "0"
+            },
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "allow_null": 0,
+            "acfe_permissions": "",
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": [],
+            "save_post_type": "",
+            "placeholder": "בעל מקצוע מומלץ"
+        },
+        {
+            "key": "field_6650a3df5f02a",
+            "label": "אימייל הממליץ",
+            "name": "pro_review_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "placeholder": "אימייל הממליץ",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6650a3f85f02b",
+            "label": "טלפון הממליץ",
+            "name": "pro_review_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "maxlength": "",
+            "acfe_permissions": "",
+            "placeholder": "טלפון הממליץ",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_664cac46cb813",
+            "label": "תאריך עסקה",
+            "name": "pro_review_business_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1,
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "placeholder": "תאריך עסקה"
+        },
+        {
+            "key": "field_6650a361c4e21",
+            "label": "מיקום עסקה",
+            "name": "pro_review_place",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "places",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "select",
+            "allow_null": 0,
+            "acfe_bidirectional": {
+                "acfe_bidirectional_enabled": "0"
+            },
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": [],
+            "placeholder": "מיקום עסקה"
+        },
+        {
+            "key": "field_664cad4ccb814",
+            "label": "דירוג איכות השירות",
+            "name": "pro_review_quality",
+            "aria-label": "",
+            "type": "range",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "min": 0,
+            "max": 5,
+            "acfe_permissions": "",
+            "step": 1,
+            "prepend": "",
+            "append": "",
+            "placeholder": "דירוג איכות השירות"
+        },
+        {
+            "key": "field_664cae6ccb815",
+            "label": "דירוג המחיר",
+            "name": "pro_review_price",
+            "aria-label": "",
+            "type": "range",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "min": 0,
+            "max": 5,
+            "acfe_permissions": "",
+            "step": 1,
+            "prepend": "",
+            "append": "",
+            "placeholder": "דירוג המחיר"
+        },
+        {
+            "key": "field_664cae6ecb816",
+            "label": "דירוג הזמנים",
+            "name": "pro_review_timing",
+            "aria-label": "",
+            "type": "range",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "min": 0,
+            "max": 5,
+            "acfe_permissions": "",
+            "step": 1,
+            "prepend": "",
+            "append": "",
+            "placeholder": "דירוג הזמנים"
+        },
+        {
+            "key": "field_664cae70cb817",
+            "label": "דירוג היחס האנושי",
+            "name": "pro_review_human",
+            "aria-label": "",
+            "type": "range",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "min": 0,
+            "max": 5,
+            "acfe_permissions": "",
+            "step": 1,
+            "prepend": "",
+            "append": "",
+            "placeholder": "דירוג היחס האנושי"
+        },
+        {
+            "key": "field_66538e8bd0515",
+            "label": "דירוג משוכלל",
+            "name": "pro_review_total",
+            "aria-label": "",
+            "type": "range",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "min": "",
+            "max": 5,
+            "acfe_permissions": "",
+            "step": 1,
+            "prepend": "",
+            "append": "",
+            "placeholder": "דירוג משוכלל"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "pro_reviews"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_permissions": "",
+    "acfe_form": 1,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1718305507
+}

@@ -1,0 +1,216 @@
+{
+    "key": "group_664b562a54085",
+    "title": "ניהול אתר - דף הבית",
+    "fields": [
+        {
+            "key": "field_664b562a3f9e5",
+            "label": "כללי",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "placeholder": "כללי"
+        },
+        {
+            "key": "field_664b546825e89",
+            "label": "תחומים ראשיים",
+            "name": "home_featured_expert_terms",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "מופיעים בחלק השני בדף הבית",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "expert",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": [],
+            "placeholder": "תחומים ראשיים"
+        },
+        {
+            "key": "field_665f75718582b",
+            "label": "מומלצים",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "placeholder": "מומלצים"
+        },
+        {
+            "key": "field_6642a43cfa0d9",
+            "label": "המומלצים שלנו",
+            "name": "home_featured_pros",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "pros"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 1,
+            "allow_null": 1,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": [],
+            "save_custom": 0,
+            "save_post_type": "",
+            "save_post_status": "",
+            "placeholder": "המומלצים שלנו"
+        },
+        {
+            "key": "field_665f75868582c",
+            "label": "שאלות ותשובות",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "placeholder": "שאלות ותשובות"
+        },
+        {
+            "key": "field_665ec9135ebbb",
+            "label": "שאלות ותשובות",
+            "name": "home_faq",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "מופיע בדף הבית בחלק תחתון (פוטר)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_repeater_stylised_button": 1,
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_665ec9455ebbc",
+            "button_label": "הוסף שאלה ותשובה",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_665ec9455ebbc",
+                    "label": "שאלה",
+                    "name": "home_faq_q",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "שאלה",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_665ec9135ebbb"
+                },
+                {
+                    "key": "field_665ec9565ebbd",
+                    "label": "תשובה",
+                    "name": "home_faq_a",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "acfe_textarea_code": 0,
+                    "maxlength": "",
+                    "rows": 3,
+                    "placeholder": "תשובה",
+                    "new_lines": "",
+                    "parent_repeater": "field_665ec9135ebbb"
+                }
+            ],
+            "placeholder": "שאלות ותשובות"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "site-settings-home-pages"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "_",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1718305518
+}

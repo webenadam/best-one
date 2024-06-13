@@ -1,0 +1,680 @@
+{
+    "key": "group_664288cbe5815",
+    "title": "בעל מקצוע",
+    "fields": [
+        {
+            "key": "field_66428b63ab5ef",
+            "label": "כללי",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "placeholder": "כללי"
+        },
+        {
+            "key": "field_66583ea012e09",
+            "label": "שם פרטי",
+            "name": "pro_first_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "maxlength": "",
+            "acfe_permissions": "",
+            "placeholder": "שם פרטי",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66583ebc12e0a",
+            "label": "שם משפחה",
+            "name": "pro_last_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "maxlength": "",
+            "acfe_permissions": "",
+            "placeholder": "שם משפחה",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_664288cb96d71",
+            "label": "טלפון",
+            "name": "pro_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "maxlength": "",
+            "acfe_permissions": "",
+            "placeholder": "טלפון",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6642895a96d75",
+            "label": "אימייל",
+            "name": "pro_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "placeholder": "אימייל",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_665630f7d9be8",
+            "label": "איזורי שירות",
+            "name": "pro_areas_terms",
+            "aria-label": "",
+            "type": "acfe_taxonomy_terms",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": [
+                "areas"
+            ],
+            "allow_terms": "",
+            "allow_level": "",
+            "field_type": "select",
+            "default_value": [],
+            "return_format": "id",
+            "ui": 1,
+            "allow_null": 1,
+            "placeholder": "איזורי שירות",
+            "multiple": 1,
+            "ajax": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "choices": [],
+            "search_placeholder": "",
+            "layout": "",
+            "toggle": 0,
+            "allow_custom": 0,
+            "other_choice": 0
+        },
+        {
+            "key": "field_6656304af7a05",
+            "label": "תחומי התמחות",
+            "name": "pro_expert_terms",
+            "aria-label": "",
+            "type": "acfe_taxonomy_terms",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": [
+                "expert"
+            ],
+            "allow_terms": "",
+            "allow_level": "",
+            "field_type": "select",
+            "default_value": [],
+            "return_format": "id",
+            "ui": 1,
+            "allow_null": 1,
+            "placeholder": "תחומי התמחות",
+            "multiple": 1,
+            "ajax": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "choices": [],
+            "search_placeholder": "",
+            "layout": "",
+            "toggle": 0,
+            "allow_custom": 0,
+            "other_choice": 0
+        },
+        {
+            "key": "field_6642890b96d73",
+            "label": "תאריך תחילת עבודה בתחום",
+            "name": "pro_started_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 0,
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "placeholder": "תאריך תחילת עבודה בתחום"
+        },
+        {
+            "key": "field_66428b94ab5f1",
+            "label": "תוכן",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "acfe_permissions": "",
+            "selected": 0,
+            "placeholder": "תוכן"
+        },
+        {
+            "key": "field_66428ba2ab5f2",
+            "label": "קצת עליי",
+            "name": "pro_about",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_textarea_code": 0,
+            "acfe_settings": "",
+            "acfe_validate": {
+                "66597ad7b997a": {
+                    "acfe_validate_location": "front",
+                    "acfe_validate_rules_and": {
+                        "66597adeb997b": {
+                            "acfe_validate_function": "strlen",
+                            "acfe_validate_operator": "<",
+                            "acfe_validate_match": "550"
+                        }
+                    },
+                    "acfe_validate_error": "נא לכתוב לפחות 300 אותיות. זה יעזור לך בפרסום והקידום."
+                }
+            },
+            "maxlength": "",
+            "acfe_permissions": "",
+            "rows": 14,
+            "placeholder": "קצת עליי",
+            "new_lines": "br"
+        },
+        {
+            "key": "field_666174588aaa9",
+            "label": "מדיה",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "acfe_permissions": "",
+            "selected": 0,
+            "placeholder": "מדיה"
+        },
+        {
+            "key": "field_666161c2c52b4",
+            "label": "וידאו שיווקי",
+            "name": "pro_promo_video",
+            "aria-label": "",
+            "type": "oembed",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "width": "",
+            "height": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "placeholder": "וידאו שיווקי"
+        },
+        {
+            "key": "field_665f5ad3ca629",
+            "label": "תמונת רקע",
+            "name": "pro_background_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "uploader": "",
+            "return_format": "id",
+            "acfe_thumbnail": 0,
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "acfe_permissions": "",
+            "preview_size": "medium",
+            "library": "all",
+            "placeholder": "תמונת רקע"
+        },
+        {
+            "key": "field_664ca89edb069",
+            "label": "תעודות והסמכות",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "placeholder": "תעודות והסמכות"
+        },
+        {
+            "key": "field_664ca8abdb06a",
+            "label": "תעודות",
+            "name": "pro_certs",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "הוסף תעודה",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_664ca8e6db06b",
+                    "label": "כותרת",
+                    "name": "pro_cert_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "כותרת",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_664ca8abdb06a"
+                },
+                {
+                    "key": "field_664ca905db06c",
+                    "label": "תמונת תעודה",
+                    "name": "pro_cert_img",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "uploadedTo",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_664ca8abdb06a",
+                    "uploader": "",
+                    "acfe_thumbnail": 0,
+                    "placeholder": "תמונת תעודה"
+                }
+            ],
+            "acfe_repeater_stylised_button": 0,
+            "placeholder": "תעודות"
+        },
+        {
+            "key": "field_66562dac0879f",
+            "label": "כרטיס הסמכה",
+            "name": "pro_cert_card",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium",
+            "uploader": "",
+            "acfe_thumbnail": 0,
+            "placeholder": "כרטיס הסמכה"
+        },
+        {
+            "key": "field_66428f899d731",
+            "label": "קישורים",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "placeholder": "קישורים"
+        },
+        {
+            "key": "field_66428f9d9d732",
+            "label": "פייסבוק",
+            "name": "pro_facebook",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "פייסבוק"
+        },
+        {
+            "key": "field_66428fc49d733",
+            "label": "ערוץ יוטיוב",
+            "name": "pro_youtube",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "placeholder": "ערוץ יוטיוב"
+        },
+        {
+            "key": "field_66428fd59d734",
+            "label": "אינסטגרם",
+            "name": "pro_insta",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "אינסטגרם"
+        },
+        {
+            "key": "field_66428fe69d735",
+            "label": "לינקדין",
+            "name": "pro_linkedin",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "לינקדין"
+        },
+        {
+            "key": "field_664290149d736",
+            "label": "אתר אישי",
+            "name": "pro_website",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "אתר אישי"
+        },
+        {
+            "key": "field_66428b88ab5f0",
+            "label": "דירוגים",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "placeholder": "דירוגים"
+        },
+        {
+            "key": "field_6642899896d77",
+            "label": "מספר המלצות",
+            "name": "pro_recommended_count",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "מספר המלצות",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_664288f496d72",
+            "label": "דירוג משוכלל",
+            "name": "pro_total_rate",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "דירוג משוכלל",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_665f5b07ca62a",
+            "label": "הגדרות נוספות",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "acfe_permissions": "",
+            "selected": 0,
+            "placeholder": "הגדרות נוספות"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "pros"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_permissions": "",
+    "acfe_form": 1,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1718305505
+}
