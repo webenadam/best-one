@@ -271,8 +271,17 @@ $('[self-toggle-class]').on('click', function () {
         });
 
     
-
-
+        // close mobile nav when linking anchor link for the current page
+        $('#header-nav a').on('click', function() {
+            var currentUrl = window.location.href;
+            var linkHref = $(this).attr('href');
+            alert(linkHref);
+    
+            if (linkHref.startsWith(currentUrl) || linkHref.startsWith('#')) {
+                $('#header-nav').removeClass('active');
+                $('.menu-toggle').removeClass('active');
+            }
+        });
 
 
 
