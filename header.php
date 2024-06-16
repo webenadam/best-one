@@ -48,10 +48,11 @@
     } ?>
 
     <header>
-        <inner class=" flex justify-between align-center" style="padding:20px 0; z-index:1;">
+        <inner class="flex justify-between align-center mobile-flex-row">
+            <span class="menu-toggle flex hide-desktop"><?= svg_icon('hamburger'); ?></span>
             <a class="float-up" style="height:33px;" href="<?= home_url(); ?>"><img src="<?= get_template_directory_uri(); ?>/img/Logo.png" alt="Logo" /></a>
             <nav>
-                <ul>
+                <ul class="flex align-center gap-m">
                     <?php if (have_rows('top_nav_links', 'option')) : ?>
                         <?php while (have_rows('top_nav_links', 'option')) : the_row(); ?>
                             <?php

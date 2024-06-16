@@ -34,6 +34,7 @@ function svg_icon($icon_name, $icon_color = null, $flip = null, $width = null, $
         'email' => array('width' => 25, 'height' => 25),
         'pinterest' => array('width' => 25, 'height' => 25),
         'reddit' => array('width' => 25, 'height' => 25),
+        'hamburger' => array('width' => 30, 'height' => 30),
 
     );
 
@@ -118,6 +119,9 @@ function svg_icon($icon_name, $icon_color = null, $flip = null, $width = null, $
 </svg>',
         'email' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M20.5 3H3.5C2.39543 3 1.5 3.89543 1.5 5V19C1.5 20.1046 2.39543 21 3.5 21H20.5C21.6046 21 22.5 20.1046 22.5 19V5C22.5 3.89543 21.6046 3 20.5 3ZM20.5 5V5.01L12 11L3.5 5.01V5H20.5ZM3.5 19V7.84L12 14L20.5 7.84V19H3.5Z" fill="#ffffff"/>
+</svg>',
+'hamburger' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 6H21V8H3V6ZM3 11H21V13H3V11ZM3 16H21V18H3V16Z" fill="#161C2D"/>
 </svg>',
 
 
