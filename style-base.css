@@ -53,10 +53,7 @@ body {
   padding: 0;
 }
 
-section, header, footer, subfooter {
-  overflow-x: hidden;
-  max-width: 100%;
-}
+
 
 /* Inner Container Style */
 section inner, header inner, footer inner, subfooter inner {
@@ -98,6 +95,7 @@ section inner.center-padding, header inner.center-padding, footer inner.center-p
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+
 .grid-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -108,6 +106,11 @@ section inner.center-padding, header inner.center-padding, footer inner.center-p
 
 .grid-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.mobile .grid, .mobile .grid-2, .mobile .grid-3, .mobile .grid-4, .mobile .grid-5, .mobile .grid-6 {
+  gap: var(--gap-s);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 /* Tablet Grid classes */
@@ -147,6 +150,10 @@ field {
 /* Flex Classes */
 .flex {
   display: flex!important;
+}
+
+.mobile .flex {
+  flex-direction: column;
 }
 
 .flex-1 {
@@ -420,6 +427,9 @@ subfooter {
   display: flex;
   align-items: stretch;
   justify-content: center;
+    overflow-x: hidden;
+    max-width: 100%;
+  padding:0 var(--gap-s);
 }
 
 header {

@@ -2,6 +2,31 @@
 <html <?php language_attributes(); ?>>
 
 <head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function updateBodyClass() {
+                var width = window.innerWidth;
+                document.body.classList.remove('wide', 'desktop', 'tablet', 'mobile');
+
+                if (width > 1200) {
+                    document.body.classList.add('wide');
+                } else if (width > 992) {
+                    document.body.classList.add('desktop');
+                } else if (width > 768) {
+                    document.body.classList.add('desktop', 'tablet');
+                } else {
+                    document.body.classList.add('desktop', 'tablet', 'mobile');
+                }
+            }
+
+            // Initial call
+            updateBodyClass();
+
+            // Update on resize
+            window.addEventListener('resize', updateBodyClass);
+        });
+    </script>
+
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
@@ -16,11 +41,12 @@
         if ($current_post && ($current_post->post_type === 'post' || $current_post->post_type === 'page')) {
             $edit_link = get_edit_post_link($current_post->ID);
             $title = 'עריכה';
-            ?>
+        ?>
             <a class="wp-link" href="<?= esc_url($edit_link); ?>" style="font-size: var(--font-s); position: fixed; top: 0; left: 0; background: #0000001a; padding: 10px 26px; border-radius: 0 0 10px 0; opacity:0; transition:all 0.2s ease-in-out;z-index:999;"><?= $title; ?></a>
 
-        <?php }} ?>
-        
+    <?php }
+    } ?>
+
     <header>
         <inner class=" flex justify-between align-center" style="padding:20px 0; z-index:1;">
             <a class="float-up" style="height:33px;" href="<?= home_url(); ?>"><img src="<?= get_template_directory_uri(); ?>/img/Logo.png" alt="Logo" /></a>
