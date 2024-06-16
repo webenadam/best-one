@@ -210,28 +210,49 @@ $(document).ready(function() {
 
 
 
-  // Add click event listener to elements with the 'toggle-class' attribute
-    $('[toggle-class]').on('click', function () {
-        // Get the value of the 'toggle-class' attribute
-        var toggleClassValue = $(this).attr('toggle-class');
+ // Add click event listener to elements with the 'toggle-class' attribute
+$('[toggle-class]').on('click', function () {
+    // Get the value of the 'toggle-class' attribute
+    var toggleClassValue = $(this).attr('toggle-class');
 
-        // Check if toggle-class is not equal to 'done'
-        if (toggleClassValue !== 'done') {
-            // Split the value to get the first selector and the class to be toggled
-            var parts = toggleClassValue.split('.');
-            var firstSelector = parts[0];
-            var classToToggle = parts[1].replace(/-1$/, '');
+    // Check if toggle-class is not equal to 'done'
+    if (toggleClassValue !== 'done') {
+        // Split the value to get the first selector and the class to be toggled
+        var parts = toggleClassValue.split('.');
+        var firstSelector = parts[0];
+        var classToToggle = parts.slice(1).join('.').replace(/-1$/, '');
 
-            // Toggle the class on the element specified by the first selector
-            $(firstSelector).toggleClass(classToToggle);
+        // Toggle the class on the element specified by the first selector
+        $(firstSelector).toggleClass(classToToggle);
 
-            // If toggle-class value ends with -1, set it to 'done'
-            if (toggleClassValue.endsWith('-1')) {
-                $(this).attr('toggle-class', 'done');
-            }
-            
+        // If toggle-class value ends with -1, set it to 'done'
+        if (toggleClassValue.endsWith('-1')) {
+            $(this).attr('toggle-class', 'done');
         }
-    });
+    }
+});
+
+
+// Add click event listener to elements with the 'self-toggle-class' attribute
+$('[self-toggle-class]').on('click', function () {
+    // Get the value of the 'self-toggle-class' attribute
+    var toggleClassValue = $(this).attr('self-toggle-class');
+
+    // Check if self-toggle-class is not equal to 'done'
+    if (toggleClassValue !== 'done') {
+        // Remove '-1' from the class if it exists
+        var classToToggle = toggleClassValue.replace(/-1$/, '');
+
+        // Toggle the class on the element itself
+        $(this).toggleClass(classToToggle);
+
+        // If self-toggle-class value ends with -1, set it to 'done'
+        if (toggleClassValue.endsWith('-1')) {
+            $(this).attr('self-toggle-class', 'done');
+        }
+    }
+});
+
 
 
 

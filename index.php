@@ -250,7 +250,7 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
       color: white;
     }
   </style>
-  <inner class="flex gap-l">
+  <inner class="flex tablet-flex-column gap-l">
     <right class="flex-column flex-1">
       <h2 style="color:white;font-size:var(--font-xxl);">אנחנו כאן בשבילכם.</h2>
       <p style="width: 350px;">חשוב לנו שתקבלו את כל המידע שאתם צריכים כדי להיות רגועים ובטוחים שאתם מקבלים את הטוב ביותר.</p>

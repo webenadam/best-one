@@ -1,5 +1,5 @@
 <footer id="site-footer" style="background-color: white;">
-    <inner class="flex gap-m">
+    <inner class="flex gap-m mobile-flex-column">
         <!-- Column 1: Site Logo, About Paragraph, and Social Icons -->
         <div class="footer-column flex-1" style="margin: 0 10px;">
             <img src="<?= theme_uri(); ?>/img/Logo.png" alt="Site Logo" style="max-width: 100%; height: auto;">

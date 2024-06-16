@@ -2,31 +2,6 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            function updateBodyClass() {
-                var width = window.innerWidth;
-                document.body.classList.remove('wide', 'desktop', 'tablet', 'mobile');
-
-                if (width > 1200) {
-                    document.body.classList.add('wide');
-                } else if (width > 992) {
-                    document.body.classList.add('desktop');
-                } else if (width > 768) {
-                    document.body.classList.add('desktop', 'tablet');
-                } else {
-                    document.body.classList.add('desktop', 'tablet', 'mobile');
-                }
-            }
-
-            // Initial call
-            updateBodyClass();
-
-            // Update on resize
-            window.addEventListener('resize', updateBodyClass);
-        });
-    </script>
-
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
@@ -49,9 +24,9 @@
 
     <header>
         <inner class="flex justify-between align-center mobile-flex-row">
-            <span class="menu-toggle flex hide-desktop"><?= svg_icon('hamburger'); ?></span>
+            <span class="menu-toggle flex hide-desktop" self-toggle-class="active" toggle-class="#header-nav.active" style="z-index:10; cursor:pointer;"><?= svg_icon('hamburger'); ?></span>
             <a class="float-up" style="height:33px;" href="<?= home_url(); ?>"><img src="<?= get_template_directory_uri(); ?>/img/Logo.png" alt="Logo" /></a>
-            <nav>
+            <nav id="header-nav">
                 <ul class="flex align-center gap-m">
                     <?php if (have_rows('top_nav_links', 'option')) : ?>
                         <?php while (have_rows('top_nav_links', 'option')) : the_row(); ?>

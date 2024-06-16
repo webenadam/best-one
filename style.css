@@ -12,14 +12,6 @@ Text Domain: best-1
 */
 
 
-.menu-toggle {
-  display: none;
-}
-
-.tablet .menu-toggle {
-  display: block;
-}
-
 .category-block {
   display: inline-block;
   height: 97px;
