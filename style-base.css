@@ -67,6 +67,12 @@ section inner {
   padding-bottom: 160px;
 }
 
+@media (max-width: 780px) {
+  section inner {
+    padding-bottom: 80px;
+  }
+}
+
 header inner {
   padding:0;
 }
@@ -275,6 +281,12 @@ select, input, textarea {
   font-size: var(--font-s);
 }
 
+@media (max-width: 780px) {
+  select, input, textarea {
+    width:100%;
+  }
+}
+
 ::-webkit-input-placeholder {
   color: var(--blue);
   font-size: var(--font-s);
@@ -410,8 +422,7 @@ h1 {
 }
 h2 {
   font-weight: var(--font-w-700);
-  font-size: 36px;
-  color: var(--);
+  font-size: var(--font-l);
 }
 h3 {
   font-size: var(--font-m);
@@ -429,6 +440,10 @@ h5 {
 h6 {
   font-size: var(--font-xs);
   color: var(--dark-gray);
+}
+
+@media (max-width: 780px) {
+
 }
 
 /* Header and Section Styles */
@@ -666,6 +681,12 @@ avatar-xl {
 }
 .gap-l {
   gap: var(--gap-l);
+}
+
+@media (max-width: 780px) {
+.gap-m {
+  gap: var(--gap-s);
+}
 }
 
 /* Gap elements */
@@ -944,6 +965,17 @@ li.select2-selection__choice {
   align-items: center;
 }
 
+@media (max-width: 780px) {
+  .accordion {
+    margin-bottom: var(--gap-s);
+    padding: var(--gap-xs) var(--gap-xs) ;
+  }
+  .accordion-title {
+    padding: 25px var(--gap-s);
+    font-size: var(--font-m);
+  }
+}
+
 .accordion-title:hover, .accordion-title.active {
   color: var(--blue)!important;
 }
@@ -953,7 +985,7 @@ li.select2-selection__choice {
   background-image: url('data:image/svg+xml;utf8,<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L1 7L7 13" stroke="%23161C2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     background-repeat: no-repeat;
     background-position: center;
-    width: 8px;
+    width: 14px;
     height: 14px;
   transition: transform 0.3s ease;
 }

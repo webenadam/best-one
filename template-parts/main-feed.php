@@ -52,14 +52,14 @@ $initial_post_ids = array();
         <?= svg_icon('dots'); ?>
     </div>
     <inner>
-        <filters class="flex gap-m" style="width:100%; margin-bottom:40px;">
+        <filters class="flex gap-m tablet-flex-column" style="width:100%; margin-bottom:40px;">
             <select class="expert_select" name="experties">
                 <option value=""><?php _e('כל התחומים', 'textdomain'); ?></option>
                 <?php foreach ($expert_terms as $expert_term): ?>
                     <option value="<?= esc_attr($expert_term->term_id); ?>" <?php selected($expert_select_value, $expert_term->term_id); ?>><?= esc_html($expert_term->name); ?></option>
                 <?php endforeach; ?>
             </select>
-            <input class="places-input places-typeahead autocomplete-input" name="place" dir="rtl" type="text" placeholder="בחר מיקום" value="<?= esc_attr($place_input_value); ?>" style="width:280px" />
+            <input class="places-input places-typeahead autocomplete-input" name="place" dir="rtl" type="text" placeholder="בחר מיקום" value="<?= esc_attr($place_input_value); ?>"  />
             <select class="sort_by" style="margin-right:auto;">
                 <option value="">סנן לפי</option>
                 <option value="pro_total_rate">דירוג משוכלל</option>

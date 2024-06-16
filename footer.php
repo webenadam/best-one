@@ -54,9 +54,9 @@
     </inner>
 </footer>
 <subfooter style="background-color: white; border-top:1px solid var(--light-gray); color: var(--gray); font-size:var(--font-xs);">
-    <inner class="flex justify-between align-center" style="padding: var(--gap-s) 0px;">
+    <inner class="flex justify-between align-center tablet-flex-column" style="padding: var(--gap-s) 0px;">
     <div>©<?= date("Y"); ?> כל הזכויות שמורות לבסט-1.</div>
-        <div><a href="https://benadam.co.il">האתר נבנה באהבה על-ידי בנאדם</a></div>
+        <div><a href="https://benadam.co.il" target="_blank">נבנה באהבה על-ידי בנאדם</a></div>
         
     </inner>
 </subfooter>

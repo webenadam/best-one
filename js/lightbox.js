@@ -8,6 +8,12 @@ jQuery(document).ready(function($) {
     function openLightbox(type, content) {
         let $overlay, $innerContent;
 
+        // close mobile menu
+
+        $('#header-nav').removeClass('active');
+            $('.menu-toggle').removeClass('active');
+
+            
         if (type === 'image') {
             $overlay = $('<div class="lightbox-overlay"></div>').css('display', 'flex').hide();
             $innerContent = $('<img>', { src: content, class: 'lightbox-image shadow-l' });
