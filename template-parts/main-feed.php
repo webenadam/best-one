@@ -48,7 +48,7 @@ $query = new WP_Query($args);
 $initial_post_ids = array();
 ?>
 <section id="main-feed" class="relative" style="overflow:hidden;">
-    <div class="dots_ico absolute" style="top: 330px;left: -26px;">
+    <div class="dots_ico absolute hide-tablet" style="top: 330px;left: -26px;">
         <?= svg_icon('dots'); ?>
     </div>
     <inner>

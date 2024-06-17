@@ -124,12 +124,6 @@ function enqueue_lightbox_script()
 }
 add_action('wp_enqueue_scripts', 'enqueue_lightbox_script');
 
-// Enqueue Smooth Scroll script
-function enqueue_smooth_scroll_script()
-{
-    wp_enqueue_script('smooth-scroll', get_template_directory_uri() . '/js/smooth-scroll.js', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_smooth_scroll_script');
 
 // Enqueue ACF Form steps script
 function enqueue_acf_form_steps_script()

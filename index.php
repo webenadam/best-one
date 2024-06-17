@@ -3,17 +3,80 @@
 <?php
 $total_pros = wp_count_posts('pros')->publish;
 ?>
+<style>
+  #hero {
+    height: 673px;
+    background-image: url('<?= theme_uri('/img/hero_bg.jpg'); ?>');
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-color: var(--soft-background);
+    overflow: hidden;
+  }
 
-<section id="hero" class="header-padding" style="height:673px;background-image: url('<?= theme_uri('/img/hero_bg.jpg'); ?>');background-position: top right;background-repeat: no-repeat;background-color:var(--soft-background);overflow:hidden;">
-  <inner class="relative flex align-center">
+  #hero h1 {
+    width: 450px;
+    margin-bottom: 20px;
+  }
+
+  #hero p {
+    width: 480px;
+  }
+
+  #hero .search-form {
+    padding: var(--gap-s);
+    background-color: var(--blue);
+    gap: var(--gap-s);
+    width: 410px;
+    margin-bottom: 10px;
+  }
+
+  #hero .left img {
+    max-width: 57vw;
+  }
+
+
+  @media (max-width: 550px) {
+    #hero {
+      height: 850px;
+    }
+
+    #hero h1 {
+      font-size: var(--font-l);
+      width: 80%;
+      line-height: var(--font-xl);
+    }
+
+    #hero p {
+      width: 80%;
+    }
+
+    #hero .search-form {
+      padding: var(--gap-s);
+      width: 100%;
+    }
+
+    #hero select,
+    #hero .button {
+      width: 100%;
+    }
+
+    #hero .left img {
+      max-width: 100%;
+    }
+
+  }
+</style>
+<section id="hero" class="header-padding">
+
+  <inner class="relative flex align-center mobile-flex-column">
     <div class="right" style="z-index:1;">
-      <h1 class="title" style="width:450px; margin-bottom:20px;">מצא את בעל המקצוע הטוב ביותר עבורך!</h1>
-      <p class="subtitle" style="width:480px;">
+      <h1 class="title">מצא את בעל המקצוע הטוב ביותר עבורך!</h1>
+      <p class="subtitle">
         בעלי המקצוע הטובים ביותר מרוכזים במקום אחד, קל ונוח לחיפוש, כך שלא
         צריך להתרוצץ. מצאתם.
       </p>
       <div class="search-form_parent-container">
-        <div class="flex search-form background-blue radius-s" style="padding:20px 20px; background-color: var(--blue); gap: 15px; width: 410px; margin-bottom:10px;">
+        <div class="flex mobile-flex-column search-form background-blue radius-s">
           <?php
           // Get used places terms
           $places_terms = get_terms(array(
@@ -45,7 +108,7 @@ $total_pros = wp_count_posts('pros')->publish;
   </inner>
 </section>
 
-<section id="expert-terms" class="dark full">
+<section id="expert-terms" class="dark full no-bottom-padding">
   <inner>
     <h2>סנן לפי תחום</h2>
     <grid class="grid-3" style="margin-bottom:10px">
@@ -91,9 +154,9 @@ $total_pros = wp_count_posts('pros')->publish;
   </inner>
 </section>
 
-<section id="featured-pros" class="light align-center">
+<section id="featured-pros" class="light align-center no-bottom-padding">
   <inner>
-    <h2 style="margin-bottom:30px;">המומלצים שלנו</h2>
+    <h2>המומלצים שלנו</h2>
     <grid class="grid-3">
       <?php
       // Get featured pros from site settings
@@ -149,6 +212,16 @@ $total_pros = wp_count_posts('pros')->publish;
           font-weight: var(--font-w-400);
           color: var(--gray);
         }
+
+        @media (max-width: 550px) {
+          .home-stats stat {
+            flex-direction: column;
+            gap: 0;
+            font-size: var(--font-l);
+            font-weight: var(--font-w-700);
+            text-align: center;
+          }
+        }
       </style>
       <stat>
         <number><?= $total_pros; ?></number>
@@ -171,11 +244,19 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
 ?>
 
 <section id="features">
-  <inner class="flex gap-l align-center" style="padding-bottom:0;">
+  <inner class="flex mobile-flex-column-reverse gap-l align-center" style="padding-bottom:0;">
     <right class="flex"><img src="<?= theme_uri('/img/whyus_man.jpg'); ?>" alt="למה אצלנו?"></right>
     <left style="margin-top:-10px;">
       <h2>למה אצלנו?</h2>
-      <p style="color:var(--dark-gray); width:480px;margin-bottom: 40px;">באתר BEST1 תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
+      <style>
+        #features p {
+          color: var(--dark-gray);
+          width: 480px;
+          max-width: 80%;
+          margin-bottom: 40px;
+        }
+      </style>
+      <p>באתר BEST1 תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
       <grid class="grid-2 gap-s">
         <style>
           #features h3.check::before {
@@ -197,7 +278,14 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
 </section>
 
 <section id="advertise-now" style="background-color:var(--green);">
-  <inner class="flex gap-l justify-center align-center" style="padding:var(--gap-l);">
+  <inner class="flex mobile-flex-column gap-l justify-center align-center" style="padding:var(--gap-l);">
+    <style>
+      @media (max-width: 550px) {
+        #advertise-now {
+          text-align: center;
+        }
+      }
+    </style>
     <h2 style="color:white;margin-bottom:0;">בעל מקצוע, רוצה לקבל חשיפה רצינית?</h2>
     <span href="#" class="button light" style="width:220px;" lightbox-type="content" lightbox-content="#signin-signup-pop">פרסם עכשיו</span>
   </inner>
@@ -205,9 +293,9 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
 
 <section id="blog" class="light" style="padding-top:50px;">
   <inner class="flex-column align-center" style="text-align:center;">
-    
+
     <h2 style="color: var(--black);"><a href="<?= get_permalink(430); ?>">הבלוג שלנו</a></h2>
-    <p style="width:530px; color:var(--gray); margin-bottom:50px;">
+    <p style="width:530px; max-width: 95%; color:var(--gray); margin-bottom:50px;">
       כל המאמרים המקצועיים ביותר, המעודנים ביותר והחמים ביותר בנושאי שמאות רכוש, שמאות נזקים, שמאות חקלאות ועוד...
     </p>
     <grid class="grid-3">
@@ -237,17 +325,22 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
   </inner>
 </section>
 
-<section id="we-here" class="dark">
+<section id="we-here" class="dark no-bottom-padding">
   <style>
     #we-here {
       color: var(--dark-white);
       font-size: var(--font-m);
       padding: var(--gap-l);
-      padding-bottom:0;
     }
 
     #we-here h3 {
       color: white;
+    }
+
+    @media (max-width: 780px) {
+      #we-here {
+        padding: var(--gap-s);
+      }
     }
   </style>
   <inner class="flex tablet-flex-column gap-l">
@@ -261,13 +354,14 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
 
         <div>
           <h3>רק בעלי מקצוע מוסמכים</h3>
-          <p>כל בעלי המקצוע באתר בעלי הסמכה ותעודה בתוקף.<br/>זה תנאי סף אצלנו.</p>
+          <p>כל בעלי המקצוע באתר בעלי הסמכה ותעודה בתוקף.<br />זה תנאי סף אצלנו.</p>
         </div>
       </check>
       <check class="flex gap-l" style="margin-bottom:30px">
-      <div style="width: 30px;">
+        <div style="width: 30px;">
           <?= svg_icon('circle_check'); ?>
-        </div>        <div>
+        </div>
+        <div>
           <h3>אימות נתונים ועדכון תדיר</h3>
           <p>אנחנו מאמתים את הנתונים ועושים בדיקות תקופתיות כדי לוודא שתקבלו מידע מעודכן ואמין.</p>
         </div>
@@ -296,25 +390,24 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
 </section>
 
 <script>
-
-jQuery(document).ready(function($) {
+  jQuery(document).ready(function($) {
     // Function to sync the select inputs
     function syncSelectInputs(source, target) {
-        var selectedValue = $(source).val();
-        $(target).val(selectedValue);
+      var selectedValue = $(source).val();
+      $(target).val(selectedValue);
     }
 
     // Event listener for changes on the #hero select input
     $('#hero .search-form select[name="experties"]').on('change', function() {
-        syncSelectInputs(this, '#main-feed select.expert_select');
-        $('#main-feed select.expert_select').trigger('change');
+      syncSelectInputs(this, '#main-feed select.expert_select');
+      $('#main-feed select.expert_select').trigger('change');
     });
 
     // Event listener for changes on the #main-feed select input
     $('#main-feed .expert_select').on('change', function() {
-        syncSelectInputs(this, '#hero .search-form select[name="experties"]');
+      syncSelectInputs(this, '#hero .search-form select[name="experties"]');
     });
-});
+  });
 </script>
 
 <?php get_footer(); ?>
