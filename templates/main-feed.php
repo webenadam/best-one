@@ -1,4 +1,4 @@
-<!-- template-parts/main-feed.php -->
+<!-- templates/main-feed.php -->
 <?php
 // Get featured pros
 $featured_pros = isset($args['featured_pros']) ? $args['featured_pros'] : '';

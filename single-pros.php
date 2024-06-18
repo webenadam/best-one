@@ -30,17 +30,17 @@ if ($pro_custom_background) {
         background-color: var(--soft-background);
         overflow: visible;
         height: 423px;
-        z-index:5;
+        z-index: 5;
     }
 
     @media (max-width: 780px) {
 
         /* Tablet */
         #hero {
-            height:unset;
+            height: unset;
             background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$medium_image_url}')" : "url('{$medium_image_url}')" ?>;
-                background-position: top center;
-                background-size: <?= $tablet_size ?>;
+            background-position: top center;
+            background-size: <?= $tablet_size ?>;
         }
 
         #hero inner {
@@ -55,10 +55,9 @@ if ($pro_custom_background) {
             background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$thumbnail_image_url}')" : "url('{$thumbnail_image_url}')" ?>;
         }
     }
-    
 </style>
 
-<section id="hero" class="header-padding relative" style=" ">
+<section id="hero" class="header-padding relative">
     <inner class="relative flex justify-between">
         <div class="right hide-tablet" style="margin-top: 33px; width: 80%;">
 
@@ -117,6 +116,21 @@ if ($pro_custom_background) {
                     color: var(--green);
 
                 }
+
+                @media (max-width: 780px) {
+                    .stat-item {
+                        padding: var(--gap-xs) var(--gap-xs);
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+
+                    .stat-label {
+                        font-size: var(--font-xs);
+
+                    }
+                }
             </style>
             <div>
                 <div id="stats-box" class="box border flex no-padding shadow-l" style="width: 550px; height: 90px; float:right;margin-left:30px;">
@@ -129,12 +143,12 @@ if ($pro_custom_background) {
                         <p class="stat-value"><?= get_pro_date($pro_post_id, 'exp'); ?></p>
                     </div>
                     <div class="stat-item">
-                        <p class="stat-label">תחומי התמחות</p>
+                        <p class="stat-label">תחומי התמחויות</p>
                         <p class="stat-value"><?= count($experts); ?></p>
                     </div>
 
                 </div>
-                <div class="stat-item">
+                <div class="stat-item" style="flex: unset; width: 220px; float: right; border-left: unset;">
                     <p class="stat-label" style="font-weight:var(--font-w-600);"><a href="#reviews">דירוג משוקלל</a></p>
                     <?php $pro_review_total = get_field('pro_total_rate'); ?>
                     <div class="pro_rating">
@@ -161,10 +175,16 @@ if ($pro_custom_background) {
             }
         </style>
         <div class="left">
+            <style>
+                .profile-image-wrap svg {
+                    max-width: 18vw;
+                    max-height:16vw
+                }
+            </style>
             <span class="hide-tablet" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
             <div class="box border shadow-l" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
                 <div class="profile-image-wrap relative" style="text-align: center;">
-                    <img src="<?= get_the_post_thumbnail_url() ?>" alt="Profile Picture" style="width: 247px; height: 247px; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
+                    <img src="<?= get_the_post_thumbnail_url() ?>" alt="Profile Picture" style="width: 247px; height: 247px; max-width: 45vw; max-height: 45vw; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
                     <span class="absolute" style="bottom: 0; left: -10px"><?= svg_icon('circles'); ?></span>
                     <span class="absolute" style="bottom: 44px; right: 12px;"><?= svg_icon('twirl'); ?></span>
                 </div>
@@ -195,7 +215,7 @@ if ($pro_custom_background) {
                     }
                     ?>
                 </div>
-                <div id="stats-box" class="box border flex no-padding shadow-l hide-desktop" style="width: 90%;">
+                <div id="stats-box" class="box border flex no-padding shadow-l hide-desktop mobile bottom-gap-s" style="width: 90%;">
                     <div class="stat-item">
                         <p class="stat-label"><a href="#reviews">המלצות</a></p>
                         <p class="stat-value"><?= get_field('pro_recommended_count'); ?></p>
@@ -205,12 +225,12 @@ if ($pro_custom_background) {
                         <p class="stat-value"><?= get_pro_date($pro_post_id, 'exp'); ?></p>
                     </div>
                     <div class="stat-item">
-                        <p class="stat-label">תחומי התמחות</p>
+                        <p class="stat-label">התמחויות</p>
                         <p class="stat-value"><?= count($experts); ?></p>
                     </div>
 
                 </div>
-                <div class="stat-item hide-desktop">
+                <div class="stat-item hide-desktop" style="border-left: unset;">
                     <p class="stat-label" style="font-weight:var(--font-w-600);"><a href="#reviews">דירוג משוקלל</a></p>
                     <?php $pro_review_total = get_field('pro_total_rate'); ?>
                     <div class="pro_rating">
@@ -278,7 +298,24 @@ if ($pro_custom_background) {
 </section>
 
 <section id="about">
-    <inner style="padding-left: 30%; padding-top:100px; padding-bottom:160px;">
+    <style>
+        #about {
+            padding-top:var(--gap-xl);
+        }
+
+        #about inner {
+            padding-left: 30%;
+        }
+        @media (max-width: 780px) {
+            #about {
+                padding-top: 0;
+            }
+            #about inner {
+                padding-left:2%;
+            }
+}
+    </style>
+    <inner style="padding-bottom:160px;">
         <h2>קצת עליי</h2>
         <p style="color: var(--light-black);" class="bottom-gap-xl">
             <?= get_field('pro_about'); ?>
@@ -331,7 +368,7 @@ if ($pro_custom_background) {
 <section id="reviews" class="light" style="padding-top: 50px;">
     <inner class="flex-column align-center" style="text-align: center;">
         <?php if ($pro_reviews_count > 0) { ?>
-            <h2 style="color: var(--green); width: 500px;" class="bottom-gap-l"><span style="border-bottom: 2px solid var(--blue);"><?= $pro_reviews_count; ?>
+            <h2 style="color: var(--green); width: 500px; max-width:95%;" class="bottom-gap-l"><span style="border-bottom: 2px solid var(--blue);"><?= $pro_reviews_count; ?>
                     אנשים</span> שיתפו את החוויה שלהם עם <?= get_the_title(); ?></h2>
         <?php } ?>
         <?php
@@ -350,15 +387,15 @@ if ($pro_custom_background) {
         $review_query = new WP_Query($args);
         if ($review_query->have_posts()) {
         ?>
-            <div class="flex-column gap-l"><?php
-                                            while ($review_query->have_posts()) {
-                                                $review_query->the_post();
-                                                $review_post_id = get_the_ID();
-                                                pro_review($review_post_id);
-                                            }
-                                            wp_reset_postdata();
+            <div class="reviews-loop flex-column align-center gap-l bottom-gap-l"><?php
+                                                        while ($review_query->have_posts()) {
+                                                            $review_query->the_post();
+                                                            $review_post_id = get_the_ID();
+                                                            pro_review($review_post_id);
+                                                        }
+                                                        wp_reset_postdata();
 
-                                            ?></div>
+                                                        ?></div>
         <?php } else { ?>
             <div class="bottom-gap-m">טרם נוספו המלצות ל<?= get_the_title(); ?></div>
         <?php } ?>

@@ -167,7 +167,7 @@ header {
   top: 0;
   left: 0;
   width: 100vw;
-  z-index: 90;
+  z-index: 2000;
   height: 80px;
   overflow: visible;
 }
@@ -458,6 +458,27 @@ header inner {
   .gap-m {
     gap: var(--gap-s);
   }
+
+  .mobile-gap-xs {
+    gap: var(--gap-xs);
+  }
+  
+  .mobile-gap-s {
+    gap: var(--gap-s);
+  }
+  
+  .mobile-gap-m {
+    gap: var(--gap-m);
+  }
+  
+  .mobile-gap-l {
+    gap: var(--gap-l);
+  }
+  
+  .mobile-gap-xl {
+    gap: var(--gap-xl);
+  }
+  
 }
 
 /* GAP ELEMENTS */

@@ -45,8 +45,19 @@ if (has_post_thumbnail()) {
 <section id="hero" class="header-padding" style="position:relative; z-index:5; height: 323px;">
     <inner class="relative flex justify-between">
         <div class="right" style="margin-top: 33px; width: 80%;">
-
-            <h2 class="" style="font-size: var(--font-xxl); margin-top: 0px; margin-bottom:10px;">
+        <style>
+            #hero h2 {
+                font-size: var(--font-xxl);
+                margin-top: 0px;
+                margin-bottom: 10px;
+            }
+            @media (max-width: 780px) {
+                #hero h2 {
+                    font-size: var(--font-xl);
+                }
+            }
+        </style>
+            <h2>
                 <?= $page_title;
                 ?>
             </h2>

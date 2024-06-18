@@ -238,7 +238,7 @@ $total_pros = wp_count_posts('pros')->publish;
 </section>
 
 <?php // Main feed
-get_template_part('template-parts/main-feed', null, array('featured_pros' => $featured_pros));
+get_template_part('templates/main-feed', null, array('featured_pros' => $featured_pros));
 ?>
 
 <section id="features">

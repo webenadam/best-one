@@ -477,3 +477,14 @@ add_action('init', 'custom_unregister_image_sizes');
 
 // Add shortcode support for acf specific fields:
 add_filter('acf/format_value/name=top_nav_link_custom', 'do_shortcode');
+
+// Show template file on console (when on local enviorment)
+add_action('wp_head', 'show_template_file_in_console');
+
+function show_template_file_in_console() {
+    if (WP_DEBUG && ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == '::1')) {
+        global $template;
+        $template_file = basename($template);
+        echo "<script>console.log('Current Template: {$template_file}');</script>";
+    }
+}

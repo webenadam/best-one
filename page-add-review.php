@@ -12,10 +12,23 @@ if ($pro_post && $pro_post->post_type == 'pros') {
 }
 ?>
 
-<?php get_template_part('template-parts/singular-hero', null, array('page_title' => $page_title)); ?>
+<?php get_template_part('templates/singular-hero', null, array('page_title' => $page_title)); ?>
 
-<section id="main_content">
-    <inner style="padding-left: 30%; padding-top:30px; padding-bottom:160px;">
+<style>
+    #main-content inner {
+        padding-left: 30%;
+        padding-top: 30px;
+        padding-bottom: 160px;
+    }
+
+    @media (max-width: 780px) {
+        #main-content inner {
+            padding-left: 2%;
+        }
+    }
+</style>
+<section id="main-content">
+    <inner>
 
         <?php
 
@@ -33,31 +46,6 @@ if ($pro_post && $pro_post->post_type == 'pros') {
     </inner>
 </section>
 
-<section id="featured-pros" class="light align-center">
-    <inner>
-        <h2 style="margin-bottom: 30px;">בעלי מקצוע מומלצים</h2>
-        <grid class="grid-3">
-            <?php
-            $featured_pros = get_field('home_featured_pros', 'option');
-            $args = array(
-                'post_type' => 'pros',
-                'post__in' => $featured_pros,
-                'orderby' => 'post__in',
-                'posts_per_page' => -1,
-            );
-            $query = new WP_Query($args);
-            if ($query->have_posts()) {
-                while ($query->have_posts()) {
-                    $query->the_post();
-                    profile_box(get_the_ID(), $dark_mode = false);
-                }
-            } else {
-                echo '<p>לא נמצאו בעלי מקצוע מומלצים.</p>';
-            }
-            wp_reset_postdata();
-            ?>
-        </grid>
-    </inner>
-</section>
+<?php get_template_part('templates/featured-pros') ?>
 
 <?php get_footer(); ?>

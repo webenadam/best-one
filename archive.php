@@ -7,7 +7,7 @@ $term = get_queried_object();
 
 get_header(); ?>
 
-<?php get_template_part('template-parts/singular-hero', null, array('page_title' => $term->name)) ?>
+<?php get_template_part('templates/singular-hero', null, array('page_title' => $term->name)) ?>
 
 <?php
 

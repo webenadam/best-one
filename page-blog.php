@@ -5,7 +5,7 @@ Template Name: Blog Page
 
 get_header(); ?>
 
-<?php get_template_part('template-parts/singular-hero') ?>
+<?php get_template_part('templates/singular-hero') ?>
 
         <?php
         // Query for the featured post

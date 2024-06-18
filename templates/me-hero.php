@@ -2,27 +2,90 @@
 // Get featured pros
 $page_title = isset($args['page_title']) ? $args['page_title'] : '';
 $pro_post_id = isset($args['pro_post_id']) ? $args['pro_post_id'] : '';
+$pro_custom_background = get_field('pro_background_image', $pro_post_id);
+
+
+if ($pro_custom_background) {
+    $full_image_url = esc_url(wp_get_attachment_image_url($pro_custom_background, 'full'));
+    $medium_image_url = esc_url(wp_get_attachment_image_url($pro_custom_background, 'medium_large'));
+    $thumbnail_image_url = esc_url(wp_get_attachment_image_url($pro_custom_background, 'medium'));
+    $default_position = 'center center';
+    $default_size = 'cover';
+    $tablet_size = 'auto 440px';
+} else {
+    $full_image_url = $medium_image_url = $thumbnail_image_url = theme_uri('/img/hero_bg.jpg');
+    $default_position = 'top right';
+    $default_size = 'auto';
+    $tablet_size = $default_size;
+}
 ?>
-<section id="hero" class="header-padding" style="height: 290px; background-image: url('<?= theme_uri('/img/hero_bg.jpg'); ?>'); background-position: top right; background-repeat: no-repeat; background-color: var(--soft-background); overflow: visible;">
+
+
+<style>
+    #hero {
+        background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$full_image_url}')" : "url('{$full_image_url}')" ?>;
+        background-position: <?= $default_position ?>;
+        background-size: <?= $default_size ?>;
+        background-repeat: no-repeat;
+        background-color: var(--soft-background);
+        overflow: visible;
+        height: 290px;
+        z-index: 5;
+    }
+
+    @media (max-width: 780px) {
+
+        /* Tablet */
+        #hero {
+            height: unset;
+            background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$medium_image_url}')" : "url('{$medium_image_url}')" ?>;
+            background-position: top center;
+            background-size: <?= $tablet_size ?>;
+        }
+
+        #hero inner {
+            padding-bottom: var(--gap-xl);
+        }
+    }
+
+    @media (max-width: 550px) {
+
+        /* Mobile */
+        #hero {
+            background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$thumbnail_image_url}')" : "url('{$thumbnail_image_url}')" ?>;
+        }
+    }
+</style>
+
+<section id="hero" class="header-padding">
     <inner class="relative flex justify-between">
-        <div class="right" style="margin-top: 33px; width: 80%;">
+        <div class="right hide-tablet" style="margin-top: 33px; width: 80%;">
 
             <h2 class="" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
             <h3 style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
 
 
         </div>
+        <style>
+            @media (max-width: 780px) {
+                #hero .left {
+                    width: 100%;
+                }
+            }
+        </style>
         <div class="left">
-            <span style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
-            <div class="box border shadow-l" style="margin-top: 23px; width: 347px; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
+            <span class="hide-mobile" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
+            <div class="box border shadow-l" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
                 <div class="profile-image-wrap relative" style="text-align: center;">
+                <h2 class="hide-desktop" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
+                <h3 class="hide-desktop" style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
                     <?php
                     $featured_image = get_the_post_thumbnail_url($pro_post_id, 'full');
                     if (empty($featured_image)) {
                         $featured_image = get_avatar_url($current_user_id);
                     }
                     ?>
-                    <img src="<?= $featured_image; ?>" alt="Profile Picture" style="width: 247px; height: 247px; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
+                    <img src="<?= $featured_image; ?>" alt="Profile Picture" style="width: 247px; height: 247px; max-width: 40vw; max-height: 40vw; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
                     <span class="absolute" style="bottom: 0; left: -10px"><?= svg_icon('circles'); ?></span>
                     <span class="absolute" style="bottom: 44px; right: 12px;"><?= svg_icon('twirl'); ?></span>
 
@@ -102,25 +165,23 @@ $pro_post_id = isset($args['pro_post_id']) ? $args['pro_post_id'] : '';
         <?= svg_icon('profile', null, null, 19, 19); ?> העתק לינק להוספת המלצה
     </div>
     <gap-s class="line"></gap-s>
-    <div class="button green" copy="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($pro_post_id); ?>">
-        <?= svg_icon('facebook', null, null, 19, 19); ?> העתק לינק לשיתוף בפייסבוק
-    </div>
-    <div class="button green" copy="https://twitter.com/intent/tweet?text=<?= urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id)); ?>%20<?= get_permalink($pro_post_id); ?>">
-        <?= svg_icon('twitter', null, null, 19, 19); ?> העתק לינק לשיתוף בטוויטר
-    </div>
-    <div class="button green" copy="https://www.linkedin.com/shareArticle?mini=true&url=<?= get_permalink($pro_post_id); ?>&title=<?= urlencode(get_the_title($pro_post_id)); ?>&summary=<?= urlencode('בדקו את המקצוען הזה'); ?>&source=YourWebsite">
-        <?= svg_icon('linkedin', null, null, 19, 19); ?> העתק לינק לשיתוף בלינקדאין
-    </div>
-    <div class="button green" copy="https://api.whatsapp.com/send?text=<?= urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id)); ?>%20<?= get_permalink($pro_post_id); ?>">
-        <?= svg_icon('whatsapp', null, null, 19, 19); ?> העתק לינק לשיתוף בוואטסאפ
-    </div>
-    <div class="button green" copy="https://t.me/share/url?url=<?= get_permalink($pro_post_id); ?>&text=<?= urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id)); ?>">
-        <?= svg_icon('telegram', null, null, 19, 19); ?> העתק לינק לשיתוף בטלגרם
-    </div>
-    <div class="button green" copy="mailto:?subject=<?= urlencode('בדקו את המקצוען הזה'); ?>&body=<?= urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id)); ?>%20<?= get_permalink($pro_post_id); ?>">
-        <?= svg_icon('email', null, null, 19, 19); ?> העתק לינק לשיתוף באימייל
-    </div>
+    <a class="button green" target="_blank" href="https://api.whatsapp.com/send?text=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
+        <?= svg_icon('whatsapp', null, null, 19, 19); ?> שתף בוואטסאפ
+    </a>
+    <a class="button green" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($pro_post_id); ?>">
+        <?= svg_icon('facebook', null, null, 19, 19); ?> שתף בפייסבוק
+    </a>
+    <a class="button green" target="_blank" href="https://twitter.com/intent/tweet?text=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
+        <?= svg_icon('twitter', null, null, 19, 19); ?> שתף בטוויטר
+    </a>
+    <a class="button green" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=<?= get_permalink($pro_post_id); ?>&title=<?= urlencode(get_the_title($pro_post_id)); ?>&summary=<?= urlencode('בדקו את המקצוען הזה'); ?>&source=YourWebsite">
+        <?= svg_icon('linkedin', null, null, 19, 19); ?> שתף בלינקדאין
+    </a>
+    <a class="button green" target="_blank" href="mailto:?subject=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה')); ?>&body=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
+        <?= svg_icon('email', null, null, 19, 19); ?> שתף באימייל
+    </a>
 </div>
+
 
 
         </div></div>

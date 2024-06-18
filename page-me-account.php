@@ -13,7 +13,7 @@ if ($query->have_posts()) {
     $pro_post_id = $query->post->ID;
 ?>
 
-<?php get_template_part('template-parts/me-hero', null, array('pro_post_id' => $pro_post_id, 'page_title' => 'פרטי מנוי')) ?>
+<?php get_template_part('templates/me-hero', null, array('pro_post_id' => $pro_post_id, 'page_title' => 'פרטי מנוי')) ?>
 
     <section id="about">
         <inner style="padding-left: 30%; padding-top:var(--gap-m); padding-bottom:860px;">

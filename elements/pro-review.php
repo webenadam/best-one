@@ -30,7 +30,7 @@ function pro_review($post_id, $dark = false)
     $borders_width = $dark ? '1px' : '2px';
 
 ?>
-    <box class="<?= esc_attr($box_class); ?> flex gap-l" style="width:750px;">
+    <box class="review <?= esc_attr($box_class); ?> flex gap-l mobile-gap-s" style="width:min(100%,750px);">
         <right>
             <avatar-s style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar-s>
         </right>

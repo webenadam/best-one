@@ -66,7 +66,7 @@ background-position: top right; background-repeat: no-repeat; background-color: 
 </section>
 
 <?php // Main feed
-get_template_part('template-parts/main-feed', null, array('featured_pros' => $featured_pros));
+get_template_part('templates/main-feed', null, array('featured_pros' => $featured_pros));
 ?>
 
 <section id="features" style="border-bottom:1px solid var(--light-gray);">
