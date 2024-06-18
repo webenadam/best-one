@@ -380,6 +380,8 @@
             "collapsed": "",
             "button_label": "הוסף תעודה",
             "rows_per_page": 20,
+            "acfe_repeater_stylised_button": 0,
+            "placeholder": "תעודות",
             "sub_fields": [
                 {
                     "key": "field_664ca8e6db06b",
@@ -431,9 +433,7 @@
                     "acfe_thumbnail": 0,
                     "placeholder": "תמונת תעודה"
                 }
-            ],
-            "acfe_repeater_stylised_button": 0,
-            "placeholder": "תעודות"
+            ]
         },
         {
             "key": "field_66562dac0879f",
@@ -648,6 +648,30 @@
             "acfe_permissions": "",
             "selected": 0,
             "placeholder": "הגדרות נוספות"
+        },
+        {
+            "key": "field_6671e02a6910f",
+            "label": "מזויף",
+            "name": "pro_fake",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "האם בעל המקצוע הזה מזויף (תוכן שהוכנס ״לנפח״ את האתר)",
+            "default_value": 0,
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
+            "ui_on_text": "מזויף",
+            "ui_off_text": "אמיתי",
+            "ui": 1,
+            "placeholder": "מזויף"
         }
     ],
     "location": [
@@ -676,5 +700,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718305505
+    "modified": 1718739384
 }

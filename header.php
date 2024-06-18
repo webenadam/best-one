@@ -25,7 +25,7 @@
     <header>
         <inner class="flex justify-between align-center mobile-flex-row">
             <span class="menu-toggle flex hide-desktop" self-toggle-class="active" toggle-class="#header-nav.active" style="z-index:10; cursor:pointer;"><?= svg_icon('hamburger'); ?></span>
-            <a class="float-up" style="height:33px;" href="<?= home_url(); ?>"><img src="<?= get_template_directory_uri(); ?>/img/Logo.png" alt="Logo" /></a>
+            <a class="float-up logo" style="height:33px;" href="<?= home_url(); ?>"><img src="<?= get_template_directory_uri(); ?>/img/Logo.png" alt="Logo" /></a>
             <nav id="header-nav">
                 <ul class="flex align-center gap-m">
                     <?php if (have_rows('top_nav_links', 'option')) : ?>

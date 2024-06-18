@@ -243,7 +243,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
 
 <section id="features">
   <inner class="flex mobile-flex-column-reverse gap-l align-center" style="padding-bottom:0;">
-    <right class="flex"><img src="<?= theme_uri('/img/whyus_man.jpg'); ?>" alt="למה אצלנו?"></right>
+    <right class="flex"><img src="<?= theme_uri('/img/whyus_man.png'); ?>" alt="למה אצלנו?"></right>
     <left style="margin-top:-10px;">
       <h2>למה אצלנו?</h2>
       <style>
