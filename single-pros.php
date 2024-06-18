@@ -12,10 +12,12 @@ if ($pro_custom_background) {
     $thumbnail_image_url = esc_url(wp_get_attachment_image_url($pro_custom_background, 'medium'));
     $default_position = 'center center';
     $default_size = 'cover';
+    $tablet_size = 'auto 440px';
 } else {
     $full_image_url = $medium_image_url = $thumbnail_image_url = theme_uri('/img/hero_bg.jpg');
     $default_position = 'top right';
     $default_size = 'auto';
+    $tablet_size = $default_size;
 }
 ?>
 
@@ -27,28 +29,38 @@ if ($pro_custom_background) {
         background-repeat: no-repeat;
         background-color: var(--soft-background);
         overflow: visible;
+        height: 423px;
+        z-index:5;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 780px) {
 
         /* Tablet */
         #hero {
+            height:unset;
             background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$medium_image_url}')" : "url('{$medium_image_url}')" ?>;
+                background-position: top center;
+                background-size: <?= $tablet_size ?>;
+        }
+
+        #hero inner {
+            padding-bottom: var(--gap-xl);
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 550px) {
 
         /* Mobile */
         #hero {
             background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$thumbnail_image_url}')" : "url('{$thumbnail_image_url}')" ?>;
         }
     }
+    
 </style>
 
-<section id="hero" class="header-padding" style="position:relative; z-index:5; height: 423px;">
+<section id="hero" class="header-padding relative" style=" ">
     <inner class="relative flex justify-between">
-        <div class="right" style="margin-top: 33px; width: 80%;">
+        <div class="right hide-tablet" style="margin-top: 33px; width: 80%;">
 
 
 
@@ -141,15 +153,22 @@ if ($pro_custom_background) {
                 </div>
             </div>
         </div>
+        <style>
+            @media (max-width: 780px) {
+                #hero .left {
+                    width: 100%;
+                }
+            }
+        </style>
         <div class="left">
-            <span style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
-            <div class="box border shadow-l" style="margin-top: 23px; width: 347px; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
+            <span class="hide-tablet" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
+            <div class="box border shadow-l" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
                 <div class="profile-image-wrap relative" style="text-align: center;">
                     <img src="<?= get_the_post_thumbnail_url() ?>" alt="Profile Picture" style="width: 247px; height: 247px; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
                     <span class="absolute" style="bottom: 0; left: -10px"><?= svg_icon('circles'); ?></span>
                     <span class="absolute" style="bottom: 44px; right: 12px;"><?= svg_icon('twirl'); ?></span>
                 </div>
-                <h2 class="pro-name" style="font-size: var(--font-l); margin-top: 0px; margin-bottom:10px;"><?= get_the_title(); ?></h2>
+                <h2 class="pro-name hide-desktop" style="font-size: var(--font-l); margin-top: 0px; margin-bottom:10px;"><?= get_the_title(); ?></h2>
 
                 <div class="social-icons bottom-gap-s" style="display: flex; gap: var(--gap-m);">
                     <?php if ($twitter = get_field('pro_twitter')) { ?>
@@ -162,7 +181,7 @@ if ($pro_custom_background) {
                         <a href="<?= $linkedin; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/linkedin.svg'); ?>" alt="LinkedIn" style="width: 18px; height: 18px;"></a>
                     <?php } ?>
                 </div>
-                <div id="expert-tags" class="flex gap-s justify-center bottom-gap-s" style="flex-wrap: wrap;">
+                <div id="expert-tags" class="flex gap-s justify-center bottom-gap-s hide-desktop" style="flex-wrap: wrap;">
                     <?php
                     // Check if terms are found and are not empty
                     if ($experts && !is_wp_error($experts)) {
@@ -176,7 +195,7 @@ if ($pro_custom_background) {
                     }
                     ?>
                 </div>
-                <div id="stats-box" class="box border flex no-padding shadow-l" style="width: 90%;">
+                <div id="stats-box" class="box border flex no-padding shadow-l hide-desktop" style="width: 90%;">
                     <div class="stat-item">
                         <p class="stat-label"><a href="#reviews">המלצות</a></p>
                         <p class="stat-value"><?= get_field('pro_recommended_count'); ?></p>
@@ -191,7 +210,7 @@ if ($pro_custom_background) {
                     </div>
 
                 </div>
-                <div class="stat-item">
+                <div class="stat-item hide-desktop">
                     <p class="stat-label" style="font-weight:var(--font-w-600);"><a href="#reviews">דירוג משוקלל</a></p>
                     <?php $pro_review_total = get_field('pro_total_rate'); ?>
                     <div class="pro_rating">
