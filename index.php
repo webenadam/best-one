@@ -251,7 +251,6 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
       <style>
         #features p {
           color: var(--dark-gray);
-          width: 480px;
           max-width: 80%;
           margin-bottom: 40px;
         }
@@ -341,12 +340,17 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
       #we-here {
         padding: var(--gap-s);
       }
+
+      #we-here h2, #we-here .desc {
+        text-align: center;
+        margin:auto;
+      }
     }
   </style>
   <inner class="flex tablet-flex-column gap-l">
     <right class="flex-column flex-1">
       <h2 style="color:white;font-size:var(--font-xxl);">אנחנו כאן בשבילכם.</h2>
-      <p style="width: 350px;">חשוב לנו שתקבלו את כל המידע שאתם צריכים כדי להיות רגועים ובטוחים שאתם מקבלים את הטוב ביותר.</p>
+      <p class="desc" style="width: 350px; max-width:80%;">חשוב לנו שתקבלו את כל המידע שאתם צריכים כדי להיות רגועים ובטוחים שאתם מקבלים את הטוב ביותר.</p>
       <check class="flex gap-l" style="margin-top:40px;margin-bottom:30px">
         <div style="width: 30px;">
           <?= svg_icon('circle_check'); ?>
