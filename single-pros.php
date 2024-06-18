@@ -3,6 +3,7 @@
 $pro_custom_background = get_field('pro_background_image');
 $pro_reviews_count = get_field('pro_recommended_count');
 $pro_post_id = get_the_ID();
+$experts = get_the_terms($pro_post_id, 'expert');
 
 
 if ($pro_custom_background) {
@@ -69,12 +70,9 @@ if ($pro_custom_background) {
                 }
                 ?>
             </div>
-            <h2 class="" style="font-size: var(--font-xxl); margin-top: 0px; margin-bottom:10px;"><?= get_the_title(); ?></h2>
-            <div id="expert-tags" class="flex gap-s" style="margin-bottom:86px;">
+            <h2 class="pro-name bottom-gap-s" style="font-size: var(--font-xxl); margin-top: 0px;"><?= get_the_title(); ?></h2>
+            <div id="expert-tags" class="flex gap-s" style="margin-bottom:85px;">
                 <?php
-                // Get the terms for the current post in the "expert" taxonomy
-                $experts = get_the_terms($pro_post_id, 'expert');
-
                 // Check if terms are found and are not empty
                 if ($experts && !is_wp_error($experts)) {
                     // Loop through each term
@@ -151,10 +149,64 @@ if ($pro_custom_background) {
                     <span class="absolute" style="bottom: 0; left: -10px"><?= svg_icon('circles'); ?></span>
                     <span class="absolute" style="bottom: 44px; right: 12px;"><?= svg_icon('twirl'); ?></span>
                 </div>
-                <div class="social-icons" style="display: flex; gap: var(--gap-m); margin-bottom: 15px;">
-                    <a href="#" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/twitter.svg'); ?>" alt="Twitter" style="width: 18px; height: 18px;"></a>
-                    <a href="#" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/facebook.svg'); ?>" alt="Facebook" style="width: 18px; height: 18px;"></a>
-                    <a href="#" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/linkedin.svg'); ?>" alt="LinkedIn" style="width: 18px; height: 18px;"></a>
+                <h2 class="pro-name" style="font-size: var(--font-l); margin-top: 0px; margin-bottom:10px;"><?= get_the_title(); ?></h2>
+
+                <div class="social-icons bottom-gap-s" style="display: flex; gap: var(--gap-m);">
+                    <?php if ($twitter = get_field('pro_twitter')) { ?>
+                        <a href="<?= $twitter; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/twitter.svg'); ?>" alt="Twitter" style="width: 18px; height: 18px;"></a>
+                    <?php } ?>
+                    <?php if ($facebook = get_field('pro_facebook')) { ?>
+                        <a href="<?= $facebook; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/facebook.svg'); ?>" alt="Facebook" style="width: 18px; height: 18px;"></a>
+                    <?php } ?>
+                    <?php if ($linkedin = get_field('pro_linkedin')) { ?>
+                        <a href="<?= $linkedin; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/linkedin.svg'); ?>" alt="LinkedIn" style="width: 18px; height: 18px;"></a>
+                    <?php } ?>
+                </div>
+                <div id="expert-tags" class="flex gap-s justify-center bottom-gap-s" style="flex-wrap: wrap;">
+                    <?php
+                    // Check if terms are found and are not empty
+                    if ($experts && !is_wp_error($experts)) {
+                        // Loop through each term
+                        foreach ($experts as $expert) {
+                            // Get the term permalink
+                            $expert_link = get_term_link($expert);
+                            // Echo the term with the specified format
+                            tag_label(esc_html($expert->name), esc_url($expert_link), 'big green');
+                        }
+                    }
+                    ?>
+                </div>
+                <div id="stats-box" class="box border flex no-padding shadow-l" style="width: 90%;">
+                    <div class="stat-item">
+                        <p class="stat-label"><a href="#reviews">המלצות</a></p>
+                        <p class="stat-value"><?= get_field('pro_recommended_count'); ?></p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-label">שנות נסיון</p>
+                        <p class="stat-value"><?= get_pro_date($pro_post_id, 'exp'); ?></p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="stat-label">תחומי התמחות</p>
+                        <p class="stat-value"><?= count($experts); ?></p>
+                    </div>
+
+                </div>
+                <div class="stat-item">
+                    <p class="stat-label" style="font-weight:var(--font-w-600);"><a href="#reviews">דירוג משוקלל</a></p>
+                    <?php $pro_review_total = get_field('pro_total_rate'); ?>
+                    <div class="pro_rating">
+                        <style>
+                            .pro_rating .star-rating {
+                                margin-bottom: 2px !important;
+                                margin-right: 10px;
+                            }
+                        </style>
+                        <a href="#reviews" class="flex align-center">
+                            <p class="stat-value" style="color: var(--blue);"><?= $pro_review_total; ?></p>
+
+                            <?= star_rating($pro_review_total); ?>
+                        </a>
+                    </div>
                 </div>
                 <?php if ($pro_cert_card = get_field('pro_cert_card')) { ?>
                     <div class="certificate">
@@ -162,14 +214,13 @@ if ($pro_custom_background) {
 
                     </div>
                 <?php } ?>
-                <form id="pro-contact-form" action="/submit" method="post">
+                <form id="pro-contact-form" action="/submit" method="post" class="bottom-gap-xs">
                     <style>
                         #pro-contact-form {
                             width: 100%;
                             display: flex;
                             flex-direction: column;
                             gap: var(--gap-xs);
-                            margin-bottom: var(--gap-xs);
                             max-height: 0;
                             overflow: hidden;
                             opacity: 0;
@@ -210,7 +261,7 @@ if ($pro_custom_background) {
 <section id="about">
     <inner style="padding-left: 30%; padding-top:100px; padding-bottom:160px;">
         <h2>קצת עליי</h2>
-        <p style="color: var(--light-black); margin-bottom:80px;">
+        <p style="color: var(--light-black);" class="bottom-gap-xl">
             <?= get_field('pro_about'); ?>
         </p>
         <div id="certificates">
@@ -224,7 +275,7 @@ if ($pro_custom_background) {
                         $image_thumb = wp_get_attachment_image_url($image_id, array(300, 300));
                 ?>
                         <div class="box border certificate-box shadow-l float-up" lightbox-type="image" lightbox-content="<?= esc_url($image_url); ?>" style="padding:var(--gap-s);">
-                            <div class="cert_img radius-s" style="height:300px;background-image: url('<?= esc_url($image_thumb); ?>');background-size:cover;background-position:top center; margin-bottom:10px;"></div>
+                            <div class="cert_img radius-s bottom-gap-xs" style="height:300px;background-image: url('<?= esc_url($image_thumb); ?>');background-size:cover;background-position:top center"></div>
                             <h5><?= esc_attr($certificate['pro_cert_title']); ?></h5>
                         </div>
                 <?php
@@ -241,7 +292,7 @@ if ($pro_custom_background) {
     <div class="absolute square-thing" style="bottom:-100px;right:-100px;"><?= svg_icon('square'); ?></div>
     <inner>
         <h2 style="color: white;">תחומי התמחות</h2>
-        <grid class="grid-3" style="margin-bottom: 10px;">
+        <grid class="grid-3 bottom-gap-xs">
             <?php
             if (!empty($experts) && !is_wp_error($experts)) {
                 foreach ($experts as $expert_term) {
@@ -261,7 +312,7 @@ if ($pro_custom_background) {
 <section id="reviews" class="light" style="padding-top: 50px;">
     <inner class="flex-column align-center" style="text-align: center;">
         <?php if ($pro_reviews_count > 0) { ?>
-            <h2 style="color: var(--green); width: 500px; margin-bottom:70px;"><span style="border-bottom: 2px solid var(--blue);"><?= $pro_reviews_count; ?>
+            <h2 style="color: var(--green); width: 500px;" class="bottom-gap-l"><span style="border-bottom: 2px solid var(--blue);"><?= $pro_reviews_count; ?>
                     אנשים</span> שיתפו את החוויה שלהם עם <?= get_the_title(); ?></h2>
         <?php } ?>
         <?php
@@ -290,7 +341,7 @@ if ($pro_custom_background) {
 
                                             ?></div>
         <?php } else { ?>
-            <div style="margin-bottom:40px;">טרם נוספו המלצות ל<?= get_the_title(); ?></div>
+            <div class="bottom-gap-m">טרם נוספו המלצות ל<?= get_the_title(); ?></div>
         <?php } ?>
         <a href="<?= site_url('/add-review/?pro=') . $pro_post_id; ?>" class="button ">הוסף המלצה ל<?= get_the_title(); ?></a>
     </inner>
@@ -298,7 +349,7 @@ if ($pro_custom_background) {
 
 <section id="featured-pros" class="light align-center">
     <inner>
-        <h2 style="margin-bottom: 30px;">בעלי מקצוע נוספים בתחום</h2>
+        <h2>בעלי מקצוע נוספים בתחום</h2>
         <grid class="grid-3">
             <?php
             $featured_pros = get_field('home_featured_pros', 'option');

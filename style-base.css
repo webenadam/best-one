@@ -43,6 +43,7 @@
   --gap-s: 15px;
   --gap-m: 30px;
   --gap-l: 45px;
+  --gap-xl: 65px;
 }
 
 /* BASIC STYLES */
@@ -386,11 +387,6 @@ header inner {
   background-color: var(--black);
 }
 
-
-.no-padding {
-  padding: 0;
-}
-
 .shadow-s {
   box-shadow: var(--shadow-s);
 }
@@ -548,6 +544,30 @@ nav ul li a:not(.button):hover {
   gap: var(--gap-l);
 }
 
+.gap-xl {
+  gap: var(--gap-xl);
+}
+
+.bottom-gap-xs {
+  margin-bottom: var(--gap-xs);
+}
+
+.bottom-gap-s {
+  margin-bottom: var(--gap-s);
+}
+
+.bottom-gap-m {
+  margin-bottom: var(--gap-m);
+}
+
+.bottom-gap-l {
+  margin-bottom: var(--gap-l);
+}
+
+.bottom-gap-xl {
+  margin-bottom: var(--gap-xl);
+}
+
 @media (max-width: 780px) {
   .gap-m {
     gap: var(--gap-s);
@@ -645,4 +665,10 @@ gap-s.line::before, gap-m.line::before, gap-l.line::before {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+/* OVERRIDES (KEEP ON END) */
+
+.no-padding {
+  padding: 0!important;
 }

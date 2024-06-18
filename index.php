@@ -15,7 +15,6 @@ $total_pros = wp_count_posts('pros')->publish;
 
   #hero h1 {
     width: 450px;
-    margin-bottom: 20px;
   }
 
   #hero p {
@@ -27,7 +26,6 @@ $total_pros = wp_count_posts('pros')->publish;
     background-color: var(--blue);
     gap: var(--gap-s);
     width: 410px;
-    margin-bottom: 10px;
   }
 
   #hero .left img {
@@ -70,13 +68,13 @@ $total_pros = wp_count_posts('pros')->publish;
 
   <inner class="relative flex align-center mobile-flex-column">
     <div class="right" style="z-index:1;">
-      <h1 class="title">מצא את בעל המקצוע הטוב ביותר עבורך!</h1>
+      <h1 class="title bottom-gap-m">מצא את בעל המקצוע הטוב ביותר עבורך!</h1>
       <p class="subtitle">
         בעלי המקצוע הטובים ביותר מרוכזים במקום אחד, קל ונוח לחיפוש, כך שלא
         צריך להתרוצץ. מצאתם.
       </p>
       <div class="search-form_parent-container">
-        <div class="flex mobile-flex-column search-form background-blue radius-s">
+        <div class="flex mobile-flex-column search-form background-blue radius-s bottom-gap-xs">
           <?php
           // Get used places terms
           $places_terms = get_terms(array(
@@ -111,7 +109,7 @@ $total_pros = wp_count_posts('pros')->publish;
 <section id="expert-terms" class="dark full no-bottom-padding">
   <inner>
     <h2>סנן לפי תחום</h2>
-    <grid class="grid-3" style="margin-bottom:10px">
+    <grid class="grid-3 bottom-gap-s">
       <a href="#" class="category-block accent">
         <h3>כל התחומים</h3>
         <h6><?= $total_pros; ?> בעלי מקצוע</h6>
@@ -252,10 +250,9 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
         #features p {
           color: var(--dark-gray);
           max-width: 80%;
-          margin-bottom: 40px;
         }
       </style>
-      <p>באתר BEST1 תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
+      <p class="bottom-gap-s">באתר BEST1 תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
       <grid class="grid-2 gap-s">
         <style>
           #features h3.check::before {
@@ -294,7 +291,7 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
   <inner class="flex-column align-center" style="text-align:center;">
 
     <h2 style="color: var(--black);"><a href="<?= get_permalink(430); ?>">הבלוג שלנו</a></h2>
-    <p style="width:530px; max-width: 95%; color:var(--gray); margin-bottom:50px;">
+    <p class="bottom-gap-l" style="width:530px; max-width: 95%; color:var(--gray);">
       כל המאמרים המקצועיים ביותר, המעודנים ביותר והחמים ביותר בנושאי שמאות רכוש, שמאות נזקים, שמאות חקלאות ועוד...
     </p>
     <grid class="grid-3">
@@ -351,7 +348,7 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
     <right class="flex-column flex-1">
       <h2 style="color:white;font-size:var(--font-xxl);">אנחנו כאן בשבילכם.</h2>
       <p class="desc" style="width: 350px; max-width:80%;">חשוב לנו שתקבלו את כל המידע שאתם צריכים כדי להיות רגועים ובטוחים שאתם מקבלים את הטוב ביותר.</p>
-      <check class="flex gap-l" style="margin-top:40px;margin-bottom:30px">
+      <check class="flex gap-l bottom-gap-l" style="margin-top:40px;">
         <div style="width: 30px;">
           <?= svg_icon('circle_check'); ?>
         </div>
@@ -361,7 +358,7 @@ get_template_part('template-parts/main-feed', null, array('featured_pros' => $fe
           <p>כל בעלי המקצוע באתר בעלי הסמכה ותעודה בתוקף.<br />זה תנאי סף אצלנו.</p>
         </div>
       </check>
-      <check class="flex gap-l" style="margin-bottom:30px">
+      <check class="flex gap-l bottom-gap-l">
         <div style="width: 30px;">
           <?= svg_icon('circle_check'); ?>
         </div>
