@@ -10,7 +10,7 @@
         </g>
     </svg>
 </div>
-<div id="accessibility-toolbar" class="hidden radius-m shadow-s">
+<div id="accessibility-toolbar" class="active radius-m shadow-s">
     <button class="button radius-s" onclick="resizeText(1.2)" title="הגדל טקסט">הגדל טקסט +</button>
     <button class="button radius-s" onclick="resetTextSize()" title="טקסט בגודל רגיל">אפס טקסט</button>
     <button class="button radius-s" onclick="resizeText(0.8)" title="הקטן טקסט">הקטן טקסט-</button>
@@ -61,7 +61,6 @@
         display: flex;
         flex-direction: column;
         gap: var(--gap-s);
-        box-shadow: var(--shadow-m);
         overflow:hidden;
         transition: all 0.2s ease-in-out;
         max-height:0px;
@@ -72,6 +71,10 @@
         padding: var(--gap-s);
         max-height: 400px;
         opacity: 1;
+    }
+
+    #accessibility-toolbar button {
+        min-width: 180px;
     }
 
     .hc *:not(svg):not(#accessibility-icon):not(avatar):not(avatar-s):not(avatar-m):not(avatar-l):not(avatar-xl) {
