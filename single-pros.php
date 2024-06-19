@@ -430,4 +430,10 @@ if ($pro_custom_background) {
     </inner>
 </section>
 
+
+<?php 
+// update page view counts for this pro
+update_pro_stats('page_views', $pro_post_id);
+?>
+
 <?php get_footer(); ?>

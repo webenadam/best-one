@@ -481,10 +481,40 @@ add_filter('acf/format_value/name=top_nav_link_custom', 'do_shortcode');
 // Show template file on console (when on local enviorment)
 add_action('wp_head', 'show_template_file_in_console');
 
-function show_template_file_in_console() {
+function show_template_file_in_console()
+{
     if (WP_DEBUG && ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == '::1')) {
         global $template;
         $template_file = basename($template);
         echo "<script>console.log('Current Template: {$template_file}');</script>";
     }
+}
+
+
+// Add option to set acf fields as readonly
+add_action('acf/render_field_settings/type=text', 'add_readonly_and_disabled_to_text_field');
+function add_readonly_and_disabled_to_text_field($field)
+{
+    acf_render_field_setting($field, array(
+        'label'      => __('Read Only?', 'acf'),
+        'instructions'  => '',
+        'type'      => 'radio',
+        'name'      => 'readonly',
+        'choices'    => array(
+            0        => __("No", 'acf'),
+            1        => __("Yes", 'acf'),
+        ),
+        'layout'  =>  'horizontal',
+    ));
+    acf_render_field_setting($field, array(
+        'label'      => __('Disabled?', 'acf'),
+        'instructions'  => '',
+        'type'      => 'radio',
+        'name'      => 'disabled',
+        'choices'    => array(
+            0        => __("No", 'acf'),
+            1        => __("Yes", 'acf'),
+        ),
+        'layout'  =>  'horizontal',
+    ));
 }

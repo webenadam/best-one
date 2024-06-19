@@ -35,6 +35,12 @@ function create_lead() {
             update_field('lead_pro', $lead_pro, $post_id);
             update_field('lead_experts', $subject, $post_id);
 
+            // UPDATE PRO STATS
+            // Check if the source type is "שליחת טופס בעל מקצוע" and there is a lead_pro
+            if ($lead_source_type === "שליחת טופס בעל מקצוע" && $lead_pro) {
+                update_pro_stats('form_sent', $lead_pro);
+            }
+
             wp_send_json_success(['message' => 'הטופס נשלח בהצלחה!']);
         } else {
             wp_send_json_error(['message' => 'שגיאה בשליחת הטופס']);
