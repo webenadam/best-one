@@ -10,7 +10,7 @@
         </g>
     </svg>
 </div>
-<div id="accessibility-toolbar" class="active radius-m shadow-s">
+<div id="accessibility-toolbar" class="radius-m shadow-s">
     <button class="button radius-s" onclick="resizeText(1.2)" title="הגדל טקסט">הגדל טקסט +</button>
     <button class="button radius-s" onclick="resetTextSize()" title="טקסט בגודל רגיל">אפס טקסט</button>
     <button class="button radius-s" onclick="resizeText(0.8)" title="הקטן טקסט">הקטן טקסט-</button>
