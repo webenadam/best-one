@@ -1,7 +1,7 @@
 <?php
 
 // Function to render the profile box
-function profile_box($post_id, $dark = false, $featured = false)
+function profile_box($pro_post_id, $dark = false, $featured = false)
 {
     // Enqueue the CSS for the profile box (only once even when used multiple times on page)
     if (!wp_style_is('profile-box-styles', 'enqueued')) {
@@ -9,25 +9,25 @@ function profile_box($post_id, $dark = false, $featured = false)
     }
 
     // Get the custom fields and taxonomies
-    $name = get_the_title($post_id);
+    $name = get_the_title($pro_post_id);
 
     // Get the location from the "places" taxonomy
-    $location_terms = get_the_terms($post_id, 'areas');
+    $location_terms = get_the_terms($pro_post_id, 'areas');
     $location = ($location_terms && !is_wp_error($location_terms)) ? $location_terms[0]->name : 'מקום לא ידוע';
 
     // Get the recommendations and rating from custom fields
-    $recommendations = get_field('pro_recommended_count', $post_id);
-    $rating = get_field('pro_total_rate', $post_id);
+    $recommendations = get_field('pro_recommended_count', $pro_post_id);
+    $rating = get_field('pro_total_rate', $pro_post_id);
 
     // Get the avatar URL from the featured image
-    if (has_post_thumbnail($post_id)) {
-        $avatar_url = get_the_post_thumbnail_url($post_id, 'full');
+    if (has_post_thumbnail($pro_post_id)) {
+        $avatar_url = get_the_post_thumbnail_url($pro_post_id, 'full');
     } else {
         $avatar_url = get_template_directory_uri() . '/img/avatar.jpg'; // Default placeholder image
     }
 
     // Get the expertise from the "expert" taxonomy
-    $expertise_terms = get_the_terms($post_id, 'expert');
+    $expertise_terms = get_the_terms($pro_post_id, 'expert');
     $expertise = ($expertise_terms && !is_wp_error($expertise_terms)) ? $expertise_terms : array();
 
     // Set basic classes
@@ -49,7 +49,7 @@ function profile_box($post_id, $dark = false, $featured = false)
 
 ?>
     <box class="<?= esc_attr($box_class); ?>">
-        <a href="<?= get_permalink($post_id); ?>" class="absolute" style="top: 20px; left: 20px">
+        <a href="<?= get_permalink($pro_post_id); ?>" class="absolute" style="top: 20px; left: 20px">
             <?php if ($featured) {
                 echo svg_icon('link', "#473BF0");
             } else {
@@ -57,7 +57,7 @@ function profile_box($post_id, $dark = false, $featured = false)
             } ?>
         </a>
         <div class="top flex" style="gap: 20px; margin-top:5px; padding-right: var(--gap-s);">
-            <a href="<?= get_permalink($post_id); ?>" style="position: relative;">
+            <a href="<?= get_permalink($pro_post_id); ?>" style="position: relative;">
                 <?php if (!$featured) { ?>
                     <avatar style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar>
                 <?php } else { ?>
@@ -73,7 +73,7 @@ function profile_box($post_id, $dark = false, $featured = false)
                 <h3 class="name" style="font-weight: var(--font-w-600); <?php if ($featured) {
                                                                             echo 'font-size: var(--font-m);';
                                                                         } ?>">
-                    <a href="<?= get_permalink($post_id); ?>"><?= esc_html($name); ?></a>
+                    <a href="<?= get_permalink($pro_post_id); ?>"><?= esc_html($name); ?></a>
                 </h3>
                 <h6 class="place flex align-center" style="gap: 5px">
                     <a href="<?= get_term_link($location_terms[0]); ?>">
@@ -111,5 +111,11 @@ function profile_box($post_id, $dark = false, $featured = false)
     </box>
 
 <?php
+
+// update cube view counts for this pro
+update_pro_stats('cube_views', $pro_post_id);
+
+
+
 }
 ?>

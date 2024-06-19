@@ -330,7 +330,7 @@ if ($pro_custom_background) {
                         $image_url = wp_get_attachment_image_url($image_id, 'full');
                         $image_thumb = wp_get_attachment_image_url($image_id, array(300, 300));
                 ?>
-                        <div class="box border certificate-box shadow-l float-up" lightbox-type="image" lightbox-content="<?= esc_url($image_url); ?>" style="padding:var(--gap-s);">
+                        <div class="box border certificate-box shadow-l float-up" lightbox-type="image" lightbox-content="<?= esc_url($image_url); ?>" style="padding:var(--gap-s); max-width: min(100%, 300px);">
                             <div class="cert_img radius-s bottom-gap-xs" style="height:300px;background-image: url('<?= esc_url($image_thumb); ?>');background-size:cover;background-position:top center"></div>
                             <h5><?= esc_attr($certificate['pro_cert_title']); ?></h5>
                         </div>
@@ -434,6 +434,7 @@ if ($pro_custom_background) {
 <?php 
 // update page view counts for this pro
 update_pro_stats('page_views', $pro_post_id);
+
 ?>
 
 <?php get_footer(); ?>
