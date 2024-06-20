@@ -960,6 +960,113 @@
             "append": ""
         },
         {
+            "key": "field_667417a875420",
+            "label": "מנוי",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "acfe_permissions": "",
+            "selected": 0,
+            "placeholder": "מנוי"
+        },
+        {
+            "key": "field_667417487541f",
+            "label": "מסלול מנוי",
+            "name": "pro_subscription",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "חינם": "חינם",
+                "מתקדם": "מתקדם"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_custom": 0,
+            "placeholder": "מסלול מנוי",
+            "search_placeholder": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "allow_null": 0,
+            "acfe_permissions": "",
+            "ui": 0,
+            "ajax": 0
+        },
+        {
+            "key": "field_667418ad75422",
+            "label": "תאריך תחילת מנוי",
+            "name": "pro_subscription_start_date",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "readonly": 1,
+            "disabled": 0,
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "maxlength": "",
+            "acfe_permissions": "",
+            "placeholder": "תאריך תחילת מנוי",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6674180275421",
+            "label": "קידום בדף הבית",
+            "name": "pro_featured_home",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "לא מקודם": "לא מקודם",
+                "מקודם": "מקודם"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "allow_null": 0,
+            "acfe_permissions": "",
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "קידום בדף הבית",
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
             "key": "field_665f5b07ca62a",
             "label": "הגדרות נוספות",
             "name": "",
@@ -1002,6 +1109,131 @@
             "ui_off_text": "אמיתי",
             "ui": 1,
             "placeholder": "מזויף"
+        },
+        {
+            "key": "field_667419cd75424",
+            "label": "תוספות קידום",
+            "name": "pro_featued_subscriptions",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "acfe_settings": "",
+            "min": 0,
+            "max": 0,
+            "acfe_permissions": "",
+            "collapsed": "",
+            "button_label": "הוספת שורה חדשה",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66741a1175425",
+                    "label": "סוג קידום",
+                    "name": "featured_type",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "תחום": "תחום",
+                        "דף הבית": "דף הבית"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_custom": 0,
+                    "placeholder": "סוג קידום",
+                    "search_placeholder": "",
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "parent_repeater": "field_667419cd75424"
+                },
+                {
+                    "key": "field_66741a3675426",
+                    "label": "תחום מקודם",
+                    "name": "featured_term",
+                    "aria-label": "",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66741a1175425",
+                                "operator": "==",
+                                "value": "תחום"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "expert",
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "field_type": "select",
+                    "allow_null": 1,
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "bidirectional": 0,
+                    "multiple": 0,
+                    "bidirectional_target": [],
+                    "placeholder": "תחום מקודם",
+                    "parent_repeater": "field_667419cd75424"
+                },
+                {
+                    "key": "field_667418e975423",
+                    "label": "תאריך תחילת קידום",
+                    "name": "featured_subscription_start_date",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "readonly": 1,
+                    "disabled": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "placeholder": "תאריך תחילת קידום",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_667419cd75424"
+                }
+            ],
+            "placeholder": "תוספות קידום"
         }
     ],
     "location": [
@@ -1030,5 +1262,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718785336
+    "modified": 1718885143
 }
