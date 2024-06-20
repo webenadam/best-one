@@ -104,8 +104,8 @@ if ($pro_custom_background) {
                             color: red;
                         }
                     </style>
-                    <a href="<?= home_url('/me'); ?>">עריכת פרטים</a>
-                    <a href="<?= home_url('/me-account'); ?>">פרטי מנוי</a>
+                    <a href="<?= get_permalink(350); ?>">עריכת פרטים</a>
+                    <a href="<?= get_permalink(353); ?>">פרטי מנוי</a>
                     <a href="<?= wp_logout_url(); ?>" style="color: var(--red);">התנתק</a>
 
                 </div>
@@ -165,6 +165,7 @@ if ($pro_custom_background) {
         <?= svg_icon('profile', null, null, 19, 19); ?> העתק לינק להוספת המלצה
     </div>
     <gap-s class="line"></gap-s>
+    <grid-2 class="share-links-grid gap-s">
     <a class="button green" target="_blank" href="https://api.whatsapp.com/send?text=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
         <?= svg_icon('whatsapp', null, null, 19, 19); ?> שתף בוואטסאפ
     </a>
@@ -180,6 +181,7 @@ if ($pro_custom_background) {
     <a class="button green" target="_blank" href="mailto:?subject=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה')); ?>&body=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
         <?= svg_icon('email', null, null, 19, 19); ?> שתף באימייל
     </a>
+    </grid-2>
 </div>
 
 
