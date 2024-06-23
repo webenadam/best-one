@@ -518,3 +518,63 @@ function add_readonly_and_disabled_to_text_field($field)
         'layout'  =>  'horizontal',
     ));
 }
+
+
+
+// Update "places" of pro based on "areas" and "child areas" upon saving
+function update_pros_places_terms($post_id) {
+    // Check if the post type is 'pros'
+    if (get_post_type($post_id) !== 'pros') {
+        return;
+    }
+
+    // Check if this is an autosave, a revision, or an update without saving
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    // Check user permissions
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    // Get the 'areas' taxonomy terms for the post
+    $areas_terms = wp_get_post_terms($post_id, 'areas');
+
+    // Initialize an array to hold all the combined terms
+    $combined_terms = [];
+
+    // Loop through each 'areas' term
+    foreach ($areas_terms as $term) {
+        // Get the 'area_child_areas' ACF field which is a taxonomy field
+        $child_areas = get_field('area_child_areas', 'areas_' . $term->term_id);
+
+        if (!empty($child_areas) && is_array($child_areas)) {
+            // Add the child areas to the combined terms array
+            $combined_terms = array_merge($combined_terms, $child_areas);
+        }
+    }
+
+    // Initialize an array to hold all the 'places' terms
+    $places_terms = [];
+
+    // Loop through each combined term
+    foreach ($combined_terms as $term_id) {
+        // Get the 'area_child_places' ACF field which is a taxonomy field
+        $child_places = get_field('area_child_places', 'areas_' . $term_id);
+
+        if (!empty($child_places) && is_array($child_places)) {
+            // Add the child places to the places terms array
+            $places_terms = array_merge($places_terms, $child_places);
+        }
+    }
+
+    // Remove duplicate terms
+    $places_terms = array_unique($places_terms);
+
+    // Assign the 'places' terms to the 'pros' post
+    wp_set_post_terms($post_id, $places_terms, 'places');
+}
+
+// Hook into the save_post action
+add_action('save_post', 'update_pros_places_terms');
