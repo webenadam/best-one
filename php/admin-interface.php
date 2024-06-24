@@ -80,13 +80,13 @@ add_action('admin_head', 'pros_admin_columns_styles');
 // Function to export custom taxonomy terms
 function export_custom_taxonomy_terms()
 {
-    if (isset($_GET['export_terms'])) {
-        $taxonomy = 'areas';
+    if (isset($_GET['export_terms']) && isset($_GET['taxonomy'])) {
+        $taxonomy = sanitize_text_field($_GET['taxonomy']);
         $terms = get_terms(array('taxonomy' => $taxonomy, 'hide_empty' => false));
 
         if (!empty($terms) && !is_wp_error($terms)) {
             header('Content-Type: text/plain');
-            header('Content-Disposition: attachment; filename="taxonomy_terms.txt"');
+            header('Content-Disposition: attachment; filename="' . $taxonomy . '_terms.txt"');
 
             foreach ($terms as $term) {
                 echo $term->name . ' - ' . $term->term_id . PHP_EOL;
@@ -97,31 +97,34 @@ function export_custom_taxonomy_terms()
 }
 add_action('admin_init', 'export_custom_taxonomy_terms');
 
-// Add export button to admin menu
-function add_export_button_to_menu()
+// Add export button to each taxonomy terms list screen
+function add_export_button_to_taxonomy_screens()
 {
-    add_submenu_page(
-        'tools.php',
-        'Export Custom Taxonomy Terms',
-        'Export Terms',
-        'manage_options',
-        'export-terms',
-        'export_terms_page'
-    );
-}
-add_action('admin_menu', 'add_export_button_to_menu');
+    $taxonomies = get_taxonomies(array('public' => true), 'objects');
 
-// Display export button on admin page
-function export_terms_page()
+    foreach ($taxonomies as $taxonomy) {
+        add_action('admin_notices', function() use ($taxonomy) {
+            global $pagenow;
+            if ($pagenow == 'edit-tags.php' && isset($_GET['taxonomy']) && $_GET['taxonomy'] == $taxonomy->name) {
+                export_terms_button($taxonomy->name);
+            }
+        });
+    }
+}
+add_action('admin_menu', 'add_export_button_to_taxonomy_screens');
+
+// Display export button on taxonomy terms list page
+function export_terms_button($taxonomy)
 {
 ?>
-    <div class="wrap">
-        <h1>Export Custom Taxonomy Terms</h1>
-        <p>Click the button below to export your custom taxonomy terms.</p>
-        <a href="<?= esc_url(admin_url('tools.php?export_terms=1')); ?>" class="button button-primary">Export Terms</a>
+    <div class="notice notice-success is-dismissible">
+        <p>
+            <a href="<?= esc_url(admin_url('edit-tags.php?taxonomy=' . $taxonomy . '&export_terms=1')); ?>" class="button button-primary">Export <?= esc_html(ucfirst($taxonomy)); ?> Terms</a>
+        </p>
     </div>
 <?php
 }
+
 
 // Add custom columns to "areas" taxonomy list
 function add_custom_areas_columns($columns)
