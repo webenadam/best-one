@@ -1,0 +1,118 @@
+{
+    "key": "group_6684fdc98ea1f",
+    "title": "אלמנט - מייל",
+    "fields": [
+        {
+            "key": "field_6684fdc9efd85",
+            "label": "נושא",
+            "name": "mail_subject",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "readonly": 0,
+            "disabled": 0,
+            "maxlength": "",
+            "placeholder": "נושא",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6684fde7efd86",
+            "label": "תוכן",
+            "name": "mail_content",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_textarea_code": 0,
+            "maxlength": "",
+            "rows": 10,
+            "placeholder": "תוכן",
+            "new_lines": "br"
+        },
+        {
+            "key": "field_6684fe41efd87",
+            "label": "סוג תוכן",
+            "name": "mail_type",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "Plain Text",
+            "ui_off_text": "Html",
+            "ui": 1,
+            "placeholder": "סוג תוכן"
+        },
+        {
+            "key": "field_6684fe6fefd88",
+            "label": "קובץ מצורף",
+            "name": "mail_attachmnet_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "uploader": "basic",
+            "return_format": "id",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "",
+            "library": "all",
+            "placeholder": "קובץ מצורף"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1719992219
+}
