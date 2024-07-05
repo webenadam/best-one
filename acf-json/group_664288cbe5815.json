@@ -630,6 +630,259 @@
             "append": ""
         },
         {
+            "key": "field_6687e6f0b17f9",
+            "label": "מנוי וקידום",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "acfe_permissions": "",
+            "selected": 0,
+            "placeholder": "מנוי וקידום"
+        },
+        {
+            "key": "field_6687e707b17fa",
+            "label": "מנויים וקידומים",
+            "name": "ad_subscriptions",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_repeater_stylised_button": 1,
+            "layout": "table",
+            "pagination": 0,
+            "acfe_settings": "",
+            "min": 0,
+            "max": 0,
+            "acfe_permissions": "",
+            "collapsed": "",
+            "button_label": "הוספת שורה חדשה",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6687e781b17fb",
+                    "label": "סוג מנוי",
+                    "name": "ad_subscription_type",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "חבילת פרסום": "חבילת פרסום",
+                        "מומלצי תחום": "מומלצי תחום"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "allow_null": 0,
+                    "acfe_permissions": "",
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "סוג מנוי",
+                    "allow_custom": 0,
+                    "search_placeholder": "",
+                    "parent_repeater": "field_6687e707b17fa"
+                },
+                {
+                    "key": "field_6687e843b17fd",
+                    "label": "חבילה",
+                    "name": "ad_subscription_advertise_plan",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6687e781b17fb",
+                                "operator": "==",
+                                "value": "חבילת פרסום"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "פרסום בסיסי": "פרסום בסיסי"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "allow_null": 0,
+                    "acfe_permissions": "",
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "חבילה",
+                    "allow_custom": 0,
+                    "search_placeholder": "",
+                    "parent_repeater": "field_6687e707b17fa"
+                },
+                {
+                    "key": "field_6687e80bb17fc",
+                    "label": "תחום",
+                    "name": "ad_subscription_expert_term",
+                    "aria-label": "",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6687e781b17fb",
+                                "operator": "==",
+                                "value": "מומלצי תחום"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "expert",
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "acfe_permissions": "",
+                    "bidirectional": 0,
+                    "multiple": 0,
+                    "bidirectional_target": [],
+                    "placeholder": "תחום",
+                    "parent_repeater": "field_6687e707b17fa"
+                },
+                {
+                    "key": "field_6687ea1b229d0",
+                    "label": "מסלול תשלום",
+                    "name": "ad_subscription_pay_plan",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6687e781b17fb",
+                                "operator": "==",
+                                "value": "חבילת פרסום"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "חודשי (499 ₪ לחודש)": "חודשי (499 ₪ לחודש)",
+                        "חצי שנתי (349 ₪ לחודש)": "חצי שנתי (349 ₪ לחודש)",
+                        "שנתי (249 ₪ לחודש)": "שנתי (249 ₪ לחודש)"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "allow_null": 0,
+                    "acfe_permissions": "",
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "מסלול תשלום",
+                    "allow_custom": 0,
+                    "search_placeholder": "",
+                    "parent_repeater": "field_6687e707b17fa"
+                },
+                {
+                    "key": "field_6687e8a6b17fe",
+                    "label": "תאריך התחלה",
+                    "name": "ad_subscription_start_date",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "readonly": 1,
+                    "disabled": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "placeholder": "תאריך התחלה",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6687e707b17fa"
+                },
+                {
+                    "key": "field_6687e8c8b17ff",
+                    "label": "תאריך סיום",
+                    "name": "ad_subscription_end_date",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "readonly": 1,
+                    "disabled": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "placeholder": "תאריך סיום",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6687e707b17fa"
+                }
+            ],
+            "placeholder": "מנויים וקידומים"
+        },
+        {
             "key": "field_665f5b07ca62a",
             "label": "הגדרות נוספות",
             "name": "",
@@ -808,5 +1061,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1719991635
+    "modified": 1720183430
 }
