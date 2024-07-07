@@ -26,6 +26,7 @@ if ($query->have_posts()) {
                 <div class="subscription-features bottom-gap-l">
                     <style>
                         h4.check {
+                            color: var(--blue);
                             font-weight: 700;
                             font-size: var(--font-s);
                             width: 300px;
