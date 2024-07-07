@@ -19,7 +19,7 @@ select, input {
   height: 46px;
 }
 
-select, input, textarea {
+select, input::not([type="submit"]), textarea {
   border: 1px solid var(--gray);
   padding: 10px 20px;
   border-radius: var(--radius-s);
@@ -59,15 +59,16 @@ select {
   cursor: pointer;
 }
 
-/* BUTTONS */
-
+/* Adjusted gradient for buttons with angled gradients and predominant dark blue color */
 .button {
   display: inline-block;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
   color: white;
-  background-color: var(--blue);
+  background: linear-gradient(135deg, var(--blue) 30%, var(--dark-blue) 100%);
+  background-size: 400% 400%;
+  background-position: 100% 50%;
   padding: 10px 20px;
   border-radius: var(--radius-s);
   height: 46px;
@@ -75,7 +76,7 @@ select {
   font-size: var(--font-s);
   font-weight: var(--font-w-600);
   text-wrap: nowrap;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .button.big {
@@ -83,7 +84,7 @@ select {
 }
 
 .button:hover {
-  background-color: var(--dark-blue);
+  background-position: 0% 50%;
 }
 
 .button.dark {
@@ -113,6 +114,40 @@ select {
 .button.green:hover {
   background-color: var(--dark-green);
 }
+
+/* Spark class with angle and animation */
+  
+
+@keyframes spark-animation {
+  0%, 100% {
+    background-position: 0% 25%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes spark-hover-animation {
+  0% {
+    background-position: 0% 25%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+/* Example for using gradient with animation */
+.button.spark {
+  background: linear-gradient(135deg, var(--dark-blue) 30%, var(--blue) 70%);
+  background-size: 400% 400%;
+  animation: spark-animation 2s infinite;
+}
+
+.button.spark:hover {
+  filter: brightness(1.1);
+}
+
+
 
 /* BOX */
 

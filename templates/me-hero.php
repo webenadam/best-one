@@ -136,7 +136,7 @@ if ($pro_custom_background) {
                         </data>
                     </bottom-bottom>
                 </bottom>
-                <div lightbox-type="content" lightbox-content="#share-pop" class="button"><span style="vertical-align: -4px; margin-left:13px;"><?= svg_icon('share', null, null, 19, 19); ?></span>שתף את העמוד שלך</div>
+                <div lightbox-type="content" lightbox-content="#share-pop" class="button spark"><span style="vertical-align: -4px; margin-left:13px;"><?= svg_icon('share', null, null, 19, 19); ?></span>שתף את העמוד שלך</div>
             </div>
         </div>
     </inner>
