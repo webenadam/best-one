@@ -1,6 +1,42 @@
 <?php get_header(); ?>
 
-<style>
+<?php
+$current_user_id = get_current_user_id();
+$args = array(
+    'post_type' => 'pros',
+    'author' => $current_user_id,
+    'posts_per_page' => 1,
+);
+
+$query = new WP_Query($args);
+$pro_subscribed = false;  // Default to false
+$pro_subscription = false; // Default to false
+
+// Check if the current user has an active subscription
+if ($query->have_posts()) {
+    $query->the_post();
+    $pro_post_id = $query->post->ID;
+
+    if (have_rows('ad_subscriptions', $pro_post_id)) {
+        while (have_rows('ad_subscriptions', $pro_post_id)) {
+            the_row();
+            $end_date = get_sub_field('ad_subscription_end_date');
+            $date_object = DateTime::createFromFormat('d/m/Y', $end_date);
+            $current_date = new DateTime('now');
+
+            if ($date_object >= $current_date) {
+                $pro_subscribed = true;
+                $pro_subscription = get_sub_field('ad_subscription_advertise_plan')['label'];
+                break;  // Stop the loop if a valid subscription is found
+            }
+        }
+    }
+    ?>
+
+    <?php get_template_part('templates/me-hero', null, array('pro_post_id' => $pro_post_id, 'page_title' => 'פרטי מנוי')) ?>
+
+
+    <style>
     h4.check {
         color: var(--blue);
         font-weight: 700;
@@ -74,24 +110,9 @@
     }
 </style>
 
-<?php
-$current_user_id = get_current_user_id();
-$args = array(
-    'post_type' => 'pros',
-    'author' => $current_user_id,
-    'posts_per_page' => 1,
-);
-$query = new WP_Query($args);
-if ($query->have_posts()) {
-    $query->the_post();
-    $pro_post_id = $query->post->ID;
-?>
-
-    <?php get_template_part('templates/me-hero', null, array('pro_post_id' => $pro_post_id, 'page_title' => 'פרטי מנוי')) ?>
-
     <section id="about">
         <inner style="padding-left: 30%; padding-top:var(--gap-m); padding-bottom:860px;">
-            <div class="subscribe-status bottom-gap-m">מנוי נוכחי: <span style="color:var(--gray);">לא מפורסם</span></div>
+            <div class="subscribe-status bottom-gap-m">מנוי נוכחי: <?= $pro_subscribed ? '<span style="color:var(--gray);">לא מפורסם</span></div>' : '<span style="color:var(--blue);">'. $pro_subscription . '</span>'; ?></div>
             <!-- Subscription options -->
             <div class="box subscription border shadow-l bottom-gap-l">
                 <h2>חבילת פרסום בסיסי</h2>
