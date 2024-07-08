@@ -283,7 +283,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
       }
     </style>
     <h2 style="color:white;margin-bottom:0;">בעל מקצוע, רוצה לקבל חשיפה רצינית?</h2>
-    <span href="#" class="button light" style="width:220px;" lightbox-type="content" lightbox-content="#signin-signup-pop">פרסם עכשיו</span>
+    <span href="#" class="button spark" style="width:220px;" lightbox-type="content" lightbox-content="#signin-signup-pop">פרסם עכשיו</span>
   </inner>
 </section>
 

@@ -166,19 +166,19 @@ if ($pro_custom_background) {
     </div>
     <gap-s class="line"></gap-s>
     <grid-2 class="share-links-grid gap-s">
-    <a class="button green" target="_blank" href="https://api.whatsapp.com/send?text=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
+    <a class="button green" style="background:#00BF04;" target="_blank" href="https://api.whatsapp.com/send?text=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
         <?= svg_icon('whatsapp', null, null, 19, 19); ?> שתף בוואטסאפ
     </a>
-    <a class="button green" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($pro_post_id); ?>">
+    <a class="button green" style="background:#1773EA;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($pro_post_id); ?>">
         <?= svg_icon('facebook', null, null, 19, 19); ?> שתף בפייסבוק
     </a>
-    <a class="button green" target="_blank" href="https://twitter.com/intent/tweet?text=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
-        <?= svg_icon('twitter', null, null, 19, 19); ?> שתף בטוויטר
-    </a>
-    <a class="button green" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=<?= get_permalink($pro_post_id); ?>&title=<?= urlencode(get_the_title($pro_post_id)); ?>&summary=<?= urlencode('בדקו את המקצוען הזה'); ?>&source=YourWebsite">
+    <a class="button green" style="background:#0A63BC;" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=<?= get_permalink($pro_post_id); ?>&title=<?= urlencode(get_the_title($pro_post_id)); ?>&summary=<?= urlencode('בדקו את המקצוען הזה'); ?>&source=YourWebsite">
         <?= svg_icon('linkedin', null, null, 19, 19); ?> שתף בלינקדאין
     </a>
-    <a class="button green" target="_blank" href="mailto:?subject=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה')); ?>&body=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
+    <a class="button green" style="background:#1C96E8;" target="_blank" href="https://twitter.com/intent/tweet?text=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
+        <?= svg_icon('twitter', null, null, 19, 19); ?> שתף בטוויטר
+    </a>
+    <a class="button green" target="_blank" style="background:var(--dark-green);" href="mailto:?subject=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה')); ?>&body=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
         <?= svg_icon('email', null, null, 19, 19); ?> שתף באימייל
     </a>
     </grid-2>

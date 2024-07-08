@@ -76,7 +76,7 @@ select {
   font-size: var(--font-s);
   font-weight: var(--font-w-600);
   text-wrap: nowrap;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .button.big {
@@ -108,12 +108,12 @@ select {
 }
 
 .button.green {
-  background-color: var(--green);
+  background: linear-gradient(135deg, var(--green) 20%, var(--dark-green) 100%);
 }
 
-.button.green:hover {
+/* .button.green:hover {
   background-color: var(--dark-green);
-}
+} */
 
 /* Spark class with angle and animation */
   
@@ -138,12 +138,11 @@ select {
 
 /* Example for using gradient with animation */
 .button.spark {
-  background: linear-gradient(135deg, var(--dark-blue) 30%, var(--blue) 70%);
   background-size: 400% 400%;
   animation: spark-animation 2s infinite;
 }
 
-.button.spark:hover {
+.button:hover, .button.spark:hover {
   filter: brightness(1.1);
 }
 
