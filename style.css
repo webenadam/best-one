@@ -19,7 +19,7 @@ select, input {
   height: 46px;
 }
 
-select, input::not([type="submit"]), textarea {
+select, input:not([type="submit"]), textarea {
   border: 1px solid var(--gray);
   padding: 10px 20px;
   border-radius: var(--radius-s);
