@@ -14,11 +14,11 @@ $total_pros = wp_count_posts('pros')->publish;
   }
 
   #hero h1 {
-    width: 450px;
+    width: 446px;
   }
 
   #hero p {
-    width: 480px;
+    width: 540px;
   }
 
   #hero .search-form {
@@ -68,10 +68,8 @@ $total_pros = wp_count_posts('pros')->publish;
 
   <inner class="relative flex align-center mobile-flex-column">
     <div class="right" style="z-index:1;">
-      <h1 class="title bottom-gap-m">מצא את בעל המקצוע הטוב ביותר עבורך!</h1>
-      <p class="subtitle">
-        בעלי המקצוע הטובים ביותר מרוכזים במקום אחד, קל ונוח לחיפוש, כך שלא
-        צריך להתרוצץ. מצאתם.
+      <h1 class="title bottom-gap-xs">הפורטל המוביל למומחי נדל״ן פיננסים ושמאות בישראל</h1>
+      <p class="subtitle bottom-gap-l">הפלטפורמה שלך לבחירת אנשי המקצוע הטובים ביותר בתחום
       </p>
       <div class="search-form_parent-container">
         <div class="flex mobile-flex-column search-form background-blue radius-s bottom-gap-xs">
