@@ -99,6 +99,7 @@ select {
 
 .button.light {
   color: var(--black);
+  background:unset;
   background-color: white;
 }
 
@@ -160,10 +161,23 @@ box, .box {
   padding: var(--gap-m);
   box-sizing: border-box;
   overflow: hidden;
+  border: 1px solid var(--light-gray);
+  box-shadow: var(--shadow-l);
 }
 
-.box.border {
-  border: 1px solid var(--light-gray);
+box.no-border, .box.no-border {
+  border:unset;
+}
+
+box.no-shadow, .box.no-shadow {
+  box-shadow:unset;
+}
+
+box.stripes, .box.stripes {
+  background-image:url('img/stripes.png'); ?>');
+  background-position: bottom right;
+  background-size: 120%;
+  background-repeat: no-repeat;
 }
 
 
@@ -177,7 +191,7 @@ avatar-xl {
   display: block;
   background-size: cover;
   background-color: var(--soft-background);
-  border-radius: 50%;
+  border-radius: 8px;
 }
 
 avatar-s {
@@ -186,13 +200,13 @@ avatar-s {
 }
 
 avatar {
-  height: 64px;
-  width: 64px;
+  height: 73px;
+  width: 73px;
 }
 
 avatar-l {
-  height: 70px;
-  width: 70px;
+  height: 75px;
+  width: 75px;
 }
 
 avatar-xl {

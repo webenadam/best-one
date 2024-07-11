@@ -22,7 +22,7 @@ function pro_review($post_id, $dark = false)
     }
 
     // Add dark class if the dark option is set to true
-    $box_class = $dark ? 'shadow-l dark' : 'shadow-l';
+    $box_class = $dark ? 'dark' : '';
 
     // Dark mode borders
     $borders_color = $dark ? 'var(--light-gray)' : 'var(--soft-background)';

@@ -75,7 +75,7 @@ if ($pro_custom_background) {
         </style>
         <div class="left">
             <span class="hide-mobile" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
-            <div class="box border shadow-l" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
+            <div class="box" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
                 <div class="profile-image-wrap relative" style="text-align: center;">
                 <h2 class="hide-desktop" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
                 <h3 class="hide-desktop" style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
@@ -85,9 +85,9 @@ if ($pro_custom_background) {
                         $featured_image = get_avatar_url($current_user_id);
                     }
                     ?>
-                    <img src="<?= $featured_image; ?>" alt="Profile Picture" style="width: 247px; height: 247px; max-width: 40vw; max-height: 40vw; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
-                    <span class="absolute" style="bottom: 0; left: -10px"><?= svg_icon('circles'); ?></span>
-                    <span class="absolute" style="bottom: 44px; right: 12px;"><?= svg_icon('twirl'); ?></span>
+                    <img src="<?= $featured_image; ?>" alt="Profile Picture" style="width: 304px;height: 247px;max-width: 60vw;max-height: 44vw;border-radius: 8px;margin-bottom: 15px;object-fit: cover;">
+                    <span class="absolute" style="bottom: -28px; left: -17px"><?= svg_icon('circles'); ?></span>
+                    <span class="absolute" style="bottom: 144px; right: -5px;"><?= svg_icon('twirl'); ?></span>
 
 
                 </div>

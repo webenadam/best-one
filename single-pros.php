@@ -133,7 +133,7 @@ if ($pro_custom_background) {
                 }
             </style>
             <div>
-                <div id="stats-box" class="box border flex no-padding shadow-l" style="width: 550px; height: 90px; float:right;margin-left:30px;">
+                <div id="stats-box" class="box flex no-padding" style="width: 550px; height: 90px; float:right;margin-left:30px;">
                     <div class="stat-item">
                         <p class="stat-label"><a href="#reviews">המלצות</a></p>
                         <p class="stat-value"><?= get_field('pro_recommended_count'); ?></p>
@@ -182,7 +182,7 @@ if ($pro_custom_background) {
                 }
             </style>
             <span class="hide-tablet" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
-            <div class="box border shadow-l" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
+            <div class="box" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
                 <div class="profile-image-wrap relative" style="text-align: center;">
                     <img src="<?= get_the_post_thumbnail_url() ?>" alt="Profile Picture" style="width: 247px; height: 247px; max-width: 45vw; max-height: 45vw; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
                     <span class="absolute" style="bottom: 0; left: -10px"><?= svg_icon('circles'); ?></span>
@@ -215,7 +215,7 @@ if ($pro_custom_background) {
                     }
                     ?>
                 </div>
-                <div id="stats-box" class="box border flex no-padding shadow-l hide-desktop mobile bottom-gap-s" style="width: 90%;">
+                <div id="stats-box" class="box flex no-padding hide-desktop mobile bottom-gap-s" style="width: 90%;">
                     <div class="stat-item">
                         <p class="stat-label"><a href="#reviews">המלצות</a></p>
                         <p class="stat-value"><?= get_field('pro_recommended_count'); ?></p>
@@ -330,7 +330,7 @@ if ($pro_custom_background) {
                         $image_url = wp_get_attachment_image_url($image_id, 'full');
                         $image_thumb = wp_get_attachment_image_url($image_id, array(300, 300));
                 ?>
-                        <div class="box border certificate-box shadow-l float-up" lightbox-type="image" lightbox-content="<?= esc_url($image_url); ?>" style="padding:var(--gap-s); max-width: min(100%, 300px);">
+                        <div class="box certificate-box float-up" lightbox-type="image" lightbox-content="<?= esc_url($image_url); ?>" style="padding:var(--gap-s); max-width: min(100%, 300px);">
                             <div class="cert_img radius-s bottom-gap-xs" style="height:300px;background-image: url('<?= esc_url($image_thumb); ?>');background-size:cover;background-position:top center"></div>
                             <h5><?= esc_attr($certificate['pro_cert_title']); ?></h5>
                         </div>

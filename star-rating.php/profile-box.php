@@ -31,7 +31,7 @@ function profile_box($post_id, $dark = false)
     $expertise = ($expertise_terms && !is_wp_error($expertise_terms)) ? $expertise_terms : array();
 
     // Add dark class if the dark option is set to true
-    $box_class = $dark ? 'profile-box shadow-l flex-column float-up dark' : 'profile-box shadow-l flex-column float-up';
+    $box_class = $dark ? 'profile-box flex-column float-up dark' : 'profile-box flex-column float-up';
 
     // Dark mode borders
     $borders_color = $dark ? 'var(--light-gray)' : 'var(--soft-background)';

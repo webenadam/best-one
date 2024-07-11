@@ -31,7 +31,7 @@ function profile_box($pro_post_id, $dark = false, $featured = false)
     $expertise = ($expertise_terms && !is_wp_error($expertise_terms)) ? $expertise_terms : array();
 
     // Set basic classes
-    $box_class = 'profile-box shadow-l flex-column float-up';
+    $box_class = 'profile-box flex-column float-up';
 
     // Add dark class if the dark option is set to true
     if ($dark) {
@@ -48,7 +48,7 @@ function profile_box($pro_post_id, $dark = false, $featured = false)
     $borders_width = $dark ? '1px' : '2px';
 
 ?>
-    <box class="<?= esc_attr($box_class); ?>">
+    <box class="<?= esc_attr($box_class); ?> stripes">
         <a href="<?= get_permalink($pro_post_id); ?>" class="absolute" style="top: 20px; left: 20px">
             <?php if ($featured) {
                 echo svg_icon('link', "#473BF0");
@@ -66,7 +66,7 @@ function profile_box($pro_post_id, $dark = false, $featured = false)
     top: -1px;
     right: -7px;
 "><?= svg_icon('trophy'); ?></span>
-                    <avatar-l style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar-l>
+                    <avatar style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar>
                 <?php } ?>
             </a>
             <datas style="margin-bottom: 30px">
