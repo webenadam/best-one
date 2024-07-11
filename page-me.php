@@ -30,24 +30,8 @@ if ($query->have_posts()) {
 ?>
 
     <?php get_template_part('templates/me-hero', null, array('pro_post_id' => $pro_post_id, 'page_title' => 'עריכת פרטים')) ?>
-    <style>
-        #about inner {
-            padding-left: 370px;
-            padding-top: var(--gap-m);
-            padding-bottom: 160px;
-        }
-
-        @media (max-width: 780px) {
-            #about {
-                padding-top: 0;
-            }
-
-            #about inner {
-                padding-left: 2%;
-            }
-        }
-    </style>
-    <section id="about">
+    
+    <section id="edit-form" class="main-content">
         <inner>
             <?php acfe_form('edit-pro', array(
                 'post_id' => $pro_post_id

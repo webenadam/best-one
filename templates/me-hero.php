@@ -55,6 +55,24 @@ if ($pro_custom_background) {
             background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$thumbnail_image_url}')" : "url('{$thumbnail_image_url}')" ?>;
         }
     }
+
+    
+        .main-content inner {
+            padding-left: 370px;
+            padding-top: var(--gap-m);
+            padding-bottom: 160px;
+        }
+
+        @media (max-width: 780px) {
+            .main-content {
+                padding-top: 0;
+            }
+
+            .main-content inner {
+                padding-left: 2%;
+            }
+        }
+    
 </style>
 
 <section id="hero" class="header-padding">

@@ -542,7 +542,7 @@ gap-s.line::before, gap-m.line::before, gap-l.line::before {
 
 /* MEDIA QUERIES */
 
-@media (min-width: 781px) {
+@media (min-width: 780px) {
   .hide-desktop {
     display: none !important;
   }

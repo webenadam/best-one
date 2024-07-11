@@ -112,6 +112,10 @@ select {
   background: linear-gradient(135deg, var(--green) 20%, var(--dark-green) 100%);
 }
 
+.button.full-width {
+  width:100%;
+}
+
 /* .button.green:hover {
   background-color: var(--dark-green);
 } */
@@ -153,7 +157,6 @@ select {
 
 box, .box {
   background: white;
-  display: block;
   position: relative;
   border-radius: var(--radius-s);
   min-height: 40px;
