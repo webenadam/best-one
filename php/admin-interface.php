@@ -230,3 +230,11 @@ function global_admin_custom_styles() {
     }
 
 add_action('admin_head', 'global_admin_custom_styles');
+
+function change_pending_label($translated_text, $text, $domain) {
+    if ($text === 'Pending Review' && $domain === 'default') {
+        $translated_text = 'מאושר (טרם פורסם)';
+    }
+    return $translated_text;
+}
+add_filter('gettext', 'change_pending_label', 20, 3);

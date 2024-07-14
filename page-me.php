@@ -7,6 +7,7 @@ $args = array(
     'post_type' => 'pros',
     'author' => $current_user_id,
     'posts_per_page' => 1,
+    'post_status'    => 'any'
 );
 
 // Pro post (pro profile)

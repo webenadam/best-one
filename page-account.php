@@ -6,13 +6,12 @@ $args = array(
     'post_type' => 'pros',
     'author' => $current_user_id,
     'posts_per_page' => 1,
+    'post_status'    => 'any'
 );
 
 $query = new WP_Query($args);
 $pro_subscribed = false;  // Default to false
 $pro_subscription = false; // Default to false
-
-
 
 
 // Check if the current user has an active subscription
