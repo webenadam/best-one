@@ -177,7 +177,7 @@ box.no-shadow, .box.no-shadow {
 }
 
 box.stripes, .box.stripes {
-  background-image:url('img/stripes.png'); ?>');
+  background-image:url('img/stripes.png'); ?>;
   background-position: bottom right;
   background-size: 120%;
   background-repeat: no-repeat;
@@ -1517,4 +1517,14 @@ flex-direction: column;
 .acf-form-submit .acf-spinner {
   margin-top: 11px;
   margin-right: 17px;
+}
+
+.check::before {
+  content: '';
+  display: inline-block;
+  background-image: <?= svg_icon('circle_check', null, null, null, null, true); ?>;
+  margin-left: 13px;
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
 }

@@ -253,10 +253,14 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
       <p class="bottom-gap-s">באתר BEST1 תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
       <grid class="grid-2 gap-s">
         <style>
-          #features h3.check::before {
-            content: url('data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2218%22%20height%3D%2213%22%20viewBox%3D%220%200%2018%2013%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M6.57216%2012.4615C6.2614%2012.4615%205.95124%2012.3449%205.71392%2012.1109L0%206.47876L1.71648%204.78623L6.57216%209.57245L16.2835%200L18%201.69253L7.4304%2012.1109C7.19308%2012.3449%206.88292%2012.4615%206.57216%2012.4615Z%22%20fill%3D%22%23473BF0%22%20%2F%3E%0A%3C%2Fsvg%3E');
+          .check::before {
+            content: '';
+            display: inline-block;
+            background-image: <?= svg_icon('circle_check', null, null, null, null, true); ?>;
             margin-left: 13px;
-
+            height: 30px;
+            width: 30px;
+            vertical-align: middle;
           }
         </style>
         </style>
@@ -336,9 +340,10 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
         padding: var(--gap-s);
       }
 
-      #we-here h2, #we-here .desc {
+      #we-here h2,
+      #we-here .desc {
         text-align: center;
-        margin:auto;
+        margin: auto;
       }
     }
   </style>

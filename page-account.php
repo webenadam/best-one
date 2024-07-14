@@ -12,6 +12,9 @@ $query = new WP_Query($args);
 $pro_subscribed = false;  // Default to false
 $pro_subscription = false; // Default to false
 
+
+
+
 // Check if the current user has an active subscription
 if ($query->have_posts()) {
     $query->the_post();
@@ -37,28 +40,35 @@ if ($query->have_posts()) {
 
 
     <style>
-        h4.check {
+        .term-subscription h2 span {
+            color:var(--blue);
+        }
+        .check {
+            display: flex;
             color: var(--blue);
             font-weight: 700;
             font-size: var(--font-s);
             position: relative;
-            padding-right: var(--gap-m);
+            margin-right: var(--gap-m);
             max-width: 90%;
         }
 
-        h4.check:not(:nth-child(3)) {
+        .check:not(:nth-child(3)) {
             width: 580px;
         }
 
-        .term-subscription h4.check {
+        .term-subscription .check {
             width: auto;
         }
 
-        h4.check::before {
-            content: url('data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2218%22%20height%3D%2213%22%20viewBox%3D%220%200%2018%2013%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M6.57216%2012.4615C6.2614%2012.4615%205.95124%2012.3449%205.71392%2012.1109L0%206.47876L1.71648%204.78623L6.57216%209.57245L16.2835%200L18%201.69253L7.4304%2012.1109C7.19308%2012.3449%206.88292%2012.4615%206.57216%2012.4615Z%22%20fill%3D%22%23473BF0%22%20%2F%3E%0A%3C%2Fsvg%3E');
-            position: absolute;
-            top: 0;
-            right: 0;
+        .check::before {
+            content: '';
+            display: block;
+            background-image: <?= svg_icon('circle_check', null, null, null, null, true); ?>;
+            height: 30px;
+            width: 30px;
+            min-width: 30px;
+            /* for mobile flex issue */
         }
 
 
@@ -71,17 +81,25 @@ if ($query->have_posts()) {
             text-align: center;
         }
 
+        .payment-plans .plan.featured {
+            position: relative;
+        }
 
-        .payment-plans .plan-title.featured::after {
+        .payment-plans .plan.featured::after {
             content: 'המומלץ ביותר!';
             position: absolute;
-            top: -20px;
+            top: 0;
             right: 0px;
             left: 0;
+            margin: auto;
             font-size: var(--font-xs);
             font-weight: 500;
             color: var(--blue);
             text-align: center;
+            background: var(--soft-background);
+            width: 170px;
+            padding-bottom: 2px;
+            border-radius: 0px 0px var(--radius-s) var(--radius-s);
         }
 
         .payment-plans .plan-price::before {
@@ -106,6 +124,7 @@ if ($query->have_posts()) {
         .box.subscription::after {
             content: '';
             background-image: url('<?= theme_uri('/img/man2.png'); ?>');
+            pointer-events: none;
             position: absolute;
             bottom: -17px;
             left: -44px;
@@ -118,23 +137,26 @@ if ($query->have_posts()) {
 
         @media (max-width: 550px) {
             .subscribe-status {
-                text-align:center;
+                text-align: center;
             }
+
             .box.subscription::after {
                 bottom: -17px;
                 left: -84px;
                 height: 292px;
             }
+
             h4.check:last-child,
             h4.check:nth-last-child(2) {
-            width: 60%;
-        }
+                width: 60%;
+            }
         }
     </style>
 
     <section id="subscriptions" class="main-content">
         <inner>
-            <div class="subscribe-status bottom-gap-m">מנוי נוכחי: <?= $pro_subscribed ? '<span style="color:var(--gray);">לא מפורסם</span></div>' : '<span style="color:var(--blue);">' . $pro_subscription . '</span>'; ?></div>
+            <div class="subscribe-status bottom-gap-m">מנוי נוכחי: <?= $pro_subscribed ? '<span style="color:var(--blue);">' . $pro_subscription . '</span>' : '<span style="color:var(--gray);">לא מפורסם</span></div>'; ?></div>
+            <?php if (!$pro_subscribed) { ?>
             <!-- Subscription options -->
             <div class="box stripes subscription bottom-gap-l">
                 <style>
@@ -178,8 +200,8 @@ if ($query->have_posts()) {
                         <tag class="plan-saving">חסכון של ₪600</tag>
                         <div class="plan-button" style="align-self: stretch;"><a class="button green full-width">פרסם עכשיו</a></div>
                     </div>
-                    <div class="box stripes plan flex-column gap-s align-center">
-                        <div class="plan-title featured">שנתי</div>
+                    <div class="box stripes plan flex-column gap-s align-center featured">
+                        <div class="plan-title">שנתי</div>
                         <div class="plan-price">249</div>
                         <tag class="plan-saving">חסכון של ₪3108</tag>
                         <div class="plan-button" style="align-self: stretch;"><a class="button full-width spark">פרסם עכשיו!</a></div>
@@ -189,7 +211,7 @@ if ($query->have_posts()) {
 
                 <div class="subscription-features bottom-gap-l">
 
-                    <div class="flex-column gap-s">
+                    <div class="flex-column gap-m">
                         <h4 class="check">דף עסק דיגיטלי מעוצב, עם כל המידע החשוב על העסק שלך ועליך</h4>
                         <h4 class="check">נוכחות בולטת ברשת מטורפת לגולשים שמחפשים אותך</h4>
                         <h4 class="check">ממשק לעדכון עצמאי של דף העסק הכולל ציונים על איכות הפרסום שלך + הצעות לשיפור ויעול</h4>
@@ -203,24 +225,91 @@ if ($query->have_posts()) {
 
 
             </div>
+            <?php } else { ?>
 
 
             <!--Term Subscription options -->
-            <div class="box term-subscription bottom-gap-l">
-                <h2>קידום למומלצים בתחום שמאי</h2>
+            <?php
+            // Get the terms for the 'expert' taxonomy
+$terms = get_the_terms($pro_post_id, 'expert');
+
+if ($terms && !is_wp_error($terms)) {
+    
+    foreach ($terms as $term) { ?>
+
+
+<div class="box stripes subscription term-subscription bottom-gap-l">
+                <style>
+                    @media (max-width: 550px) {
+
+                        .box.subscription h2,
+                        .box.subscription p {
+                            text-align: center;
+                        }
+                    }
+                </style>
+                <h2>קידום למומלצים בתחום <span><?= esc_html($term->name); ?></span></h2>
                 <p class="bottom-gap-m">
                     תבלוט בתחום שלך. תהיה ראשון. תקבל את הלקוחות ראשון.
                 </p>
+
+                <div class="payment-plans grid-3 bottom-gap-m">
+                    <div class="dots_ico absolute" style="top: 330px;left: -26px;">
+                        <?= svg_icon('dots'); ?>
+                    </div>
+                    <style>
+                        @media (max-width: 550px) {
+
+                            #subscriptions .dots_ico {
+                                top: 630px !important;
+                            }
+                        }
+                    </style>
+                    <div class="sauqre_ico absolute" style="top: 230px;right: -126px;">
+                        <?= svg_icon('square'); ?>
+                    </div>
+                    <div class="box stripes plan flex-column gap-s align-center">
+                        <div class="plan-title">חודשי</div>
+                        <div class="plan-price">499</div>
+                        <tag class="plan-saving empty">-</tag>
+                        <div class="plan-button" style="align-self: stretch;"><a class="button green full-width">קדם עכשיו</a></div>
+                    </div>
+                    <div class="box stripes plan flex-column gap-s align-center">
+                        <div class="plan-title">חצי שנתי</div>
+                        <div class="plan-price">399</div>
+                        <tag class="plan-saving">חסכון של ₪600</tag>
+                        <div class="plan-button" style="align-self: stretch;"><a class="button green full-width">קדם עכשיו</a></div>
+                    </div>
+                    <div class="box stripes plan flex-column gap-s align-center featured">
+                        <div class="plan-title">שנתי</div>
+                        <div class="plan-price">249</div>
+                        <tag class="plan-saving">חסכון של ₪3108</tag>
+                        <div class="plan-button" style="align-self: stretch;"><a class="button full-width spark">קדם עכשיו!</a></div>
+                    </div>
+                </div>
+
+
                 <div class="subscription-features bottom-gap-l">
+
                     <div class="flex-column gap-m">
-                        <h4 class="check">הופעה במומלצים בדפי התחום ״שמאי״</h4>
+                        <h4 class="check">הופעה במומלצים בדפי התחום ״<?= esc_html($term->name); ?>״</h4>
+                        <h4 class="check">ראשון בכל תוצאות החיפושים בתחום ״<?= esc_html($term->name); ?>״</h4>
                         <h4 class="check">הופעה במומלצים בדף הבית</h4>
-                        <h4 class="check">ראשון בכל תוצאות החיפושים בתחום ״שמאי״</h4>
                     </div>
                 </div>
 
 
             </div>
+
+
+
+
+
+<?php
+    }
+    }
+} ?>
+        
 
 
 
