@@ -179,7 +179,7 @@ if ($pro_custom_background) {
                 
             </style>
      <div class="sharing-links">
-    <div class="button" copy="<?= site_url('/add-review/?pro=' . $pro_post_id); ?>">
+    <div class="button copythis" copythis="<?= site_url('/add-review/?pro=' . $pro_post_id); ?>" copy-notice="לינק להוספת המלצה הועתק">
         <?= svg_icon('profile', null, null, 19, 19); ?> העתק לינק להוספת המלצה
     </div>
     <gap-s class="line"></gap-s>

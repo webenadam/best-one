@@ -43,7 +43,7 @@
         {
             "key": "field_6684fd8a771e7",
             "label": "מייל הצעה מוגבלת להרשמה חינם",
-            "name": "temp_free_subscribe",
+            "name": "mail_temp_free_subscribe",
             "aria-label": "",
             "type": "clone",
             "instructions": "",
@@ -90,7 +90,7 @@
         {
             "key": "field_66850140bceee",
             "label": "מייל תזכורת להשלמת פרופיל",
-            "name": "free_subscribe_reminder",
+            "name": "mail_free_subscribe_reminder",
             "aria-label": "",
             "type": "clone",
             "instructions": "",
@@ -183,8 +183,8 @@
         },
         {
             "key": "field_6693cb11044fd",
-            "label": "מייל ברוכים הבאים לבעל מקצוע שנרשם (copy)",
-            "name": "pro_approved_mail",
+            "label": "מייל ברוכים הבאים לבעל מקצוע שאושר לפרסום",
+            "name": "mail_pro_approved",
             "aria-label": "",
             "type": "clone",
             "instructions": "",
@@ -207,7 +207,7 @@
             "acfe_clone_modal_close": 0,
             "acfe_clone_modal_button": "",
             "acfe_clone_modal_size": "large",
-            "placeholder": "מייל ברוכים הבאים לבעל מקצוע שנרשם (copy)"
+            "placeholder": "מייל ברוכים הבאים לבעל מקצוע שאושר לפרסום"
         },
         {
             "key": "field_668500e3bceec",
@@ -819,5 +819,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1720961843
+    "modified": 1721026260
 }

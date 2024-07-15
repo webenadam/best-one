@@ -234,7 +234,7 @@ if ($query->have_posts()) {
                 score += 5;
                 checkedList += `<span class="checked">יש לפחות ביקורת לקוחות אחת</span>`;
             } else {
-                uncheckedList += `<span class="unchecked">אין ביקורות לקוחות עדיין.  <span style="margin-right:5px;text-decoration:underline;" copy="<?= site_url('/add-review/?pro=' . $pro_post_id); ?>">העתק לינק להוספת המלצה.</span>  </span>`;
+                uncheckedList += `<span class="unchecked">אין ביקורות לקוחות עדיין.  <span class="copythis" style="margin-right:5px;text-decoration:underline;" copythis="<?= site_url('/add-review/?pro=' . $pro_post_id); ?>" copy-notice="לינק להוספת המלצה הועתק">העתק לינק להוספת המלצה.</span>  </span>`;
             }
 
 
