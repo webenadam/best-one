@@ -22,6 +22,25 @@
             "placeholder": "מיילים לבעלי מקצוע"
         },
         {
+            "key": "field_6694cb53240b2",
+            "label": "תגיות לשימוש במיילים:",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "לחץ להעתקת תגית:\r\n<div class=\"mail_tags\">\r\n<span class=\"copythis\">[שם_פרטי]<\/span>  \r\n<span class=\"copythis\">[שם_משפחה]<\/span>  \r\n<span class=\"copythis\">[מייל]<\/span>\r\n<\/div>",
+            "new_lines": "wpautop",
+            "esc_html": 0,
+            "placeholder": "תגיות לשימוש במיילים:"
+        },
+        {
             "key": "field_6685002269b90",
             "label": "מייל הצעה מוגבלת להרשמה חינם",
             "name": "",
@@ -819,5 +838,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1721026260
+    "modified": 1721029424
 }

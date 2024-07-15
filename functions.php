@@ -87,6 +87,16 @@ function main_feed_ajax_scripts()
 }
 add_action('wp_enqueue_scripts', 'main_feed_ajax_scripts');
 
+// admin js
+function my_custom_admin_scripts() {
+    // Get the path to the JS file
+    $js_path = get_template_directory_uri() . '/admin_js/admin-scripts.js';
+    
+    // Enqueue the JS file
+    wp_enqueue_script('my-admin-scripts', $js_path, array('jquery'), null, true);
+}
+add_action('admin_enqueue_scripts', 'my_custom_admin_scripts');
+
 
 
 // Enqueue styles and scripts with versioning
@@ -142,6 +152,16 @@ function custom_login_styles()
     wp_enqueue_style('custom-login-styles', get_template_directory_uri() . '/css/login-styles.css');
 }
 add_action('login_enqueue_scripts', 'custom_login_styles');
+
+
+// Enqueue custom admin styles
+function my_custom_admin_styles() {
+    
+    wp_enqueue_style('my-admin-styles', get_template_directory_uri() . '/css/admin-styles.css');
+}
+add_action('admin_enqueue_scripts', 'my_custom_admin_styles');
+
+
 
 // =======================
 // Disable/Remove Unwanted Features

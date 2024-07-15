@@ -29,7 +29,7 @@
             "label": "תוכן",
             "name": "mail_content",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -39,11 +39,11 @@
                 "id": ""
             },
             "default_value": "",
-            "acfe_textarea_code": 0,
-            "maxlength": "",
-            "rows": 10,
-            "placeholder": "תוכן",
-            "new_lines": "br"
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0,
+            "placeholder": "תוכן"
         },
         {
             "key": "field_6684fe41efd87",
@@ -114,5 +114,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1719992219
+    "modified": 1721029865
 }
