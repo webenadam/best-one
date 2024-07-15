@@ -1,0 +1,46 @@
+.profile-box data {
+    display: block;
+    flex: 1;
+    padding: 10px 20px;
+}
+
+exprties {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    max-width: 300px;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+exprties::-webkit-scrollbar {
+    display: none;
+}
+
+exprties::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+    pointer-events: none;
+    z-index: 1;
+}
+
+box.profile-box.dark {
+    box-shadow: none;
+    background-color: var(--soft-background);
+}
+
+box.profile-box.dark bottom {
+    background-color: white;
+    /* border:1px solid var(--light-gray)!important; */
+}
+
+.profile-box.featured {
+    border: 1px solid var(--blue);
+  }

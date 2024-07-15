@@ -1,0 +1,52 @@
+@import url('../style-base.css');
+
+/* BOX */
+
+box, .box {
+    background: white;
+    position: relative;
+    border-radius: var(--radius-s);
+    min-height: 40px;
+    width: 100%;
+    padding: var(--gap-m);
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 1px solid var(--light-gray);
+    box-shadow: var(--shadow-l);
+  }
+  
+  box.no-border, .box.no-border {
+    border:unset;
+  }
+  
+  box.no-shadow, .box.no-shadow {
+    box-shadow:unset;
+  }
+  
+  box.stripes, .box.stripes {
+    background-image:url('img/stripes.png'); ?>;
+    background-position: bottom right;
+    background-size: 120%;
+    background-repeat: no-repeat;
+  }
+  
+
+.mail_tags {
+    display:flex;
+    gap:5px;
+}
+.copythis {
+    background: #e2e2e2;
+    padding: 2px 8px 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.copythis::before {
+    content:'⎘';
+    margin-left:5px;
+}
+
+.copythis:hover {
+    background: #d5d5d5;
+}
