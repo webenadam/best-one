@@ -239,55 +239,11 @@ $total_pros = wp_count_posts('pros')->publish;
 get_template_part('templates/main-feed', null, array('featured_pros' => $featured_pros));
 ?>
 
-<section id="features">
-  <inner class="flex mobile-flex-column-reverse gap-l align-center" style="padding-bottom:0;">
-    <right class="flex"><img src="<?= theme_uri('/img/whyus_man.png'); ?>" alt="למה אצלנו?"></right>
-    <left style="margin-top:-10px;">
-      <h2>למה אצלנו?</h2>
-      <style>
-        #features p {
-          color: var(--dark-gray);
-          max-width: 80%;
-        }
-      </style>
-      <p class="bottom-gap-s">באתר BEST1 תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
-      <grid class="grid-2 gap-s">
-        <style>
-          .check::before {
-            content: '';
-            display: inline-block;
-            background-image: <?= svg_icon('circle_check', null, null, null, null, true); ?>;
-            margin-left: 13px;
-            height: 30px;
-            width: 30px;
-            vertical-align: middle;
-          }
-        </style>
-        </style>
-        <h3 class="check">רק בעלי מקצוע מוסכמים</h3>
-        <h3 class="check">רק עם תעודה בתוקף</h3>
-        <h3 class="check">סינון קל ונוח לפי תחומים</h3>
-        <h3 class="check">פרטים מלאים כל כל בעל מקצוע</h3>
-        <h3 class="check">יצירת קשר ישירה</h3>
-        <h3 class="check">פרטים מעודכנים תמיד</h3>
-      </grid>
-    </left>
-  </inner>
-</section>
 
-<section id="advertise-now" style="background-color:var(--green);">
-  <inner class="flex mobile-flex-column gap-l justify-center align-center" style="padding:var(--gap-l);">
-    <style>
-      @media (max-width: 550px) {
-        #advertise-now {
-          text-align: center;
-        }
-      }
-    </style>
-    <h2 style="color:white;margin-bottom:0;">בעל מקצוע, רוצה לקבל חשיפה רצינית?</h2>
-    <span class="button light " style="width:220px;" lightbox-type="content" lightbox-content="#signin-signup-pop">פרסם עכשיו</span>
-  </inner>
-</section>
+
+<?php get_template_part('templates/features');?>
+
+<?php get_template_part('templates/advertise-now');?>
 
 <section id="blog" class="light" style="padding-top:50px;">
   <inner class="flex-column align-center" style="text-align:center;">

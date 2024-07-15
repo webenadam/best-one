@@ -60,6 +60,10 @@ h6 {
   color: var(--dark-gray);
 }
 
+p {
+  margin-bottom: var(--gap-l);
+}
+
 /* CONTAINER STYLES */
 
 header,

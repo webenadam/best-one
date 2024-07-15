@@ -22,6 +22,11 @@
     </inner>
 </section>
 
+<?php if (is_page('about')){
+    get_template_part('templates/features');
+    get_template_part('templates/advertise-now');
+} ?>
+
 <?php get_template_part('templates/featured-pros') ?>
 
 
