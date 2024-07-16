@@ -30,40 +30,7 @@ background-position: top right; background-repeat: no-repeat; background-color: 
   </inner>
 </section>
 
-<section id="featured-pros" class="align-center dark">
-  <inner>
-    <h2 style="margin-bottom:30px;">המומלצים שלנו ב<?= $term->name; ?></h2>
-    <grid class="grid-3">
-      <?php
-      // Get featured pros from site settings
-      $featured_pros = get_field('home_featured_pros', 'option');
-
-      // Query the "pros" post type
-      $args = array(
-        'post_type' => 'pros',
-        'post__in' => $featured_pros,
-        'orderby' => 'post__in',
-        'posts_per_page' => -1,
-      );
-      $query = new WP_Query($args);
-
-      // Check if there are posts
-      if ($query->have_posts()) {
-        while ($query->have_posts()) {
-          $query->the_post();
-
-          profile_box(get_the_ID(), $dark_mode = false);
-        }
-      } else {
-        echo '<p>לא נמצאו בעלי מקצוע מומלצים.</p>';
-      }
-
-      // Restore original post data
-      wp_reset_postdata();
-      ?>
-    </grid>
-  </inner>
-</section>
+<?php get_template_part('templates/featured-pros');?>
 
 <?php // Main feed
 get_template_part('templates/main-feed', null, array('featured_pros' => $featured_pros));

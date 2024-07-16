@@ -57,6 +57,9 @@ if (has_post_thumbnail()) {
                 }
             }
         </style>
+        <div class="dots_ico absolute hide-tablet" style="top: -40px;left: -26px;">
+        <?= svg_icon('dots'); ?>
+    </div>
             <h2>
                 <?= $page_title;
                 ?>

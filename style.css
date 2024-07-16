@@ -12,41 +12,85 @@ Text Domain: best-1
 */
 
 /* FONTS */
-
+/* Regular Fonts */
 @font-face {
   font-family: 'Ein';
-  src: url('fonts/FbEinsteinHebEng-ConBlack.woff') format('woff');
-  font-weight: 900; /* or use "black" */
+  src: url('fonts/FbEinsteinHebEng-Thin.woff') format('woff');
+  font-weight: 100; /* or use "thin" */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Ein';
-  src: url('fonts/FbEinsteinHebEng-ConBold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Ein';
-  src: url('fonts/FbEinsteinHebEng-ConLight.woff') format('woff');
+  src: url('fonts/FbEinsteinHebEng-Light.woff') format('woff');
   font-weight: 300; /* or use "light" */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Ein';
+  src: url('fonts/FbEinsteinHebEng-Medium.woff') format('woff');
+  font-weight: 500; /* or use "medium" */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ein';
+  src: url('fonts/FbEinsteinHebEng-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ein';
+  src: url('fonts/FbEinsteinHebEng-Black.woff') format('woff');
+  font-weight: 900; /* or use "black" */
+  font-style: normal;
+}
+
+/* Condensed Fonts */
+@font-face {
+  font-family: 'Ein-con';
+  src: url('fonts/FbEinsteinHebEng-ConThin.woff') format('woff');
+  font-weight: 100; /* or use "thin" */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ein-con';
+  src: url('fonts/FbEinsteinHebEng-ConLight.woff') format('woff');
+  font-weight: 300; /* or use "light" */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ein-con';
   src: url('fonts/FbEinsteinHebEng-ConRegular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Ein';
-  src: url('fonts/FbEinsteinHebEng-ConThin.woff') format('woff');
-  font-weight: 100; /* or use "thin" */
+  font-family: 'Ein-con';
+  src: url('fonts/FbEinsteinHebEng-ConMedium.woff') format('woff');
+  font-weight: 500; /* or use "medium" */
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Ein-con';
+  src: url('fonts/FbEinsteinHebEng-ConBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ein-con';
+  src: url('fonts/FbEinsteinHebEng-ConBlack.woff') format('woff');
+  font-weight: 900; /* or use "black" */
+  font-style: normal;
+}
+
 
 /* BASIC STYLES */
 
@@ -55,6 +99,8 @@ html {
   max-width: 100%;
   overflow-x: hidden;
   font-family: 'Ein', sans-serif;
+  font-weight: 200;
+  font-display: an;
 }
 
 body {
@@ -67,6 +113,10 @@ body {
 }
 
 /* TYPOGRAPHY */
+
+h1, h2, h3 {
+  font-family: 'Ein-con', sans-serif;
+}
 
 h1 {
   color: var(--black);
@@ -146,6 +196,7 @@ section.dark {
 section.light {
   background-color: var(--soft-background);
 }
+
 
 section inner > h1,
 section inner > h2,

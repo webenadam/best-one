@@ -35,6 +35,7 @@ function svg_icon($icon_name, $icon_color = null, $flip = null, $width = null, $
                 'pinterest' => array('width' => 25, 'height' => 25),
                 'reddit' => array('width' => 25, 'height' => 25),
                 'hamburger' => array('width' => 30, 'height' => 30),
+                'sparkle' => array('width' => 25, 'height' => 25),
 
         );
 
@@ -130,6 +131,12 @@ function svg_icon($icon_name, $icon_color = null, $flip = null, $width = null, $
 <path class="line line2" d="M3 11H21V13H3V11Z" fill="' . ($icon_color ? $icon_color : '#161C2D') . '"/>
 <path class="line line3" d="M3 16H21V18H3V16Z" fill="' . ($icon_color ? $icon_color : '#161C2D') . '"/>
 </svg>',
+
+'sparkle' => '<svg width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"' . ($flip_transform ? ' style="transform: ' . $flip_transform . '"' : '') . '>
+<path d="M3.025,5.623c.068,.204,.26,.342,.475,.342s.406-.138,.475-.342l.421-1.263,1.263-.421c.204-.068,.342-.259,.342-.474s-.138-.406-.342-.474l-1.263-.421-.421-1.263c-.137-.408-.812-.408-.949,0l-.421,1.263-1.263,.421c-.204,.068-.342,.259-.342,.474s.138,.406,.342,.474l1.263,.421,.421,1.263Z" fill="' . ($icon_color ? $icon_color : '#473BF0') . '"/>
+<path d="M16.525,8.803l-4.535-1.793-1.793-4.535c-.227-.572-1.168-.572-1.395,0l-1.793,4.535-4.535,1.793c-.286,.113-.475,.39-.475,.697s.188,.584,.475,.697l4.535,1.793,1.793,4.535c.113,.286,.39,.474,.697,.474s.584-.188,.697-.474l1.793-4.535,4.535-1.793c.286-.113,.475-.39,.475-.697s-.188-.584-.475-.697Z" fill="' . ($icon_color ? $icon_color : '#473BF0') . '"/>
+</svg>',
+
 
 
         );

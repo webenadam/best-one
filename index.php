@@ -150,40 +150,8 @@ $total_pros = wp_count_posts('pros')->publish;
   </inner>
 </section>
 
-<section id="featured-pros" class="light align-center no-bottom-padding">
-  <inner>
-    <h2>המומלצים שלנו</h2>
-    <grid class="grid-3">
-      <?php
-      // Get featured pros from site settings
-      $featured_pros = get_field('home_featured_pros', 'option');
 
-      // Query the "pros" post type
-      $args = array(
-        'post_type' => 'pros',
-        'post__in' => $featured_pros,
-        'orderby' => 'post__in',
-        'posts_per_page' => -1,
-      );
-      $query = new WP_Query($args);
-
-      // Check if there are posts
-      if ($query->have_posts()) {
-        while ($query->have_posts()) {
-          $query->the_post();
-
-          profile_box(get_the_ID(), $dark_mode = false, $featured = true);
-        }
-      } else {
-        echo '<p>לא נמצאו בעלי מקצוע מומלצים.</p>';
-      }
-
-      // Restore original post data
-      wp_reset_postdata();
-      ?>
-    </grid>
-  </inner>
-</section>
+<?php get_template_part('templates/featured-pros', null, array('section_classes' => 'light')); ?>
 
 <section id="site-datas" style="border-bottom:1px solid var(--soft-background);">
   <inner style="padding:var(--gap-l)">

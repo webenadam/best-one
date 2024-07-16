@@ -344,26 +344,6 @@ if ($pro_custom_background) {
     </inner>
 </section>
 
-<section id="expert-terms" class="full relative" style="overflow:visible; background-color: var(--blue); background-image: url('<?= theme_uri('/img/squares_bg.png'); ?>'); background-repeat: no-repeat; background-position: left center;">
-    <div class="absolute square-thing" style="bottom:-100px;right:-100px;"><?= svg_icon('square'); ?></div>
-    <inner>
-        <h2 style="color: white;">תחומי התמחות</h2>
-        <grid class="grid-3 bottom-gap-xs">
-            <?php
-            if (!empty($experts) && !is_wp_error($experts)) {
-                foreach ($experts as $expert_term) {
-            ?>
-                    <a href="<?= esc_url(get_term_link($expert_term)); ?>" class="category-block">
-                        <h3><?= esc_html($expert_term->name); ?></h3>
-                        <h6><?= esc_html($expert_term->count); ?> בעלי מקצוע</h6>
-                    </a>
-            <?php
-                }
-            }
-            ?>
-        </grid>
-    </inner>
-</section>
 
 <section id="reviews" class="light" style="padding-top: 50px;">
     <inner class="flex-column align-center" style="text-align: center;">
@@ -403,7 +383,9 @@ if ($pro_custom_background) {
     </inner>
 </section>
 
-<section id="featured-pros" class="light align-center">
+<?php get_template_part('templates/featured-pros', null, array('section_classes' => 'light')); ?>
+
+<section id="more-pros" class="light align-center">
     <inner>
         <h2>בעלי מקצוע נוספים בתחום</h2>
         <grid class="grid-3">
@@ -425,6 +407,27 @@ if ($pro_custom_background) {
                 echo '<p>לא נמצאו בעלי מקצוע מומלצים.</p>';
             }
             wp_reset_postdata();
+            ?>
+        </grid>
+    </inner>
+</section>
+
+<section id="expert-terms" class="full relative" style="overflow:visible; background-color: var(--blue); background-image: url('<?= theme_uri('/img/squares_bg.png'); ?>'); background-repeat: no-repeat; background-position: left center;">
+    <div class="absolute square-thing" style="bottom:-100px;right:-100px;"><?= svg_icon('square'); ?></div>
+    <inner>
+        <h2 style="color: white;">תחומי התמחות</h2>
+        <grid class="grid-3 bottom-gap-xs">
+            <?php
+            if (!empty($experts) && !is_wp_error($experts)) {
+                foreach ($experts as $expert_term) {
+            ?>
+                    <a href="<?= esc_url(get_term_link($expert_term)); ?>" class="category-block">
+                        <h3><?= esc_html($expert_term->name); ?></h3>
+                        <h6><?= esc_html($expert_term->count); ?> בעלי מקצוע</h6>
+                    </a>
+            <?php
+                }
+            }
             ?>
         </grid>
     </inner>

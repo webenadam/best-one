@@ -27,7 +27,8 @@
     get_template_part('templates/advertise-now');
 } ?>
 
-<?php get_template_part('templates/featured-pros') ?>
+<?php get_template_part('templates/featured-pros', null, array('section_classes' => 'light')); ?>
+
 
 
 
