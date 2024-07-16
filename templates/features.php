@@ -1,6 +1,6 @@
-<section id="features">
+<section id="features" style="overflow:hidden;">
   <inner class="flex mobile-flex-column-reverse gap-l align-center" style="padding-bottom:0;">
-    <right class="flex"><img src="<?= theme_uri('/img/whyus_man.png'); ?>" alt="למה אצלנו?"></right>
+    <right class="flex"><div class="men-container relative" style="margin-bottom:-50px;"><div class="circle absolute" style="top:330px; right:-70px; width:235px;height:235px;border-radius:50%;background:var(--green);"></div><img style="position:relative; z-index:5;" src="<?= theme_uri('/img/2men3.png'); ?>" alt="למה אצלנו?"></div></right>
     <left style="margin-top:-10px;">
       <h2>למה אצלנו?</h2>
       <style>
