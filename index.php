@@ -2,6 +2,7 @@
 
 <?php
 $total_pros = wp_count_posts('pros')->publish;
+$featured_pros = get_field('home_featured_pros', 'option');
 ?>
 <style>
   #hero {
