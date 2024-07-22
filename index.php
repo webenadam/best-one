@@ -148,7 +148,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
       ?>
 
     </grid>
-    <a class="show-all-link" style="color:var(--green); float:left; font-size:var(--font-s); font-weight:var(--font-w-600);">הצג את כל התחומים <?= svg_icon('left-arrow'); ?></a>
+    <a class="show-all-link">הצג את כל התחומים <?= svg_icon('left-arrow'); ?></a>
   </inner>
 </section>
 
@@ -157,7 +157,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
 
 <section id="site-datas" style="border-bottom:1px solid var(--soft-background);">
   <inner style="padding:var(--gap-l)">
-    <grid class="home-stats grid-3 gap-l">
+    <grid class="home-stats grid-3 gap-s">
       <style>
         .home-stats stat {
           display: flex;
@@ -221,7 +221,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
     <p class="bottom-gap-l" style="width:530px; max-width: 95%; color:var(--gray);">
       כל המאמרים המקצועיים ביותר, המעודנים ביותר והחמים ביותר בנושאי שמאות רכוש, שמאות נזקים, שמאות חקלאות ועוד...
     </p>
-    <grid class="grid-3">
+    <grid class="grid-3 bottom-gap-m">
       <?php
       // Query to get the latest 3 posts
       $args = array(
@@ -244,7 +244,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
       wp_reset_postdata();
       ?>
     </grid>
-    <a class="show-all-link" style="align-self:flex-end; margin-top:var(--gap-m); color:var(--green); float:left; font-size:var(--font-s); font-weight:var(--font-w-600);">הצג את כל המאמרים <?= svg_icon('left-arrow'); ?></a>
+    <a class="show-all-link">הצג את כל המאמרים <?= svg_icon('left-arrow'); ?></a>
   </inner>
 </section>
 
@@ -275,7 +275,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
   <inner class="flex tablet-flex-column gap-l">
     <right class="flex-column flex-1">
       <h2 style="color:white;font-size:var(--font-xxl);">אנחנו כאן בשבילכם.</h2>
-      <p class="desc" style="width: 350px; max-width:80%;">חשוב לנו שתקבלו את כל המידע שאתם צריכים כדי להיות רגועים ובטוחים שאתם מקבלים את הטוב ביותר.</p>
+      <p class="desc" style="max-width:80%;">חשוב לנו שתקבלו את כל המידע שאתם צריכים כדי להיות רגועים ובטוחים שאתם מקבלים את הטוב ביותר.</p>
       <check class="flex gap-l bottom-gap-l" style="margin-top:40px;">
         <div style="width: 30px;">
           <?= svg_icon('circle_check'); ?>

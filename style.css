@@ -129,6 +129,13 @@ p {
   margin-bottom: var(--gap-s);
 }
 
+.show-all-link {
+  color:var(--green);
+  float:left;
+  font-size:var(--font-s);
+  align-self: flex-end;
+}
+
 /* CONTAINER STYLES */
 
 header,
