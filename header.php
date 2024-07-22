@@ -51,8 +51,8 @@
                             <li><a href="<?= esc_url($link_url); ?>"><?= esc_html($link_title); ?></a></li>
                         <?php endwhile; ?>
                     <?php endif; ?>
-                    <li>
-                        <?php
+                </ul>
+                <?php
                         if (!is_user_logged_in()) {
                             // User is not logged in
                         ?>
@@ -75,8 +75,6 @@
                             }
                         }
                         ?>
-                    </li>
-                </ul>
             </nav>
         </inner>
     </header>

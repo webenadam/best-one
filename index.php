@@ -15,7 +15,8 @@ $featured_pros = get_field('home_featured_pros', 'option');
   }
 
   #hero h1 {
-    width: 446px;
+    width: 476px;
+    margin-top:70px;
   }
 
   #hero p {
@@ -70,8 +71,8 @@ $featured_pros = get_field('home_featured_pros', 'option');
   <inner class="relative flex align-center mobile-flex-column">
     <div class="right" style="z-index:1;">
       <h1 class="title bottom-gap-xs">הפורטל המוביל למומחי נדל״ן פיננסים ושמאות בישראל</h1>
-      <p class="subtitle bottom-gap-l">הפלטפורמה שלך לבחירת אנשי המקצוע הטובים ביותר בתחום
-      </p>
+      <h2 class="subtitle bottom-gap-l">הפלטפורמה שלך לבחירת אנשי המקצוע הטובים ביותר בתחום
+      </h2>
       <div class="search-form_parent-container">
         <div class="flex mobile-flex-column search-form background-blue radius-s bottom-gap-xs">
           <?php
