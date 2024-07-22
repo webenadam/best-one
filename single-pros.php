@@ -81,7 +81,7 @@ if ($pro_custom_background) {
                 }
                 ?>
             </div>
-            <h2 class="pro-name bottom-gap-s" style="font-size: var(--font-xxl); margin-top: 0px;"><?= get_the_title(); ?></h2>
+            <h1 class="pro-name bottom-gap-s" style="font-size: var(--font-xxl); margin-top: 0px;"><?= get_the_title(); ?></h1>
             <div id="expert-tags" class="flex gap-s" style="margin-bottom:85px;">
                 <?php
                 // Check if terms are found and are not empty
@@ -91,7 +91,7 @@ if ($pro_custom_background) {
                         // Get the term permalink
                         $expert_link = get_term_link($expert);
                         // Echo the term with the specified format
-                        tag_label(esc_html($expert->name), esc_url($expert_link), 'big green');
+                        tag_label(esc_html($expert->name), esc_url($expert_link), 'big blue');
                     }
                 }
                 ?>
@@ -183,10 +183,20 @@ if ($pro_custom_background) {
             </style>
             <span class="hide-tablet" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
             <div class="box" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
-                <div class="profile-image-wrap relative" style="text-align: center;">
-                    <img src="<?= get_the_post_thumbnail_url() ?>" alt="Profile Picture" style="width: 247px; height: 247px; max-width: 45vw; max-height: 45vw; border-radius: 50%; margin-bottom: 15px; object-fit: cover;">
-                    <span class="absolute" style="bottom: 0; left: -10px"><?= svg_icon('circles'); ?></span>
-                    <span class="absolute" style="bottom: 44px; right: 12px;"><?= svg_icon('twirl'); ?></span>
+            <div class="profile-image-wrap relative" style="text-align: center;">
+                <h2 class="hide-desktop" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
+                <h3 class="hide-desktop" style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
+                    <?php
+                    $featured_image = get_the_post_thumbnail_url($pro_post_id, 'full');
+                    if (empty($featured_image)) {
+                        $featured_image = get_avatar_url($current_user_id);
+                    }
+                    ?>
+                    <img src="<?= $featured_image; ?>" alt="Profile Picture" style="width: 304px;height: 247px;max-width: 60vw;max-height: 44vw;border-radius: 8px;margin-bottom: 15px;object-fit: cover;">
+                    <span class="absolute" style="bottom: -28px; left: -17px"><?= svg_icon('circles'); ?></span>
+                    <span class="absolute" style="bottom: 144px; right: -5px;"><?= svg_icon('twirl'); ?></span>
+
+
                 </div>
                 <h2 class="pro-name hide-desktop" style="font-size: var(--font-l); margin-top: 0px; margin-bottom:10px;"><?= get_the_title(); ?></h2>
 

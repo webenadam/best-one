@@ -469,9 +469,14 @@ tag.green {
   background-color: var(--green);
 }
 
+tag.blue {
+  color: white;
+  background-color: var(--blue);
+}
+
 tag.big {
   font-size: var(--font-s);
-  padding: 1px 14px;
+  padding: 0px 14px 2px 14px;
 }
 
 
