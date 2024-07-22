@@ -70,9 +70,7 @@ function profile_box($pro_post_id, $dark = false, $featured = false)
                 <?php } ?>
             </a>
             <datas style="margin-bottom: 30px">
-                <h3 class="name" style="font-weight: var(--font-w-600); <?php if ($featured) {
-                                                                            echo 'font-size: var(--font-m);';
-                                                                        } ?>">
+                <h3 class="name">
                     <a href="<?= get_permalink($pro_post_id); ?>"><?= esc_html($name); ?></a>
                 </h3>
                 <h6 class="place flex align-center" style="gap: 5px">

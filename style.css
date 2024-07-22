@@ -20,6 +20,7 @@ Text Domain: best-1
   src: url('fonts/FbEinstein-ConThin.woff2') format('woff2');
   font-weight: 100; /* or use "thin" */
   font-style: normal;
+  font-display: block;
 }
 
 @font-face {
@@ -27,6 +28,7 @@ Text Domain: best-1
   src: url('fonts/FbEinstein-ConLight.woff2') format('woff2');
   font-weight: 300; /* or use "light" */
   font-style: normal;
+  font-display: block;
 }
 
 @font-face {
@@ -34,6 +36,7 @@ Text Domain: best-1
   src: url('fonts/FbEinstein-ConBold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
+  font-display: block;
 }
 
 @font-face {
@@ -41,6 +44,7 @@ Text Domain: best-1
   src: url('fonts/FbEinstein-ConBlack.woff2') format('woff2');
   font-weight: 900; /* or use "black" */
   font-style: normal;
+  font-display: block;
 }
 
 /* Regular (mainly for content) */
@@ -50,6 +54,7 @@ Text Domain: best-1
   src: url('fonts/FbEinstein-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 @font-face {
@@ -57,8 +62,8 @@ Text Domain: best-1
   src: url('fonts/FbEinstein-Medium.woff2') format('woff2');
   font-weight: 500; /* or use "medium" */
   font-style: normal;
+  font-display: block;
 }
-
 
 /* BASIC STYLES */
 
@@ -73,7 +78,7 @@ html {
 }
 
 body {
-  font-size: var(--font-m);
+  font-size: var(--font-s);
   line-height:normal;
   color: var(--black);
   background-color: var(--soft-background);
@@ -96,13 +101,13 @@ h1 {
 }
 
 h2 {
-  font-weight: var(--font-w-700);
-  font-size: var(--font-l);
+  font-weight: 100;
+  font-size: var(--font-xl);
 }
 
 h3 {
-  font-size: var(--font-m);
-  font-weight: var(--font-w-700);
+  font-size: var(--font-l);
+  font-weight: 700;
 }
 
 h5 {
@@ -113,12 +118,15 @@ h5 {
 }
 
 h6 {
-  font-size: var(--font-xs);
+  font-size: var(--font-m);
   color: var(--dark-gray);
+  font-weight: 500;
+  font-family: 'EinCon';
+  letter-spacing: 0;
 }
 
 p {
-  margin-bottom: var(--gap-l);
+  margin-bottom: var(--gap-s);
 }
 
 /* CONTAINER STYLES */
@@ -808,14 +816,16 @@ input.tt-input.drop-down-open {
 }
 
 .category-block {
-  display: inline-block;
+  display: flex;
   height: 97px;
   background-color: white;
   color: var(--black);
-  padding: 15px 23px;
+  padding: 0 var(--gap-m);
   border-radius: var(--radius-s);
   position: relative;
   transition: transform 0.3s ease-in-out;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .category-block.accent {
@@ -855,7 +865,7 @@ input.tt-input.drop-down-open {
 
 .category-block h3 {
   color: var(--black);
-  margin-bottom: 6px;
+  margin-top: -12px;
 }
 
 .category-block.accent h3 {

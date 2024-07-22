@@ -16,7 +16,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
 
   #hero h1 {
     width: 476px;
-    margin-top:70px;
+    margin-top: 70px;
   }
 
   #hero p {
@@ -100,7 +100,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
       </div>
     </div>
     <div class="left">
-      <img class="hero_guy absolute" style="bottom:0;left:0;" src="<?= theme_uri('/img/HeroGuy.png'); ?>" alt="בעלי מקצוע מומלצים">
+      <img class="hero_guy absolute" style="bottom:-41px;left:0;" src="<?= theme_uri('/img/HeroGuy.png'); ?>" alt="בעלי מקצוע מומלצים">
     </div>
 
   </inner>
@@ -162,7 +162,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
         .home-stats stat {
           display: flex;
           align-items: center;
-          gap: var(--gap-m);
+          gap: var(--gap-s);
           font-size: var(--font-xxl);
           font-weight: var(--font-w-700);
         }
@@ -174,9 +174,10 @@ $featured_pros = get_field('home_featured_pros', 'option');
 
         .home-stats title {
           display: inline-block;
-          font-size: var(--font-xs);
+          font-size: var(--font-s);
           font-weight: var(--font-w-400);
-          color: var(--gray);
+          color: var(--dark-gray);
+          margin-top:6px;
         }
 
         @media (max-width: 550px) {
@@ -209,11 +210,9 @@ $featured_pros = get_field('home_featured_pros', 'option');
 get_template_part('templates/main-feed', null, array('featured_pros' => $featured_pros));
 ?>
 
+<?php get_template_part('templates/features'); ?>
 
-
-<?php get_template_part('templates/features');?>
-
-<?php get_template_part('templates/advertise-now');?>
+<?php get_template_part('templates/advertise-now'); ?>
 
 <section id="blog" class="light" style="padding-top:50px;">
   <inner class="flex-column align-center" style="text-align:center;">

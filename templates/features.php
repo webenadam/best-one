@@ -1,4 +1,4 @@
-<section id="features" style="overflow:hidden;">
+<section id="features" style="overflow:hidden;margin-top: -130px;">
   <inner class="flex mobile-flex-column-reverse gap-l align-center" style="padding-bottom:0;">
     <right class="flex"><div class="men-container relative" style="margin-bottom:-50px;"><div class="circle absolute" style="top:180px; right:-70px; width:235px;height:235px;border-radius:50%;background:var(--green);"></div><img style="position:relative; z-index:5; width:400px;" src="<?= theme_uri('/img/2men3.png'); ?>" alt="למה אצלנו?"></div></right>
     <left style="margin-top:-10px;">
