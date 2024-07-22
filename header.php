@@ -21,7 +21,9 @@
 
     <?php }
     } ?>
+<?php $clean_page = get_query_var('cleanpage'); ?>
 
+<?php if(!$clean_page) { ?>
     <header>
         <inner class="flex justify-between align-center mobile-flex-row">
             <span class="menu-toggle flex hide-desktop" self-toggle-class="active" toggle-class="#header-nav.active" style="z-index:10; cursor:pointer;"><?= svg_icon('hamburger'); ?></span>
@@ -106,3 +108,4 @@
             </div>
         </div>
     </div>
+    <?php } ?>

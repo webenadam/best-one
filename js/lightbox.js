@@ -1,14 +1,17 @@
 jQuery(document).ready(function($) {
+
     $('[lightbox-type]').css('cursor', 'pointer').on('click', function() {
         const type = $(this).attr('lightbox-type');
         const content = $(this).attr('lightbox-content');
-        openLightbox(type, content);
+        const title = $(this).attr('lightbox-title');
+        const width = $(this).attr('lightbox-width') || '400px';
+        const height = $(this).attr('lightbox-height') || '600px';
+        openLightbox(type, content, title, width, height);
     });
 
-    function openLightbox(type, content) {
+    function openLightbox(type, content, title, width, height) {
         let $overlay, $innerContent;
-
-        // close mobile menu
+        // close mobile menu to pravent conflict
 
         $('#header-nav').removeClass('active');
             $('.menu-toggle').removeClass('active');
@@ -26,6 +29,9 @@ jQuery(document).ready(function($) {
                 console.error('Element with ID ' + content + ' not found.');
                 return;
             }
+        } else if (type === 'iframe') {
+            $overlay = $('<div class="lightbox-overlay"></div>').hide();
+            $innerContent = $('<div class="lightbox-content"><iframe src="' + content + '" title="' + title + '" width="' + width + '" height="' + height + '"></iframe></div>');
         } else {
             $overlay = $('<div class="lightbox-overlay"></div>').hide();
             $innerContent = $('<div class="lightbox-content"></div>').text(content);
@@ -59,7 +65,7 @@ jQuery(document).ready(function($) {
         }
 
         $overlay.addClass('active').fadeIn(400, function() {
-            $innerContent.fadeIn(400);
+            $('.lightbox-content').fadeIn(400).addClass('radius-m active');
         });
     }
 });

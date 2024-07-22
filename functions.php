@@ -26,6 +26,10 @@ foreach ($php_files as $file) {
     require_once $file;
 }
 
+// Include webhook php main file (only, other files are included in webhook.php conditionaly)
+require_once get_template_directory() . '/webhook/webhook.php';
+
+
 // Include required elements
 $elements_path = get_template_directory() . '/elements/';
 $php_files = glob($elements_path . '*.php');
@@ -48,8 +52,13 @@ function main_feed_ajax_scripts()
     // Enqueue Typeahead script
     wp_enqueue_script('typeahead', 'https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js', array('jquery'), null, true);
 
-    // Enqueue custom combined script
-    wp_enqueue_script('main-feed-ajax', get_template_directory_uri() . '/js/main-feed-ajax.js', array('jquery', 'typeahead'), null, true);
+    // Get the script path and URI for the custom combined script
+    $script_path = get_template_directory() . '/js/main-feed-ajax.js';
+    $script_uri = get_template_directory_uri() . '/js/main-feed-ajax.js';
+    $version = filemtime($script_path);
+
+    // Enqueue custom combined script with version parameter
+    wp_enqueue_script('main-feed-ajax', $script_uri, array('jquery', 'typeahead'), $version, true);
 
     // Retrieve "places" taxonomy terms
     $places_terms = get_terms(array(
@@ -117,7 +126,11 @@ add_action('wp_enqueue_scripts', 'best_one_styles');
 // Enqueue mini-scripts script
 function enqueue_mini_scripts()
 {
-    wp_enqueue_script('mini-scripts', get_template_directory_uri() . '/js/mini-scripts.js', array('jquery'), null, true);
+    $script_path = get_template_directory() . '/js/mini-scripts.js';
+    $script_uri = get_template_directory_uri() . '/js/mini-scripts.js';
+    $version = filemtime($script_path);
+
+    wp_enqueue_script('mini-scripts', $script_uri, array('jquery'), $version, true);
     wp_localize_script('mini-scripts', 'miniScriptsData', array(
         'current_post_id' => get_the_ID(),
         'ajax_url' => admin_url('admin-ajax.php'),
@@ -127,20 +140,31 @@ function enqueue_mini_scripts()
 add_action('wp_enqueue_scripts', 'enqueue_mini_scripts');
 
 
+
 // Enqueue Lightbox script
 function enqueue_lightbox_script()
 {
-    wp_enqueue_script('lightbox', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), null, true);
+    $script_path = get_template_directory() . '/js/lightbox.js';
+    $script_uri = get_template_directory_uri() . '/js/lightbox.js';
+    $version = filemtime($script_path);
+
+    wp_enqueue_script('lightbox', $script_uri, array('jquery'), $version, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_lightbox_script');
+
 
 
 // Enqueue ACF Form steps script
 function enqueue_acf_form_steps_script()
 {
-    wp_enqueue_script('acf-form-steps', get_template_directory_uri() . '/js/acf-form-steps.js', array('jquery'), null, true);
+    $script_path = get_template_directory() . '/js/acf-form-steps.js';
+    $script_uri = get_template_directory_uri() . '/js/acf-form-steps.js';
+    $version = filemtime($script_path);
+
+    wp_enqueue_script('acf-form-steps', $script_uri, array('jquery'), $version, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_acf_form_steps_script');
+
 
 
 

@@ -684,7 +684,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "20",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -711,7 +711,7 @@
                     "label": "חבילה",
                     "name": "ad_subscription_advertise_plan",
                     "aria-label": "",
-                    "type": "select",
+                    "type": "post_object",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -724,25 +724,33 @@
                         ]
                     ],
                     "wrapper": {
-                        "width": "20",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "1": "פרסום בסיסי"
-                    },
-                    "default_value": false,
-                    "return_format": "array",
+                    "post_type": [
+                        "subscriptions"
+                    ],
+                    "post_status": [
+                        "publish"
+                    ],
+                    "taxonomy": "",
+                    "return_format": "id",
                     "multiple": 0,
+                    "save_custom": 0,
+                    "save_post_status": "publish",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
                     "acfe_settings": "",
                     "acfe_validate": "",
                     "allow_null": 0,
                     "acfe_permissions": "",
-                    "ui": 0,
-                    "ajax": 0,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "save_post_type": "",
                     "placeholder": "חבילה",
-                    "allow_custom": 0,
-                    "search_placeholder": "",
                     "parent_repeater": "field_6687e707b17fa"
                 },
                 {
@@ -763,7 +771,7 @@
                         ]
                     ],
                     "wrapper": {
-                        "width": "20",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -773,7 +781,7 @@
                     "load_terms": 0,
                     "return_format": "id",
                     "field_type": "select",
-                    "allow_null": 0,
+                    "allow_null": 1,
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
                     },
@@ -787,40 +795,6 @@
                     "parent_repeater": "field_6687e707b17fa"
                 },
                 {
-                    "key": "field_6687ea1b229d0",
-                    "label": "מסלול תשלום",
-                    "name": "ad_subscription_pay_plan",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "20",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": [
-                        "חינם",
-                        "חודשי (499 ₪ לחודש)",
-                        "חצי שנתי (349 ₪ לחודש)",
-                        "שנתי (249 ₪ לחודש)"
-                    ],
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "acfe_settings": "",
-                    "acfe_validate": "",
-                    "allow_null": 0,
-                    "acfe_permissions": "",
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "מסלול תשלום",
-                    "allow_custom": 0,
-                    "search_placeholder": "",
-                    "parent_repeater": "field_6687e707b17fa"
-                },
-                {
                     "key": "field_6687e8a6b17fe",
                     "label": "תאריך התחלה",
                     "name": "ad_subscription_start_date",
@@ -830,7 +804,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "20",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -856,7 +830,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "20",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -1054,5 +1028,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1720430597
+    "modified": 1721572379
 }

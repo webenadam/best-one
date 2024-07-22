@@ -132,3 +132,48 @@ function update_pro_stats($stat_type, $post_id) {
     // Update the last update field with the current timestamp
     update_field($fields[$stat_type]['last_update'], $current_timestamp, $post_id);
 }
+
+// Create CardCom Payment Link
+function generateCardcomLink($user_id, $subscription_id, $term_id = null) {
+    // Define static variables
+    $codepage = 65001; // Unicode encoding type for system compatibility
+    $operation = 2; // Type of operation (1 - charge, 2 - charge and create token, 3 - create token, 4 - delayed charge)
+    $terminalNumber = 1000; // Your terminal number provided by Cardcom
+    $userName = "test2025"; // Username for API access
+    $coinID = 1; // Currency type (1 for ILS)
+    $language = "he"; // Language of the interface (he for Hebrew)
+    $apiLevel = 10; // API version, latest is 10
+    $successRedirectUrl = site_url('/payment-success'); // URL to redirect upon success
+    $errorRedirectUrl = site_url('/payment-failed'); // URL to redirect upon failure
+    $indicatorUrl = site_url('/webhook'); // Server-side endpoint to receive transaction details before redirect
+    $returnValue = "Orderid1234"; // Custom value to pass through and receive back, typically an order ID
+    $autoRedirect = "true"; // Whether to auto-redirect user after payment processing
+
+    // Define dynamic variables
+    $returnValue = 'subscrube-'. $user_id . '-' . $subscription_id . ($term_id ? '-'. $term_id : ''); // Custom value to pass through and receive back, typically an order ID
+    $sumToBill = get_field('subscription_price', $subscription_id); // Amount to bill the user
+
+ 
+
+    // Build the query URL (static stuff)
+    $queryUrl = "https://secure.cardcom.solutions/Interface/LowProfile.aspx?";
+    $queryUrl .= "codepage=" . urlencode($codepage);
+    $queryUrl .= "&Operation=" . urlencode($operation);
+    $queryUrl .= "&TerminalNumber=" . urlencode($terminalNumber);
+    $queryUrl .= "&UserName=" . urlencode($userName);
+    $queryUrl .= "&CoinID=" . urlencode($coinID);
+    $queryUrl .= "&Language=" . urlencode($language);
+    $queryUrl .= "&APILevel=" . urlencode($apiLevel);
+    $queryUrl .= "&SuccessRedirectUrl=" . urlencode($successRedirectUrl);
+    $queryUrl .= "&ErrorRedirectUrl=" . urlencode($errorRedirectUrl);
+    $queryUrl .= "&IndicatorUrl=" . urlencode($indicatorUrl);
+    $queryUrl .= "&AutoRedirect=" . urlencode($autoRedirect);
+
+    // Continue Building the query URL (dynamic stuff)
+    $queryUrl .= "&ReturnValue=" . urlencode($returnValue);
+    $queryUrl .= "&SumToBill=" . urlencode($sumToBill);
+
+
+    // Return the generated link
+    return $queryUrl;
+}

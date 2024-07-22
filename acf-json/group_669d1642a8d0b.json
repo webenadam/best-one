@@ -1,0 +1,161 @@
+{
+    "key": "group_669d1642a8d0b",
+    "title": "חבילה",
+    "fields": [
+        {
+            "key": "field_669d1769be460",
+            "label": "סוג חבילה",
+            "name": "subscription_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "basic": "חבילת פרסום",
+                "term_featured": "מומלצי תחום"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "סוג חבילה",
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
+            "key": "field_669d16ee3fcdb",
+            "label": "התחייבות",
+            "name": "subscription_commitment",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "no": "ללא התחייבות",
+                "half_year": "חצי שנה",
+                "year": "שנה"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "התחייבות",
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
+            "key": "field_669d16618642e",
+            "label": "חיוב",
+            "name": "subscription_billed_period",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "monthly": "חודשי",
+                "yearly": "שנתי"
+            },
+            "default_value": "חודשי",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "חיוב",
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
+            "key": "field_669d16438642d",
+            "label": "מחיר",
+            "name": "subscription_price",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "מחיר",
+            "step": "",
+            "prepend": "",
+            "append": "₪"
+        },
+        {
+            "key": "field_669d191ec6631",
+            "label": "חסכון של",
+            "name": "subscription_saving_amount",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "חסכון של",
+            "step": "",
+            "prepend": "",
+            "append": "₪"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "subscriptions"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1721572735
+}

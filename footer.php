@@ -1,3 +1,6 @@
+
+<?php $clean_page = get_query_var('cleanpage'); ?>
+<?php if(!$clean_page) { ?>
 <!-- Accessibility Icon and Toolbar -->
 <div id="accessibility-icon" onclick="toggleAccessibilityToolbar()" title="כלים לנגישות">
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -240,7 +243,7 @@
 
     </inner>
 </subfooter>
-
+<?php } ?>
 
 
 
