@@ -236,9 +236,7 @@ if ($query->have_posts()) {
 
 
 
-                    <div class="subscription-features bottom-gap-l" style="
-    width: 900px;
-">
+                    <div class="subscription-features bottom-gap-l" style="width: 900px;">
 
                         <div class="flex-column gap-m">
                             <h4 class="check">דף עסק דיגיטלי מעוצב, עם כל המידע החשוב על העסק שלך ועליך</h4>

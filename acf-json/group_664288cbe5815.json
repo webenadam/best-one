@@ -214,7 +214,7 @@
         },
         {
             "key": "field_66428b94ab5f1",
-            "label": "תוכן",
+            "label": "קצת עליי",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -230,7 +230,7 @@
             "endpoint": 0,
             "acfe_permissions": "",
             "selected": 0,
-            "placeholder": "תוכן"
+            "placeholder": "קצת עליי"
         },
         {
             "key": "field_66428ba2ab5f2",
@@ -497,6 +497,9 @@
                 "id": ""
             },
             "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
             "placeholder": "פייסבוק"
         },
         {
@@ -534,6 +537,9 @@
                 "id": ""
             },
             "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
             "placeholder": "אינסטגרם"
         },
         {
@@ -551,6 +557,9 @@
                 "id": ""
             },
             "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
             "placeholder": "לינקדין"
         },
         {
@@ -568,6 +577,9 @@
                 "id": ""
             },
             "default_value": "",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "acfe_permissions": "",
             "placeholder": "אתר אישי"
         },
         {
@@ -1028,5 +1040,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1721572379
+    "modified": 1721743091
 }

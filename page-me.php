@@ -31,12 +31,16 @@ if ($query->have_posts()) {
 ?>
 
     <?php get_template_part('templates/me-hero', null, array('pro_post_id' => $pro_post_id, 'page_title' => 'עריכת פרטים')) ?>
-    
+
     <section id="edit-form" class="main-content">
         <inner>
-            <?php acfe_form('edit-pro', array(
-                'post_id' => $pro_post_id
-            )); ?>
+            <div class="pro_edit_form bottom-gap-l">
+                <?php acfe_form('edit-pro', array(
+                    'post_id' => $pro_post_id
+                )); ?>
+            </div>
+            <h3 class="bottom-gap-xs">מדד איכות הפרופיל שלך</h3>
+            <h4>(בעלי מקצוע עם ציון מעל 90 מקבלים יותר לקוחות)</h4>
             <div id="profile-progress-container">
                 <div id="profile-progress-bar">
                     <span id="profile-progress-text"></span>
@@ -83,7 +87,7 @@ if ($query->have_posts()) {
             <div class="button flex align-center gap-xs" copy="<?= site_url('/add-review/?pro=' . $pro_post_id); ?>">
                 <?= svg_icon('profile', null, null, 19, 19); ?> העתק לינק להוספת המלצה
             </div>
-            </inner>
+        </inner>
     </section>
 
 
@@ -139,7 +143,6 @@ if ($query->have_posts()) {
     .checked,
     .unchecked {
         display: flex;
-        font-weight: var(--font-w-600);
         font-size: var(--font-s);
         align-items: center;
         background-repeat: no-repeat;
@@ -234,7 +237,7 @@ if ($query->have_posts()) {
                 score += 5;
                 checkedList += `<span class="checked">יש לפחות ביקורת לקוחות אחת</span>`;
             } else {
-                uncheckedList += `<span class="unchecked">אין ביקורות לקוחות עדיין.  <span class="copythis" style="margin-right:5px;text-decoration:underline;" copythis="<?= site_url('/add-review/?pro=' . $pro_post_id); ?>" copy-notice="לינק להוספת המלצה הועתק">העתק לינק להוספת המלצה.</span>  </span>`;
+                uncheckedList += `<span class="unchecked">אין ביקורות לקוחות עדיין.  <span lightbox-type="content" lightbox-content="#share-pop" style="margin-right:5px;text-decoration:underline;">שתף לינק להוספת המלצה</span></span>`;
             }
 
 

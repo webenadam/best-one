@@ -543,6 +543,9 @@ tag.big {
   font-weight: bold;
 }
 
+[lightbox-content] {
+  cursor: pointer;
+}
 
 
 /* TABS */
