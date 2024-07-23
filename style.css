@@ -279,7 +279,7 @@ select, input:not([type="submit"]), textarea {
 }
 
 ::placeholder {
-  color: var(--blue);
+  color: var(--gray);
   font-size: var(--font-s);
 }
 

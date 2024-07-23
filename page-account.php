@@ -232,11 +232,13 @@ if ($query->have_posts()) {
 
                         <?php generate_subscription_box('חודשי', 831); ?>
                         <?php generate_subscription_box('חצי שנתי', 832); ?>
-                        <?php generate_subscription_box('שנתי', 833, null, $featured = true); ?>
+                        <?php generate_subscription_box('שנתי', 834, null, $featured = true); ?>
 
 
 
-                    <div class="subscription-features bottom-gap-l">
+                    <div class="subscription-features bottom-gap-l" style="
+    width: 900px;
+">
 
                         <div class="flex-column gap-m">
                             <h4 class="check">דף עסק דיגיטלי מעוצב, עם כל המידע החשוב על העסק שלך ועליך</h4>
