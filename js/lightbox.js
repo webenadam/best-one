@@ -2,7 +2,6 @@ jQuery(document).ready(function($) {
 
 
     $('[lightbox-type]').css('cursor', 'pointer').on('click', function() {
-        alert('f');
         const type = $(this).attr('lightbox-type');
         const content = $(this).attr('lightbox-content');
         const title = $(this).attr('lightbox-title');

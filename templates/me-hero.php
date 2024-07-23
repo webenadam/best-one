@@ -148,28 +148,45 @@ if ($pro_custom_background) {
                         <style>
                             data {
                                 padding: var(--gap-xs) var(--gap-s);
-                                font-size:var(--font-l);
-                                font-weight:500;
+                                font-size: var(--font-l);
+                                font-weight: 500;
                                 font-family: 'Ein', sans-serif;
+                            }
+
+                            data h6 {
+                                color: var(--black);
+                            }
+                            data span {
+                                color: var(--green);
+                            }
+                            data span.total-review {
+                                color:var(--blue);
+                            }
+                            data span.zero {
+                                color: var(--red);
                             }
                         </style>
                         <data style="border-left:1px solid var(--light-gray); flex:1;">
-                            <h6 style="color:var(--black);">חשיפות</h6>
-                            <span style="color:var(--green);">0</span>
+                            <?php $data = get_field('pro_stat_cube_views_month', $pro_post_id); ?>
+                            <h6>חשיפות</h6>
+                            <span class="<?= $data ?? 'zero'; ?>"><?= $data ?? '0'; ?></span>
                         </data>
                         <data style="flex:1;">
-                            <h6 style="color:var(--black);">קליקים</h6>
-                            <span style="color:var(--green);">0</span>
+                            <?php $data = get_field('pro_stat_page_views_month', $pro_post_id); ?>
+                            <h6>קליקים</h6>
+                            <span class="<?= $data ?? 'zero'; ?>"><?= $data ?? '0'; ?></span>
                         </data>
                     </bottom-top>
                     <bottom-bottom class="flex" style="width:100%;">
                         <data style="border-left:1px solid var(--light-gray); flex:1;">
-                            <h6 style="color:var(--black);">שליחות טופס</h6>
-                            <span style="color:var(--green);">0</span>
+                            <?php $data = get_field('pro_stat_form_sent_month', $pro_post_id); ?>
+                            <h6>שליחות טופס</h6>
+                            <span class="<?= $data ?? 'zero'; ?>"><?= $data ?? '0'; ?></span>
                         </data>
                         <data style="flex:1;">
-                            <h6 style="color:var(--black);">דירוג משוקלל</h6>
-                            <span style="color:var(--blue);"><?= get_field('pro_total_rate', $pro_post_id); ?></span>
+                            <?php $data = get_field('pro_total_rate', $pro_post_id); ?>
+                            <h6>דירוג משוקלל</h6>
+                            <span class="total-review <?= $data ?? 'zero'; ?>"><?= $data ?? '0'; ?></span>
                         </data>
                     </bottom-bottom>
                 </bottom>
