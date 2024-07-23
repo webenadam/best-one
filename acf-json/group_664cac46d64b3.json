@@ -277,9 +277,9 @@
             "label": "דירוג משוכלל",
             "name": "pro_review_total",
             "aria-label": "",
-            "type": "range",
+            "type": "number",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -290,12 +290,12 @@
             "acfe_settings": "",
             "acfe_validate": "",
             "min": "",
-            "max": 5,
+            "max": "",
             "acfe_permissions": "",
-            "step": 1,
+            "placeholder": "דירוג משוכלל",
+            "step": "",
             "prepend": "",
-            "append": "",
-            "placeholder": "דירוג משוכלל"
+            "append": ""
         }
     ],
     "location": [
@@ -324,5 +324,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718305507
+    "modified": 1721763319
 }

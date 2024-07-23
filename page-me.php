@@ -151,7 +151,7 @@ if ($query->have_posts()) {
     }
 
     .checked {
-        color: var(--green);
+        color: var(--blue);
         background-image: url('data:image/svg+xml;base64,<?= base64_encode(svg_icon("circle_check", null, null, 25, 25)) ?>');
     }
 

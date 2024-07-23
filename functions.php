@@ -120,7 +120,7 @@ function best_one_styles()
     wp_enqueue_style('best-one-base', get_template_directory_uri() . '/style-base.css', array(), $base_css_version);
     wp_enqueue_style('best-one-style', get_stylesheet_uri(), array(), $style_css_version);
 }
-add_action('wp_enqueue_scripts', 'best_one_styles');
+add_action('wp_enqueue_scripts', 'best_one_styles', 990); /* make my styles load last to overide others */
 
 
 // Enqueue mini-scripts script
@@ -250,29 +250,43 @@ add_action('wp_enqueue_scripts', 'dequeue_global_and_classic_styles', 100);
 
 
 
-// Update 'pro_review_total' field on save
+// Update 'pro_review_total' for the reviewed pro, on "pro_reviews" post type save (adding / editing review)
 function update_pro_review_total($post_id)
 {
+    // Check for autosave and revision
     if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) {
         return;
     }
+
+    // Run only on "pro_reviews" post type
     if (get_post_type($post_id) !== 'pro_reviews') {
         return;
     }
 
+    // Get review fields
     $quality = get_field('pro_review_quality', $post_id);
     $price = get_field('pro_review_price', $post_id);
     $timing = get_field('pro_review_timing', $post_id);
     $human = get_field('pro_review_human', $post_id);
 
-    $average = ($quality + $price + $timing + $human) / 4;
+    // Scale each field value from 1-5 to 20-100 (assuming linear scaling)
+    $scaled_quality = ($quality - 1) / (5 - 1) * (100 - 20) + 20;
+    $scaled_price = ($price - 1) / (5 - 1) * (100 - 20) + 20;
+    $scaled_timing = ($timing - 1) / (5 - 1) * (100 - 20) + 20;
+    $scaled_human = ($human - 1) / (5 - 1) * (100 - 20) + 20;
+
+    // Calculate the average of scaled values
+    $average = ($scaled_quality + $scaled_price + $scaled_timing + $scaled_human) / 4;
     $rounded_average = round($average);
 
+    // Update the 'pro_review_total' field with the rounded average
     update_field('pro_review_total', $rounded_average, $post_id);
 
+    // Update the aggregated ratings for the reviewed pro
     $pro_id = get_field('pro_review_pro_is', $post_id);
 
     if ($pro_id) {
+        // Query all reviews for the same pro
         $reviews_query = new WP_Query([
             'post_type' => 'pro_reviews',
             'meta_query' => [
@@ -286,27 +300,26 @@ function update_pro_review_total($post_id)
 
         $review_count = $reviews_query->found_posts;
         $total_rating = 0;
-        $total_count = 0;
 
+        // Calculate total rating sum
         if ($reviews_query->have_posts()) {
             while ($reviews_query->have_posts()) {
                 $reviews_query->the_post();
-                $total = get_field('pro_review_total', get_the_ID());
-                if ($total) {
-                    $total_rating += $total;
-                    $total_count++;
-                }
+                $total_rating += get_field('pro_review_total', get_the_ID());
             }
             wp_reset_postdata();
         }
 
-        $average_rating = ($total_count > 0) ? ($total_rating / $total_count) : 0;
+        // Calculate average rating
+        $average_rating = ($review_count > 0) ? ($total_rating / $review_count) : 0;
 
+        // Update aggregated fields for the pro
         update_field('pro_recommended_count', $review_count, $pro_id);
         update_field('pro_total_rate', round($average_rating), $pro_id);
     }
 }
 add_action('save_post', 'update_pro_review_total');
+
 
 
 // Generate the title and slug from ACF fields on save

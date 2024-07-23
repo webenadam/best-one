@@ -231,7 +231,7 @@ if ($pro_custom_background) {
                 <a class="button green" style="background:#1C96E8;" target="_blank" href="https://twitter.com/intent/tweet?text=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
                     <?= svg_icon('twitter', null, null, 19, 19); ?> שתף בטוויטר
                 </a>
-                <a class="button green" target="_blank" style="background:var(--dark-green);" href="mailto:?subject=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה')); ?>&body=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
+                <a class="button green" target="_blank" style="background:var(--dark-gray);" href="mailto:?subject=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה')); ?>&body=<?= str_replace('+', '%20', urlencode('בדקו את המקצוען הזה: ' . get_the_title($pro_post_id))); ?>%20<?= get_permalink($pro_post_id); ?>">
                     <?= svg_icon('email', null, null, 19, 19); ?> שתף באימייל
                 </a>
             </grid-2>

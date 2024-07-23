@@ -10,55 +10,11 @@ $args = array(
 );
 
 $query = new WP_Query($args);
-$pro_subscribed = false;  // Default to false
-$pro_subscription = false; // Default to false
-
-$customerName = get_the_title($pro_post_id); // Example customer name
-$customerEmail = get_field('pro_email', $pro_post_id); // Example customer email
-
-
-
-function generate_subscription_box($title, $subscription_id, $term_id = null, $featured = false)
-{
-    global $customerName;
-    global $customerEmail;
-    global $current_user_id;
-    // Fetch subscription details
-    $subscription_type = get_field('subscription_type', $subscription_id);
-    $subscription_commitment = get_field('subscription_commitment', $subscription_id);
-    $subscription_billed_period = get_field('subscription_billed_period', $subscription_id);
-    $subscription_price = get_field('subscription_price', $subscription_id);
-    $subscription_saving_amount = get_field('subscription_saving_amount', $subscription_id);
-
-    // Determine if the plan should be marked as featured
-    $featured_class = $featured ? 'featured' : '';
-    $spark_class = $featured ? 'spark' : '';
-
-    // Placeholder for payment link generation function - ensure you define this elsewhere
-    $paymentLink = generateCardcomLink($current_user_id, $subscription_id, $term_id);
-
-    // Start HTML output
-?>
-    <div class="box stripes plan flex-column gap-s align-center <?php echo $featured_class; ?>">
-        <div class="plan-title"><?php echo $title; ?></div>
-        <div class="plan-price"><?php echo $subscription_price; ?></div>
-        <tag class="plan-saving <?php echo $subscription_saving_amount ? '' : 'empty'; ?>">
-            <?php echo $subscription_saving_amount ? $subscription_saving_amount : '-'; ?>
-        </tag>
-        <div class="plan-button" style="align-self: stretch;">
-            <button lightbox-type="iframe" lightbox-content="<?php echo $paymentLink; ?>" class="button green full-width <?php echo $spark_class; ?>">קדם עכשיו</button>
-        </div>
-    </div>
-<?php
-}
-
-
-
-// Check if the current user has an active subscription
 if ($query->have_posts()) {
     $query->the_post();
     $pro_post_id = $query->post->ID;
 
+    // Check if the current user has an active subscription
     if (have_rows('ad_subscriptions', $pro_post_id)) {
         while (have_rows('ad_subscriptions', $pro_post_id)) {
             the_row();
@@ -73,7 +29,48 @@ if ($query->have_posts()) {
             }
         }
     }
+    $pro_subscribed = false;  // Default to false
+    $pro_subscription = false; // Default to false
+
+    function generate_subscription_box($title, $subscription_id, $term_id = null, $featured = false)
+    {
+   
+        global $current_user_id;
+        // Fetch subscription details
+        $subscription_type = get_field('subscription_type', $subscription_id);
+        $subscription_commitment = get_field('subscription_commitment', $subscription_id);
+        $subscription_billed_period = get_field('subscription_billed_period', $subscription_id);
+        $subscription_price = get_field('subscription_price', $subscription_id);
+        $subscription_saving_amount = get_field('subscription_saving_amount', $subscription_id);
+
+        // Determine if the plan should be marked as featured
+        $featured_class = $featured ? 'featured' : '';
+        $spark_class = $featured ? 'spark' : '';
+
+        // Placeholder for payment link generation function - ensure you define this elsewhere
+        $paymentLink = generateCardcomLink($current_user_id, $subscription_id, $term_id);
+
+        // Start HTML output
 ?>
+        <div class="box stripes plan flex-column gap-s align-center <?php echo $featured_class; ?>">
+            <div class="plan-title"><?php echo $title; ?></div>
+            <div class="plan-price"><?php echo $subscription_price; ?></div>
+            <tag class="plan-saving <?php echo $subscription_saving_amount ? '' : 'empty'; ?>">
+                <?php echo $subscription_saving_amount ? $subscription_saving_amount : '-'; ?>
+            </tag>
+            <div class="plan-button" style="align-self: stretch;">
+                <button lightbox-type="iframe" lightbox-content="<?php echo $paymentLink; ?>" class="button green full-width <?php echo $spark_class; ?>">קדם עכשיו</button>
+            </div>
+        </div>
+    <?php
+    }
+
+
+
+
+
+
+    ?>
 
     <?php get_template_part('templates/me-hero', null, array('pro_post_id' => $pro_post_id, 'page_title' => 'פרטי מנוי')) ?>
 
@@ -196,7 +193,7 @@ if ($query->have_posts()) {
 
     <section id="subscriptions" class="main-content">
         <inner>
-            <div class="subscribe-status bottom-gap-m">מנוי נוכחי: <?= $pro_subscribed ? '<span style="color:var(--blue);">' . $pro_subscription . '</span>' : '<span style="color:var(--gray);">לא מפורסם</span></div>'; ?></div>
+            <div class="subscribe-status bottom-gap-m" style="font-size:var(--font-m);">סטטוס המנוי שלך (<?= get_the_title($pro_post_id); ?>): <?= $pro_subscribed ? '<span style="color:var(--blue);">' . $pro_subscription . '</span>' : '<span style="color:var(--red);">לא מפורסם</span></div>'; ?></div>
             <?php if (!$pro_subscribed) { ?>
                 <!-- Subscription options -->
                 <div class="box stripes subscription bottom-gap-l">
@@ -236,93 +233,93 @@ if ($query->have_posts()) {
 
 
 
-                    <div class="subscription-features bottom-gap-l" style="width: 900px;">
+                        <div class="subscription-features bottom-gap-l" style="width: 900px;">
 
-                        <div class="flex-column gap-m">
-                            <h4 class="check">דף עסק דיגיטלי מעוצב, עם כל המידע החשוב על העסק שלך ועליך</h4>
-                            <h4 class="check">נוכחות בולטת ברשת מטורפת לגולשים שמחפשים אותך</h4>
-                            <h4 class="check">ממשק לעדכון עצמאי של דף העסק הכולל ציונים על איכות הפרסום שלך + הצעות לשיפור ויעול</h4>
-                            <h4 class="check">סידרת טיפים למקסום הנוכחות שלך ברשת</h4>
-                            <h4 class="check">אפשרות לפרסם בדף העסק מוצרים, קופונים ומחירונים</h4>
-                            <h4 class="check">הצגת דירוגים וחוות דעת של לקוחות עם אפשרות מענה בדף העסק שלכם</h4>
-                            <h4 class="check">מעקב אחרי ביצועי העמוד שלכם</h4>
-                            <h4 class="check">עדכון תוכן אישי הכולל מאמרים ותוכן מקצועי שיהפכו אותך לאוטוריטה בתחומך</h4>
+                            <div class="flex-column gap-m">
+                                <h4 class="check">דף עסק דיגיטלי מעוצב, עם כל המידע החשוב על העסק שלך ועליך</h4>
+                                <h4 class="check">נוכחות בולטת ברשת מטורפת לגולשים שמחפשים אותך</h4>
+                                <h4 class="check">ממשק לעדכון עצמאי של דף העסק הכולל ציונים על איכות הפרסום שלך + הצעות לשיפור ויעול</h4>
+                                <h4 class="check">סידרת טיפים למקסום הנוכחות שלך ברשת</h4>
+                                <h4 class="check">אפשרות לפרסם בדף העסק מוצרים, קופונים ומחירונים</h4>
+                                <h4 class="check">הצגת דירוגים וחוות דעת של לקוחות עם אפשרות מענה בדף העסק שלכם</h4>
+                                <h4 class="check">מעקב אחרי ביצועי העמוד שלכם</h4>
+                                <h4 class="check">עדכון תוכן אישי הכולל מאמרים ותוכן מקצועי שיהפכו אותך לאוטוריטה בתחומך</h4>
+                            </div>
                         </div>
+
+
                     </div>
+                <?php } else { ?>
 
 
-                </div>
-            <?php } else { ?>
+                    <!--Term Subscription options -->
+                    <?php
+                    // Get the terms for the 'expert' taxonomy
+                    $terms = get_the_terms($pro_post_id, 'expert');
+
+                    if ($terms && !is_wp_error($terms)) {
+
+                        foreach ($terms as $term) { ?>
 
 
-                <!--Term Subscription options -->
-                <?php
-                // Get the terms for the 'expert' taxonomy
-                $terms = get_the_terms($pro_post_id, 'expert');
-
-                if ($terms && !is_wp_error($terms)) {
-
-                    foreach ($terms as $term) { ?>
-
-
-                        <div class="box stripes subscription term-subscription bottom-gap-l">
-                            <style>
-                                @media (max-width: 550px) {
-
-                                    .box.subscription h2,
-                                    .box.subscription p {
-                                        text-align: center;
-                                    }
-                                }
-                            </style>
-                            <h2>קידום למומלצים בתחום <span><?= esc_html($term->name); ?></span></h2>
-                            <p class="bottom-gap-m">
-                                תבלוט בתחום שלך. תהיה ראשון. תקבל את הלקוחות ראשון.
-                            </p>
-
-                            <div class="payment-plans grid-3 bottom-gap-m">
-                                <div class="dots_ico absolute" style="top: 330px;left: -26px;">
-                                    <?= svg_icon('dots'); ?>
-                                </div>
+                            <div class="box stripes subscription term-subscription bottom-gap-l">
                                 <style>
                                     @media (max-width: 550px) {
 
-                                        #subscriptions .dots_ico {
-                                            top: 630px !important;
+                                        .box.subscription h2,
+                                        .box.subscription p {
+                                            text-align: center;
                                         }
                                     }
                                 </style>
-                                <div class="sauqre_ico absolute" style="top: 230px;right: -126px;">
-                                    <?= svg_icon('square'); ?>
+                                <h2>קידום למומלצים בתחום <span><?= esc_html($term->name); ?></span></h2>
+                                <p class="bottom-gap-m">
+                                    תבלוט בתחום שלך. תהיה ראשון. תקבל את הלקוחות ראשון.
+                                </p>
+
+                                <div class="payment-plans grid-3 bottom-gap-m">
+                                    <div class="dots_ico absolute" style="top: 330px;left: -26px;">
+                                        <?= svg_icon('dots'); ?>
+                                    </div>
+                                    <style>
+                                        @media (max-width: 550px) {
+
+                                            #subscriptions .dots_ico {
+                                                top: 630px !important;
+                                            }
+                                        }
+                                    </style>
+                                    <div class="sauqre_ico absolute" style="top: 230px;right: -126px;">
+                                        <?= svg_icon('square'); ?>
+                                    </div>
+
+                                    <?php generate_subscription_box('חודשי', 836, $term->term_id); ?>
+                                    <?php generate_subscription_box('חצי שנתי', 837, $term->term_id); ?>
+                                    <?php generate_subscription_box('שנתי', 838, $term->term_id, $featured = true); ?>
+
+
                                 </div>
 
-                                <?php generate_subscription_box('חודשי', 836, $term->term_id); ?>
-                                <?php generate_subscription_box('חצי שנתי', 837, $term->term_id); ?>
-                                <?php generate_subscription_box('שנתי', 838, $term->term_id, $featured = true); ?>
+                                <div class="subscription-features bottom-gap-l">
+
+                                    <div class="flex-column gap-m">
+                                        <h4 class="check">הופעה במומלצים בדפי התחום ״<?= esc_html($term->name); ?>״</h4>
+                                        <h4 class="check">ראשון בכל תוצאות החיפושים בתחום ״<?= esc_html($term->name); ?>״</h4>
+                                        <h4 class="check">הופעה במומלצים בדף הבית</h4>
+                                    </div>
+                                </div>
 
 
                             </div>
 
-                            <div class="subscription-features bottom-gap-l">
-
-                                <div class="flex-column gap-m">
-                                    <h4 class="check">הופעה במומלצים בדפי התחום ״<?= esc_html($term->name); ?>״</h4>
-                                    <h4 class="check">ראשון בכל תוצאות החיפושים בתחום ״<?= esc_html($term->name); ?>״</h4>
-                                    <h4 class="check">הופעה במומלצים בדף הבית</h4>
-                                </div>
-                            </div>
-
-
-                        </div>
 
 
 
 
-
-            <?php
+                <?php
+                        }
                     }
-                }
-            } ?>
+                } ?>
 
 
 
