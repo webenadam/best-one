@@ -47,7 +47,7 @@ if ($query->have_posts()) {
                 </div>
                 <span id="profile-progress-message"></span>
             </div>
-            <div id="status-list" class="flex-column gap-s"></div>
+            <div id="status-list" class="flex gap-m"></div>
         </inner>
     </section>
 
@@ -140,9 +140,14 @@ if ($query->have_posts()) {
         color: white;
     }
 
+    #status-list {
+        flex-wrap: wrap;
+    }
+
     .checked,
     .unchecked {
         display: flex;
+        min-width: fit-content;
         font-size: var(--font-s);
         align-items: center;
         background-repeat: no-repeat;
@@ -217,18 +222,18 @@ if ($query->have_posts()) {
             // pro_promo_video check
             if ($('div[data-name="pro_promo_video"] input').val()) {
                 score += 10;
-                checkedList += `<span class="checked">וידאו שיווקי</span>`;
+                checkedList += `<span class="checked">יש וידאו שיווקי/span>`;
             } else {
-                uncheckedList += `<span class="unchecked">וידאו שיווקי</span>`;
+                uncheckedList += `<span class="unchecked">לא הוכנס וידאו שיווקי</span>`;
             }
 
             // Current user is author of at least one "post" post type post
             let userHasPosts = <?php echo json_encode($pro_posts->have_posts()); ?>;
             if (userHasPosts) {
                 score += 5;
-                checkedList += `<span class="checked">לפחות פוסט אחד</span>`;
+                checkedList += `<span class="checked">פורסמו מאמרים מקצועיים</span>`;
             } else {
-                uncheckedList += `<span class="unchecked">לפחות פוסט אחד</span>`;
+                uncheckedList += `<span class="unchecked">לא פורסמו מאמרים מקצועיים</span>`;
             }
 
             // Check if there is at least one customer review

@@ -168,6 +168,119 @@ if ($pro_custom_background) {
             </div>
         </div>
         <style>
+            #pro_form_submit {
+                width: 100%;
+                transition: all 0.5s ease-in-out;
+            }
+
+            .profile-sidebar {
+                margin-top: 23px;
+                margin: auto;
+                width: 347px;
+                max-width: 100%;
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                overflow: visible;
+            }
+
+            .profile-sidebar,
+            .profile-sidebar * {
+                transition: all 0.4s ease-in-out;
+            }
+
+            .sidebar-inner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-sidebar inner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+            .svg-circles {
+                bottom: -28px;
+                left: 24px;
+                max-width: 43px;
+            }
+
+            /* Sticky Sidebar */
+            @media (min-width: 850px) {
+
+                .profile-sidebar.sticky {
+                    position: fixed;
+                    left: 0;
+                    top: 79px;
+                    width: 100vw;
+                    max-width: 100vw;
+                    border-radius: 0;
+                    padding: var(--gap-xs) 0;
+                    background-color: #ffffffc9;
+                    backdrop-filter: blur(4px);
+                }
+
+                .profile-sidebar.sticky .sidebar-inner {
+                    flex-direction: row;
+                    gap: var(--gap-s);
+                    align-items: center;
+                    width: 1300px;
+                    max-width: 100%;
+                    margin: auto;
+                }
+
+                .profile-sidebar.sticky .certificate,
+                .profile-sidebar.sticky .social-icons {
+                    display: none !important;
+                }
+
+                .profile-sidebar.sticky .profile-image-wrap img {
+                    width: 57px;
+                    height: 57px;
+                    margin-bottom: 0;
+                }
+
+                .profile-sidebar.sticky #pro-contact-form {
+                    max-height: 700px;
+                    opacity: 1;
+                    flex-direction: row;
+                    margin-bottom: 0;
+                }
+
+                .profile-sidebar.sticky #pro-contact-form input,
+                .profile-sidebar.sticky #pro-contact-form select,
+                .profile-sidebar.sticky #pro_form_submit {
+                    width: 240px;
+                }
+
+                .profile-sidebar.sticky #pro_form_submit {
+                    height: 47px;
+                }
+            }
+
+            .profile-sidebar.sticky .svg-circles {
+                bottom: -39px;
+            }
+
+            .profile-sidebar.sticky .svg-circles svg {
+                max-width: 50px;
+            }
+
+            .profile-image-wrap img {
+                width: 304px;
+                height: 247px;
+                max-width: 60vw;
+                max-height: 44vw;
+                border-radius: 8px;
+                margin-bottom: 15px;
+                object-fit: cover;
+            }
+
+
+
             @media (max-width: 780px) {
                 #hero .left {
                     width: 100%;
@@ -175,133 +288,129 @@ if ($pro_custom_background) {
             }
         </style>
         <div class="left">
-            <style>
-                .profile-image-wrap svg {
-                    max-width: 18vw;
-                    max-height:16vw
-                }
-            </style>
             <span class="hide-tablet" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
-            <div class="box" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
-            <div class="profile-image-wrap relative" style="text-align: center;">
-                <h2 class="hide-desktop" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
-                <h3 class="hide-desktop" style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
-                    <?php
-                    $featured_image = get_the_post_thumbnail_url($pro_post_id, 'full');
-                    if (empty($featured_image)) {
-                        $featured_image = get_avatar_url($current_user_id);
-                    }
-                    ?>
-                    <img src="<?= $featured_image; ?>" alt="Profile Picture" style="width: 304px;height: 247px;max-width: 60vw;max-height: 44vw;border-radius: 8px;margin-bottom: 15px;object-fit: cover;">
-                    <span class="absolute" style="bottom: -28px; left: -17px"><?= svg_icon('circles'); ?></span>
-                    <span class="absolute" style="bottom: 144px; right: -5px;"><?= svg_icon('twirl'); ?></span>
-
-
-                </div>
-                <h2 class="pro-name hide-desktop" style="font-size: var(--font-l); margin-top: 0px; margin-bottom:10px;"><?= get_the_title(); ?></h2>
-
-                <div class="social-icons bottom-gap-s" style="display: flex; gap: var(--gap-m);">
-                    <?php if ($twitter = get_field('pro_twitter')) { ?>
-                        <a href="<?= $twitter; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/twitter.svg'); ?>" alt="Twitter" style="width: 18px; height: 18px;"></a>
-                    <?php } ?>
-                    <?php if ($facebook = get_field('pro_facebook')) { ?>
-                        <a href="<?= $facebook; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/facebook.svg'); ?>" alt="Facebook" style="width: 18px; height: 18px;"></a>
-                    <?php } ?>
-                    <?php if ($linkedin = get_field('pro_linkedin')) { ?>
-                        <a href="<?= $linkedin; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/linkedin.svg'); ?>" alt="LinkedIn" style="width: 18px; height: 18px;"></a>
-                    <?php } ?>
-                </div>
-                <div id="expert-tags" class="flex gap-s justify-center bottom-gap-s hide-desktop" style="flex-wrap: wrap;">
-                    <?php
-                    // Check if terms are found and are not empty
-                    if ($experts && !is_wp_error($experts)) {
-                        // Loop through each term
-                        foreach ($experts as $expert) {
-                            // Get the term permalink
-                            $expert_link = get_term_link($expert);
-                            // Echo the term with the specified format
-                            tag_label(esc_html($expert->name), esc_url($expert_link), 'big green');
-                        }
-                    }
-                    ?>
-                </div>
-                <div id="stats-box" class="box flex no-padding hide-desktop mobile bottom-gap-s" style="width: 90%;">
-                    <div class="stat-item">
-                        <p class="stat-label"><a href="#reviews">המלצות</a></p>
-                        <p class="stat-value"><?= get_field('pro_recommended_count'); ?></p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-label">שנות נסיון</p>
-                        <p class="stat-value"><?= get_pro_date($pro_post_id, 'exp'); ?></p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-label">התמחויות</p>
-                        <p class="stat-value"><?= count($experts); ?></p>
-                    </div>
-
-                </div>
-                <div class="stat-item hide-desktop" style="border-left: unset;">
-                    <p class="stat-label" style="font-weight:var(--font-w-600);"><a href="#reviews">דירוג משוקלל</a></p>
-                    <?php $pro_review_total = get_field('pro_total_rate'); ?>
-                    <div class="pro_rating">
-                        <style>
-                            .pro_rating .star-rating {
-                                margin-bottom: 2px !important;
-                                margin-right: 10px;
-                            }
-                        </style>
-                        <a href="#reviews" class="flex align-center">
-                            <p class="stat-value" style="color: var(--blue);"><?= $pro_review_total; ?></p>
-
-                            <?= star_rating($pro_review_total); ?>
-                        </a>
-                    </div>
-                </div>
-                <?php if ($pro_cert_card = get_field('pro_cert_card')) { ?>
-                    <div class="certificate">
-                        <img src="<?= wp_get_attachment_image_url($pro_cert_card, 'medium'); ?>" alt="תעודת הסמכה" class="float-up" style="width:170px;" lightbox-type="image" lightbox-content="<?= wp_get_attachment_image_url($pro_cert_card, 'full'); ?>">
-
-                    </div>
-                <?php } ?>
-                <form id="pro-contact-form" action="/submit" method="post" class="bottom-gap-xs">
-                    <style>
-                        #pro-contact-form {
-                            width: 100%;
-                            display: flex;
-                            flex-direction: column;
-                            gap: var(--gap-xs);
-                            max-height: 0;
-                            overflow: hidden;
-                            opacity: 0;
-                            transition: all 0.4s ease-in-out;
-                        }
-
-                        #pro-contact-form.active {
-                            max-height: 700px;
-                            opacity: 1;
-                        }
-
-                        #pro-contact-form input,
-                        #pro-contact-form textarea {
-                            text-align: right;
-                            width: 100%;
-                        }
-                    </style>
-                    <input type="text" name="fullName" placeholder="שם מלא" required>
-                    <input type="tel" name="phone" placeholder="טלפון" required>
-                    <input type="email" name="email" placeholder="מייל" required>
-                    <select name="subject" required>
-                        <option value="" disabled selected>נושא הפניה</option>
+            <div class="box profile-sidebar">
+                <div class="sidebar-inner">
+                    <div class="profile-image-wrap relative" style="text-align: center;">
+                        <h2 class="hide-desktop" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
+                        <h3 class="hide-desktop" style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
                         <?php
+                        $featured_image = get_the_post_thumbnail_url($pro_post_id, 'full');
+                        if (empty($featured_image)) {
+                            $featured_image = get_avatar_url($current_user_id);
+                        }
+                        ?>
+                        <img src="<?= $featured_image; ?>" alt="Profile Picture" />
+                        <span class="absolute svg-circles"><?= svg_icon('circles'); ?></span>
+                        <span class="absolute" style="bottom: 144px; right: -5px;"><?= svg_icon('twirl'); ?></span>
+
+
+                    </div>
+                    <h2 class="pro-name hide-desktop" style="font-size: var(--font-l); margin-top: 0px; margin-bottom:10px;"><?= get_the_title(); ?></h2>
+
+                    <div class="social-icons bottom-gap-s flex gap-m">
+                        <?php if ($twitter = get_field('pro_twitter')) { ?>
+                            <a href="<?= $twitter; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/twitter.svg'); ?>" alt="Twitter" style="width: 18px; height: 18px;"></a>
+                        <?php } ?>
+                        <?php if ($facebook = get_field('pro_facebook')) { ?>
+                            <a href="<?= $facebook; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/facebook.svg'); ?>" alt="Facebook" style="width: 18px; height: 18px;"></a>
+                        <?php } ?>
+                        <?php if ($linkedin = get_field('pro_linkedin')) { ?>
+                            <a href="<?= $linkedin; ?>" target="_blank" style="text-decoration: none;"><img src="<?= theme_uri('/img/icons/linkedin.svg'); ?>" alt="LinkedIn" style="width: 18px; height: 18px;"></a>
+                        <?php } ?>
+                    </div>
+                    <div id="expert-tags" class="flex gap-s justify-center bottom-gap-s hide-desktop" style="flex-wrap: wrap;">
+                        <?php
+                        // Check if terms are found and are not empty
                         if ($experts && !is_wp_error($experts)) {
-                            foreach ($experts as $term) {
-                                echo '<option value="' . esc_attr($term->term_id) . '">' . esc_html($term->name) . '</option>';
+                            // Loop through each term
+                            foreach ($experts as $expert) {
+                                // Get the term permalink
+                                $expert_link = get_term_link($expert);
+                                // Echo the term with the specified format
+                                tag_label(esc_html($expert->name), esc_url($expert_link), 'big green');
                             }
                         }
                         ?>
-                    </select>
-                </form>
-                <button id="pro_form_submit" class="button big" toggle-class="#pro-contact-form.active-1" style="width: 100%;">שלח פניה ל<?= get_the_title(); ?></button>
+                    </div>
+                    <div id="stats-box" class="box flex no-padding hide-desktop mobile bottom-gap-s" style="width: 90%;">
+                        <div class="stat-item">
+                            <p class="stat-label"><a href="#reviews">המלצות</a></p>
+                            <p class="stat-value"><?= get_field('pro_recommended_count'); ?></p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-label">שנות נסיון</p>
+                            <p class="stat-value"><?= get_pro_date($pro_post_id, 'exp'); ?></p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-label">התמחויות</p>
+                            <p class="stat-value"><?= count($experts); ?></p>
+                        </div>
+
+                    </div>
+                    <div class="stat-item hide-desktop" style="border-left: unset;">
+                        <p class="stat-label" style="font-weight:var(--font-w-600);"><a href="#reviews">דירוג משוקלל</a></p>
+                        <?php $pro_review_total = get_field('pro_total_rate'); ?>
+                        <div class="pro_rating">
+                            <style>
+                                .pro_rating .star-rating {
+                                    margin-bottom: 2px !important;
+                                    margin-right: 10px;
+                                }
+                            </style>
+                            <a href="#reviews" class="flex align-center">
+                                <p class="stat-value" style="color: var(--blue);"><?= $pro_review_total; ?></p>
+
+                                <?= star_rating($pro_review_total); ?>
+                            </a>
+                        </div>
+                    </div>
+                    <?php if ($pro_cert_card = get_field('pro_cert_card')) { ?>
+                        <div class="certificate">
+                            <img src="<?= wp_get_attachment_image_url($pro_cert_card, 'medium'); ?>" alt="תעודת הסמכה" class="float-up" style="width:170px;" lightbox-type="image" lightbox-content="<?= wp_get_attachment_image_url($pro_cert_card, 'full'); ?>">
+
+                        </div>
+                    <?php } ?>
+                    <form id="pro-contact-form" action="/submit" method="post" class="bottom-gap-xs">
+                        <style>
+                            #pro-contact-form {
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                gap: var(--gap-xs);
+                                max-height: 0;
+                                overflow: hidden;
+                                opacity: 0;
+                                transition: all 0.4s ease-in-out;
+                            }
+
+                            #pro-contact-form.active {
+                                max-height: 700px;
+                                opacity: 1;
+                            }
+
+                            #pro-contact-form input,
+                            #pro-contact-form textarea {
+                                text-align: right;
+                                width: 100%;
+                            }
+                        </style>
+                        <input type="text" name="fullName" placeholder="שם מלא" required>
+                        <input type="tel" name="phone" placeholder="טלפון" required>
+                        <input type="email" name="email" placeholder="מייל" required>
+                        <select name="subject" required>
+                            <option value="" disabled selected>נושא הפניה</option>
+                            <?php
+                            if ($experts && !is_wp_error($experts)) {
+                                foreach ($experts as $term) {
+                                    echo '<option value="' . esc_attr($term->term_id) . '">' . esc_html($term->name) . '</option>';
+                                }
+                            }
+                            ?>
+                        </select>
+                    </form>
+                    <button id="pro_form_submit" class="button big" toggle-class="#pro-contact-form.active-1">שלח פניה ל<?= get_the_title(); ?></button>
+                </div>
             </div>
         </div>
     </inner>
@@ -310,20 +419,22 @@ if ($pro_custom_background) {
 <section id="about">
     <style>
         #about {
-            padding-top:var(--gap-xl);
+            padding-top: var(--gap-xl);
         }
 
         #about inner {
             padding-left: 30%;
         }
+
         @media (max-width: 780px) {
             #about {
                 padding-top: 0;
             }
+
             #about inner {
-                padding-left:2%;
+                padding-left: 2%;
             }
-}
+        }
     </style>
     <inner style="padding-bottom:160px;">
         <h2>קצת עליי</h2>
@@ -378,14 +489,14 @@ if ($pro_custom_background) {
         if ($review_query->have_posts()) {
         ?>
             <div class="reviews-loop flex-column align-center gap-l bottom-gap-l"><?php
-                                                        while ($review_query->have_posts()) {
-                                                            $review_query->the_post();
-                                                            $review_post_id = get_the_ID();
-                                                            pro_review($review_post_id);
-                                                        }
-                                                        wp_reset_postdata();
+                                                                                    while ($review_query->have_posts()) {
+                                                                                        $review_query->the_post();
+                                                                                        $review_post_id = get_the_ID();
+                                                                                        pro_review($review_post_id);
+                                                                                    }
+                                                                                    wp_reset_postdata();
 
-                                                        ?></div>
+                                                                                    ?></div>
         <?php } else { ?>
             <div class="bottom-gap-m">טרם נוספו המלצות ל<?= get_the_title(); ?></div>
         <?php } ?>
@@ -444,10 +555,31 @@ if ($pro_custom_background) {
 </section>
 
 
-<?php 
+<?php
 // update page view counts for this pro
 update_pro_stats('page_views', $pro_post_id);
 
 ?>
 
+<script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {
+        myFunction()
+    };
+
+    // Get the header
+    var header = document.getElementsByClassName("profile-sidebar")[0];
+
+    // Get the offset position of the navbar
+    var sticky = header.offsetTop;
+
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+</script>
 <?php get_footer(); ?>
