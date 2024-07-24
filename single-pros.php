@@ -218,7 +218,7 @@ if ($pro_custom_background) {
                     top: 79px;
                     width: 100%;
                     border-radius: 0;
-                    padding: var(--gap-xs) 0;
+                    padding: var(--gap-xs) var(--gap-s);
                     background-color: #ffffffc9;
                     backdrop-filter: blur(4px);
                 }
@@ -258,7 +258,7 @@ if ($pro_custom_background) {
                 }
 
                 .profile-sidebar.sticky #pro_form_submit {
-                    height: 47px;
+                    height: 46px;
                 }
             }
 
@@ -407,7 +407,7 @@ if ($pro_custom_background) {
                             ?>
                         </select>
                     </form>
-                    <button id="pro_form_submit" class="button big" toggle-class="#pro-contact-form.active-1">שלח פניה ל<?= get_the_title(); ?></button>
+                    <button id="pro_form_submit" class="button big green" toggle-class="#pro-contact-form.active-1">שלח פניה ל<?= get_the_title(); ?></button>
                 </div>
             </div>
         </div>
