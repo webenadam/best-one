@@ -1794,6 +1794,10 @@ flex-direction: column;
 
 
 /* star rating */
+.rating-active-star path {
+  fill: var(--green);
+}
+
 .rating-disabled-star path {
   fill: var(--gray);
   opacity: 0.5;

@@ -66,6 +66,37 @@ if ($pro_custom_background) {
         padding-left: 30%;
     }
 
+    .inner-nav {
+        position:absolute;
+        bottom:0;
+        right:0;
+        background:white;
+        border-radius:var(--radius-s) var(--radius-s) 0  0;
+        padding:var(--gap-xs);
+        box-shadow: 0 -20px 34px -24px #161C2D15;
+    }
+
+    .inner-nav .button {
+        position: relative;
+        background:none;
+        color:var(--blue);
+    }
+
+    .inner-nav .button:hover {
+        color:var(--green);
+    }
+
+    .inner-nav .button:not(:last-child)::after {
+    content: '';
+    height: 100%;
+    width: 1px;
+    background: linear-gradient(to top, var(--light-gray), white);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
     @media (max-width: 780px) {
         #about {
             padding-top: 0;
@@ -130,6 +161,28 @@ if ($pro_custom_background) {
         bottom: -28px;
         left: 24px;
         max-width: 43px;
+    }
+
+    #pro-contact-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-xs);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s ease-in-out;
+    }
+
+    #pro-contact-form.active {
+        max-height: 700px;
+        opacity: 1;
+    }
+
+    #pro-contact-form input,
+    #pro-contact-form textarea {
+        text-align: right;
+        width: 100%;
     }
 
     /* Sticky Sidebar */
@@ -204,12 +257,18 @@ if ($pro_custom_background) {
         backdrop-filter: blure(4px);
         background: #ffffff14;
         padding: var(--gap-s) var(--gap-s);
+        margin-top: 10px;
+        margin-left: 4vw;
+    }
+
+    .total-score .stat-value {
+        color:var(--black)!important;
     }
 
     /* star rating */
     .total-score .rating-disabled-star path {
         fill: white;
-        opacity: 0.7;
+        opacity: 0.8;
     }
 
 
@@ -300,6 +359,13 @@ if ($pro_custom_background) {
                     </div>
                 </div>
             </div>
+            <div class="inner-nav">
+                <a class="button" href="#about">קצת עליי</a>
+                <a class="button" href="#certificates">תעודות והסמכה</a>
+                <a class="button" href="#reviews">המלצות</a>
+                <a class="button" href="#">איזור שירות</a>
+                <a class="button" href="#">שעות זמינות</a>
+            </div>
         </div>
 
         <div class="left">
@@ -388,29 +454,6 @@ if ($pro_custom_background) {
                         </div>
                     <?php } ?>
                     <form id="pro-contact-form" action="/submit" method="post" class="bottom-gap-xs">
-                        <style>
-                            #pro-contact-form {
-                                width: 100%;
-                                display: flex;
-                                flex-direction: column;
-                                gap: var(--gap-xs);
-                                max-height: 0;
-                                overflow: hidden;
-                                opacity: 0;
-                                transition: all 0.4s ease-in-out;
-                            }
-
-                            #pro-contact-form.active {
-                                max-height: 700px;
-                                opacity: 1;
-                            }
-
-                            #pro-contact-form input,
-                            #pro-contact-form textarea {
-                                text-align: right;
-                                width: 100%;
-                            }
-                        </style>
                         <input type="text" name="fullName" placeholder="שם מלא" required>
                         <input type="tel" name="phone" placeholder="טלפון" required>
                         <input type="email" name="email" placeholder="מייל" required>
@@ -451,7 +494,7 @@ if ($pro_custom_background) {
                 ?>
                         <div class="box certificate-box float-up" lightbox-type="image" lightbox-content="<?= esc_url($image_url); ?>" style="padding:var(--gap-s); max-width: min(100%, 300px);">
                             <div class="cert_img radius-s bottom-gap-xs" style="height:300px;background-image: url('<?= esc_url($image_thumb); ?>');background-size:cover;background-position:top center"></div>
-                            <h5><?= esc_attr($certificate['pro_cert_title']); ?></h5>
+                            <h4 style="text-align:center; font-size:var(--font-m);"><?= esc_attr($certificate['pro_cert_title']); ?></h4>
                         </div>
                 <?php
                     }
