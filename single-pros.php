@@ -33,6 +33,187 @@ if ($pro_custom_background) {
         z-index: 5;
     }
 
+    .from-ratings {
+        font-size: var(--font-s);
+        color: var(--gray);
+        margin-top: -10px;
+    }
+
+    .stat-item {
+        flex: 1;
+        padding: var(--gap-s) var(--gap-m);
+        border-left: 1px solid var(--soft-background);
+    }
+
+    .stat-label {
+        font-size: var(--font-s);
+        margin-top: -4px;
+        margin-bottom: -5px;
+    }
+
+    .stat-value {
+        font-size: var(--font-l);
+        font-weight: var(--font-w-700);
+        color: var(--green);
+
+    }
+
+    #about {
+        padding-top: var(--gap-xl);
+    }
+
+    #about inner {
+        padding-left: 30%;
+    }
+
+    @media (max-width: 780px) {
+        #about {
+            padding-top: 0;
+        }
+
+        #about inner {
+            padding-left: 2%;
+        }
+    }
+
+    @media (max-width: 780px) {
+        .stat-item {
+            padding: var(--gap-xs) var(--gap-xs);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-label {
+            font-size: var(--font-xs);
+
+        }
+    }
+
+    #pro_form_submit {
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .profile-sidebar {
+        margin-top: 23px;
+        margin: auto;
+        width: 347px;
+        max-width: 100%;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        overflow: visible;
+    }
+
+    .profile-sidebar,
+    .profile-sidebar * {
+        transition: all 0.4s ease-in-out;
+    }
+
+    .sidebar-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-sidebar inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .svg-circles {
+        opacity: 1;
+        bottom: -28px;
+        left: 24px;
+        max-width: 43px;
+    }
+
+    /* Sticky Sidebar */
+    @media (min-width: 850px) {
+
+        .profile-sidebar.sticky {
+            position: fixed;
+            left: 0;
+            top: 79px;
+            width: 100%;
+            border-radius: 0;
+            padding: var(--gap-xs) var(--gap-s);
+            background-color: #ffffffc9;
+            backdrop-filter: blur(4px);
+        }
+
+        .profile-sidebar.sticky .sidebar-inner {
+            flex-direction: row;
+            gap: var(--gap-s);
+            align-items: center;
+            width: 1300px;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .profile-sidebar.sticky .certificate,
+        .profile-sidebar.sticky .social-icons {
+            display: none !important;
+        }
+
+        .profile-sidebar.sticky .profile-image-wrap img {
+            width: 57px;
+            height: 57px;
+            margin-bottom: 0;
+        }
+
+        .profile-sidebar.sticky #pro-contact-form {
+            max-height: 700px;
+            opacity: 1;
+            flex-direction: row;
+            margin-bottom: 0;
+            justify-content: space-between;
+        }
+
+        .profile-sidebar.sticky #pro-contact-form input,
+        .profile-sidebar.sticky #pro-contact-form select,
+        .profile-sidebar.sticky #pro_form_submit {
+            width: 240px;
+        }
+
+        .profile-sidebar.sticky #pro_form_submit {
+            height: 46px;
+        }
+    }
+
+    .profile-sidebar.sticky .svg-circles {
+        opacity: 0;
+    }
+
+
+    .profile-image-wrap img {
+        width: 304px;
+        height: 247px;
+        max-width: 60vw;
+        max-height: 44vw;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        object-fit: cover;
+    }
+
+    .total-score {
+        backdrop-filter: blure(4px);
+        background: #ffffff14;
+        padding: var(--gap-s) var(--gap-s);
+    }
+
+    /* star rating */
+    .total-score .rating-disabled-star path {
+        fill: white;
+        opacity: 0.7;
+    }
+
+
+
     @media (max-width: 780px) {
 
         /* Tablet */
@@ -45,6 +226,10 @@ if ($pro_custom_background) {
 
         #hero inner {
             padding-bottom: var(--gap-xl);
+        }
+
+        #hero .left {
+            width: 100%;
         }
     }
 
@@ -59,96 +244,44 @@ if ($pro_custom_background) {
 
 <section id="hero" class="header-padding relative">
     <inner class="relative flex justify-between">
-        <div class="right hide-tablet" style="margin-top: 33px; width: 80%;">
+        <div class="right hide-tablet flex justify-between" style="margin-top: 33px; width: 80%;">
+            <div class="right-right">
+                <div class="areas">
+                    <?php $location_terms = get_the_terms($pro_post_id, 'areas');
 
-
-
-            <div class="areas">
-                <?php $location_terms = get_the_terms($pro_post_id, 'areas');
-
-                if ($location_terms && !is_wp_error($location_terms)) {
-                    foreach ($location_terms as $location_term) {
-                        $location = $location_term->name;
-                ?>
-                        <span class="area" style="color:var(--dark-gray);"><?= svg_icon('place'); ?>
-                            <?= $location; ?></span>
+                    if ($location_terms && !is_wp_error($location_terms)) {
+                        foreach ($location_terms as $location_term) {
+                            $location = $location_term->name;
+                    ?>
+                            <span class="area" style="color:var(--dark-gray);"><?= svg_icon('place'); ?>
+                                <?= $location; ?></span>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <span class="area"><?= svg_icon('place'); ?> מקום לא ידוע</span>
                     <?php
                     }
-                } else {
                     ?>
-                    <span class="area"><?= svg_icon('place'); ?> מקום לא ידוע</span>
-                <?php
-                }
-                ?>
-            </div>
-            <h1 class="pro-name bottom-gap-s" style="font-size: var(--font-xxl); margin-top: 0px;"><?= get_the_title(); ?></h1>
-            <div id="expert-tags" class="flex gap-s" style="margin-bottom:85px;">
-                <?php
-                // Check if terms are found and are not empty
-                if ($experts && !is_wp_error($experts)) {
-                    // Loop through each term
-                    foreach ($experts as $expert) {
-                        // Get the term permalink
-                        $expert_link = get_term_link($expert);
-                        // Echo the term with the specified format
-                        tag_label(esc_html($expert->name), esc_url($expert_link), 'big blue');
-                    }
-                }
-                ?>
-            </div>
-
-            <style>
-                .stat-item {
-                    flex: 1;
-                    padding: var(--gap-s) var(--gap-m);
-                    border-left: 1px solid var(--soft-background);
-                }
-
-                .stat-label {
-                    font-size: var(--font-s);
-                    margin-top: -4px;
-                    margin-bottom: -5px;
-                }
-
-                .stat-value {
-                    font-size: var(--font-l);
-                    font-weight: var(--font-w-700);
-                    color: var(--green);
-
-                }
-
-                @media (max-width: 780px) {
-                    .stat-item {
-                        padding: var(--gap-xs) var(--gap-xs);
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        align-items: center;
-                    }
-
-                    .stat-label {
-                        font-size: var(--font-xs);
-
-                    }
-                }
-            </style>
-            <div>
-                <div id="stats-box" class="box flex no-padding" style="width: 550px; height: 90px; float:right;margin-left:30px;">
-                    <div class="stat-item">
-                        <p class="stat-label"><a href="#reviews">המלצות</a></p>
-                        <p class="stat-value"><?= get_field('pro_recommended_count'); ?></p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-label">שנות נסיון</p>
-                        <p class="stat-value"><?= get_pro_date($pro_post_id, 'exp'); ?></p>
-                    </div>
-                    <div class="stat-item">
-                        <p class="stat-label">תחומי התמחויות</p>
-                        <p class="stat-value"><?= count($experts); ?></p>
-                    </div>
-
                 </div>
-                <div class="stat-item" style="flex: unset; width: 220px; float: right; border-left: unset;">
+                <h1 class="pro-name bottom-gap-s" style="font-size: var(--font-xxl); margin-top: 0px;"><?= get_the_title(); ?></h1>
+                <div id="expert-tags" class="flex gap-s" style="margin-bottom:85px;">
+                    <?php
+                    // Check if terms are found and are not empty
+                    if ($experts && !is_wp_error($experts)) {
+                        // Loop through each term
+                        foreach ($experts as $expert) {
+                            // Get the term permalink
+                            $expert_link = get_term_link($expert);
+                            // Echo the term with the specified format
+                            tag_label(esc_html($expert->name), esc_url($expert_link), 'big blue');
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="right-left">
+                <div class="total-score box" style="flex: unset; width: 220px; float: right; border-left: unset;">
                     <p class="stat-label" style="font-weight:var(--font-w-600);"><a href="#reviews">דירוג משוקלל</a></p>
                     <?php $pro_review_total = get_field('pro_total_rate'); ?>
                     <div class="pro_rating">
@@ -163,134 +296,17 @@ if ($pro_custom_background) {
 
                             <?= star_rating($pro_review_total); ?>
                         </a>
+                        <div class="from-ratings">מתוך <?= get_field('pro_recommended_count'); ?> דירוגים</div>
                     </div>
                 </div>
             </div>
         </div>
-        <style>
-            #pro_form_submit {
-                width: 100%;
-                transition: all 0.5s ease-in-out;
-            }
 
-            .profile-sidebar {
-                margin-top: 23px;
-                margin: auto;
-                width: 347px;
-                max-width: 100%;
-                background-color: white;
-                padding: 20px;
-                border-radius: 10px;
-                overflow: visible;
-            }
-
-            .profile-sidebar,
-            .profile-sidebar * {
-                transition: all 0.4s ease-in-out;
-            }
-
-            .sidebar-inner {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .profile-sidebar inner {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-
-            .svg-circles {
-                opacity: 1;
-                bottom: -28px;
-                left: 24px;
-                max-width: 43px;
-            }
-
-            /* Sticky Sidebar */
-            @media (min-width: 850px) {
-
-                .profile-sidebar.sticky {
-                    position: fixed;
-                    left: 0;
-                    top: 79px;
-                    width: 100%;
-                    border-radius: 0;
-                    padding: var(--gap-xs) var(--gap-s);
-                    background-color: #ffffffc9;
-                    backdrop-filter: blur(4px);
-                }
-
-                .profile-sidebar.sticky .sidebar-inner {
-                    flex-direction: row;
-                    gap: var(--gap-s);
-                    align-items: center;
-                    width: 1300px;
-                    max-width: 100%;
-                    margin: auto;
-                }
-
-                .profile-sidebar.sticky .certificate,
-                .profile-sidebar.sticky .social-icons {
-                    display: none !important;
-                }
-
-                .profile-sidebar.sticky .profile-image-wrap img {
-                    width: 57px;
-                    height: 57px;
-                    margin-bottom: 0;
-                }
-
-                .profile-sidebar.sticky #pro-contact-form {
-                    max-height: 700px;
-                    opacity: 1;
-                    flex-direction: row;
-                    margin-bottom: 0;
-                    justify-content: space-between;
-                }
-
-                .profile-sidebar.sticky #pro-contact-form input,
-                .profile-sidebar.sticky #pro-contact-form select,
-                .profile-sidebar.sticky #pro_form_submit {
-                    width: 240px;
-                }
-
-                .profile-sidebar.sticky #pro_form_submit {
-                    height: 46px;
-                }
-            }
-
-            .profile-sidebar.sticky .svg-circles {
-                opacity: 0;
-            }
-
-
-            .profile-image-wrap img {
-                width: 304px;
-                height: 247px;
-                max-width: 60vw;
-                max-height: 44vw;
-                border-radius: 8px;
-                margin-bottom: 15px;
-                object-fit: cover;
-            }
-
-
-
-            @media (max-width: 780px) {
-                #hero .left {
-                    width: 100%;
-                }
-            }
-        </style>
         <div class="left">
             <span class="hide-tablet" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
             <div class="box profile-sidebar">
                 <div class="sidebar-inner">
                     <div class="profile-image-wrap flex relative" style="text-align: center;">
-                        <h2 class="hide-desktop" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
                         <h3 class="hide-desktop" style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
                         <?php
                         $featured_image = get_the_post_thumbnail_url($pro_post_id, 'full');
@@ -362,6 +378,8 @@ if ($pro_custom_background) {
                                 <?= star_rating($pro_review_total); ?>
                             </a>
                         </div>
+                        <div class="from-ratings">מתוך <?= get_field('pro_recommended_count'); ?> דירוגים</div>
+
                     </div>
                     <?php if ($pro_cert_card = get_field('pro_cert_card')) { ?>
                         <div class="certificate">
@@ -415,25 +433,7 @@ if ($pro_custom_background) {
 </section>
 
 <section id="about">
-    <style>
-        #about {
-            padding-top: var(--gap-xl);
-        }
 
-        #about inner {
-            padding-left: 30%;
-        }
-
-        @media (max-width: 780px) {
-            #about {
-                padding-top: 0;
-            }
-
-            #about inner {
-                padding-left: 2%;
-            }
-        }
-    </style>
     <inner style="padding-bottom:160px;">
         <h2>קצת עליי</h2>
         <p style="color: var(--light-black);" class="bottom-gap-xl">

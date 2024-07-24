@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RWYS9J3ZWV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RWYS9J3ZWV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-RWYS9J3ZWV');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-RWYS9J3ZWV');
+    </script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -30,89 +33,99 @@
 
     <?php }
     } ?>
-<?php $clean_page = get_query_var('cleanpage'); ?>
+    <?php $clean_page = get_query_var('cleanpage'); ?>
 
-<?php if(!$clean_page) { ?>
-    <header>
-        <inner class="flex justify-between align-center mobile-flex-row">
-            <span class="menu-toggle flex hide-desktop" self-toggle-class="active" toggle-class="#header-nav.active" style="z-index:10; cursor:pointer;"><?= svg_icon('hamburger'); ?></span>
-            <a class="float-up logo" style="height:33px;" href="<?= home_url(); ?>"><img src="<?= get_template_directory_uri(); ?>/img/Logo.png" alt="Logo" /></a>
-            <nav id="header-nav">
-                <ul class="flex align-center gap-m">
-                    <?php if (have_rows('top_nav_links', 'option')) : ?>
-                        <?php while (have_rows('top_nav_links', 'option')) : the_row(); ?>
-                            <?php
-                            // Get the link title
-                            $link_title = get_sub_field('top_nav_link_title');
-                            // Get the link type
-                            $link_type = get_sub_field('top_nav_link_type');
-                            // Determine the URL based on the link type
-                            if ($link_type == 'עמוד') {
-                                $link_url = get_permalink(get_sub_field('top_nav_link_page'));
-                            } elseif ($link_type == 'פוסט') {
-                                $link_url = get_permalink(get_sub_field('top_nav_link_post'));
-                            } elseif ($link_type == 'קישור מותאם') {
-                                $link_url = get_sub_field('top_nav_link_custom');
-                            } else {
-                                $link_url = '#';
-                            }
-                            ?>
-                            <li><a href="<?= esc_url($link_url); ?>"><?= esc_html($link_title); ?></a></li>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
-                </ul>
+    <?php if (!$clean_page) { ?>
+        <header>
+            <inner class="flex justify-start align-center mobile-flex-row gap-s">
+                <span class="menu-toggle flex hide-desktop" self-toggle-class="active" toggle-class="#header-nav.active" style="z-index:10; cursor:pointer;"><?= svg_icon('hamburger'); ?></span>
+                <a class="float-up logo" style="height:33px;" href="<?= home_url(); ?>"><img src="<?= get_template_directory_uri(); ?>/img/Logo.png" alt="Logo" /></a>
+                <nav id="header-nav">
+                    <ul class="flex align-center gap-m">
+                        <?php if (have_rows('top_nav_links', 'option')) : ?>
+                            <?php while (have_rows('top_nav_links', 'option')) : the_row(); ?>
+                                <?php
+                                // Get the link title
+                                $link_title = get_sub_field('top_nav_link_title');
+                                // Get the link type
+                                $link_type = get_sub_field('top_nav_link_type');
+                                // Determine the URL based on the link type
+                                if ($link_type == 'עמוד') {
+                                    $link_url = get_permalink(get_sub_field('top_nav_link_page'));
+                                } elseif ($link_type == 'פוסט') {
+                                    $link_url = get_permalink(get_sub_field('top_nav_link_post'));
+                                } elseif ($link_type == 'קישור מותאם') {
+                                    $link_url = get_sub_field('top_nav_link_custom');
+                                } else {
+                                    $link_url = '#';
+                                }
+                                ?>
+                                <li><a href="<?= esc_url($link_url); ?>"><?= esc_html($link_title); ?></a></li>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+                <style>
+                    .nav-main-button {
+                        margin-right:auto;
+                    }
+                    .nav-main-button svg {
+                        vertical-align: -4px;
+                        margin-left: 13px;
+                    }
+                </style>
                 <?php
-                        if (!is_user_logged_in()) {
-                            // User is not logged in
-                        ?>
-                            <div lightbox-type="content" lightbox-content="#signin-signup-pop" class="button"><span style="vertical-align: -4px; margin-left:13px;"><?= svg_icon('profile', null, null, 19, 19); ?></span>התחבר / פרסם עכשיו</div>
-                            <?php
-                        } else {
-                            // User is logged in
-                            $current_user = wp_get_current_user();
+                if (!is_user_logged_in()) {
+                    // User is not logged in
+                ?>
+                    <div lightbox-type="content" lightbox-content="#signin-signup-pop" class="button nav-main-button"><?= svg_icon('profile', null, null, 19, 19); ?>התחבר / פרסם עכשיו</div>
+                    <?php
+                } else {
+                    // User is logged in
+                    $current_user = wp_get_current_user();
 
-                            if (in_array('administrator', $current_user->roles)) {
-                                // User is an administrator
-                            ?>
-                                <a href="<?= admin_url('/admin.php?page=site-settings'); ?>" class="button"><span style="vertical-align: -4px; margin-left:13px;"><?= svg_icon('profile', null, null, 19, 19); ?></span>ניהול אתר</a>
-                            <?php
-                            } else {
-                                // User is logged in but not an administrator
-                            ?>
-                                <a href="<?= home_url('/me'); ?>" class="button"><span style="vertical-align: -4px; margin-left:13px;"><?= svg_icon('profile', null, null, 19, 19); ?></span>איזור אישי</a>
-                        <?php
-                            }
-                        }
-                        ?>
-            </nav>
-        </inner>
-    </header>
-    <div id="signin-signup-pop" class="lightbox-overlay">
-        <div class="lightbox-content" style="width:440px;">
+                    if (in_array('administrator', $current_user->roles)) {
+                        // User is an administrator
+                    ?>
+                        <a href="<?= admin_url('/admin.php?page=site-settings'); ?>" class="button nav-main-button"><?= svg_icon('profile', null, null, 19, 19); ?>ניהול אתר</a>
+                    <?php
+                    } else {
+                        // User is logged in but not an administrator
+                    ?>
+                        <a href="<?= home_url('/me'); ?>" class="button nav-main-button"><?= svg_icon('profile', null, null, 19, 19); ?>איזור אישי</a>
+                <?php
+                    }
+                }
+                ?>
 
-            <div class="tabs-container">
-                <div class="tabs">
-                    <div class="slider button"></div>
-                    <div class="tab-button active" data-tab="signin">התחבר</div>
-                    <div class="tab-button" data-tab="signup">פרסם עכשיו</div>
-                </div>
-                <div class="tab-content active" id="tab-signin">
-                    <form name="loginform" id="loginform" action="<?= esc_url(home_url('wp-login.php', 'login_post')); ?>" method="post" style="text-align:center;">
-                        <input type="text" name="log" autocomplete="username" id="user_login" class="input" placeholder="דואר אלקטרוני" value="" size="20" />
-                        <input type="password" name="pwd" autocomplete="current-password" id="user_pass" class="input" placeholder="סיסמה" value="" size="20" />
-                        <input type="submit" name="wp-submit" id="wp-submit" class="button" value="התחבר" />
-                        <a href="<?= esc_url(wp_lostpassword_url()); ?>" style="color:var(--blue);font-size:var(--font-s);"><?php _e('שכחת את הסיסמה?', 'text-domain'); ?></a>
+            </inner>
+        </header>
+        <div id="signin-signup-pop" class="lightbox-overlay">
+            <div class="lightbox-content" style="width:440px;">
 
-                    </form>
-                </div>
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <div class="slider button"></div>
+                        <div class="tab-button active" data-tab="signin">התחבר</div>
+                        <div class="tab-button" data-tab="signup">פרסם עכשיו</div>
+                    </div>
+                    <div class="tab-content active" id="tab-signin">
+                        <form name="loginform" id="loginform" action="<?= esc_url(home_url('wp-login.php', 'login_post')); ?>" method="post" style="text-align:center;">
+                            <input type="text" name="log" autocomplete="username" id="user_login" class="input" placeholder="דואר אלקטרוני" value="" size="20" />
+                            <input type="password" name="pwd" autocomplete="current-password" id="user_pass" class="input" placeholder="סיסמה" value="" size="20" />
+                            <input type="submit" name="wp-submit" id="wp-submit" class="button" value="התחבר" />
+                            <a href="<?= esc_url(wp_lostpassword_url()); ?>" style="color:var(--blue);font-size:var(--font-s);"><?php _e('שכחת את הסיסמה?', 'text-domain'); ?></a>
 
-                <div class="tab-content" id="tab-signup" style="text-align:center;">
-                    <h4>רוצה לקבל לקוחות חדשים?</h4>
-                    <h6>ממלאים פרטים ומתחילים לקבל לידים חמים!</h6>
-                    <gap-m></gap-m>
-                    <?php acfe_form('signup-new-pro'); ?>
+                        </form>
+                    </div>
+
+                    <div class="tab-content" id="tab-signup" style="text-align:center;">
+                        <h4>רוצה לקבל לקוחות חדשים?</h4>
+                        <h6>ממלאים פרטים ומתחילים לקבל לידים חמים!</h6>
+                        <gap-m></gap-m>
+                        <?php acfe_form('signup-new-pro'); ?>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     <?php } ?>

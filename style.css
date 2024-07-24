@@ -1791,3 +1791,10 @@ flex-direction: column;
   width: 30px;
   vertical-align: middle;
 }
+
+
+/* star rating */
+.rating-disabled-star path {
+  fill: var(--gray);
+  opacity: 0.5;
+}

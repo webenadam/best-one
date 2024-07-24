@@ -1,7 +1,8 @@
 <?php
 
 // Function to convert a 0-100 score to a 0-5 score
-function convert_to_star_rating($score) {
+function convert_to_star_rating($score)
+{
     // Ensure the score is within the range 0-100
     $score = max(0, min(100, $score));
 
@@ -12,7 +13,8 @@ function convert_to_star_rating($score) {
 }
 
 // Function to render the star rating
-function star_rating($score = 0, $from = 5) {
+function star_rating($score = 0, $from = 5)
+{
     // Convert 0-100 score to a 0-5 score
     $number = convert_to_star_rating($score);
 
@@ -21,12 +23,12 @@ function star_rating($score = 0, $from = 5) {
 
     // Loop to add filled stars
     for ($i = 0; $i < $number; $i++) {
-        $output .= svg_icon('star');
+        $output .= svg_icon('star', null, null, null, null, false, 'rating-active-star');
     }
 
     // Loop to add gray stars
     for ($i = $number; $i < $from; $i++) {
-        $output .= svg_icon('star', '#E0E0E0');
+        $output .= svg_icon('star', null, null, null, null, false, 'rating-disabled-star');
     }
 
     // Return the generated stars
