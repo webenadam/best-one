@@ -185,8 +185,9 @@ if ($pro_custom_background) {
         width: 100%;
     }
 
-    /* Sticky Sidebar */
+    /* Sticky Sidebar (only on desktop) */
     @media (min-width: 850px) {
+
 
         .profile-sidebar.sticky {
             position: fixed;
@@ -289,6 +290,10 @@ if ($pro_custom_background) {
 
         #hero .left {
             width: 100%;
+        }
+
+        #certificates grid {
+            justify-items: center;
         }
     }
 
