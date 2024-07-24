@@ -203,6 +203,7 @@ if ($pro_custom_background) {
 
 
             .svg-circles {
+                opacity: 1;
                 bottom: -28px;
                 left: 24px;
                 max-width: 43px;
@@ -215,8 +216,7 @@ if ($pro_custom_background) {
                     position: fixed;
                     left: 0;
                     top: 79px;
-                    width: 100vw;
-                    max-width: 100vw;
+                    width: 100%;
                     border-radius: 0;
                     padding: var(--gap-xs) 0;
                     background-color: #ffffffc9;
@@ -248,6 +248,7 @@ if ($pro_custom_background) {
                     opacity: 1;
                     flex-direction: row;
                     margin-bottom: 0;
+                    justify-content: space-between;
                 }
 
                 .profile-sidebar.sticky #pro-contact-form input,
@@ -262,12 +263,9 @@ if ($pro_custom_background) {
             }
 
             .profile-sidebar.sticky .svg-circles {
-                bottom: -39px;
+                opacity: 0;
             }
 
-            .profile-sidebar.sticky .svg-circles svg {
-                max-width: 50px;
-            }
 
             .profile-image-wrap img {
                 width: 304px;
@@ -291,7 +289,7 @@ if ($pro_custom_background) {
             <span class="hide-tablet" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
             <div class="box profile-sidebar">
                 <div class="sidebar-inner">
-                    <div class="profile-image-wrap relative" style="text-align: center;">
+                    <div class="profile-image-wrap flex relative" style="text-align: center;">
                         <h2 class="hide-desktop" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
                         <h3 class="hide-desktop" style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
                         <?php
@@ -564,22 +562,35 @@ update_pro_stats('page_views', $pro_post_id);
 <script>
     // When the user scrolls the page, execute myFunction
     window.onscroll = function() {
-        myFunction()
+        myFunction();
     };
 
     // Get the header
     var header = document.getElementsByClassName("profile-sidebar")[0];
+    var submitButton = document.getElementById("pro_form_submit");
+    var contactForm = document.getElementById("pro-contact-form");
 
     // Get the offset position of the navbar
     var sticky = header.offsetTop;
+
+    // Store the original value of the toggle-class attribute
+    var originalValue = submitButton.getAttribute("toggle-class");
 
     // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
     function myFunction() {
         if (window.pageYOffset > sticky) {
             header.classList.add("sticky");
+            submitButton.setAttribute("toggle-class", "done");
         } else {
             header.classList.remove("sticky");
+            // Check if #pro-contact-form does not have the "active" class
+            if (!contactForm.classList.contains("active")) {
+                submitButton.setAttribute("toggle-class", originalValue);
+            }
         }
     }
 </script>
+
+
+
 <?php get_footer(); ?>
