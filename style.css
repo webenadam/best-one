@@ -95,19 +95,19 @@ h1, h2, h3, h4 {
 
 h1 {
   color: var(--black);
-  font-size: var(--font-xxl);
+  font-size: var(--font-xxxl);
   font-weight: 800;
-  line-height: var(--font-xxl);
+  line-height: var(--font-xxxl);
 }
 
 h2 {
   font-weight: 100;
-  font-size: var(--font-xl);
+  font-size: var(--font-xxl);
 }
 
 h3 {
   font-size: var(--font-l);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 h5 {
@@ -182,6 +182,14 @@ section.light {
   background-color: var(--soft-background);
 }
 
+section.blue {
+  background-color: var(--blue);
+}
+
+section.green {
+  background-color: var(--green);
+}
+
 
 section inner > h1,
 section inner > h2,
@@ -193,7 +201,11 @@ section inner > h4 {
 section.dark inner > h1,
 section.dark inner > h2,
 section.dark inner > h3,
-section.dark inner > h4 {
+section.dark inner > h4,
+section.blue inner > h1,
+section.blue inner > h2,
+section.blue inner > h3,
+section.blue inner > h4 {
   color: white;
 }
 
@@ -260,7 +272,7 @@ select, input, button, .button {
 
 select, input:not([type="submit"]), textarea {
   border: 1px solid var(--gray);
-  padding: 10px 20px;
+  padding: var(--gap-xs) var(--gap-s);
   border-radius: var(--radius-s);
   min-width: 160px;
   font-weight: var(--font-w-400);
@@ -905,7 +917,7 @@ input.tt-input.drop-down-open {
   background: url('data:image/svg+xml;utf8,%3Csvg width="11" height="18" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M5.33333 0C2.71184 0 0 1.97836 0 5.28889C0 8.79978 4.90259 13.702 5.11153 13.9088C5.1702 13.9673 5.2502 14 5.33333 14C5.41647 14 5.49647 13.9673 5.55514 13.9088C5.76408 13.702 10.6667 8.79978 10.6667 5.28889C10.6667 1.97836 7.95482 0 5.33333 0ZM5.33548 7.15557C4.29736 7.15557 3.45312 6.31837 3.45312 5.28891C3.45312 4.25944 4.29736 3.42224 5.33548 3.42224C6.3736 3.42224 7.21783 4.25944 7.21783 5.28891C7.21783 6.31837 6.3736 7.15557 5.33548 7.15557Z" fill="%2368D585"/%3E%3C/svg%3E') no-repeat;
   background-position: right 1.3em top 53%, 0 0;
   background-size: 0.75em auto, 100%;
-  padding-right: 42px;
+  text-indent: 35px;
   width:280px;
 }
 
@@ -1801,4 +1813,51 @@ flex-direction: column;
 .rating-disabled-star path {
   fill: var(--gray);
   opacity: 0.5;
+}
+
+.profile-box data {
+  display: block;
+  flex: 1;
+  padding: 10px 20px;
+}
+
+exprties {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  max-width: 300px;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+exprties::-webkit-scrollbar {
+  display: none;
+}
+
+exprties::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.profile-box.dark {
+  box-shadow: none;
+  background-color: var(--soft-background);
+}
+
+.profile-box.dark bottom {
+  background-color: white;
+  /* border:1px solid var(--light-gray)!important; */
+}
+
+.profile-box.featured {
+  border: 1px solid var(--blue);
 }

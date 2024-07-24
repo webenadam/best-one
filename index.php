@@ -27,13 +27,17 @@ $featured_pros = get_field('home_featured_pros', 'option');
     padding: var(--gap-s);
     background-color: var(--blue);
     gap: var(--gap-s);
-    width: 410px;
+    width: fit-content;
   }
 
   #hero .left img {
     max-width: 57vw;
   }
 
+  .search-form .places-input {
+    background-color:white;
+    width:212px;
+  }
 
   @media (max-width: 550px) {
     #hero {
@@ -65,13 +69,15 @@ $featured_pros = get_field('home_featured_pros', 'option');
     }
 
   }
+
+  
 </style>
 <section id="hero" class="header-padding">
 
   <inner class="relative flex align-center mobile-flex-column">
     <div class="right" style="z-index:1;">
       <h1 class="title bottom-gap-xs">הפורטל המוביל למומחי נדל״ן פיננסים ושמאות בישראל</h1>
-      <h2 class="subtitle bottom-gap-l">הפלטפורמה שלך לבחירת אנשי המקצוע הטובים ביותר בתחום
+      <h2 class="subtitle bottom-gap-l font-xl">הפלטפורמה שלך לבחירת אנשי המקצוע הטובים ביותר בתחום
       </h2>
       <div class="search-form_parent-container">
         <div class="flex mobile-flex-column search-form background-blue radius-s bottom-gap-xs">
@@ -94,6 +100,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
               <option value="<?= esc_attr($expert_term->term_id); ?>"><?= esc_html($expert_term->name); ?></option>
             <?php endforeach; ?>
           </select>
+          <input class="places-input places-typeahead autocomplete-input" name="place" dir="rtl" type="text" placeholder="בחר מיקום" value="<?= esc_attr($place_input_value); ?>" />
           <a href="#main-feed" class="button dark">חפש בעל מקצוע</a>
         </div>
         <h6>התחל חיפוש ראשוני. הגדר סינון נוסף בהמשך.</h6>
@@ -152,23 +159,22 @@ $featured_pros = get_field('home_featured_pros', 'option');
   </inner>
 </section>
 
-
 <?php get_template_part('templates/featured-pros', null, array('section_classes' => 'light')); ?>
 
 <section id="site-datas" style="border-bottom:1px solid var(--soft-background);">
-  <inner style="padding:var(--gap-l)">
+  <inner style="padding:var(--gap-l) 0;">
     <grid class="home-stats grid-3 gap-s">
       <style>
         .home-stats stat {
           display: flex;
           align-items: center;
           gap: var(--gap-s);
-          font-size: var(--font-xxl);
+          font-size: var(--font-xxxl);
           font-weight: var(--font-w-700);
         }
 
         .home-stats number {
-          font-size: var(--font-xxl);
+          font-size: var(--font-xxxl);
           font-weight: var(--font-w-700);
         }
 
@@ -177,7 +183,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
           font-size: var(--font-s);
           font-weight: var(--font-w-400);
           color: var(--dark-gray);
-          margin-top:6px;
+          margin-top: 6px;
         }
 
         @media (max-width: 550px) {
@@ -274,7 +280,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
   </style>
   <inner class="flex tablet-flex-column gap-l">
     <right class="flex-column flex-1">
-      <h2 style="color:white;font-size:var(--font-xxl);">אנחנו כאן בשבילכם.</h2>
+      <h2 style="color:white;font-size:var(--font-xxxl);">אנחנו כאן בשבילכם.</h2>
       <p class="desc" style="max-width:80%;">חשוב לנו שתקבלו את כל המידע שאתם צריכים כדי להיות רגועים ובטוחים שאתם מקבלים את הטוב ביותר.</p>
       <check class="flex gap-l bottom-gap-l" style="margin-top:40px;">
         <div style="width: 30px;">
@@ -326,6 +332,12 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
       $(target).val(selectedValue);
     }
 
+    // Function to sync the text inputs
+    function syncTextInputs(source, target) {
+      var inputValue = $(source).val();
+      $(target).val(inputValue);
+    }
+
     // Event listener for changes on the #hero select input
     $('#hero .search-form select[name="experties"]').on('change', function() {
       syncSelectInputs(this, '#main-feed select.expert_select');
@@ -335,6 +347,12 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
     // Event listener for changes on the #main-feed select input
     $('#main-feed .expert_select').on('change', function() {
       syncSelectInputs(this, '#hero .search-form select[name="experties"]');
+    });
+
+    // Event listener for typing in .places-input text inputs
+    $('.places-input').on('input', function() {
+      var otherInput = $('.places-input').not(this);
+      syncTextInputs(this, otherInput);
     });
   });
 </script>

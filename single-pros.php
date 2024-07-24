@@ -317,7 +317,7 @@ if ($pro_custom_background) {
                         foreach ($location_terms as $location_term) {
                             $location = $location_term->name;
                     ?>
-                            <span class="area" style="color:var(--dark-gray);"><?= svg_icon('place'); ?>
+                            <span class="area dark-gray"><?= svg_icon('place'); ?>
                                 <?= $location; ?></span>
                         <?php
                         }
@@ -328,7 +328,7 @@ if ($pro_custom_background) {
                     }
                     ?>
                 </div>
-                <h1 class="pro-name bottom-gap-s" style="font-size: var(--font-xxl); margin-top: 0px;"><?= get_the_title(); ?></h1>
+                <h1 class="pro-name bottom-gap-s" style="font-size: var(--font-xxxl); margin-top: 0px;"><?= get_the_title(); ?></h1>
                 <div id="expert-tags" class="flex gap-s" style="margin-bottom:85px;">
                     <?php
                     // Check if terms are found and are not empty
@@ -356,7 +356,7 @@ if ($pro_custom_background) {
                             }
                         </style>
                         <a href="#reviews" class="flex align-center">
-                            <p class="stat-value" style="color: var(--blue);"><?= $pro_review_total; ?></p>
+                            <p class="stat-value blue"><?= $pro_review_total; ?></p>
 
                             <?= star_rating($pro_review_total); ?>
                         </a>
@@ -368,8 +368,8 @@ if ($pro_custom_background) {
                 <a class="button" href="#about">קצת עליי</a>
                 <a class="button" href="#certificates">תעודות והסמכה</a>
                 <a class="button" href="#reviews">המלצות</a>
-                <a class="button" href="#">איזור שירות</a>
-                <a class="button" href="#">שעות זמינות</a>
+                <a class="button" href="#places-and-hours">איזור שירות</a>
+                <a class="button" href="#places-and-hours">שעות זמינות</a>
             </div>
         </div>
 
@@ -378,7 +378,7 @@ if ($pro_custom_background) {
             <div class="box profile-sidebar">
                 <div class="sidebar-inner">
                     <div class="profile-image-wrap flex relative" style="text-align: center;">
-                        <h3 class="hide-desktop" style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
+                        <h3 class="hide-desktop blue" style="margin-top:-7px;margin-bottom:25px;"><?= $page_title; ?></h3>
                         <?php
                         $featured_image = get_the_post_thumbnail_url($pro_post_id, 'full');
                         if (empty($featured_image)) {
@@ -444,7 +444,7 @@ if ($pro_custom_background) {
                                 }
                             </style>
                             <a href="#reviews" class="flex align-center">
-                                <p class="stat-value" style="color: var(--blue);"><?= $pro_review_total; ?></p>
+                                <p class="stat-value blue"><?= $pro_review_total; ?></p>
 
                                 <?= star_rating($pro_review_total); ?>
                             </a>
@@ -484,7 +484,7 @@ if ($pro_custom_background) {
 
     <inner style="padding-bottom:160px;">
         <h2>קצת עליי</h2>
-        <p style="color: var(--light-black);" class="bottom-gap-xl">
+        <p class="bottom-gap-xl light-black">
             <?= get_field('pro_about'); ?>
         </p>
         <div id="certificates">
@@ -511,11 +511,73 @@ if ($pro_custom_background) {
     </inner>
 </section>
 
+<section id="places-and-hours" class="light">
+    <inner>
+        <h2>איזור שירות ושעות פעילות</h2>
+        
+        <!-- Displaying Areas Terms -->
+        <div class="areas bottom-gap-m">
+            <?php $location_terms = get_the_terms($pro_post_id, 'areas');
+            if ($location_terms && !is_wp_error($location_terms)) {
+                foreach ($location_terms as $location_term) {
+                    $location = $location_term->name;
+            ?>
+                    <span class="area dark-gray"><?= svg_icon('place'); ?>
+                        <?= $location; ?></span>
+            <?php
+                }
+            } else {
+            ?>
+                <span class="area"><?= svg_icon('place'); ?> מקום לא ידוע</span>
+            <?php
+            }
+            ?>
+        </div>
+        
+        <!-- Displaying Business Hours -->
+        <div class="business-hours">
+    <?php if (have_rows('business_hours')) : ?>
+        <?php while (have_rows('business_hours')) : the_row(); ?>
+            <div class="business-hours-item">
+                <div class="day"><?= get_sub_field('business_hours_days'); ?></div>
+                <div class="time"><?= get_sub_field('business_hours_to'); ?> - <?= get_sub_field('business_hours_from'); ?></div>
+            </div>
+        <?php endwhile; ?>
+    <?php else : ?>
+        <div class="gray">טרם הוגדרו שעות זמינות</div>
+    <?php endif; ?>
+</div>
 
-<section id="reviews" class="light" style="padding-top: 50px;">
+    </inner>
+</section>
+
+<style>
+    .business-hours {
+        width:600px;
+    }
+    .business-hours-item {
+        display: flex;
+        justify-content: space-between;
+        padding: var(--gap-s) 0;
+        border-bottom: 1px solid var(--soft-background);
+    }
+
+    .business-hours-item:last-child {
+        border-bottom: none;
+    }
+
+    .day, .time {
+        font-size: var(--font-m);
+        color: var(--light-black);
+    }
+</style>
+
+
+
+<section id="reviews" class="dark" style="padding-top: 50px;">
     <inner class="flex-column align-center" style="text-align: center;">
         <?php if ($pro_reviews_count > 0) { ?>
-            <h2 style="color: var(--green); width: 500px; max-width:95%;" class="bottom-gap-l"><span style="border-bottom: 2px solid var(--blue);"><?= $pro_reviews_count; ?>
+            <h2 style="width: 500px; max-width:95%;" class="bottom-gap-l green"><span style="border-bottom: 2px solid var(--blue);"><?= $pro_reviews_count; ?>
                     אנשים</span> שיתפו את החוויה שלהם עם <?= get_the_title(); ?></h2>
         <?php } ?>
         <?php
@@ -544,7 +606,7 @@ if ($pro_custom_background) {
 
                                                                                     ?></div>
         <?php } else { ?>
-            <div class="bottom-gap-m">טרם נוספו המלצות ל<?= get_the_title(); ?></div>
+            <div class="bottom-gap-m white">טרם נוספו המלצות ל<?= get_the_title(); ?></div>
         <?php } ?>
         <a href="<?= site_url('/add-review/?pro=') . $pro_post_id; ?>" class="button ">הוסף המלצה ל<?= get_the_title(); ?></a>
     </inner>
@@ -579,10 +641,10 @@ if ($pro_custom_background) {
     </inner>
 </section>
 
-<section id="expert-terms" class="full relative" style="overflow:visible; background-color: var(--blue); background-image: url('<?= theme_uri('/img/squares_bg.png'); ?>'); background-repeat: no-repeat; background-position: left center;">
+<section id="expert-terms" class="full relative blue" style="overflow:visible; background-image: url('<?= theme_uri('/img/squares_bg.png'); ?>'); background-repeat: no-repeat; background-position: left center;">
     <div class="absolute square-thing" style="bottom:-100px;right:-100px;"><?= svg_icon('square'); ?></div>
     <inner>
-        <h2 style="color: white;">תחומי התמחות</h2>
+        <h2>תחומי התמחות</h2>
         <grid class="grid-3 bottom-gap-xs">
             <?php
             if (!empty($experts) && !is_wp_error($experts)) {
@@ -619,7 +681,7 @@ update_pro_stats('page_views', $pro_post_id);
     var contactForm = document.getElementById("pro-contact-form");
 
     // Get the offset position of the navbar
-    var sticky = header.offsetTop;
+    var sticky = header.offsetTop + 200;
 
     // Store the original value of the toggle-class attribute
     var originalValue = submitButton.getAttribute("toggle-class");

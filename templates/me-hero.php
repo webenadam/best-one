@@ -102,7 +102,7 @@ if ($pro_custom_background) {
     <inner class="relative flex justify-between">
         <div class="right hide-tablet" style="margin-top: 33px; width: 80%;">
 
-            <h2 class="" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
+            <h2 class="" style="font-size: var(--font-xxxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
             <h3 style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
 
 
@@ -111,7 +111,7 @@ if ($pro_custom_background) {
             <span class="hide-mobile" style="position: absolute; top: 24px; left: -30px;"><?= svg_icon('dots'); ?></span>
             <div class="box profile-sidebar" style="margin-top: 23px; margin:auto; width: 347px; max-width:100%; background-color: white; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; align-items: center;">
                 <div class="profile-image-wrap relative" style="text-align: center;">
-                    <h2 class="hide-desktop" style="font-size: var(--font-xxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
+                    <h2 class="hide-desktop" style="font-size: var(--font-xxxl); margin-top: -20px; margin-bottom:0px;">איזור אישי</h2>
                     <h3 class="hide-desktop" style="margin-top:-7px;margin-bottom:25px;color:var(--blue);"><?= $page_title; ?></h3>
                     <?php
                     $featured_image = get_the_post_thumbnail_url($pro_post_id, 'full');

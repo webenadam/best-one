@@ -34,7 +34,7 @@ $total_pros = wp_count_posts('pros')->publish;
   </style>
   <inner class="flex tablet-flex-column gap-l">
     <right class="flex-column flex-1">
-      <h2 style="color:white;font-size:var(--font-xxl);">אנחנו כאן בשבילכם.</h2>
+      <h2 style="color:white;font-size:var(--font-xxxl);">אנחנו כאן בשבילכם.</h2>
       <p class="desc" style="width: 350px; max-width:80%;">צרו איתנו קשר בדרך שנוחה לכם.</p>
       <check class="flex gap-m bottom-gap-s">
         <div style="width: 30px;">

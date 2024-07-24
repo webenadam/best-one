@@ -47,7 +47,7 @@ if (has_post_thumbnail()) {
         <div class="right" style="margin-top: 33px; width: 80%;">
         <style>
             #hero h2 {
-                font-size: var(--font-xxl);
+                font-size: var(--font-xxxl);
                 margin-top: 0px;
                 margin-bottom: 10px;
             }

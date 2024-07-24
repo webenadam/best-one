@@ -8,6 +8,6 @@
       }
     </style>
     <h2 style="color:white;margin-bottom:0;">בעל מקצוע, רוצה לקבל חשיפה רצינית?</h2>
-    <span class="button light " style="width:220px;" lightbox-type="content" lightbox-content="#signin-signup-pop">פרסם עכשיו</span>
+    <span class="button light" style="width:220px;" lightbox-type="content" lightbox-content="#signin-signup-pop">פרסם עכשיו</span>
   </inner>
 </section>

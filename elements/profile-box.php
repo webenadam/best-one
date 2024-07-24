@@ -48,16 +48,16 @@ function profile_box($pro_post_id, $dark = false, $featured = false)
     $borders_width = $dark ? '1px' : '2px';
 
 ?>
-    <box class="<?= esc_attr($box_class); ?> stripes">
-        <a href="<?= get_permalink($pro_post_id); ?>" class="absolute" style="top: 20px; left: 20px">
+    <a class="box <?= esc_attr($box_class); ?> stripes" href="<?= get_permalink($pro_post_id); ?>">
+        <span class="absolute" style="top: 20px; left: 20px">
             <?php if ($featured) {
                 echo svg_icon('link', "#473BF0");
             } else {
                 echo svg_icon('link');
             } ?>
-        </a>
+        </span>
         <div class="top flex" style="gap: 20px; margin-top:5px; padding-right: var(--gap-s);">
-            <a href="<?= get_permalink($pro_post_id); ?>" style="position: relative;">
+            <span style="position: relative;">
                 <?php if (!$featured) { ?>
                     <avatar style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar>
                 <?php } else { ?>
@@ -68,16 +68,16 @@ function profile_box($pro_post_id, $dark = false, $featured = false)
 "><?= svg_icon('trophy'); ?></span>
                     <avatar style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar>
                 <?php } ?>
-            </a>
+            </span>
             <datas style="margin-bottom: 30px">
                 <h3 class="name">
-                    <a href="<?= get_permalink($pro_post_id); ?>"><?= esc_html($name); ?></a>
+                    <span ><?= esc_html($name); ?></span>
                 </h3>
                 <h6 class="place flex align-center" style="gap: 5px">
-                    <a href="<?= get_term_link($location_terms[0]); ?>">
+                    <span href="<?= get_term_link($location_terms[0]); ?>">
                         <?= svg_icon('place'); ?>
                         <?= esc_html($location); ?>
-                    </a>
+                    </span>
                 </h6>
             </datas>
         </div>
@@ -99,14 +99,14 @@ function profile_box($pro_post_id, $dark = false, $featured = false)
                         <?php
                         foreach ($expertise as $expert) :
                             $expert_link = get_term_link($expert);
-                            tag_label(esc_html($expert->name), esc_url($expert_link));
+                            tag_label(esc_html($expert->name));
                         endforeach;
                         ?>
                     </exprties>
                 </data>
             </bottom-bottom>
         </bottom>
-    </box>
+    </a>
 
 <?php
 

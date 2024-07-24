@@ -13,7 +13,7 @@ background-position: top right; background-repeat: no-repeat; background-color: 
       <?php
       if ($term) {
         $term_title = $term->name;
-        echo '<h2 class="" style="font-size: var(--font-xxl); margin-top: 10px;">' . $term_title . '</h2>';
+        echo '<h2 class="" style="font-size: var(--font-xxxl); margin-top: 10px;">' . $term_title . '</h2>';
       }
       ?>
       <div class="count" style="margin-bottom:78px;">
