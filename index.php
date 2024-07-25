@@ -35,8 +35,8 @@ $featured_pros = get_field('home_featured_pros', 'option');
   }
 
   .search-form .places-input {
-    background-color:white;
-    width:212px;
+    background-color: white;
+    width: 212px;
   }
 
   @media (max-width: 550px) {
@@ -70,7 +70,17 @@ $featured_pros = get_field('home_featured_pros', 'option');
 
   }
 
-  
+  #home_rest_of_expert_terms {
+    overflow: hidden;
+    padding-top: 0px;
+    max-height: 0;
+    transition: all 0.4s ease-in-out;
+  }
+
+  #home_rest_of_expert_terms.show {
+    padding-top: 13px;
+    max-height: 1000px;
+  }
 </style>
 <section id="hero" class="header-padding">
 
@@ -116,7 +126,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
 <section id="expert-terms" class="dark full no-bottom-padding">
   <inner>
     <h2>סנן לפי תחום</h2>
-    <grid class="grid-3 bottom-gap-s">
+    <grid id="home_featured_expert_terms" class="grid-3 bottom-gap-s">
       <a href="#" class="category-block accent">
         <h3>כל התחומים</h3>
         <h6><?= $total_pros; ?> בעלי מקצוע</h6>
@@ -130,7 +140,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
       $expert_terms = get_terms(array(
         'taxonomy' => 'expert',
         'include' => $featured_expert_terms,
-        'hide_empty' => true, // Only show terms that are used by posts
+        'hide_empty' => false, // Only show terms that are used by posts
         'number' => 5, // Limit to 5 terms
       ));
 
@@ -155,7 +165,36 @@ $featured_pros = get_field('home_featured_pros', 'option');
       ?>
 
     </grid>
-    <a class="show-all-link">הצג את כל התחומים <?= svg_icon('left-arrow'); ?></a>
+
+    <grid id="home_rest_of_expert_terms" class="grid-3 bottom-gap-s">
+      <?php
+
+      // Get featured pros from site settings
+      $featured_expert_terms = get_field('home_featured_expert_terms', 'option');
+
+      // Get used expert terms, limited to 5
+      $expert_terms = get_terms(array(
+        'taxonomy' => 'expert',
+        'exclude' => $featured_expert_terms,
+        'hide_empty' => false, // Only show terms that are used by posts
+      ));
+
+      if (!empty($expert_terms) && !is_wp_error($expert_terms)) {
+        foreach ($expert_terms as $expert_term) {
+          // Output the category block
+      ?>
+          <a href="<?= esc_url(get_term_link($expert_term)); ?>" class="category-block">
+            <h3><?= esc_html($expert_term->name); ?></h3>
+            <h6><?= esc_html($expert_term->count); ?> בעלי מקצוע</h6>
+          </a>
+      <?php
+        }
+      }
+      ?>
+
+    </grid>
+
+    <a class="show-all-link" toggle-class="#home_rest_of_expert_terms.show">הצג את כל התחומים <?= svg_icon('left-arrow'); ?></a>
   </inner>
 </section>
 
@@ -250,7 +289,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
       wp_reset_postdata();
       ?>
     </grid>
-    <a class="show-all-link">הצג את כל המאמרים <?= svg_icon('left-arrow'); ?></a>
+    <a href="<?= the_permalink(430); ?>" class="show-all-link">הצג את כל המאמרים <?= svg_icon('left-arrow'); ?></a>
   </inner>
 </section>
 
