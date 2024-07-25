@@ -379,61 +379,43 @@ gap-s.line::before, gap-m.line::before, gap-l.line::before {
 }
 
 /* COLOR CLASSES */
+
 /* TEXT COLOR CLASSES */
-.black { color: #161c2d; }
-.light-black { color: #2e3648; }
-.lighter-black { color: #404956; }
-.blue { color: #473bf0; }
-.dark-blue { color: #3a2fd0; }
-.light-blue { color: #5b47ff; }
-.green { color: #19bb41; }
-.dark-green { color: #1aa83d; }
-.light-green { color: #68d585; }
-.gray { color: #888888; }
-.dark-gray { color: #5c606c; }
-.light-gray { color: #EDEDED; }
-.dark-white { color: #f4f7fa8a; }
-.soft-background { color: #f4f7fa; }
-.red { color: #E35852; }
-.white { color: white; }
-
+.black:not(button):not(.button):not(tag) { color: #161c2d !important; }
+.light-black:not(button):not(.button):not(tag) { color: #2e3648 !important; }
+.lighter-black:not(button):not(.button):not(tag) { color: #404956 !important; }
+.blue:not(button):not(.button):not(tag) { color: #473bf0 !important; }
+.dark-blue:not(button):not(.button):not(tag) { color: #3a2fd0 !important; }
+.light-blue:not(button):not(.button):not(tag) { color: #5b47ff !important; }
+.green:not(button):not(.button):not(tag) { color: #19bb41 !important; }
+.dark-green:not(button):not(.button):not(tag) { color: #1aa83d !important; }
+.light-green:not(button):not(.button):not(tag) { color: #68d585 !important; }
+.gray:not(button):not(.button):not(tag) { color: #888888 !important; }
+.dark-gray:not(button):not(.button):not(tag) { color: #5c606c !important; }
+.light-gray:not(button):not(.button):not(tag) { color: #EDEDED !important; }
+.dark-white:not(button):not(.button):not(tag) { color: #f4f7fa8a !important; }
+.soft-background:not(button):not(.button):not(tag) { color: #f4f7fa !important; }
+.red:not(button):not(.button):not(tag) { color: #E35852 !important; }
+.white:not(button):not(.button):not(tag) { color: white !important; }
 /* BACKGROUND COLOR CLASSES */
-.bg-black { background-color: #161c2d; }
-.bg-light-black { background-color: #2e3648; }
-.bg-lighter-black { background-color: #404956; }
-.bg-blue { background-color: #473bf0; }
-.bg-dark-blue { background-color: #3a2fd0; }
-.bg-light-blue { background-color: #5b47ff; }
-.bg-green { background-color: #19bb41; }
-.bg-dark-green { background-color: #1aa83d; }
-.bg-light-green { background-color: #68d585; }
-.bg-gray { background-color: #888888; }
-.bg-dark-gray { background-color: #5c606c; }
-.bg-light-gray { background-color: #EDEDED; }
-.bg-dark-white { background-color: #f4f7fa8a; }
-.bg-soft-background { background-color: #f4f7fa; }
-.bg-red { background-color: #E35852; }
-.bg-white { background-color: white; }
+.bg-black { background-color: #161c2d !important; }
+.bg-light-black { background-color: #2e3648 !important; }
+.bg-lighter-black { background-color: #404956 !important; }
+.bg-blue { background-color: #473bf0 !important; }
+.bg-dark-blue { background-color: #3a2fd0 !important; }
+.bg-light-blue { background-color: #5b47ff !important; }
+.bg-green { background-color: #19bb41 !important; }
+.bg-dark-green { background-color: #1aa83d !important; }
+.bg-light-green { background-color: #68d585 !important; }
+.bg-gray { background-color: #888888 !important; }
+.bg-dark-gray { background-color: #5c606c !important; }
+.bg-light-gray { background-color: #EDEDED !important; }
+.bg-dark-white { background-color: #f4f7fa8a !important; }
+.bg-soft-background { background-color: #f4f7fa !important; }
+.bg-red { background-color: #E35852 !important; }
+.bg-white { background-color: white !important; }
 
-/* Font Size Classes */
-.font-xs { font-size: var(--font-xs); }
-.font-s { font-size: var(--font-s); }
-.font-m { font-size: var(--font-m); }
-.font-l { font-size: var(--font-l); }
-.font-xl { font-size: var(--font-xl); }
-.font-xxl { font-size: var(--font-xxl); }
-.font-xxxl { font-size: var(--font-xxxl); }
 
-/* Font Weight Classes */
-.font-w-100 { font-weight: 100; }
-.font-w-200 { font-weight: 200; }
-.font-w-300 { font-weight: 300; }
-.font-w-400 { font-weight: 400; }
-.font-w-500 { font-weight: 500; }
-.font-w-600 { font-weight: 600; }
-.font-w-700 { font-weight: 700; }
-.font-w-800 { font-weight: 800; }
-.font-w-900 { font-weight: 900; }
 
 /* MEDIA QUERIES */
 

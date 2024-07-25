@@ -3,7 +3,7 @@ $section_classes = isset($args['section_classes']) ? $args['section_classes'] : 
 ?>
 <section id="featured-pros" class="align-center <?php echo $section_classes;?>">
   <inner>
-    <h2><span class="sparkle" style=" margin-right: -25px; margin-bottom: 25px; display: inline-block; transform: translateY(-14px); "><?= svg_icon('sparkle'); ?></span>המומלצים שלנו</h2>
+    <h2 class="black"><span class="sparkle" style=" margin-right: -25px; margin-bottom: 25px; display: inline-block; transform: translateY(-14px); "><?= svg_icon('sparkle'); ?></span>המומלצים שלנו</h2>
     <grid class="grid-3 relative">
     <div class="circle absolute" style="top:180px; right:60%; width:235px;height:235px;border-radius:50%;background:var(--light-green);"></div>
       <?php
