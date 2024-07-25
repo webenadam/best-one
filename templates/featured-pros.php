@@ -11,21 +11,20 @@
     fill: var(--blue);
   }
 
-  .leaves_left svg path,
-  .leaves_right svg path {
-    fill: var(--light-green);
-  }
+  .leaves_left svg path, .leaves_right svg path {
+    fill: var(--dark-blue);
+    opacity: 0.8;
+}
 
   .leaves_right {
-    right: 5%;
+    right: 0.1%;
     animation: slight-rotate 7s infinite ease-in-out;
   }
 
   .leaves_left {
-    left: 5%;
+    left: 0.1%;
     animation: slight-rotate-reverse 7s infinite ease-in-out;
   }
-
 
   #featured-pros .profile-box {
     z-index: 90;
@@ -54,7 +53,6 @@
   }
 
   @keyframes wave {
-
     0%,
     33.33%,
     100% {
@@ -104,26 +102,55 @@
     }
   }
 
+  @keyframes sprinkle {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+
+    50% {
+      transform: translateY(-30px) translateX(13px);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
+
+  @keyframes sprinkle-b {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+
+    50% {
+      transform: translateY(40px) translateX(-23px);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
+
   #featured-pros {
-    background: linear-gradient(100deg, var(--soft-background), #68d5854a, var(--soft-background));
+    background: linear-gradient(100deg, var(--dark-blue), var(--light-blue), var(--dark-blue));
     background-size: 200% 100%;
     animation: shine 6s linear infinite;
     overflow: hidden;
-  }
+    position: relative;
+}
 
-  #featured-pros::after {
+#featured-pros::after {
     content: '';
-    background: var(--soft-background);
+    background: var(--black);
     width: 140%;
     position: absolute;
     bottom: -60px;
     left: -20%;
     right: -20%;
-    height: 250px;
+    height: 160px;
     filter: blur(85px);
     pointer-events: none;
     opacity: 1;
-  }
+}
 
   @media (max-width: 850px) {
     #featured-pros::after {
@@ -132,11 +159,11 @@
 
     #featured-pros {
       background: inherit;
-      overflow:visible;
+      overflow: visible;
     }
 
     #featured-pros .circle {
-      top: 60% !important;
+      top: 80% !important;
     }
 
     .leaves_left,
@@ -149,11 +176,6 @@
       width: 120px;
     }
 
-    .leaves_left svg path,
-    .leaves_right svg path {
-      fill: var(--light-green);
-    }
-
     .leaves_right {
       right: -3%;
     }
@@ -162,17 +184,46 @@
       left: -3%;
     }
   }
+
+  .sprinkle {
+    position: absolute;
+    border-radius: 50%;
+    animation: sprinkle 3s infinite ease-in-out;
+    opacity: 0.8;
+  }
+
+  .sprinkle:nth-child(odd) {
+    animation-duration: 2.5s;
+  }
+
+  .sprinkle:nth-child(even) {
+    animation-duration: 3.5s;
+  }
+
+
+  .sprinkle-b {
+    position: absolute;
+    border-radius: 50%;
+    animation: sprinkle-b 5s infinite ease-in-out;
+    opacity: 0.8;
+  }
+
+  .sprinkle-b:nth-child(odd) {
+    animation-duration: 1.5s;
+  }
+
+  .sprinkle-b:nth-child(even) {
+    animation-duration: 6.5s;
+  }
 </style>
-<?php
-$section_classes = isset($args['section_classes']) ? $args['section_classes'] : '';
-?>
+
 <section id="featured-pros" class="align-center relative <?php echo $section_classes; ?>">
   <inner>
     <span class="leaves_right"><?= svg_icon('leaves', null, 'flip-h'); ?></span>
     <span class="leaves_left"><?= svg_icon('leaves'); ?></span>
     <h2 class="black font-800 text-center">המומלצים שלנו ל-<?php echo date('Y'); ?></h2>
     <grid class="grid-3 relative">
-      <div class="circle absolute grow-shrink" style="z-index:40;top:180px; right:60%; width:235px;height:235px;border-radius:50%;background:var(--light-green);"></div>
+      <div class="circle absolute grow-shrink" style="display:none;z-index:40;top:180px; right:60%; width:235px;height:235px;border-radius:50%;background:var(--light-green);"></div>
       <?php
       // Get featured pros from site settings
       $featured_pros = get_field('home_featured_pros', 'option');
@@ -201,5 +252,20 @@ $section_classes = isset($args['section_classes']) ? $args['section_classes'] : 
       wp_reset_postdata();
       ?>
     </grid>
+
+    <!-- Add sprinkle elements -->
+    <?php for ($i = 0; $i < 130; $i++): $size = rand(2, 9);?>
+      <div class="sprinkle" style="
+      opacity: <?= mt_rand(0, 10) / 10; ?>;
+      filter:blur(<?= 9 - $size; ?>px);
+        top: <?= rand(0, 100); ?>%;
+        left: <?= rand(0, 100); ?>%;
+        width: <?= $size; ?>px;
+        height: <?= $size; ?>px;
+        background: <?= rand(0, 1) ? (rand(0, 1) ? 'var(--blue)' : 'white') : (rand(0, 1) ? 'var(--blue)' : 'var(--dark-blue)'); ?>;">
+        
+      </div>
+    <?php endfor; ?>
+
   </inner>
 </section>
