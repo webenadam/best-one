@@ -63,8 +63,8 @@ function profile_box($pro_post_id, $dark = false, $featured = false)
                 <?php } else { ?>
                     <span class="featured_trophy" style="
     position: absolute;
-    top: -1px;
-    right: -7px;
+    top: -12px;
+    right: -12px;
 "><?= svg_icon('trophy'); ?></span>
                     <avatar style="background-image: url('<?= esc_url($avatar_url); ?>')"></avatar>
                 <?php } ?>

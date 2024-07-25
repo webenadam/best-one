@@ -36,6 +36,7 @@ function svg_icon($icon_name, $icon_color = null, $flip = null, $width = null, $
                 'reddit' => array('width' => 25, 'height' => 25),
                 'hamburger' => array('width' => 30, 'height' => 30),
                 'sparkle' => array('width' => 25, 'height' => 25),
+                'leaves' => array('width' => 450, 'height' => 450),
 
         );
 
