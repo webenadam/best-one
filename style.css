@@ -1861,3 +1861,21 @@ exprties::before {
 .profile-box.featured {
   border: 1px solid var(--blue);
 }
+
+.grow-shrink {
+  display: inline-block;
+  animation: growShrink 4s infinite ease-in-out;
+}
+
+@keyframes growShrink {
+  0%, 100% {
+    transform: scale(0.95);
+    filter: blur(1.8px);
+    opacity:0.8;
+  }
+  50% {
+    transform: scale(1);
+    filter: blur(0);
+    opacity:1;
+  }
+}
