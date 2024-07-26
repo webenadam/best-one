@@ -58,7 +58,6 @@
   }
 
   @keyframes wave {
-
     0%,
     33.33%,
     100% {
@@ -110,29 +109,71 @@
 
   @keyframes sprinkle {
     0% {
-      transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0) scale(0.5);
     }
 
     50% {
-      transform: translateY(-30px) translateX(3px);
+      transform: translateY(-30px) translateX(3px) scale(1);
     }
 
     100% {
-      transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0) scale(0.5);
     }
   }
 
   @keyframes sprinkle-b {
     0% {
-      transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0) scale(1);
     }
 
     50% {
-      transform: translateY(80px) translateX(-23px);
+      transform: translateY(80px) translateX(-23px) scale(0.5);
     }
 
     100% {
-      transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0) scale(1);
+    }
+  }
+
+  @keyframes sprinkle-c {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.5);
+    }
+
+    50% {
+      transform: translateY(-50px) translateX(10px) scale(1.2);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0) scale(0.5);
+    }
+  }
+
+  @keyframes sprinkle-d {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.8);
+    }
+
+    50% {
+      transform: translateY(40px) translateX(-15px) scale(1.1);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0) scale(0.8);
+    }
+  }
+
+  @keyframes sprinkle-e {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.6);
+    }
+
+    50% {
+      transform: translateY(-20px) translateX(5px) scale(1.3);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0) scale(0.6);
     }
   }
 
@@ -209,12 +250,34 @@
   }
 
   .sprinkle,
-  .sprinkle-b {
+  .sprinkle-b,
+  .sprinkle-c,
+  .sprinkle-d,
+  .sprinkle-e {
     position: absolute;
     border-radius: 50%;
-    animation: sprinkle 3s infinite ease-in-out;
     opacity: 0.8;
     z-index: 40;
+  }
+
+  .sprinkle {
+    animation: sprinkle 3s infinite ease-in-out;
+  }
+
+  .sprinkle-b {
+    animation: sprinkle-b 5s infinite ease-in-out;
+  }
+
+  .sprinkle-c {
+    animation: sprinkle-c 4s infinite ease-in-out;
+  }
+
+  .sprinkle-d {
+    animation: sprinkle-d 6s infinite ease-in-out;
+  }
+
+  .sprinkle-e {
+    animation: sprinkle-e 5.5s infinite ease-in-out;
   }
 
   .sprinkle:nth-child(odd) {
@@ -225,19 +288,36 @@
     animation-duration: 3.5s;
   }
 
-
-  .sprinkle-b {
-    animation: sprinkle-b 5s infinite ease-in-out;
-    opacity: 0.7;
-    z-index: 30;
-  }
-
   .sprinkle-b:nth-child(odd) {
     animation-duration: 1.5s;
   }
 
   .sprinkle-b:nth-child(even) {
     animation-duration: 6.5s;
+  }
+
+  .sprinkle-c:nth-child(odd) {
+    animation-duration: 2s;
+  }
+
+  .sprinkle-c:nth-child(even) {
+    animation-duration: 5s;
+  }
+
+  .sprinkle-d:nth-child(odd) {
+    animation-duration: 3s;
+  }
+
+  .sprinkle-d:nth-child(even) {
+    animation-duration: 4.5s;
+  }
+
+  .sprinkle-e:nth-child(odd) {
+    animation-duration: 2.5s;
+  }
+
+  .sprinkle-e:nth-child(even) {
+    animation-duration: 6s;
   }
 
   #featured-pros .text-shine {
@@ -271,7 +351,6 @@
     }
   }
 </style>
-
 <section id="featured-pros" class="align-center relative <?php echo $section_classes; ?>">
   <inner>
     <span class="leaves_right"><?= svg_icon('leaves', null, 'flip-h'); ?></span>
@@ -309,8 +388,25 @@
     </grid>
 
     <!-- Add sprinkle elements -->
-    <?php for ($i = 0; $i < 180; $i++) : $size = rand(2, 11); ?>
-      <div class="sprinkle" style="
+    <?php for ($i = 0; $i < 180; $i++) : 
+      $size = rand(2, 11); 
+      $animation_class = 'sprinkle';
+      switch (rand(0, 4)) {
+        case 1:
+          $animation_class = 'sprinkle-b';
+          break;
+        case 2:
+          $animation_class = 'sprinkle-c';
+          break;
+        case 3:
+          $animation_class = 'sprinkle-d';
+          break;
+        case 4:
+          $animation_class = 'sprinkle-e';
+          break;
+      }
+      ?>
+      <div class="<?= $animation_class; ?>" style="
       opacity: <?= mt_rand(0, 10) / 10; ?>;
       filter:blur(<?= rand(0, 11) ?>px);
         top: <?= rand(0, 100); ?>%;
@@ -318,9 +414,7 @@
         width: <?= $size; ?>px;
         height: <?= $size; ?>px;
         background: <?= rand(0, 1) ? (rand(0, 1) ? 'var(--light-blue)' : 'white') : (rand(0, 1) ? 'var(--blue)' : 'var(--dark-blue)'); ?>;">
-
       </div>
     <?php endfor; ?>
-
   </inner>
 </section>
