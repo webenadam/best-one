@@ -160,7 +160,7 @@ subfooter inner {
 }
 
 section:not(.no-bottom-padding) inner {
-  padding-bottom: 160px;
+  padding-bottom: 120px;
 }
 
 section inner.center-padding,

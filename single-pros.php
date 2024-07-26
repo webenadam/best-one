@@ -198,6 +198,7 @@ if ($pro_custom_background) {
             padding: var(--gap-xs) var(--gap-s);
             background-color: #ffffffc9;
             backdrop-filter: blur(4px);
+            z-index:900;
         }
 
         .profile-sidebar.sticky .sidebar-inner {

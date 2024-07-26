@@ -11,10 +11,11 @@
     fill: var(--blue);
   }
 
-  .leaves_left svg path, .leaves_right svg path {
+  .leaves_left svg path,
+  .leaves_right svg path {
     fill: var(--dark-blue);
     opacity: 1;
-}
+  }
 
   .leaves_right {
     right: 0.1%;
@@ -28,6 +29,10 @@
 
   #featured-pros .profile-box {
     z-index: 90;
+  }
+
+  #featured-pros h2 {
+    text-shadow: 0 0 45px #ffffff85;
   }
 
   @media (min-width: 850px) {
@@ -53,6 +58,7 @@
   }
 
   @keyframes wave {
+
     0%,
     33.33%,
     100% {
@@ -136,9 +142,9 @@
     animation: shine 6s linear infinite;
     overflow: hidden;
     position: relative;
-}
+  }
 
-#featured-pros::after {
+  #featured-pros::after {
     content: '';
     background: var(--dark-blue);
     width: 140%;
@@ -150,10 +156,10 @@
     filter: blur(125px);
     pointer-events: none;
     opacity: 0.8;
-    z-index:10;
-}
+    z-index: 10;
+  }
 
-#featured-pros::before {
+  #featured-pros::before {
     content: '';
     background: var(--black);
     width: 140%;
@@ -165,8 +171,8 @@
     filter: blur(125px);
     pointer-events: none;
     opacity: 0.8;
-    z-index:20;
-}
+    z-index: 20;
+  }
 
 
   @media (max-width: 850px) {
@@ -202,12 +208,13 @@
     }
   }
 
-  .sprinkle, .sprinkle-b {
+  .sprinkle,
+  .sprinkle-b {
     position: absolute;
     border-radius: 50%;
     animation: sprinkle 3s infinite ease-in-out;
     opacity: 0.8;
-    z-index:40;
+    z-index: 40;
   }
 
   .sprinkle:nth-child(odd) {
@@ -222,7 +229,7 @@
   .sprinkle-b {
     animation: sprinkle-b 5s infinite ease-in-out;
     opacity: 0.7;
-    z-index:30;
+    z-index: 30;
   }
 
   .sprinkle-b:nth-child(odd) {
@@ -232,13 +239,44 @@
   .sprinkle-b:nth-child(even) {
     animation-duration: 6.5s;
   }
+
+  #featured-pros .text-shine {
+    background: linear-gradient(281deg, #04060a 30%, #2a334d 50%, #04060a 70%);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shine 9s linear infinite;
+  }
+
+  @keyframes text-shine {
+    0% {
+      background-position: -200% 0;
+    }
+
+    40% {
+      background-position: 200% 0;
+    }
+
+    50% {
+      background-position: 200% 0;
+    }
+
+    90% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: -200% 0;
+    }
+  }
 </style>
 
 <section id="featured-pros" class="align-center relative <?php echo $section_classes; ?>">
   <inner>
     <span class="leaves_right"><?= svg_icon('leaves', null, 'flip-h'); ?></span>
     <span class="leaves_left"><?= svg_icon('leaves'); ?></span>
-    <h2 class="black font-800 text-center">המומלצים שלנו ל-<?php echo date('Y'); ?></h2>
+    <h2 class="black font-800 text-center">המומלצים שלנו ל-<span class="text-shine"><?php echo date('Y'); ?></span></h2>
     <grid class="grid-3 relative">
       <div class="circle absolute grow-shrink" style="display:none;z-index:40;top:180px; right:60%; width:235px;height:235px;border-radius:50%;background:var(--light-green);"></div>
       <?php
@@ -271,16 +309,16 @@
     </grid>
 
     <!-- Add sprinkle elements -->
-    <?php for ($i = 0; $i < 180; $i++): $size = rand(2, 11);?>
+    <?php for ($i = 0; $i < 180; $i++) : $size = rand(2, 11); ?>
       <div class="sprinkle" style="
       opacity: <?= mt_rand(0, 10) / 10; ?>;
-      filter:blur(<?= rand(0,11) ?>px);
+      filter:blur(<?= rand(0, 11) ?>px);
         top: <?= rand(0, 100); ?>%;
         left: <?= rand(0, 100); ?>%;
         width: <?= $size; ?>px;
         height: <?= $size; ?>px;
         background: <?= rand(0, 1) ? (rand(0, 1) ? 'var(--light-blue)' : 'white') : (rand(0, 1) ? 'var(--blue)' : 'var(--dark-blue)'); ?>;">
-        
+
       </div>
     <?php endfor; ?>
 
