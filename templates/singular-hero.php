@@ -1,5 +1,6 @@
 <?php
 $page_title = isset($args['page_title']) ? $args['page_title'] : get_the_title();
+$page_sub_title = get_field('page_sub_title') ?? null;
 
 if (has_post_thumbnail()) {
     $full_image_url = esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full'));
@@ -45,26 +46,29 @@ if (has_post_thumbnail()) {
 <section id="hero" class="header-padding" style="position:relative; z-index:5; height: 323px;">
     <inner class="relative flex justify-between">
         <div class="right" style="margin-top: 33px; width: 80%;">
-        <style>
-            #hero h2 {
-                font-size: var(--font-xxxl);
-                margin-top: 0px;
-                margin-bottom: 10px;
-            }
-            @media (max-width: 780px) {
+            <style>
                 #hero h2 {
-                    font-size: var(--font-xl);
+                    font-size: var(--font-xxxl);
+                    margin-top: 0px;
+                    margin-bottom: 10px;
                 }
-            }
-        </style>
-        <div class="dots_ico absolute hide-tablet" style="top: -40px;left: -26px;">
-        <?= svg_icon('dots'); ?>
-    </div>
+
+                @media (max-width: 780px) {
+                    #hero h2 {
+                        font-size: var(--font-xl);
+                    }
+                }
+            </style>
+            <div class="dots_ico absolute hide-tablet" style="top: -40px;left: -26px;">
+                <?= svg_icon('dots'); ?>
+            </div>
             <h2>
                 <?= $page_title;
                 ?>
             </h2>
-
+            <?php if ($page_sub_title) : ?>
+                <h3><?= $page_sub_title; ?></h3>
+            <?php endif; ?>
             <div id="category-tags" class="flex gap-s" style="margin-bottom:80px;">
                 <?php
                 // Get the terms for the current post in the "category" taxonomy

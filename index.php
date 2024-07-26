@@ -198,10 +198,9 @@ $featured_pros = get_field('home_featured_pros', 'option');
   </inner>
 </section>
 
-<?php get_template_part('templates/featured-pros', null, array('section_classes' => 'light')); ?>
 
 <section id="site-datas" style="border-bottom:1px solid var(--soft-background);">
-  <inner style="padding:var(--gap-l) 0;">
+  <inner style="padding:var(--gap-s) 0;">
     <grid class="home-stats grid-3 gap-s">
       <style>
         .home-stats stat {
@@ -210,6 +209,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
           gap: var(--gap-s);
           font-size: var(--font-xxxl);
           font-weight: var(--font-w-700);
+          margin-top:-9px;
         }
 
         .home-stats number {
@@ -250,6 +250,9 @@ $featured_pros = get_field('home_featured_pros', 'option');
     </grid>
   </inner>
 </section>
+
+<?php get_template_part('templates/featured-pros', null, array('section_classes' => 'light')); ?>
+
 
 <?php // Main feed
 get_template_part('templates/main-feed', null, array('featured_pros' => $featured_pros));

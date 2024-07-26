@@ -13,7 +13,7 @@
 
   .leaves_left svg path,
   .leaves_right svg path {
-    fill: var(--dark-blue);
+    fill: #342bb2;
     opacity: 1;
   }
 
