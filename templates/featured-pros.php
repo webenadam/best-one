@@ -13,7 +13,7 @@
 
   .leaves_left svg path, .leaves_right svg path {
     fill: var(--dark-blue);
-    opacity: 0.8;
+    opacity: 1;
 }
 
   .leaves_right {
@@ -108,7 +108,7 @@
     }
 
     50% {
-      transform: translateY(-30px) translateX(13px);
+      transform: translateY(-30px) translateX(3px);
     }
 
     100% {
@@ -122,7 +122,7 @@
     }
 
     50% {
-      transform: translateY(40px) translateX(-23px);
+      transform: translateY(80px) translateX(-23px);
     }
 
     100% {
@@ -140,17 +140,34 @@
 
 #featured-pros::after {
     content: '';
+    background: var(--dark-blue);
+    width: 140%;
+    position: absolute;
+    bottom: -90px;
+    left: -20%;
+    right: -20%;
+    height: 360px;
+    filter: blur(125px);
+    pointer-events: none;
+    opacity: 0.8;
+    z-index:10;
+}
+
+#featured-pros::before {
+    content: '';
     background: var(--black);
     width: 140%;
     position: absolute;
-    bottom: -60px;
+    bottom: -120px;
     left: -20%;
     right: -20%;
-    height: 160px;
-    filter: blur(85px);
+    height: 300px;
+    filter: blur(125px);
     pointer-events: none;
-    opacity: 1;
+    opacity: 0.8;
+    z-index:20;
 }
+
 
   @media (max-width: 850px) {
     #featured-pros::after {
@@ -185,11 +202,12 @@
     }
   }
 
-  .sprinkle {
+  .sprinkle, .sprinkle-b {
     position: absolute;
     border-radius: 50%;
     animation: sprinkle 3s infinite ease-in-out;
     opacity: 0.8;
+    z-index:40;
   }
 
   .sprinkle:nth-child(odd) {
@@ -202,10 +220,9 @@
 
 
   .sprinkle-b {
-    position: absolute;
-    border-radius: 50%;
     animation: sprinkle-b 5s infinite ease-in-out;
-    opacity: 0.8;
+    opacity: 0.7;
+    z-index:30;
   }
 
   .sprinkle-b:nth-child(odd) {
@@ -254,15 +271,15 @@
     </grid>
 
     <!-- Add sprinkle elements -->
-    <?php for ($i = 0; $i < 130; $i++): $size = rand(2, 9);?>
+    <?php for ($i = 0; $i < 180; $i++): $size = rand(2, 11);?>
       <div class="sprinkle" style="
       opacity: <?= mt_rand(0, 10) / 10; ?>;
-      filter:blur(<?= 9 - $size; ?>px);
+      filter:blur(<?= rand(0,11) ?>px);
         top: <?= rand(0, 100); ?>%;
         left: <?= rand(0, 100); ?>%;
         width: <?= $size; ?>px;
         height: <?= $size; ?>px;
-        background: <?= rand(0, 1) ? (rand(0, 1) ? 'var(--blue)' : 'white') : (rand(0, 1) ? 'var(--blue)' : 'var(--dark-blue)'); ?>;">
+        background: <?= rand(0, 1) ? (rand(0, 1) ? 'var(--light-blue)' : 'white') : (rand(0, 1) ? 'var(--blue)' : 'var(--dark-blue)'); ?>;">
         
       </div>
     <?php endfor; ?>
