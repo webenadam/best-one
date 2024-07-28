@@ -14,19 +14,6 @@ if ($pro_post && $pro_post->post_type == 'pros') {
 
 <?php get_template_part('templates/singular-hero', null, array('page_title' => $page_title)); ?>
 
-<style>
-    #main-content inner {
-        padding-left: 30%;
-        padding-top: 30px;
-        padding-bottom: 160px;
-    }
-
-    @media (max-width: 780px) {
-        #main-content inner {
-            padding-left: 2%;
-        }
-    }
-</style>
 <section id="main-content">
     <inner>
 
@@ -49,3 +36,16 @@ if ($pro_post && $pro_post->post_type == 'pros') {
 <?php get_template_part('templates/featured-pros') ?>
 
 <?php get_footer(); ?>
+<style class="page-specific-styles">
+    #main-content inner {
+        padding-left: 30%;
+        padding-top: 30px;
+        padding-bottom: 160px;
+    }
+
+    @media (max-width: 780px) {
+        #main-content inner {
+            padding-left: 2%;
+        }
+    }
+</style>

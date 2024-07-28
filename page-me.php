@@ -99,75 +99,6 @@ if ($query->have_posts()) {
 ?>
 
 
-<style>
-    #profile-progress-container {
-        width: 100%;
-        background-color: var(--soft-background);
-        border-radius: var(--radius-l);
-        overflow: hidden;
-        margin: var(--gap-m) 0;
-        position: relative;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    #profile-progress-bar {
-        height: 30px;
-        width: 0;
-        background: linear-gradient(90deg, var(--red) 0%, var(--light-green) 100%);
-        text-align: left;
-        line-height: 30px;
-        color: var(--black);
-        padding-left: var(--gap-xs);
-        transition: width 0.4s, background 0.4s;
-        border-radius: var(--radius-l) 0 0 var(--radius-l);
-    }
-
-    #profile-progress-text {
-        position: absolute;
-        left: var(--gap-s);
-        top: 0;
-        height: 30px;
-        line-height: 30px;
-        color: var(--red);
-    }
-
-    #profile-progress-message {
-        position: absolute;
-        right: var(--gap-s);
-        top: 0;
-        height: 30px;
-        line-height: 30px;
-        color: white;
-    }
-
-    #status-list {
-        flex-wrap: wrap;
-    }
-
-    .checked,
-    .unchecked {
-        display: flex;
-        min-width: fit-content;
-        font-size: var(--font-s);
-        align-items: center;
-        background-repeat: no-repeat;
-        background-position: right center;
-        padding-right: var(--gap-l);
-    }
-
-    .checked {
-        color: var(--blue);
-        background-image: url('data:image/svg+xml;base64,<?= base64_encode(svg_icon("circle_check", null, null, 25, 25)) ?>');
-    }
-
-    .unchecked {
-        color: var(--red);
-        background-image: url('data:image/svg+xml;base64,<?= base64_encode(svg_icon("circle_cross", null, null, 25, 25)) ?>');
-
-
-    }
-</style>
-
 <script>
     jQuery(document).ready(function($) {
         /**
@@ -316,3 +247,73 @@ if ($query->have_posts()) {
 
 
 <?php get_footer(); ?>
+
+
+<style>
+    #profile-progress-container {
+        width: 100%;
+        background-color: var(--soft-background);
+        border-radius: var(--radius-l);
+        overflow: hidden;
+        margin: var(--gap-m) 0;
+        position: relative;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #profile-progress-bar {
+        height: 30px;
+        width: 0;
+        background: linear-gradient(90deg, var(--red) 0%, var(--light-green) 100%);
+        text-align: left;
+        line-height: 30px;
+        color: var(--black);
+        padding-left: var(--gap-xs);
+        transition: width 0.4s, background 0.4s;
+        border-radius: var(--radius-l) 0 0 var(--radius-l);
+    }
+
+    #profile-progress-text {
+        position: absolute;
+        left: var(--gap-s);
+        top: 0;
+        height: 30px;
+        line-height: 30px;
+        color: var(--red);
+    }
+
+    #profile-progress-message {
+        position: absolute;
+        right: var(--gap-s);
+        top: 0;
+        height: 30px;
+        line-height: 30px;
+        color: white;
+    }
+
+    #status-list {
+        flex-wrap: wrap;
+    }
+
+    .checked,
+    .unchecked {
+        display: flex;
+        min-width: fit-content;
+        font-size: var(--font-s);
+        align-items: center;
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: var(--gap-l);
+    }
+
+    .checked {
+        color: var(--blue);
+        background-image: url('data:image/svg+xml;base64,<?= base64_encode(svg_icon("circle_check", null, null, 25, 25)) ?>');
+    }
+
+    .unchecked {
+        color: var(--red);
+        background-image: url('data:image/svg+xml;base64,<?= base64_encode(svg_icon("circle_cross", null, null, 25, 25)) ?>');
+
+
+    }
+</style>

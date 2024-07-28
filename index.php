@@ -4,84 +4,7 @@
 $total_pros = wp_count_posts('pros')->publish;
 $featured_pros = get_field('home_featured_pros', 'option');
 ?>
-<style>
-  #hero {
-    height: 673px;
-    background-image: url('<?= theme_uri('/img/hero_bg.jpg'); ?>');
-    background-position: top right;
-    background-repeat: no-repeat;
-    background-color: var(--soft-background);
-    overflow: hidden;
-  }
 
-  #hero h1 {
-    width: 476px;
-    margin-top: 70px;
-  }
-
-  #hero p {
-    width: 540px;
-  }
-
-  #hero .search-form {
-    padding: var(--gap-s);
-    background-color: var(--blue);
-    gap: var(--gap-s);
-    width: fit-content;
-  }
-
-  #hero .left img {
-    max-width: 57vw;
-  }
-
-  .search-form .places-input {
-    background-color: white;
-    width: 212px;
-  }
-
-  @media (max-width: 550px) {
-    #hero {
-      height: 850px;
-    }
-
-    #hero h1 {
-      font-size: var(--font-l);
-      width: 80%;
-      line-height: var(--font-xl);
-    }
-
-    #hero p {
-      width: 80%;
-    }
-
-    #hero .search-form {
-      padding: var(--gap-s);
-      width: 100%;
-    }
-
-    #hero select,
-    #hero .button {
-      width: 100%;
-    }
-
-    #hero .left img {
-      max-width: 100%;
-    }
-
-  }
-
-  #home_rest_of_expert_terms {
-    overflow: hidden;
-    padding-top: 0px;
-    max-height: 0;
-    transition: all 0.4s ease-in-out;
-  }
-
-  #home_rest_of_expert_terms.show {
-    padding-top: 13px;
-    max-height: 1000px;
-  }
-</style>
 <section id="hero" class="header-padding">
 
   <inner class="relative flex align-center mobile-flex-column">
@@ -202,39 +125,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
 <section id="site-datas" style="border-bottom:1px solid var(--soft-background);">
   <inner style="padding:var(--gap-s) 0;">
     <grid class="home-stats grid-3 gap-s">
-      <style>
-        .home-stats stat {
-          display: flex;
-          align-items: center;
-          gap: var(--gap-s);
-          font-size: var(--font-xxxl);
-          font-weight: var(--font-w-700);
-          margin-top:-9px;
-        }
 
-        .home-stats number {
-          font-size: var(--font-xxxl);
-          font-weight: var(--font-w-700);
-        }
-
-        .home-stats title {
-          display: inline-block;
-          font-size: var(--font-s);
-          font-weight: var(--font-w-400);
-          color: var(--dark-gray);
-          margin-top: 6px;
-        }
-
-        @media (max-width: 550px) {
-          .home-stats stat {
-            flex-direction: column;
-            gap: 0;
-            font-size: var(--font-l);
-            font-weight: var(--font-w-700);
-            text-align: center;
-          }
-        }
-      </style>
       <stat>
         <number><?= $total_pros; ?></number>
         <title>בעלי מקצוע מנוסים ומוכשרים לרשותכם באתר</title>
@@ -297,29 +188,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
 </section>
 
 <section id="we-here" class="dark no-bottom-padding">
-  <style>
-    #we-here {
-      color: var(--dark-white);
-      font-size: var(--font-m);
-      padding: var(--gap-l);
-    }
 
-    #we-here h3 {
-      color: white;
-    }
-
-    @media (max-width: 780px) {
-      #we-here {
-        padding: var(--gap-s);
-      }
-
-      #we-here h2,
-      #we-here .desc {
-        text-align: center;
-        margin: auto;
-      }
-    }
-  </style>
   <inner class="flex tablet-flex-column gap-l">
     <right class="flex-column flex-1">
       <h2 style="color:white;font-size:var(--font-xxxl);">אנחנו כאן בשבילכם.</h2>
@@ -400,3 +269,135 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
 </script>
 
 <?php get_footer(); ?>
+<style class="page-specific-styles">
+  #hero {
+    height: 673px;
+    background-image: url('<?= theme_uri('/img/hero_bg.jpg'); ?>');
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-color: var(--soft-background);
+    overflow: hidden;
+  }
+
+  #hero h1 {
+    width: 476px;
+    margin-top: 70px;
+  }
+
+  #hero p {
+    width: 540px;
+  }
+
+  #hero .search-form {
+    padding: var(--gap-s);
+    background-color: var(--blue);
+    gap: var(--gap-s);
+    width: fit-content;
+  }
+
+  #hero .left img {
+    max-width: 57vw;
+  }
+
+  .search-form .places-input {
+    background-color: white;
+    width: 212px;
+  }
+
+  @media (max-width: 550px) {
+    #hero {
+      height: 850px;
+    }
+
+    #hero h1 {
+      font-size: var(--font-l);
+      width: 80%;
+      line-height: var(--font-xl);
+    }
+
+    #hero p {
+      width: 80%;
+    }
+
+    #hero .search-form {
+      padding: var(--gap-s);
+      width: 100%;
+    }
+
+    #hero select,
+    #hero .button {
+      width: 100%;
+    }
+
+    #hero .left img {
+      max-width: 100%;
+    }
+
+  }
+
+  #home_rest_of_expert_terms {
+    overflow: hidden;
+    padding-top: 0px;
+    max-height: 0;
+    transition: all 0.4s ease-in-out;
+  }
+
+  #home_rest_of_expert_terms.show {
+    padding-top: 13px;
+    max-height: 1000px;
+  }
+
+  .home-stats stat {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-s);
+    font-size: var(--font-xxxl);
+    font-weight: var(--font-w-700);
+    margin-top: -9px;
+  }
+
+  .home-stats number {
+    font-size: var(--font-xxxl);
+    font-weight: var(--font-w-700);
+  }
+
+  .home-stats title {
+    display: inline-block;
+    font-size: var(--font-s);
+    font-weight: var(--font-w-400);
+    color: var(--dark-gray);
+    margin-top: 6px;
+  }
+
+  @media (max-width: 550px) {
+    .home-stats stat {
+      flex-direction: column;
+      gap: 0;
+      font-size: var(--font-l);
+      font-weight: var(--font-w-700);
+      text-align: center;
+    }
+  }
+
+  #we-here {
+    color: var(--dark-white);
+    font-size: var(--font-m);
+    padding: var(--gap-l);
+  }
+
+  #we-here h3 {
+    color: white;
+  }
+
+  @media (max-width: 780px) {
+    #we-here {
+      padding: var(--gap-s);
+    }
+
+    #we-here h2,
+    #we-here .desc {
+      text-align: center;
+      margin: auto;
+    }
+  }
+</style>

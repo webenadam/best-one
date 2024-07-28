@@ -1,3 +1,72 @@
+
+<section id="featured-pros" class="align-center relative <?php echo $section_classes; ?>">
+  <inner>
+    <span class="leaves_right"><?= svg_icon('leaves', null, 'flip-h'); ?></span>
+    <span class="leaves_left"><?= svg_icon('leaves'); ?></span>
+    <h2 class="black font-800 text-center">המומלצים שלנו ל-<span class="text-shine"><?php echo date('Y'); ?></span></h2>
+    <grid class="grid-3 relative">
+      <div class="circle absolute grow-shrink" style="display:none;z-index:40;top:180px; right:60%; width:235px;height:235px;border-radius:50%;background:var(--light-green);"></div>
+      <?php
+      // Get featured pros from site settings
+      $featured_pros = get_field('home_featured_pros', 'option');
+
+      // Query the "pros" post type
+      $args = array(
+        'post_type' => 'pros',
+        'post__in' => $featured_pros,
+        'orderby' => 'post__in',
+        'posts_per_page' => -1,
+      );
+      $query = new WP_Query($args);
+
+      // Check if there are posts
+      if ($query->have_posts()) {
+        while ($query->have_posts()) {
+          $query->the_post();
+
+          profile_box(get_the_ID(), $dark_mode = false, $featured = true);
+        }
+      } else {
+        echo '<p>לא נמצאו בעלי מקצוע מומלצים.</p>';
+      }
+
+      // Restore original post data
+      wp_reset_postdata();
+      ?>
+    </grid>
+
+    <!-- Add sprinkle elements -->
+    <?php for ($i = 0; $i < 180; $i++) :
+      $size = rand(2, 11);
+      $animation_class = 'sprinkle';
+      switch (rand(0, 4)) {
+        case 1:
+          $animation_class = 'sprinkle-b';
+          break;
+        case 2:
+          $animation_class = 'sprinkle-c';
+          break;
+        case 3:
+          $animation_class = 'sprinkle-d';
+          break;
+        case 4:
+          $animation_class = 'sprinkle-e';
+          break;
+      }
+    ?>
+      <div class="<?= $animation_class; ?>" style="
+      opacity: <?= mt_rand(0, 10) / 10; ?>;
+      filter:blur(<?= rand(0, 11) ?>px);
+        top: <?= rand(0, 100); ?>%;
+        left: <?= rand(0, 100); ?>%;
+        width: <?= $size; ?>px;
+        height: <?= $size; ?>px;
+        background: <?= rand(0, 1) ? (rand(0, 1) ? 'var(--light-blue)' : 'white') : (rand(0, 1) ? 'var(--blue)' : 'var(--dark-blue)'); ?>;">
+      </div>
+    <?php endfor; ?>
+  </inner>
+</section>
+
 <style>
   .leaves_left,
   .leaves_right {
@@ -353,70 +422,3 @@
     }
   }
 </style>
-<section id="featured-pros" class="align-center relative <?php echo $section_classes; ?>">
-  <inner>
-    <span class="leaves_right"><?= svg_icon('leaves', null, 'flip-h'); ?></span>
-    <span class="leaves_left"><?= svg_icon('leaves'); ?></span>
-    <h2 class="black font-800 text-center">המומלצים שלנו ל-<span class="text-shine"><?php echo date('Y'); ?></span></h2>
-    <grid class="grid-3 relative">
-      <div class="circle absolute grow-shrink" style="display:none;z-index:40;top:180px; right:60%; width:235px;height:235px;border-radius:50%;background:var(--light-green);"></div>
-      <?php
-      // Get featured pros from site settings
-      $featured_pros = get_field('home_featured_pros', 'option');
-
-      // Query the "pros" post type
-      $args = array(
-        'post_type' => 'pros',
-        'post__in' => $featured_pros,
-        'orderby' => 'post__in',
-        'posts_per_page' => -1,
-      );
-      $query = new WP_Query($args);
-
-      // Check if there are posts
-      if ($query->have_posts()) {
-        while ($query->have_posts()) {
-          $query->the_post();
-
-          profile_box(get_the_ID(), $dark_mode = false, $featured = true);
-        }
-      } else {
-        echo '<p>לא נמצאו בעלי מקצוע מומלצים.</p>';
-      }
-
-      // Restore original post data
-      wp_reset_postdata();
-      ?>
-    </grid>
-
-    <!-- Add sprinkle elements -->
-    <?php for ($i = 0; $i < 180; $i++) :
-      $size = rand(2, 11);
-      $animation_class = 'sprinkle';
-      switch (rand(0, 4)) {
-        case 1:
-          $animation_class = 'sprinkle-b';
-          break;
-        case 2:
-          $animation_class = 'sprinkle-c';
-          break;
-        case 3:
-          $animation_class = 'sprinkle-d';
-          break;
-        case 4:
-          $animation_class = 'sprinkle-e';
-          break;
-      }
-    ?>
-      <div class="<?= $animation_class; ?>" style="
-      opacity: <?= mt_rand(0, 10) / 10; ?>;
-      filter:blur(<?= rand(0, 11) ?>px);
-        top: <?= rand(0, 100); ?>%;
-        left: <?= rand(0, 100); ?>%;
-        width: <?= $size; ?>px;
-        height: <?= $size; ?>px;
-        background: <?= rand(0, 1) ? (rand(0, 1) ? 'var(--light-blue)' : 'white') : (rand(0, 1) ? 'var(--blue)' : 'var(--dark-blue)'); ?>;">
-      </div>
-    <?php endfor; ?>
-  </inner>
-</section>

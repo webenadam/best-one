@@ -22,327 +22,6 @@ if ($pro_custom_background) {
 }
 ?>
 
-<?php
-
-// Enqueue styles and scripts with versioning
-function single_pros_style()
-{
-    global $pro_custom_background, $pro_reviews_count, $pro_post_id, $experts, $full_image_url, $medium_image_url, $thumbnail_image_url, $default_position, $default_size, $tablet_size;    ?>
-
-    <style>
-        #hero {
-            background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$full_image_url}')" : "url('{$full_image_url}')" ?>;
-            background-position: <?= $default_position ?>;
-            background-size: <?= $default_size ?>;
-            background-repeat: no-repeat;
-            background-color: var(--soft-background);
-            overflow: visible;
-            height: 423px;
-            z-index: 5;
-        }
-
-        .from-ratings {
-            font-size: var(--font-s);
-            color: var(--gray);
-            margin-top: -10px;
-        }
-
-        .pro_rating .star-rating {
-            margin-bottom: 2px !important;
-            margin-right: 10px;
-        }
-
-
-        .stat-item {
-            flex: 1;
-            padding: var(--gap-s) var(--gap-m);
-            border-left: 1px solid var(--soft-background);
-        }
-
-        .stat-label {
-            font-size: var(--font-s);
-            margin-top: -4px;
-            margin-bottom: -5px;
-        }
-
-        .stat-value {
-            font-size: var(--font-l);
-            font-weight: var(--font-w-700);
-            color: var(--green);
-
-        }
-
-        #about {
-            padding-top: var(--gap-xl);
-        }
-
-        #about inner {
-            padding-left: 30%;
-        }
-
-        .inner-nav {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: white;
-            border-radius: var(--radius-s) var(--radius-s) 0 0;
-            padding: var(--gap-xs);
-            box-shadow: 0 -20px 34px -24px #161C2D15;
-        }
-
-        .inner-nav .button {
-            position: relative;
-            background: none;
-            color: var(--blue);
-        }
-
-        .inner-nav .button:hover {
-            color: var(--green);
-        }
-
-        .inner-nav .button:not(:last-child)::after {
-            content: '';
-            height: 100%;
-            width: 1px;
-            background: linear-gradient(to top, var(--light-gray), white);
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        #pro_form_submit {
-            width: 100%;
-            transition: all 0.5s ease-in-out;
-        }
-
-        .business-hours {
-            width: 600px;
-        }
-
-        .business-hours-item {
-            display: flex;
-            justify-content: space-between;
-            padding: var(--gap-s) 0;
-            border-bottom: 1px solid var(--soft-background);
-        }
-
-        .business-hours-item:last-child {
-            border-bottom: none;
-        }
-
-        .day,
-        .time {
-            font-size: var(--font-m);
-            color: var(--light-black);
-        }
-
-        .profile-sidebar {
-            margin-top: 23px;
-            margin: auto;
-            width: 347px;
-            max-width: 100%;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            overflow: visible;
-        }
-
-        .profile-sidebar,
-        .profile-sidebar * {
-            transition: all 0.4s ease-in-out;
-        }
-
-        .sidebar-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .profile-sidebar inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-
-        .svg-circles {
-            opacity: 1;
-            bottom: -28px;
-            left: 24px;
-            max-width: 43px;
-        }
-
-        #pro-contact-form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: var(--gap-xs);
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: all 0.4s ease-in-out;
-        }
-
-        #pro-contact-form.active {
-            max-height: 700px;
-            opacity: 1;
-        }
-
-        #pro-contact-form input,
-        #pro-contact-form textarea {
-            text-align: right;
-            width: 100%;
-        }
-
-        /* Sticky Sidebar (only on desktop) */
-        @media (min-width: 850px) {
-
-
-            .profile-sidebar.sticky {
-                position: fixed;
-                left: 0;
-                top: 79px;
-                width: 100%;
-                border-radius: 0;
-                padding: var(--gap-xs) var(--gap-s);
-                background-color: #ffffffc9;
-                backdrop-filter: blur(4px);
-                z-index: 900;
-            }
-
-            .profile-sidebar.sticky .sidebar-inner {
-                flex-direction: row;
-                gap: var(--gap-s);
-                align-items: center;
-                width: 1300px;
-                max-width: 100%;
-                margin: auto;
-            }
-
-            .profile-sidebar.sticky .certificate,
-            .profile-sidebar.sticky .social-icons {
-                display: none !important;
-            }
-
-            .profile-sidebar.sticky .profile-image-wrap img {
-                width: 57px;
-                height: 57px;
-                margin-bottom: 0;
-            }
-
-            .profile-sidebar.sticky #pro-contact-form {
-                max-height: 700px;
-                opacity: 1;
-                flex-direction: row;
-                margin-bottom: 0;
-                justify-content: space-between;
-            }
-
-            .profile-sidebar.sticky #pro-contact-form input,
-            .profile-sidebar.sticky #pro-contact-form select,
-            .profile-sidebar.sticky #pro_form_submit {
-                width: 240px;
-            }
-
-            .profile-sidebar.sticky #pro_form_submit {
-                height: 46px;
-            }
-        }
-
-        .profile-sidebar.sticky .svg-circles {
-            opacity: 0;
-        }
-
-
-        .profile-image-wrap img {
-            width: 304px;
-            height: 247px;
-            max-width: 60vw;
-            max-height: 44vw;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
-
-        .total-score {
-            backdrop-filter: blure(4px);
-            background: #ffffff14;
-            padding: var(--gap-s) var(--gap-s);
-            margin-top: 10px;
-            margin-left: 4vw;
-        }
-
-        .total-score .stat-value {
-            color: var(--black) !important;
-        }
-
-        /* star rating */
-        .total-score .rating-disabled-star path {
-            fill: white;
-            opacity: 0.8;
-        }
-
-
-
-        @media (max-width: 780px) {
-
-            /* Tablet */
-
-            #about {
-                padding-top: 0;
-            }
-
-            #about inner {
-                padding-left: 2%;
-            }
-
-            .stat-item {
-                padding: var(--gap-xs) var(--gap-xs);
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .stat-label {
-                font-size: var(--font-xs);
-
-            }
-
-
-            #hero {
-                height: unset;
-                background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$medium_image_url}')" : "url('{$medium_image_url}')" ?>;
-                background-position: top center;
-                background-size: <?= $tablet_size ?>;
-            }
-
-            #hero inner {
-                padding-bottom: var(--gap-xl);
-            }
-
-            #hero .left {
-                width: 100%;
-            }
-
-            #certificates grid {
-                justify-items: center;
-            }
-        }
-
-        @media (max-width: 550px) {
-
-            /* Mobile */
-            #hero {
-                background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$thumbnail_image_url}')" : "url('{$thumbnail_image_url}')" ?>;
-            }
-        }
-    </style>
-<?php
-}
-add_action('wp_footer', 'single_pros_style', 990);
-/* make my styles load last to override others */
-?>
 
 <section id="hero" class="header-padding relative">
     <inner class="relative flex justify-between">
@@ -678,8 +357,318 @@ update_pro_stats('page_views', $pro_post_id);
 
 
 <?php get_footer(); ?>
+<!-- Under the footer the overide other styles and let js load after dom stuff (that needs to be calculated) are loaded -->
+<style class="page-specific-styles">
+        #hero {
+            background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$full_image_url}')" : "url('{$full_image_url}')" ?>;
+            background-position: <?= $default_position ?>;
+            background-size: <?= $default_size ?>;
+            background-repeat: no-repeat;
+            background-color: var(--soft-background);
+            overflow: visible;
+            height: 423px;
+            z-index: 5;
+        }
 
-<script>
+        .from-ratings {
+            font-size: var(--font-s);
+            color: var(--gray);
+            margin-top: -10px;
+        }
+
+        .pro_rating .star-rating {
+            margin-bottom: 2px !important;
+            margin-right: 10px;
+        }
+
+
+        .stat-item {
+            flex: 1;
+            padding: var(--gap-s) var(--gap-m);
+            border-left: 1px solid var(--soft-background);
+        }
+
+        .stat-label {
+            font-size: var(--font-s);
+            margin-top: -4px;
+            margin-bottom: -5px;
+        }
+
+        .stat-value {
+            font-size: var(--font-l);
+            font-weight: var(--font-w-700);
+            color: var(--green);
+
+        }
+
+        #about {
+            padding-top: var(--gap-xl);
+        }
+
+        #about inner {
+            padding-left: 30%;
+        }
+
+        .inner-nav {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: white;
+            border-radius: var(--radius-s) var(--radius-s) 0 0;
+            padding: var(--gap-xs);
+            box-shadow: 0 -20px 34px -24px #161C2D15;
+        }
+
+        .inner-nav .button {
+            position: relative;
+            background: none;
+            color: var(--blue);
+        }
+
+        .inner-nav .button:hover {
+            color: var(--green);
+        }
+
+        .inner-nav .button:not(:last-child)::after {
+            content: '';
+            height: 100%;
+            width: 1px;
+            background: linear-gradient(to top, var(--light-gray), white);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #pro_form_submit {
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .business-hours {
+            width: 600px;
+        }
+
+        .business-hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--gap-s) 0;
+            border-bottom: 1px solid var(--soft-background);
+        }
+
+        .business-hours-item:last-child {
+            border-bottom: none;
+        }
+
+        .day,
+        .time {
+            font-size: var(--font-m);
+            color: var(--light-black);
+        }
+
+        .profile-sidebar {
+            margin-top: 23px;
+            margin: auto;
+            width: 347px;
+            max-width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: visible;
+        }
+
+        .profile-sidebar,
+        .profile-sidebar * {
+            transition: all 0.4s ease-in-out;
+        }
+
+        .sidebar-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-sidebar inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .svg-circles {
+            opacity: 1;
+            bottom: -28px;
+            left: 24px;
+            max-width: 43px;
+        }
+
+        #pro-contact-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-xs);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.4s ease-in-out;
+        }
+
+        #pro-contact-form.active {
+            max-height: 700px;
+            opacity: 1;
+        }
+
+        #pro-contact-form input,
+        #pro-contact-form textarea {
+            text-align: right;
+            width: 100%;
+        }
+
+        /* Sticky Sidebar (only on desktop) */
+        @media (min-width: 850px) {
+
+
+            .profile-sidebar.sticky {
+                position: fixed;
+                left: 0;
+                top: 79px;
+                width: 100%;
+                border-radius: 0;
+                padding: var(--gap-xs) var(--gap-s);
+                background-color: #ffffffc9;
+                backdrop-filter: blur(4px);
+                z-index: 900;
+            }
+
+            .profile-sidebar.sticky .sidebar-inner {
+                flex-direction: row;
+                gap: var(--gap-s);
+                align-items: center;
+                width: 1300px;
+                max-width: 100%;
+                margin: auto;
+            }
+
+            .profile-sidebar.sticky .certificate,
+            .profile-sidebar.sticky .social-icons {
+                display: none !important;
+            }
+
+            .profile-sidebar.sticky .profile-image-wrap img {
+                width: 57px;
+                height: 57px;
+                margin-bottom: 0;
+            }
+
+            .profile-sidebar.sticky #pro-contact-form {
+                max-height: 700px;
+                opacity: 1;
+                flex-direction: row;
+                margin-bottom: 0;
+                justify-content: space-between;
+            }
+
+            .profile-sidebar.sticky #pro-contact-form input,
+            .profile-sidebar.sticky #pro-contact-form select,
+            .profile-sidebar.sticky #pro_form_submit {
+                width: 240px;
+            }
+
+            .profile-sidebar.sticky #pro_form_submit {
+                height: 46px;
+            }
+        }
+
+        .profile-sidebar.sticky .svg-circles {
+            opacity: 0;
+        }
+
+
+        .profile-image-wrap img {
+            width: 304px;
+            height: 247px;
+            max-width: 60vw;
+            max-height: 44vw;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .total-score {
+            backdrop-filter: blure(4px);
+            background: #ffffff14;
+            padding: var(--gap-s) var(--gap-s);
+            margin-top: 10px;
+            margin-left: 4vw;
+        }
+
+        .total-score .stat-value {
+            color: var(--black) !important;
+        }
+
+        /* star rating */
+        .total-score .rating-disabled-star path {
+            fill: white;
+            opacity: 0.8;
+        }
+
+
+
+        @media (max-width: 780px) {
+
+            /* Tablet */
+
+            #about {
+                padding-top: 0;
+            }
+
+            #about inner {
+                padding-left: 2%;
+            }
+
+            .stat-item {
+                padding: var(--gap-xs) var(--gap-xs);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .stat-label {
+                font-size: var(--font-xs);
+
+            }
+
+
+            #hero {
+                height: unset;
+                background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$medium_image_url}')" : "url('{$medium_image_url}')" ?>;
+                background-position: top center;
+                background-size: <?= $tablet_size ?>;
+            }
+
+            #hero inner {
+                padding-bottom: var(--gap-xl);
+            }
+
+            #hero .left {
+                width: 100%;
+            }
+
+            #certificates grid {
+                justify-items: center;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            /* Mobile */
+            #hero {
+                background-image: <?= $pro_custom_background ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$thumbnail_image_url}')" : "url('{$thumbnail_image_url}')" ?>;
+            }
+        }
+    </style>
+
+<script class="page-specific-script">
     // When the user scrolls the page, execute myFunction
     window.onscroll = function() {
         myFunction();

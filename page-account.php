@@ -34,7 +34,7 @@ if ($query->have_posts()) {
 
     function generate_subscription_box($title, $subscription_id, $term_id = null, $featured = false)
     {
-   
+
         global $current_user_id;
         // Fetch subscription details
         $subscription_type = get_field('subscription_type', $subscription_id);
@@ -75,121 +75,7 @@ if ($query->have_posts()) {
     <?php get_template_part('templates/me-hero', null, array('pro_post_id' => $pro_post_id, 'page_title' => 'פרטי מנוי')) ?>
 
 
-    <style>
-        .term-subscription h2 span {
-            color: var(--blue);
-        }
 
-        .check {
-            display: flex;
-            color: var(--blue);
-            font-weight: 700;
-            font-size: var(--font-s);
-            position: relative;
-            margin-right: var(--gap-m);
-            max-width: 90%;
-        }
-
-        .check:not(:nth-child(3)) {
-            width: 580px;
-        }
-
-        .term-subscription .check {
-            width: auto;
-        }
-
-        .check::before {
-            content: '';
-            display: block;
-            background-image: <?= svg_icon('circle_check', null, null, null, null, true); ?>;
-            height: 30px;
-            width: 30px;
-            min-width: 30px;
-            /* for mobile flex issue */
-        }
-
-
-        .payment-plans .plan-title {
-            font-size: var(--font-m);
-            font-weight: 700;
-            margin-bottom: -20px;
-            position: relative;
-            width: 100%;
-            text-align: center;
-        }
-
-        .payment-plans .plan.featured {
-            position: relative;
-        }
-
-        .payment-plans .plan.featured::after {
-            content: 'המומלץ ביותר!';
-            position: absolute;
-            top: 0;
-            right: 0px;
-            left: 0;
-            margin: auto;
-            font-size: var(--font-xs);
-            font-weight: 500;
-            color: var(--blue);
-            text-align: center;
-            background: var(--soft-background);
-            width: 170px;
-            padding-bottom: 2px;
-            border-radius: 0px 0px var(--radius-s) var(--radius-s);
-        }
-
-        .payment-plans .plan-price::before,
-        .payment-plans .plan-saving:after {
-            content: "₪";
-        }
-
-        .payment-plans .plan-price {
-            font-size: var(--font-l);
-            font-weight: 700;
-            color: var(--blue);
-        }
-
-        .payment-plans .plan-saving.empty {
-            opacity: 0;
-        }
-
-
-        .box.subscription {
-            position: relative;
-        }
-
-        .box.subscription::after {
-            content: '';
-            background-image: url('<?= theme_uri('/img/man2.png'); ?>');
-            pointer-events: none;
-            position: absolute;
-            bottom: -17px;
-            left: -44px;
-            width: 347px;
-            height: 336px;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: bottom center;
-        }
-
-        @media (max-width: 550px) {
-            .subscribe-status {
-                text-align: center;
-            }
-
-            .box.subscription::after {
-                bottom: -17px;
-                left: -84px;
-                height: 292px;
-            }
-
-            h4.check:last-child,
-            h4.check:nth-last-child(2) {
-                width: 60%;
-            }
-        }
-    </style>
 
     <section id="subscriptions" class="main-content">
         <inner>
@@ -197,15 +83,7 @@ if ($query->have_posts()) {
             <?php if (!$pro_subscribed) { ?>
                 <!-- Subscription options -->
                 <div class="box stripes subscription bottom-gap-l">
-                    <style>
-                        @media (max-width: 550px) {
 
-                            .box.subscription h2,
-                            .box.subscription p {
-                                text-align: center;
-                            }
-                        }
-                    </style>
                     <h2>חבילת פרסום בסיסי</h2>
                     <p class="bottom-gap-m">
                         רוצה להתחיל לקבל לקוחות רציניים? בחר חבילת פרסום עכשיו ותתחיל לעבוד!
@@ -215,14 +93,7 @@ if ($query->have_posts()) {
                         <div class="dots_ico absolute" style="top: 330px;left: -26px;">
                             <?= svg_icon('dots'); ?>
                         </div>
-                        <style>
-                            @media (max-width: 550px) {
 
-                                #subscriptions .dots_ico {
-                                    top: 630px !important;
-                                }
-                            }
-                        </style>
                         <div class="sauqre_ico absolute" style="top: 230px;right: -126px;">
                             <?= svg_icon('square'); ?>
                         </div>
@@ -263,15 +134,7 @@ if ($query->have_posts()) {
 
 
                             <div class="box stripes subscription term-subscription bottom-gap-l">
-                                <style>
-                                    @media (max-width: 550px) {
 
-                                        .box.subscription h2,
-                                        .box.subscription p {
-                                            text-align: center;
-                                        }
-                                    }
-                                </style>
                                 <h2>קידום למומלצים בתחום <span><?= esc_html($term->name); ?></span></h2>
                                 <p class="bottom-gap-m">
                                     תבלוט בתחום שלך. תהיה ראשון. תקבל את הלקוחות ראשון.
@@ -281,14 +144,7 @@ if ($query->have_posts()) {
                                     <div class="dots_ico absolute" style="top: 330px;left: -26px;">
                                         <?= svg_icon('dots'); ?>
                                     </div>
-                                    <style>
-                                        @media (max-width: 550px) {
 
-                                            #subscriptions .dots_ico {
-                                                top: 630px !important;
-                                            }
-                                        }
-                                    </style>
                                     <div class="sauqre_ico absolute" style="top: 230px;right: -126px;">
                                         <?= svg_icon('square'); ?>
                                     </div>
@@ -338,3 +194,139 @@ if ($query->have_posts()) {
 ?>
 
 <?php get_footer(); ?>
+
+<style class="page-specific-styles">
+    .term-subscription h2 span {
+        color: var(--blue);
+    }
+
+    .check {
+        display: flex;
+        color: var(--blue);
+        font-weight: 700;
+        font-size: var(--font-s);
+        position: relative;
+        margin-right: var(--gap-m);
+        max-width: 90%;
+    }
+
+    .check:not(:nth-child(3)) {
+        width: 580px;
+    }
+
+    .term-subscription .check {
+        width: auto;
+    }
+
+    .check::before {
+        content: '';
+        display: block;
+        background-image: <?= svg_icon('circle_check', null, null, null, null, true); ?>;
+        height: 30px;
+        width: 30px;
+        min-width: 30px;
+        /* for mobile flex issue */
+    }
+
+
+    .payment-plans .plan-title {
+        font-size: var(--font-m);
+        font-weight: 700;
+        margin-bottom: -20px;
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    .payment-plans .plan.featured {
+        position: relative;
+    }
+
+    .payment-plans .plan.featured::after {
+        content: 'המומלץ ביותר!';
+        position: absolute;
+        top: 0;
+        right: 0px;
+        left: 0;
+        margin: auto;
+        font-size: var(--font-xs);
+        font-weight: 500;
+        color: var(--blue);
+        text-align: center;
+        background: var(--soft-background);
+        width: 170px;
+        padding-bottom: 2px;
+        border-radius: 0px 0px var(--radius-s) var(--radius-s);
+    }
+
+    .payment-plans .plan-price::before,
+    .payment-plans .plan-saving:after {
+        content: "₪";
+    }
+
+    .payment-plans .plan-price {
+        font-size: var(--font-l);
+        font-weight: 700;
+        color: var(--blue);
+    }
+
+    .payment-plans .plan-saving.empty {
+        opacity: 0;
+    }
+
+
+    .box.subscription {
+        position: relative;
+    }
+
+    .box.subscription::after {
+        content: '';
+        background-image: url('<?= theme_uri('/img/man2.png'); ?>');
+        pointer-events: none;
+        position: absolute;
+        bottom: -17px;
+        left: -44px;
+        width: 347px;
+        height: 336px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom center;
+    }
+
+    @media (max-width: 550px) {
+        .subscribe-status {
+            text-align: center;
+        }
+
+        .box.subscription::after {
+            bottom: -17px;
+            left: -84px;
+            height: 292px;
+        }
+
+        h4.check:last-child,
+        h4.check:nth-last-child(2) {
+            width: 60%;
+        }
+
+        #subscriptions .dots_ico {
+            top: 630px !important;
+        }
+
+
+        .box.subscription h2,
+        .box.subscription p {
+            text-align: center;
+        }
+
+
+        .box.subscription h2,
+        .box.subscription p {
+            text-align: center;
+        }
+
+        #subscriptions .dots_ico {
+            top: 630px !important;
+        }
+    }
+</style>
