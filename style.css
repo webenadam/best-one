@@ -1482,10 +1482,10 @@ span.acf-row-number::before {
   margin-right: 5px;
   text-align: right;
   width: 100%;
-  color: #9e9e9e;
+  color: var(--gray);
 }
 .desc_letters_count.error, .title_letters_count.error, .condition_letters_count.error {
-  color: red;
+  color:var(--red);
 }
 
 .desc_letters_count {
@@ -1536,22 +1536,21 @@ input[type="checkbox"] + label::before {
   display: inline-block;
   width: 25px;
   height: 25px;
-  margin-right: 10px;
-  background-color: #fff;
-  border: 2px solid #00C0BC;
-  border-radius: 4px;
+  background-color: white;
+  border: 1px solid var(--gray);
+  border-radius: var(--radius-s);
   cursor: pointer;
   vertical-align: middle; /* Align with label text */
 }
 
-ul.acf-checkbox-list li label::after,
-input[type="checkbox"] + label::after {
+ul.acf-checkbox-list li label::after, input[type="checkbox"] + label::after {
   opacity: 0;
   content: "✔️";
   position: absolute;
-  top: 2px;
-  right: 11px;
-  color: var(--black);
+  font-size: 12px;
+  top: 5px;
+  right: 6px;
+  color: var(--dark-blue);
 }
 
 /* When the checkbox is checked, fill it with color */
@@ -1560,24 +1559,6 @@ input[type="checkbox"]:checked + label::after {
   opacity: 1;
 }
 
-.remove_discount {
-  opacity: 0;
-  margin-top: -6px;
-  align-self: center;
-  margin-right: auto;
-  margin-left: 18px;
-  cursor: pointer;
-  filter: grayscale(1);
-}
-
-.last_step .remove_discount {
-  opacity: 0.4;
-}
-
-.last_step .remove_discount:hover {
-  opacity: 1;
-  filter: grayscale(0);
-}
 
 .acf-field.acf-field-image-aspect-ratio-crop
   .acf-image-uploader-aspect-ratio-crop
@@ -1587,11 +1568,11 @@ input[type="checkbox"]:checked + label::after {
 }
 
 .cropper-point {
-  background-color: #00c0bc !important;
+  background-color: var(--green) !important;
 }
 
 .cropper-view-box {
-  outline: 1px solid #00c0bc !important;
+  outline: 1px solid var(--green) !important;
   outline-color: rgb(0 192 188 / 75%) !important;
 }
 
@@ -1693,7 +1674,7 @@ a.acf-icon.-plus.small.acf-js-tooltip.hide-on-shift {
   width: 300px;
   border-radius: 8px;
   text-align: center;
-  color: #007cba;
+  color: var(--blue);
   padding: 17px 63px;
 }
 
@@ -1713,7 +1694,7 @@ a.acf-icon.-plus.small.acf-js-tooltip.hide-on-shift {
   right: 0;
   margin: auto;
   height: 29px;
-  color: #024f4d;
+  color: var(--dark-blue);
 }
 
 .acf-image-aspect-ratio-crop-modal-loading-text {
