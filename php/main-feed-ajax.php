@@ -30,7 +30,7 @@ function filter_sort_posts()
 
     // Initialize tax query array
     $tax_query = array();
-// error_log('Place Input before places: ' . $place_input);
+
     // Fetch matching place and area terms and add their IDs to the query if a place is chosen
     if (!empty($place_input)) {
         $matching_places = get_terms(array(
@@ -44,15 +44,7 @@ function filter_sort_posts()
             'search' => $place_input, // Use wildcard to match terms that start with the input
             'fields' => 'ids'
         ));
-        // Debugging to verify parameters
-        // error_log('Expert ID: ' . $expert);
-        // error_log('Sort By: ' . $sort_by);
-        // error_log('Loaded Post IDs: ' . implode(', ', $loaded_post_ids));
-        // error_log('Current Post Count: ' . $current_post_count);
-        // error_log('place input: ' . $place_input);
 
-        // error_log('Matching Places: ' . print_r($matching_places, true));
-        // error_log('Matching Areas: ' . print_r($matching_areas, true));
 
         // Initialize a relation OR for the tax query
         $tax_query = array('relation' => 'AND');
@@ -112,9 +104,6 @@ function filter_sort_posts()
         }
     }
 
-    // Debugging the final query arguments
-    // error_log('Query Args: ' . print_r($args, true));
-
     // Execute the query
     $query = new WP_Query($args);
 
@@ -138,41 +127,42 @@ function filter_sort_posts()
             'loaded_post_ids' => array_merge($loaded_post_ids, wp_list_pluck($query->posts, 'ID'))
         );
         wp_send_json_success($response);
-    }  
-            // If no posts found with both filters, try only with the expert filter
-           else if (!empty($expert)) {
-                $args['tax_query'] = array(
-                    array(
-                        'taxonomy' => 'expert',
-                        'field' => 'term_id',
-                        'terms' => $expert,
-                    ),
-                );
-        
-                // Execute the query again with only the expert filter
-                $query = new WP_Query($args);
-        
-                if ($query->have_posts()) {
-                    ob_start();
-                    while ($query->have_posts()) {
-                        $query->the_post();
-                        profile_box(get_the_ID(), true); // Assuming $dark_mode = true
-                    }
-                    $posts_html = ob_get_clean();
-        
-                    // Calculate total posts count
-                    $total_posts = $query->found_posts;
-                    $no_more_posts = (count($loaded_post_ids) + $posts_per_load) >= $total_posts;
-        
-                    $response = array(
-                        'html' => $posts_html,
-                        'no_more_posts' => $no_more_posts,
-                        'loaded_post_ids' => array_merge($loaded_post_ids, wp_list_pluck($query->posts, 'ID')),
-                        'place_filter_removed' => true, // Indicate that the place filter was removed
-                        'notification' => '<div class="notification info" style="margin-bottom: var(--gap-s);">איזה באסה. לא מצאנו בעלי מקצוע בדיוק במקום שחיפשת. אבל הנה בעלי מקצוע ממקומות נוספים:</div>'
-                    );
-                    wp_send_json_success($response);
-                } }  else {
+    }
+    // If no posts found with both filters, try only with the expert filter
+    else if (!empty($expert)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'expert',
+                'field' => 'term_id',
+                'terms' => $expert,
+            ),
+        );
+
+        // Execute the query again with only the expert filter
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) {
+            ob_start();
+            while ($query->have_posts()) {
+                $query->the_post();
+                profile_box(get_the_ID(), true); // Assuming $dark_mode = true
+            }
+            $posts_html = ob_get_clean();
+
+            // Calculate total posts count
+            $total_posts = $query->found_posts;
+            $no_more_posts = (count($loaded_post_ids) + $posts_per_load) >= $total_posts;
+
+            $response = array(
+                'html' => $posts_html,
+                'no_more_posts' => $no_more_posts,
+                'loaded_post_ids' => array_merge($loaded_post_ids, wp_list_pluck($query->posts, 'ID')),
+                'place_filter_removed' => true, // Indicate that the place filter was removed
+                'notification' => '<div class="notification info" style="margin-bottom: var(--gap-s);">איזה באסה. לא מצאנו בעלי מקצוע בדיוק במקום שחיפשת. אבל הנה בעלי מקצוע ממקומות נוספים:</div>'
+            );
+            wp_send_json_success($response);
+        }
+    } else {
         wp_send_json_error('No posts found');
     }
 

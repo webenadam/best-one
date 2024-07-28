@@ -137,7 +137,7 @@ function enqueue_mini_scripts()
         'test' => 'test',
     ));
 }
-add_action('wp_enqueue_scripts', 'enqueue_mini_scripts');
+add_action('wp_enqueue_scripts', 'enqueue_mini_scripts', 999);
 
 
 
@@ -635,3 +635,11 @@ function update_pros_places_terms($post_id) {
 
 // Hook into the save_post action
 add_action('save_post', 'update_pros_places_terms');
+
+
+function register_custom_query_vars($vars) {
+    $vars[] = 'feed_expert';
+    $vars[] = 'feed_place';
+    return $vars;
+}
+add_filter('query_vars', 'register_custom_query_vars');

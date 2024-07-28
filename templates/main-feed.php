@@ -1,4 +1,3 @@
-<!-- templates/main-feed.php -->
 <?php
 // Get featured pros
 $featured_pros = isset($args['featured_pros']) ? $args['featured_pros'] : '';
@@ -19,6 +18,71 @@ $args = array(
 // Initialize variables for pre-filling inputs
 $place_input_value = '';
 $expert_select_value = '';
+
+// Check if there are expert and place parameters in the URL
+$expert_param = isset($_GET['feed_expert']) ? intval($_GET['feed_expert']) : '';
+$place_param = isset($_GET['feed_place']) ? sanitize_text_field($_GET['feed_place']) : '';
+
+// Add taxonomy query if params are present
+if ($expert_param || $place_param) {
+    $tax_query = array('relation' => 'AND');
+    
+    if ($expert_param) {
+        $tax_query[] = array(
+            'taxonomy' => 'expert',
+            'field' => 'term_id',
+            'terms' => $expert_param,
+        );
+        $expert_select_value = $expert_param;
+    }
+
+    if ($place_param) {
+        // Fetch matching place and area terms
+        $matching_places = get_terms(array(
+            'taxonomy' => 'places',
+            'search' => $place_param, // Use wildcard to match terms that start with the input
+            'fields' => 'ids'
+        ));
+        
+        $matching_areas = get_terms(array(
+            'taxonomy' => 'areas',
+            'search' => $place_param, // Use wildcard to match terms that start with the input
+            'fields' => 'ids'
+        ));
+        
+        if (!empty($matching_places) && !is_wp_error($matching_places)) {
+            $tax_query[] = array(
+                'taxonomy' => 'places',
+                'field' => 'term_id',
+                'terms' => $matching_places,
+                'operator' => 'IN'
+            );
+        }
+
+        if (!empty($matching_areas) && !is_wp_error($matching_areas)) {
+            $tax_query[] = array(
+                'taxonomy' => 'areas',
+                'field' => 'term_id',
+                'terms' => $matching_areas,
+                'operator' => 'IN'
+            );
+        }
+
+        if (empty($matching_places) && empty($matching_areas)) {
+            // If no matching places or areas, ensure no posts are returned
+            $tax_query[] = array(
+                'taxonomy' => 'places',
+                'field' => 'term_id',
+                'terms' => array(0), // Invalid term ID to return no posts
+                'operator' => 'IN'
+            );
+        }
+
+        $place_input_value = $place_param;
+    }
+
+    $args['tax_query'] = $tax_query;
+}
 
 // Check if it's a taxonomy archive page
 if (is_tax()) {

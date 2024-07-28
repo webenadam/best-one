@@ -12,32 +12,7 @@ $featured_pros = get_field('home_featured_pros', 'option');
       <h1 class="title bottom-gap-xs">הפורטל המוביל למומחי נדל״ן פיננסים ושמאות בישראל</h1>
       <h2 class="subtitle bottom-gap-l font-xl">הפלטפורמה שלך לבחירת אנשי המקצוע הטובים ביותר בתחום
       </h2>
-      <div class="search-form_parent-container">
-        <div class="flex mobile-flex-column search-form background-blue radius-s bottom-gap-xs">
-          <?php
-          // Get used places terms
-          $places_terms = get_terms(array(
-            'taxonomy' => 'places',
-            'hide_empty' => true, // Only show terms that are used by posts
-          ));
-
-          // Get used expert terms
-          $expert_terms = get_terms(array(
-            'taxonomy' => 'expert',
-            'hide_empty' => true, // Only show terms that are used by posts
-          ));
-          ?>
-          <select name="experties">
-            <option value=""><?php _e('כל התחומים', 'textdomain'); ?></option>
-            <?php foreach ($expert_terms as $expert_term) : ?>
-              <option value="<?= esc_attr($expert_term->term_id); ?>"><?= esc_html($expert_term->name); ?></option>
-            <?php endforeach; ?>
-          </select>
-          <input class="places-input places-typeahead autocomplete-input" name="place" dir="rtl" type="text" placeholder="בחר מיקום" value="<?= esc_attr($place_input_value); ?>" />
-          <a href="#main-feed" class="button dark">חפש בעל מקצוע</a>
-        </div>
-        <h6>התחל חיפוש ראשוני. הגדר סינון נוסף בהמשך.</h6>
-      </div>
+      <?php pros_search_form(); ?>
     </div>
     <div class="left">
       <img class="hero_guy absolute" style="bottom:-41px;left:0;" src="<?= theme_uri('/img/HeroGuy.png'); ?>" alt="בעלי מקצוע מומלצים">
@@ -250,14 +225,14 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
     }
 
     // Event listener for changes on the #hero select input
-    $('#hero .search-form select[name="experties"]').on('change', function() {
+    $('#hero .pro-search-form select[name="experties"]').on('change', function() {
       syncSelectInputs(this, '#main-feed select.expert_select');
       $('#main-feed select.expert_select').trigger('change');
     });
 
     // Event listener for changes on the #main-feed select input
     $('#main-feed .expert_select').on('change', function() {
-      syncSelectInputs(this, '#hero .search-form select[name="experties"]');
+      syncSelectInputs(this, '#hero .pro-search-form select[name="experties"]');
     });
 
     // Event listener for typing in .places-input text inputs
@@ -288,21 +263,10 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
     width: 540px;
   }
 
-  #hero .search-form {
-    padding: var(--gap-s);
-    background-color: var(--blue);
-    gap: var(--gap-s);
-    width: fit-content;
-  }
-
   #hero .left img {
     max-width: 57vw;
   }
 
-  .search-form .places-input {
-    background-color: white;
-    width: 212px;
-  }
 
   @media (max-width: 550px) {
     #hero {
@@ -319,15 +283,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
       width: 80%;
     }
 
-    #hero .search-form {
-      padding: var(--gap-s);
-      width: 100%;
-    }
 
-    #hero select,
-    #hero .button {
-      width: 100%;
-    }
 
     #hero .left img {
       max-width: 100%;
@@ -369,15 +325,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
     margin-top: 6px;
   }
 
-  @media (max-width: 550px) {
-    .home-stats stat {
-      flex-direction: column;
-      gap: 0;
-      font-size: var(--font-l);
-      font-weight: var(--font-w-700);
-      text-align: center;
-    }
-  }
+
 
   #we-here {
     color: var(--dark-white);
@@ -398,6 +346,16 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
     #we-here .desc {
       text-align: center;
       margin: auto;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .home-stats stat {
+      flex-direction: column;
+      gap: 0;
+      font-size: var(--font-l);
+      font-weight: var(--font-w-700);
+      text-align: center;
     }
   }
 </style>
