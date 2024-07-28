@@ -10,21 +10,21 @@ $total_pros = wp_count_posts('pros')->publish;
     <right class="flex-column flex-1">
       <h2 style="color:white;font-size:var(--font-xxxl);">אנחנו כאן בשבילכם.</h2>
       <p class="desc" style="width: 350px; max-width:80%;">צרו איתנו קשר בדרך שנוחה לכם.</p>
-      <check class="flex gap-m bottom-gap-s">
-        <div style="width: 30px;">
+      <check class="flex align-center gap-s bottom-gap-s">
+        <div class="flex align-center" style="width: 30px;">
           <?= svg_icon('email'); ?>
         </div>
 
         <div>
-          <h3>מייל: <span>site@best-1.co.il</span></h3>
+          <h4 class="white">מייל: <span>site@best-1.co.il</span></h4>
         </div>
       </check>
-      <check class="flex gap-m bottom-gap-s">
-        <div style="width: 30px;">
+      <check class="flex align-center gap-s bottom-gap-s">
+        <div class="flex align-center" style="width: 30px;">
           <?= svg_icon('whatsapp'); ?>
         </div>
         <div>
-          <h3>וטסאפ: <span>053-777-7777</span></h3>
+          <h4 class="white">וטסאפ: <span>053-777-7777</span></h4>
         </div>
       </check>
       </div>
@@ -40,7 +40,7 @@ $total_pros = wp_count_posts('pros')->publish;
         <div class="flex justify-start align-center gap-m">
           <input type="checkbox" id="terms" name="terms" required>
           <label for="terms">
-            מאשר את <a href="<?php echo get_permalink(843); ?>" target="_blank">תנאי שימוש האתר</a>
+            אני מאשר את <a href="<?php echo get_permalink(843); ?>" target="_blank">תנאי שימוש האתר</a>
           </label>
         </div>
       </form>

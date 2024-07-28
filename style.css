@@ -1523,6 +1523,10 @@ input[type="checkbox"] {
   display: none;
 }
 
+input[type="checkbox"] + label {
+  font-size: var(--font-s);
+}
+
 ul.acf-checkbox-list li label,
 input[type="checkbox"] + label {
   position: relative;
