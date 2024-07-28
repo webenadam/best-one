@@ -177,12 +177,12 @@ if ($pro_custom_background) {
                             }
                             ?>
                         </select>
-                        <div class="flex justify-start align-center gap-m">
+                        <!-- <div class="flex justify-start align-center gap-m">
           <input type="checkbox" id="terms" name="terms" required>
           <label for="terms">
-            מאשר את <a href="<?php echo get_permalink(843); ?>" target="_blank">תנאי שימוש האתר</a>
+            מאשר את <a href="" target="_blank">תנאי שימוש האתר</a>
           </label>
-        </div>
+        </div> -->
                     </form>
                     <button id="pro_form_submit" class="button big green" toggle-class="#pro-contact-form.active-1">שלח פניה ל<?= get_the_title(); ?></button>
                 </div>
