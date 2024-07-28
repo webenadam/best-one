@@ -673,6 +673,12 @@ update_pro_stats('page_views', $pro_post_id);
 
 ?>
 
+
+
+
+
+<?php get_footer(); ?>
+
 <script>
     // When the user scrolls the page, execute myFunction
     window.onscroll = function() {
@@ -685,7 +691,7 @@ update_pro_stats('page_views', $pro_post_id);
     var contactForm = document.getElementById("pro-contact-form");
 
     // Get the offset position of the navbar
-    var sticky = header.offsetTop + 200;
+    var sticky = header.offsetTop + 170;
 
     // Store the original value of the toggle-class attribute
     var originalValue = submitButton.getAttribute("toggle-class");
@@ -704,7 +710,3 @@ update_pro_stats('page_views', $pro_post_id);
         }
     }
 </script>
-
-
-
-<?php get_footer(); ?>
