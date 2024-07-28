@@ -11,6 +11,7 @@ Tags: simple, custom.
 Text Domain: best-1
 */
 
+
 /* FONTS */
 
 /* Condesed (mainly for titles) */
@@ -262,7 +263,7 @@ header inner {
 
 /* FORM ELEMENTS */
 
-select, input, button, .button {
+select,.select2-selection--single, .select2-container--default .select2-selection--single, input[type="text"],input[type="email"],input[type="password"],input[type="tel"],input[type="url"],input[type="search"],input[type="number"], button, .button {
   height: 46px;
   line-height: calc(var(--font-s) + 4px);
   font-size: var(--font-s);
@@ -270,7 +271,7 @@ select, input, button, .button {
   appearance: unset;
 }
 
-select, input:not([type="submit"]), textarea {
+select, .select2-selection--single, .select2-container--default .select2-selection--single, input[type="text"],input[type="email"],input[type="password"],input[type="tel"],input[type="url"],input[type="search"],input[type="number"], textarea {
   border: 1px solid var(--gray);
   padding: var(--gap-xs) var(--gap-s);
   border-radius: var(--radius-s);
@@ -280,7 +281,7 @@ select, input:not([type="submit"]), textarea {
 }
 
 @media (max-width: 780px) {
-  select, input, textarea {
+  select, input[type="text"],input[type="email"],input[type="password"],input[type="tel"],input[type="url"],input[type="search"],input[type="number"], textarea {
     width: 100%;
   }
 }
@@ -1514,8 +1515,23 @@ ul.acf-checkbox-list li label input[type="checkbox"] {
   z-index: -1;
 }
 
+ul.acf-radio-list li, ul.acf-checkbox-list li {
+  font-size: inherit!important;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+ul.acf-checkbox-list li label,
+input[type="checkbox"] + label {
+  position: relative;
+  cursor:pointer;
+}
+
 /* Add custom checkbox using ::before */
-ul.acf-checkbox-list li label::before {
+ul.acf-checkbox-list li label::before,
+input[type="checkbox"] + label::before {
   content: "";
   display: inline-block;
   width: 25px;
@@ -1528,16 +1544,19 @@ ul.acf-checkbox-list li label::before {
   vertical-align: middle; /* Align with label text */
 }
 
-ul.acf-checkbox-list li label::after {
+ul.acf-checkbox-list li label::after,
+input[type="checkbox"] + label::after {
   opacity: 0;
   content: "✔️";
   position: absolute;
   top: 2px;
-  left: 4px;
+  right: 11px;
+  color: var(--black);
 }
 
 /* When the checkbox is checked, fill it with color */
-ul.acf-checkbox-list li label.selected::after {
+ul.acf-checkbox-list li label.selected::after,
+input[type="checkbox"]:checked + label::after {
   opacity: 1;
 }
 
@@ -1761,10 +1780,6 @@ body.acf-keydown-shift .acf-repeater .acf-row:hover > .acf-row-handle .acf-icon.
 
 .acf-repeater > .acf-actions .acf-button::before {
   content: '+ ';
-}
-
-.acf-field input[type=text], .acf-field input[type=password], .acf-field input[type=date], .acf-field input[type=datetime], .acf-field input[type=datetime-local], .acf-field input[type=email], .acf-field input[type=month], .acf-field input[type=number], .acf-field input[type=search], .acf-field input[type=tel], .acf-field input[type=time], .acf-field input[type=url], .acf-field input[type=week], .acf-field textarea, .acf-field select {
-  font-size: var(--font-s)!important;
 }
 
 

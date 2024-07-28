@@ -2,6 +2,8 @@ jQuery(document).ready(function($) {
 
 
     $('[lightbox-type]').css('cursor', 'pointer').on('click', function() {
+         // Remove any inline opacity: 0 styling
+  $('.lightbox-overlay, .lightbox-content').css('z-index', '');
         const type = $(this).attr('lightbox-type');
         const content = $(this).attr('lightbox-content');
         const title = $(this).attr('lightbox-title');

@@ -1,0 +1,68 @@
+{
+    "key": "group_66a357deb3f9c",
+    "title": "כותרת משנה לעמוד",
+    "fields": [
+        {
+            "key": "field_66a357df82917",
+            "label": "כותרת משנה",
+            "name": "page_sub_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "readonly": 0,
+            "disabled": 0,
+            "acfe_settings": {
+                "66a3583c12144": {
+                    "acfe_settings_location": "",
+                    "acfe_settings_settings": {
+                        "66a3583f12145": {
+                            "acfe_settings_setting_type": "hide_label",
+                            "acfe_settings_setting_operator": "true"
+                        }
+                    }
+                }
+            },
+            "acfe_validate": "",
+            "maxlength": "",
+            "acfe_permissions": "",
+            "placeholder": "כותרת משנה",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_permissions": "",
+    "acfe_form": 1,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1721992990
+}

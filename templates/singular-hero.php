@@ -67,7 +67,7 @@ if (has_post_thumbnail()) {
                 ?>
             </h2>
             <?php if ($page_sub_title) : ?>
-                <h3><?= $page_sub_title; ?></h3>
+                <h3 class="dark-gray" style="margin-top:-20px"><?= $page_sub_title; ?></h3>
             <?php endif; ?>
             <div id="category-tags" class="flex gap-s" style="margin-bottom:80px;">
                 <?php

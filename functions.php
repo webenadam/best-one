@@ -120,7 +120,7 @@ function best_one_styles()
     wp_enqueue_style('best-one-base', get_template_directory_uri() . '/style-base.css', array(), $base_css_version);
     wp_enqueue_style('best-one-style', get_stylesheet_uri(), array(), $style_css_version);
 }
-add_action('wp_enqueue_scripts', 'best_one_styles', 990); /* make my styles load last to overide others */
+add_action('get_footer', 'best_one_styles', 990); /* make my styles load last to overide others */
 
 
 // Enqueue mini-scripts script

@@ -58,6 +58,7 @@
   }
 
   @keyframes wave {
+
     0%,
     33.33%,
     100% {
@@ -327,6 +328,7 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: text-shine 9s linear infinite;
+    text-shadow: 0 3px 25px #ffffff29;
   }
 
   @keyframes text-shine {
@@ -388,8 +390,8 @@
     </grid>
 
     <!-- Add sprinkle elements -->
-    <?php for ($i = 0; $i < 180; $i++) : 
-      $size = rand(2, 11); 
+    <?php for ($i = 0; $i < 180; $i++) :
+      $size = rand(2, 11);
       $animation_class = 'sprinkle';
       switch (rand(0, 4)) {
         case 1:
@@ -405,7 +407,7 @@
           $animation_class = 'sprinkle-e';
           break;
       }
-      ?>
+    ?>
       <div class="<?= $animation_class; ?>" style="
       opacity: <?= mt_rand(0, 10) / 10; ?>;
       filter:blur(<?= rand(0, 11) ?>px);

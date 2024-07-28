@@ -7,6 +7,7 @@
   }
   #features {
     overflow:visible;
+    padding-top: var(--gap-l);
   }
   #features .flex.mobile-flex-column-reverse.gap-l.align-center {
     padding-bottom:0;
@@ -28,7 +29,7 @@
     z-index:5;
     width:400px;
   }
-  #features left {
+  #features left h2 {
     margin-top:-200px;
   }
   #features p {

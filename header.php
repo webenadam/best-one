@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<style>
+    html {
+        opacity: 0;
+        animation: fadeIn 0.3s ease-in-out forwards;
+    }
 
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+<html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,8 +78,9 @@
                 </nav>
                 <style>
                     .nav-main-button {
-                        margin-right:auto;
+                        margin-right: auto;
                     }
+
                     .nav-main-button svg {
                         vertical-align: -4px;
                         margin-left: 13px;
@@ -100,8 +112,8 @@
 
             </inner>
         </header>
-        <div id="signin-signup-pop" class="lightbox-overlay">
-            <div class="lightbox-content" style="width:440px;">
+        <div id="signin-signup-pop" class="lightbox-overlay" style="z-index:-999;">
+            <div class="lightbox-content" style="width:440px;" >
 
                 <div class="tabs-container">
                     <div class="tabs">

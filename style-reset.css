@@ -31,8 +31,7 @@
     font-weight: normal; /* Removes bold styling from headings */
   }
 
-  ul,
-  ol {
+  ul:not(#main-content ul) {
     list-style: none; /* Removes default list styling */
   }
 

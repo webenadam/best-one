@@ -17,7 +17,7 @@ $total_pros = wp_count_posts('pros')->publish;
     }
 
     #we-here h3 span {
-      font-weight:400;
+      font-weight: 400;
     }
 
     @media (max-width: 780px) {
@@ -57,28 +57,34 @@ $total_pros = wp_count_posts('pros')->publish;
     </right>
 
     <left class="flex-1">
-    <form id="pro-contact-form" action="/submit" method="post" class="bottom-gap-xs">
-                    <style>
-                        #pro-contact-form {
-                            width: 100%;
-                            display: flex;
-                            flex-direction: column;
-                            gap: var(--gap-xs);
-                            transition: all 0.4s ease-in-out;
-                        }
+      <form id="pro-contact-form" action="/submit" method="post" class="bottom-gap-xs">
+        <style>
+          #pro-contact-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-xs);
+            transition: all 0.4s ease-in-out;
+          }
 
-                        #pro-contact-form input,
-                        #pro-contact-form textarea {
-                            text-align: right;
-                            width: 100%;
-                        }
-                    </style>
-                    <input type="text" name="fullName" placeholder="שם מלא" required>
-                    <input type="tel" name="phone" placeholder="טלפון" required>
-                    <input type="email" name="email" placeholder="מייל" required>
-                    <textarea name="message" placeholder="הודעה" required></textarea>
-                </form>
-                <button id="pro_form_submit" class="button big" toggle-class="#pro-contact-form.active-1" style="width: 100%;">שלח</button>
+          #pro-contact-form input,
+          #pro-contact-form textarea {
+            text-align: right;
+            width: 100%;
+          }
+        </style>
+        <input type="text" name="fullName" placeholder="שם מלא" required>
+        <input type="tel" name="phone" placeholder="טלפון" required>
+        <input type="email" name="email" placeholder="מייל" required>
+        <textarea name="message" placeholder="הודעה" required></textarea>
+        <div class="flex justify-start align-center gap-m">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">
+          מאשר את <a href="<?php echo get_permalink(843); ?>" target="_blank">תנאי שימוש האתר</a>
+        </label>
+        </div>
+      </form>
+      <button id="pro_form_submit" class="button big" toggle-class="#pro-contact-form.active-1" style="width: 100%;">שלח</button>
 
     </left>
 
@@ -86,9 +92,9 @@ $total_pros = wp_count_posts('pros')->publish;
 </section>
 
 
-<?php get_template_part('templates/features');?>
+<?php get_template_part('templates/features'); ?>
 
-<?php get_template_part('templates/advertise-now');?>
+<?php get_template_part('templates/advertise-now'); ?>
 
 <script>
   jQuery(document).ready(function($) {

@@ -277,9 +277,9 @@
             "label": "דירוג משוכלל",
             "name": "pro_review_total",
             "aria-label": "",
-            "type": "number",
+            "type": "range",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -290,12 +290,66 @@
             "acfe_settings": "",
             "acfe_validate": "",
             "min": "",
-            "max": "",
+            "max": 5,
             "acfe_permissions": "",
-            "placeholder": "דירוג משוכלל",
-            "step": "",
+            "step": 1,
             "prepend": "",
-            "append": ""
+            "append": "",
+            "placeholder": "דירוג משוכלל"
+        },
+        {
+            "key": "field_66a35d60b5fef",
+            "label": "אסמכתא לביצוע עסקה",
+            "name": "pro_review_prove",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "uploader": "basic",
+            "return_format": "id",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "pdf,jpg,jpeg,png,gif,doc,docx",
+            "acfe_permissions": "",
+            "library": "all",
+            "placeholder": "אסמכתא לביצוע עסקה"
+        },
+        {
+            "key": "field_66a35e0ea2854",
+            "label": "אישור תנאי האתר",
+            "name": "pro_review_site_policy_agree",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "אני מאשר את <a target=\"_blank\" href=\"https:\/\/best-1.co.il\/policy\">תנאי השימוש באתר<\/a>": "אני מאשר את <a target=\"_blank\" href=\"https:\/\/best-1.co.il\/policy\">תנאי השימוש באתר<\/a>"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "allow_custom": 0,
+            "acfe_permissions": "",
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Add new choice",
+            "placeholder": "אישור תנאי האתר"
         }
     ],
     "location": [
@@ -324,5 +378,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1721763319
+    "modified": 1721993601
 }

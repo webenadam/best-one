@@ -236,6 +236,7 @@
             "collapsed": "",
             "button_label": "הוסף שעות זמינות",
             "rows_per_page": 20,
+            "placeholder": "שעות זמינות",
             "sub_fields": [
                 {
                     "key": "field_66a00e59351a6",
@@ -406,8 +407,7 @@
                     "search_placeholder": "",
                     "parent_repeater": "field_66a00e44351a5"
                 }
-            ],
-            "placeholder": "שעות זמינות"
+            ]
         },
         {
             "key": "field_66428b94ab5f1",
@@ -1529,6 +1529,31 @@
             "placeholder": "כתובת מרשימה ראשונית (לא לשימוש, רק לשמירה זמנית)",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_66a3873859078",
+            "label": "מזהה תעודת הסמכה",
+            "name": "pro_cert_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "readonly": 0,
+            "disabled": 0,
+            "acfe_settings": "",
+            "acfe_validate": "",
+            "maxlength": "",
+            "acfe_permissions": "",
+            "placeholder": "מזהה תעודת הסמכה",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -1557,5 +1582,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1721767193
+    "modified": 1721993037
 }
