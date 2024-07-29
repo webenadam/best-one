@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cardcom webhook handling logic
  * This script processes incoming webhook requests, logs them, and more.
@@ -54,15 +55,18 @@ if (isset($request_data['ReturnValue']) && strpos($request_data['ReturnValue'], 
     }
 
     // Check for term (optional)
-    if ($term_id && !term_exists($term_id, 'expert')) {
-        $log_data = "there is no matching expert term to the term_id returned";
-        file_put_contents($log_file, $log_data, FILE_APPEND);
-        exit;
+    if ($term_id) {
+        $term = get_term_by('id', $term_id, 'expert');
+        if (!$term) {
+            $log_data = "there is no matching expert term to the term_id returned";
+            file_put_contents($log_file, $log_data, FILE_APPEND);
+            exit;
+        }
     }
+
 
     // All checks passed, run subscribe function
     subscribe($user_id, $subscription_id, $term_id);
-
 } else {
     // Log if ReturnValue does not start with "subscribe"
     if (isset($request_data['ReturnValue'])) {
@@ -71,7 +75,8 @@ if (isset($request_data['ReturnValue']) && strpos($request_data['ReturnValue'], 
     }
 }
 
-function subscribe($user_id, $subscription_id, $term_id = null) {
+function subscribe($user_id, $subscription_id, $term_id = null)
+{
     $log_file = WP_CONTENT_DIR . '/webhook.log';
     $log_data = "user: $user_id, has been subscribed to the $subscription_id subscription";
     if ($term_id) {
