@@ -150,7 +150,7 @@ function generateCardcomLink($user_id, $subscription_id, $term_id = null) {
     $autoRedirect = "true"; // Whether to auto-redirect user after payment processing
 
     // Define dynamic variables
-    $returnValue = 'subscrube-'. $user_id . '-' . $subscription_id . ($term_id ? '-'. $term_id : ''); // Custom value to pass through and receive back, typically an order ID
+    $returnValue = 'subscribe-'. $user_id . '-' . $subscription_id . ($term_id ? '-'. $term_id : ''); // Custom value to pass through and receive back, typically an order ID
     $sumToBill = get_field('subscription_price', $subscription_id); // Amount to bill the user
 
  
