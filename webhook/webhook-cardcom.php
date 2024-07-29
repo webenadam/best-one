@@ -5,6 +5,10 @@
  * This script processes incoming webhook requests, logs them, and more.
  */
 
+
+// Include Subscribe function
+include_once get_template_directory() . '/webhook/webhook-cardcom-subscribe.php';
+
 // Ensure the request data is correctly initialized based on the method
 $request_data = '';
 $content_type = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : '';
@@ -30,6 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $log_file = WP_CONTENT_DIR . '/webhook.log';
 $log_data = date('Y-m-d H:i:s') . " - " . json_encode($request_data) . PHP_EOL;
 file_put_contents($log_file, $log_data, FILE_APPEND);
+
+// Check if lowprofilecode is provided
+if (!isset($request_data['lowprofilecode']) || empty($request_data['lowprofilecode'])) {
+    $log_data = "no lowprofilecode provided";
+    file_put_contents($log_file, $log_data, FILE_APPEND);
+    exit;
+}
 
 // Check if ReturnValue starts with "subscribe"
 if (isset($request_data['ReturnValue']) && strpos($request_data['ReturnValue'], 'subscribe') === 0) {
@@ -66,22 +77,11 @@ if (isset($request_data['ReturnValue']) && strpos($request_data['ReturnValue'], 
 
 
     // All checks passed, run subscribe function
-    subscribe($user_id, $subscription_id, $term_id);
+    cardcom_subscribe($user_id, $subscription_id, $term_id, $lowprofilecode);
 } else {
     // Log if ReturnValue does not start with "subscribe"
     if (isset($request_data['ReturnValue'])) {
         $log_data = "payment without 'subscribed' in ReturnValue";
         file_put_contents($log_file, $log_data, FILE_APPEND);
     }
-}
-
-function subscribe($user_id, $subscription_id, $term_id = null)
-{
-    $log_file = WP_CONTENT_DIR . '/webhook.log';
-    $log_data = "user: $user_id, has been subscribed to the $subscription_id subscription";
-    if ($term_id) {
-        $log_data .= " for the term: $term_id";
-    }
-    $log_data .= PHP_EOL;
-    file_put_contents($log_file, $log_data, FILE_APPEND);
 }
