@@ -9,6 +9,9 @@ $args = array(
     'post_status'    => 'any'
 );
 
+$pro_subscribed = false;  // Default to false
+$pro_subscription = false; // Default to false
+
 $query = new WP_Query($args);
 if ($query->have_posts()) {
     $query->the_post();
@@ -24,13 +27,13 @@ if ($query->have_posts()) {
 
             if ($date_object >= $current_date) {
                 $pro_subscribed = true;
-                $pro_subscription = get_sub_field('ad_subscription_advertise_plan')['label'];
+                $pro_subscription = get_sub_field('ad_subscription_advertise_plan');
                 break;  // Stop the loop if a valid subscription is found
             }
         }
     }
-    $pro_subscribed = false;  // Default to false
-    $pro_subscription = false; // Default to false
+
+
 
     function generate_subscription_box($title, $subscription_id, $term_id = null, $featured = false)
     {
@@ -79,7 +82,7 @@ if ($query->have_posts()) {
 
     <section id="subscriptions" class="main-content">
         <inner>
-            <div class="subscribe-status bottom-gap-m" style="font-size:var(--font-m);">סטטוס המנוי שלך (<?= get_the_title($pro_post_id); ?>): <?= $pro_subscribed ? '<span style="color:var(--blue);">' . $pro_subscription . '</span>' : '<span style="color:var(--red);">לא מפורסם</span></div>'; ?></div>
+            <div class="subscribe-status bottom-gap-m" style="font-size:var(--font-m);">סטטוס המנוי שלך (<?= get_the_title($pro_post_id); ?>): <?= $pro_subscribed ? '<span style="color:var(--blue);">' . get_the_title($pro_subscription) . '</span>' : '<span style="color:var(--red);">לא מפורסם</span></div>'; ?></div>
             <?php if (!$pro_subscribed) { ?>
                 <!-- Subscription options -->
                 <div class="box stripes subscription bottom-gap-l">
@@ -107,14 +110,14 @@ if ($query->have_posts()) {
                         <div class="subscription-features bottom-gap-l" style="width: 900px;">
 
                             <div class="flex-column gap-m">
-                                <h4 class="check">דף עסק דיגיטלי מעוצב, עם כל המידע החשוב על העסק שלך ועליך</h4>
-                                <h4 class="check">נוכחות בולטת ברשת מטורפת לגולשים שמחפשים אותך</h4>
-                                <h4 class="check">ממשק לעדכון עצמאי של דף העסק הכולל ציונים על איכות הפרסום שלך + הצעות לשיפור ויעול</h4>
-                                <h4 class="check">סידרת טיפים למקסום הנוכחות שלך ברשת</h4>
-                                <h4 class="check">אפשרות לפרסם בדף העסק מוצרים, קופונים ומחירונים</h4>
-                                <h4 class="check">הצגת דירוגים וחוות דעת של לקוחות עם אפשרות מענה בדף העסק שלכם</h4>
-                                <h4 class="check">מעקב אחרי ביצועי העמוד שלכם</h4>
-                                <h4 class="check">עדכון תוכן אישי הכולל מאמרים ותוכן מקצועי שיהפכו אותך לאוטוריטה בתחומך</h4>
+                                <h3 class="check">דף עסק דיגיטלי מעוצב, עם כל המידע החשוב על העסק שלך ועליך</h3>
+                                <h3 class="check">נוכחות בולטת ברשת מטורפת לגולשים שמחפשים אותך</h3>
+                                <h3 class="check">ממשק לעדכון עצמאי של דף העסק הכולל ציונים על איכות הפרסום שלך + הצעות לשיפור ויעול</h3>
+                                <h3 class="check">סידרת טיפים למקסום הנוכחות שלך ברשת</h3>
+                                <h3 class="check">אפשרות לפרסם בדף העסק מוצרים, קופונים ומחירונים</h3>
+                                <h3 class="check">הצגת דירוגים וחוות דעת של לקוחות עם אפשרות מענה בדף העסק שלכם</h3>
+                                <h3 class="check">מעקב אחרי ביצועי העמוד שלכם</h3>
+                                <h3 class="check">עדכון תוכן אישי הכולל מאמרים ותוכן מקצועי שיהפכו אותך לאוטוריטה בתחומך</h3>
                             </div>
                         </div>
 
@@ -200,11 +203,14 @@ if ($query->have_posts()) {
         color: var(--blue);
     }
 
-    .check {
+    .subscription-features h3 {
+        font-weight: 700;
+    }
+
+    .subscription-features .check {
         display: flex;
         color: var(--blue);
-        font-weight: 700;
-        font-size: var(--font-s);
+        font-size: var(--font-m);
         position: relative;
         margin-right: var(--gap-m);
         max-width: 90%;
