@@ -162,9 +162,9 @@ if ($query->have_posts()) {
                                 <div class="subscription-features bottom-gap-l">
 
                                     <div class="flex-column gap-m">
-                                        <h4 class="check">הופעה במומלצים בדפי התחום ״<?= esc_html($term->name); ?>״</h4>
-                                        <h4 class="check">ראשון בכל תוצאות החיפושים בתחום ״<?= esc_html($term->name); ?>״</h4>
-                                        <h4 class="check">הופעה במומלצים בדף הבית</h4>
+                                        <h3 class="check">הופעה במומלצים בדפי התחום ״<?= esc_html($term->name); ?>״</h3>
+                                        <h3 class="check">ראשון בכל תוצאות החיפושים בתחום ״<?= esc_html($term->name); ?>״</h3>
+                                        <h3 class="check">הופעה במומלצים בדף הבית</h3>
                                     </div>
                                 </div>
 
