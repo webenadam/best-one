@@ -238,3 +238,28 @@ function change_pending_label($translated_text, $text, $domain) {
     return $translated_text;
 }
 add_filter('gettext', 'change_pending_label', 20, 3);
+
+// Disable acfe author box costumization
+add_action('acfe/init', 'my_acfe_modules');
+function my_acfe_modules()
+{
+
+    // Disable Ajax Author box
+    acfe_update_setting('modules/author', false);
+}
+
+// Add user link to author meta box
+function custom_change_author_box_title_for_pros()
+{
+    $author_id = get_post_field('post_author', get_the_ID());
+    $author_name = get_the_author_meta('display_name', $author_id);
+    $edit_user_url = get_edit_user_link( $author_id );
+
+    // Remove the default author meta box from the 'pros' post type
+    remove_meta_box('authordiv', 'pros', 'normal');
+
+    // Add a new author meta box with a custom title for the 'pros' post type
+    add_meta_box('authordiv', '<h2>משתמש: <a href="'. $edit_user_url .'">' . $author_name . '</a></h2>', 'post_author_meta_box', 'pros', 'normal');
+}
+
+add_action('add_meta_boxes', 'custom_change_author_box_title_for_pros');

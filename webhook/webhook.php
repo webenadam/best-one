@@ -41,11 +41,11 @@ function handle_webhook_request() {
         }
 
         // Log the raw request data
-        $log_data = date('Y-m-d H:i:s') . " - Raw request data: " . json_encode($request_data) . PHP_EOL;
+        $log_data = date('Y-m-d H:i:s') . " [webhook.php] - Raw request data: " . json_encode($request_data) . PHP_EOL;
         file_put_contents($log_file, $log_data, FILE_APPEND);
 
         // Route the request to the appropriate handler file
-        if (isset($request_data['TerminalNumber']) && isset($request_data['ReturnValue'])) {
+        if (isset($request_data['terminalnumber']) && isset($request_data['ReturnValue'])) {
             // Use webhook-cardcom.php file to handle the request
             include_once get_template_directory() . '/webhook/webhook-cardcom.php';
         } else {

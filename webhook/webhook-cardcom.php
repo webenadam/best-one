@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Log the request data
-$log_data = date('Y-m-d H:i:s') . "[webhook-cardcom.php] - Request data: " . json_encode($request_data) . PHP_EOL;
+$log_data = date('Y-m-d H:i:s') . " [webhook-cardcom.php] - Request data: " . json_encode($request_data) . PHP_EOL;
 file_put_contents($log_file, $log_data, FILE_APPEND);
 
 // Check if lowprofilecode is provided
