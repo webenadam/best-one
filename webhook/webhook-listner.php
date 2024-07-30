@@ -27,5 +27,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Log the request data
 $log_file = WP_CONTENT_DIR . '/webhook.log';
-$log_data = date('Y-m-d H:i:s') . " - " . $request_data . PHP_EOL;
+$log_data = date('Y-m-d H:i:s') . "[webhook-listner.php] - " . $request_data . PHP_EOL;
 file_put_contents($log_file, $log_data, FILE_APPEND);

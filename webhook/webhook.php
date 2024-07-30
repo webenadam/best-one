@@ -24,7 +24,9 @@ function add_webhook_query_var($vars) {
  */
 add_action('template_redirect', 'handle_webhook_request');
 function handle_webhook_request() {
-    global $wp_query;
+    global $wp_query, $log_file;
+
+    $log_file = WP_CONTENT_DIR . '/webhook.log';
 
     // Check if the 'webhook' query variable is set
     if (isset($wp_query->query_vars['webhook'])) {
@@ -33,13 +35,17 @@ function handle_webhook_request() {
 
         // Determine if it's a POST or GET request
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $request_data = $_POST;
+            $request_data = json_decode(file_get_contents('php://input'), true);
         } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $request_data = $_GET;
         }
 
+        // Log the raw request data
+        $log_data = date('Y-m-d H:i:s') . " - Raw request data: " . json_encode($request_data) . PHP_EOL;
+        file_put_contents($log_file, $log_data, FILE_APPEND);
+
         // Route the request to the appropriate handler file
-        if (isset($request_data['terminalnumber']) && isset($request_data['ReturnValue'])) {
+        if (isset($request_data['TerminalNumber']) && isset($request_data['ReturnValue'])) {
             // Use webhook-cardcom.php file to handle the request
             include_once get_template_directory() . '/webhook/webhook-cardcom.php';
         } else {

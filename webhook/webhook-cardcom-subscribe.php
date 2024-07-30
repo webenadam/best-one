@@ -1,126 +1,88 @@
 <?php
 
 /**
- * Cardcom webhook subscription function (after userid, subscription id, term id (optional) checks
+ * Cardcom webhook subscription function (after userid, subscription id, term id (optional) checks)
  */
 
+global $log_file;
+$log_file = WP_CONTENT_DIR . '/webhook.log';
 
 function cardcom_subscribe($user_id, $subscription_id, $term_id = null, $lowprofilecode = null)
 {
+    global $log_file;
 
-    // Subscribe
+    // Static Vars
+    $TerminalNumber = 1000; // Company terminal
+    $UserName = 'test2025'; // API User
+    $OperationAdd = "NewAndUpdate"; // Operation type
 
-
-    # Satatic Vars :
-    $TerminalNumber = 1000; # Company terminal
-    $UserName = 'test2025';   # API User
-    $OperationAdd = "newandupdate";  # newandupdate  do one or all of the following :  Update\Add New Account  And\Or Update\Add account payment info  And\Or Add new    recurring payment
-
-
-    # Dynamic Vars:
-    $lowprofilecode = $lowprofilecode; #(Same as lowProfileCode)
+    // Dynamic Vars
+    $lowprofilecode = $lowprofilecode; // LowProfileDealGuid
 
     // Fetch user details
     $user_info = get_userdata($user_id);
     if (!$user_info) {
-        echo "User not found."; // Handle the error appropriately
-        return; // Exit the function if user is not found
+        echo "User not found.";
+        return;
     }
 
     $client_email = $user_info->user_email; // User's email
-    $client_name = $user_info->display_name; // User's display name. Can also use $user_info->first_name and $user_info->last_name
-
-    $subscription_id = $subscription_id;
+    $client_name = $user_info->display_name; // User's display name
+    $client_id = $user_id;
     $product_description = get_the_title($subscription_id);
 
+    // Add New Account, new Payment Info, new recurring payment
+    $vars = array(
+        'TerminalNumber' => $TerminalNumber,
+        'RecurringPayments.ChargeInTerminal' => $TerminalNumber,
+        'UserName' => $UserName,
+        'codepage' => '65001', // Unicode
+        'Operation' => $OperationAdd,
+        'LowProfileDealGuid' => $lowprofilecode,
+        'Account.CompanyName' => $client_name, // Name of the account/company
+        'Account.Email' => $client_email,
+        'RecurringPayments.InternalDecription' => $product_description, // Internal description for the recurring payment
+        'RecurringPayments.FlexItem.InvoiceDescription' => $product_description, // Invoice description
+        'RecurringPayments.NextDateToBill' => date("d/m/Y", strtotime("+1 month")), // Next billing date
+        'RecurringPayments.TotalNumOfBills' => '999999', // Number of times to bill the account
+        'RecurringPayments.FinalDebitCoinId' => '1', // Currency: 1 - NIS, 2 - USD, else ISO currency
+        'RecurringPayments.ReturnValue' => "subscribed-$client_id-$subscription_id" . ($term_id ? "-$term_id" : '') . "-createdoncardcom",
+        'RecurringPayments.FlexItem.Price' => get_field('subscription_price', $subscription_id), // Billing amount
+        'RecurringPayments.FlexItem.IsPriceIncludeVat' => 'false' // VAT inclusion
+    );
 
-    ###############################################################                              
-    ### Add New Account new  Payment Info new recurring payment.###
-    ###############################################################
-    $vars =  array();
-    // Const parameters:
-    $vars['terminalnumber'] = $TerminalNumber;
-    $vars['username'] = $UserName;
-    $vars['codepage'] = '65001'; // unicode
-    $vars["Operation"] = $OperationAdd;
+    // Log the data being sent
+    $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - Sending data to CardCom: " . json_encode($vars) . PHP_EOL;
+    file_put_contents($log_file, $log_data, FILE_APPEND);
 
-    $vars["LowProfileDealGuid"] = $lowprofilecode;
-
-
-
-    // Add Acount Info , all Params At : kb.XXXX.XXXX
-    $vars["Account.CompanyName"] = $client_name; # Req Name of the account / company
-    // $vars["Account.RegisteredBusinessNumber"] = $client_id;
-    $vars["Account.Email"] = $client_email;
-
-
-    #### Add Recurring Payment  ###
-
-    $today = date("d/m/Y");  // Gets today's date
-    $oneMonthFromToday = date("d/m/Y", strtotime("+1 month"));
-
-    $vars["RecurringPayments.InternalDecription"] = $product_description; # some internal description for the Recurring Payment 
-    $vars["RecurringPayments.NextDateToBill"] = $oneMonthFromToday; #  the first time to bill the account .
-    $vars["RecurringPayments.TotalNumOfBills"] = "999999"; #  number of time to bill the account
-    $vars["RecurringPayments.FinalDebitCoinId"] = "1"; #   1- NIS , 2- USD -else ISO currency.  
-    $vars["RecurringPayments.ReturnValue"] = "subscribe-".$client_id."-".$subscription_id.($term_id ? "-".$term_id : '')."-createdoncardcom"; # subscribe-user_id-subscription_id-term_id
-    $vars["RecurringPayments.FlexItem.Price"] = get_field('subscription_price',$subscription_id); #   Sum to Bill the account  in every time. (total account bill is TotalNumOfBills*FlexItem.Price)
-    $vars["RecurringPayments.FlexItem.IsPriceIncludeVat"] = "false"; # the account will be bill 100 include vat - good for BTC , if BTB , send FlexItem.Price no vat and FlexItem.IsPriceIncludeVat=false   
-
-
-    // Send Data To Bill Gold Server
+    // Send Data To CardCom Server
     $r = PostVars($vars, 'https://secure.cardcom.solutions/Interface/RecurringPayment.aspx');
-
-
     parse_str($r, $responseArray);
 
-    # Is Deal OK 
-    if ($responseArray['ResponseCode'] == "0") {
-        echo "<br/>Description: " . $responseArray['Description'] . "<br/>"; #  response Description
-        echo "Total Recurring: " . $responseArray['TotalRecurring'] . "<br/>"; # total number of new /update  Recurring Payment
-        echo "Is New Account: " . $responseArray['IsNewAccount'] . "<br/>"; # Is the Account a new One (if not then update)
-        echo "Account Id: " . $responseArray['AccountId'] . "<br/>"; # Update \ New Account ID.
-
-        echo "<br/>Print Recurring Payment result<br/>";
-        echo "------------------------------<br/>";
-        $total = $responseArray['TotalRecurring'];
-
-
-
-        for ($i = 0; $i < $total; $i++) {
-
-            echo "Recurring Id " . $i . ": " . $responseArray['Recurring' . $i . '_RecurringId'] . "<br/>"; # CardCom  Recurring Id
-            echo "Return Value " . $i . ": " . $responseArray['Recurring' . $i . '_ReturnValue'] . "<br/>"; # your custom temp value for the Recurring Payment
-            echo "Is New Recurring " . $i . ": " . $responseArray['Recurring' . $i . '_IsNewRecurring'] . "<br/><br/>"; # Is New Recurring Payment ?
-        }
-
-        echo "<br/><br/><br/>" . $r;
-        // See Full Response  At : kb.XXXX.XXXX    
-    }
-    # Show Error to developer only
-    else {
-        echo $r;
-    }
-
-
-
-
-    // Log stuff
-    $log_file = WP_CONTENT_DIR . '/webhook.log';
-    $log_data = "user: $user_id, has been subscribed to the $subscription_id subscription";
-    if ($term_id) {
-        $log_data .= " for the term: $term_id";
-    }
-    $log_data .= PHP_EOL;
+    // Log the response from CardCom
+    $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - CardCom response: " . json_encode($responseArray) . PHP_EOL;
     file_put_contents($log_file, $log_data, FILE_APPEND);
+
+    if (strpos($r, 'Object_moved') !== false) {
+        $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - CardCom response error: " . $r . PHP_EOL;
+        file_put_contents($log_file, $log_data, FILE_APPEND);
+    }
+
+    if ($responseArray['ResponseCode'] == "0") {
+        echo "Recurring Payment created successfully.";
+    } else {
+        echo "Error creating Recurring Payment: " . $responseArray['Description'];
+    }
 }
-
-
 
 function PostVars($vars, $PostVarsURL)
 {
+    global $log_file;
+    $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - PostVars Function ran for returnvalue: " . $vars['RecurringPayments.ReturnValue'];
+    $log_data .= PHP_EOL;
+    file_put_contents($log_file, $log_data, FILE_APPEND);
+
     $urlencoded = http_build_query($vars);
-    #init curl connection
     if (function_exists("curl_init")) {
         $CR = curl_init();
         curl_setopt($CR, CURLOPT_URL, $PostVarsURL);
@@ -129,15 +91,12 @@ function PostVars($vars, $PostVarsURL)
         curl_setopt($CR, CURLOPT_POSTFIELDS, $urlencoded);
         curl_setopt($CR, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($CR, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($CR, CURLOPT_FAILONERROR, true);
-        #actual curl execution perfom
+        curl_setopt($CR, CURLOPT_FOLLOWLOCATION, true); // Follow redirects
+
         $r = curl_exec($CR);
         $error = curl_error($CR);
-        # some error , send email to developer
         if (!empty($error)) {
-
             echo $error;
-
             die();
         }
         curl_close($CR);
