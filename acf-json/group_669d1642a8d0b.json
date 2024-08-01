@@ -45,9 +45,9 @@
                 "id": ""
             },
             "choices": {
-                "no": "ללא התחייבות",
-                "half_year": "חצי שנה",
-                "year": "שנה"
+                "1": "ללא התחייבות",
+                "6": "חצי שנה",
+                "12": "שנה"
             },
             "default_value": false,
             "return_format": "value",
@@ -179,5 +179,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1722501609
+    "modified": 1722536622
 }
