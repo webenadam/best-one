@@ -1286,6 +1286,32 @@
                     "parent_repeater": "field_6687e707b17fa"
                 },
                 {
+                    "key": "field_66abb0452d435",
+                    "label": "מחיר (ללא מע״מ)",
+                    "name": "ad_subscription_price",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "readonly": 0,
+                    "disabled": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "placeholder": "מחיר (ללא מע״מ)",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6687e707b17fa"
+                },
+                {
                     "key": "field_66abad398fc17",
                     "label": "סיום אקורדיון",
                     "name": "",
@@ -1488,5 +1514,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1722527590
+    "modified": 1722528250
 }
