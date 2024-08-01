@@ -1288,7 +1288,7 @@
                 {
                     "key": "field_66abc76928e78",
                     "label": "קוד הוראת קבע קארדקום",
-                    "name": "קוד_הוראת_קבע_קארדקום",
+                    "name": "ad_subscription_cardcom_subscription_id",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -1540,5 +1540,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1722533813
+    "modified": 1722534117
 }
