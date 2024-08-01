@@ -996,16 +996,15 @@
                 "id": ""
             },
             "acfe_repeater_stylised_button": 1,
-            "layout": "table",
+            "layout": "block",
             "pagination": 0,
             "acfe_settings": "",
             "min": 0,
             "max": 0,
             "acfe_permissions": "",
-            "collapsed": "",
-            "button_label": "הוספת שורה חדשה",
+            "collapsed": "field_6687e843b17fd",
+            "button_label": "הוסף מנוי",
             "rows_per_page": 20,
-            "placeholder": "מנויים וקידומים",
             "sub_fields": [
                 {
                     "key": "field_6687e781b17fb",
@@ -1193,7 +1192,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "open": 1,
+                    "open": 0,
                     "multi_expand": 0,
                     "endpoint": 0,
                     "acfe_permissions": "",
@@ -1214,12 +1213,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "0": "בוצע תשלום ראשון",
-                        "1": "נוצרה הוראת קבע",
-                        "2: בוטל": "2: בוטל",
-                        "3: הסתיים": "3: הסתיים"
-                    },
+                    "choices": [
+                        "בוצע תשלום ראשון",
+                        "נוצרה הוראת קבע",
+                        "בוטל",
+                        "הסתיים"
+                    ],
                     "default_value": false,
                     "return_format": "value",
                     "multiple": 0,
@@ -1239,7 +1238,7 @@
                     "label": "קוד תשלום קארקום (lowprofilecode)",
                     "name": "ad_subscription_lowprofilecode",
                     "aria-label": "",
-                    "type": "textarea",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -1249,14 +1248,41 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "acfe_textarea_code": 1,
+                    "readonly": 1,
+                    "disabled": 0,
                     "acfe_settings": "",
                     "acfe_validate": "",
                     "maxlength": "",
                     "acfe_permissions": "",
-                    "rows": "",
                     "placeholder": "קוד תשלום קארקום (lowprofilecode)",
-                    "new_lines": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6687e707b17fa"
+                },
+                {
+                    "key": "field_66abaf45a5f2d",
+                    "label": "קוד לקוח קארקום",
+                    "name": "ad_subscription_cardcom_client_id",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "readonly": 1,
+                    "disabled": 0,
+                    "acfe_settings": "",
+                    "acfe_validate": "",
+                    "maxlength": "",
+                    "acfe_permissions": "",
+                    "placeholder": "קוד לקוח קארקום",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_6687e707b17fa"
                 },
                 {
@@ -1275,12 +1301,13 @@
                     },
                     "open": 0,
                     "multi_expand": 0,
-                    "endpoint": 0,
+                    "endpoint": 1,
                     "acfe_permissions": "",
                     "placeholder": "סיום אקורדיון",
                     "parent_repeater": "field_6687e707b17fa"
                 }
-            ]
+            ],
+            "placeholder": "מנויים וקידומים"
         },
         {
             "key": "field_665f5b07ca62a",
@@ -1461,5 +1488,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1722527260
+    "modified": 1722527590
 }
