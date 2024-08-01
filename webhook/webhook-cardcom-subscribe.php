@@ -22,6 +22,8 @@ function cardcom_subscribe($user_id, $subscription_id, $term_id = null, $lowprof
     // Fetch user details
     $user_info = get_userdata($user_id);
     if (!$user_info) {
+        $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - User not found for ID: $user_id" . PHP_EOL;
+        file_put_contents($log_file, $log_data, FILE_APPEND);
         echo "User not found.";
         return;
     }
@@ -29,27 +31,31 @@ function cardcom_subscribe($user_id, $subscription_id, $term_id = null, $lowprof
     $client_email = $user_info->user_email; // User's email
     $client_name = $user_info->display_name; // User's display name
     $client_id = $user_id;
-    $product_description = get_the_title($subscription_id);
+    $product_description = get_field('subscription_english_description', $subscription_id);
+    
 
     // Add New Account, new Payment Info, new recurring payment
     $vars = array(
-        'TerminalNumber' => $TerminalNumber,
-        'RecurringPayments.ChargeInTerminal' => $TerminalNumber,
+        'terminalnumber' => $TerminalNumber,
         'UserName' => $UserName,
         'codepage' => '65001', // Unicode
         'Operation' => $OperationAdd,
         'LowProfileDealGuid' => $lowprofilecode,
-        'Account.CompanyName' => $client_name, // Name of the account/company
         'Account.Email' => $client_email,
-        'RecurringPayments.InternalDecription' => $product_description, // Internal description for the recurring payment
-        'RecurringPayments.FlexItem.InvoiceDescription' => $product_description, // Invoice description
-        'RecurringPayments.NextDateToBill' => date("d/m/Y", strtotime("+1 month")), // Next billing date
-        'RecurringPayments.TotalNumOfBills' => '999999', // Number of times to bill the account
-        'RecurringPayments.FinalDebitCoinId' => '1', // Currency: 1 - NIS, 2 - USD, else ISO currency
-        'RecurringPayments.ReturnValue' => "subscribed-$client_id-$subscription_id" . ($term_id ? "-$term_id" : '') . "-createdoncardcom",
+        'Account.CompanyName' => $client_name,
+
+        'RecurringPayments.InternalDecription' => $product_description,
+        'RecurringPayments.FlexItem.InvoiceDescription' => $product_description,
+
         'RecurringPayments.FlexItem.Price' => get_field('subscription_price', $subscription_id), // Billing amount
+
+        'RecurringPayments.NextDateToBill' => date("d/m/Y", strtotime("+1 month")), // Next billing date
+        'RecurringPayments.TotalNumOfBills' => '99999', // Number of times to bill the account
+        'RecurringPayments.FinalDebitCoinId' => '1', // Currency: 1 - NIS, 2 - USD, else ISO currency
+        'RecurringPayments.ReturnValue' => "cardcom_subscribed-$client_id-$subscription_id" . ($term_id ? "-$term_id" : ''),
         'RecurringPayments.FlexItem.IsPriceIncludeVat' => 'false' // VAT inclusion
     );
+
 
     // Log the data being sent
     $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - Sending data to CardCom: " . json_encode($vars) . PHP_EOL;
@@ -63,26 +69,31 @@ function cardcom_subscribe($user_id, $subscription_id, $term_id = null, $lowprof
     $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - CardCom response: " . json_encode($responseArray) . PHP_EOL;
     file_put_contents($log_file, $log_data, FILE_APPEND);
 
+    // Check if CardCom response contains an error
     if (strpos($r, 'Object_moved') !== false) {
-        $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - CardCom response error: " . $r . PHP_EOL;
+        $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - CardCom response error (Object_moved): " . $r . PHP_EOL;
         file_put_contents($log_file, $log_data, FILE_APPEND);
     }
 
+    // Evaluate the response
     if ($responseArray['ResponseCode'] == "0") {
         echo "Recurring Payment created successfully.";
     } else {
-        echo "Error creating Recurring Payment: " . $responseArray['Description'];
+        $error_message = isset($responseArray['Description']) ? $responseArray['Description'] : 'Unknown error';
+        echo "Error creating Recurring Payment: " . $error_message;
     }
 }
 
 function PostVars($vars, $PostVarsURL)
 {
     global $log_file;
-    $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php] - PostVars Function ran for returnvalue: " . $vars['RecurringPayments.ReturnValue'];
-    $log_data .= PHP_EOL;
+
+    // Log the URL and data being sent
+    $urlencoded = http_build_query($vars);
+    $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php-PostVars()] - Sending request to: " . $PostVarsURL . PHP_EOL;
+    $log_data .= date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php-PostVars()] - Data: " . $urlencoded . PHP_EOL;
     file_put_contents($log_file, $log_data, FILE_APPEND);
 
-    $urlencoded = http_build_query($vars);
     if (function_exists("curl_init")) {
         $CR = curl_init();
         curl_setopt($CR, CURLOPT_URL, $PostVarsURL);
@@ -92,16 +103,31 @@ function PostVars($vars, $PostVarsURL)
         curl_setopt($CR, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($CR, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($CR, CURLOPT_FOLLOWLOCATION, true); // Follow redirects
+        curl_setopt($CR, CURLOPT_VERBOSE, true); // Enable verbose output
 
-        $r = curl_exec($CR);
-        $error = curl_error($CR);
-        if (!empty($error)) {
-            echo $error;
+        // Capture headers and response body
+        $response = curl_exec($CR);
+        $curl_error = curl_error($CR);
+        $curl_info = curl_getinfo($CR);
+
+        // Log detailed cURL info
+        $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php-PostVars()] - Curl response: " . $response . PHP_EOL;
+        if (!empty($curl_error)) {
+            $log_data .= date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php-PostVars()] - Curl error: " . $curl_error . PHP_EOL;
+        }
+        $log_data .= date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php-PostVars()] - Curl info: " . json_encode($curl_info) . PHP_EOL;
+        file_put_contents($log_file, $log_data, FILE_APPEND);
+
+        if (!empty($curl_error)) {
+            echo $curl_error;
             die();
         }
+
         curl_close($CR);
-        return $r;
+        return $response;
     } else {
+        $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom-subscribe.php-PostVars()] - cURL not available." . PHP_EOL;
+        file_put_contents($log_file, $log_data, FILE_APPEND);
         echo "No curl_init";
         die();
     }

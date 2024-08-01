@@ -46,12 +46,12 @@ if (!isset($request_data['lowprofilecode']) || empty($request_data['lowprofileco
     exit;
 }
 
-// Check if ReturnValue starts with "first_payment" or "subscribed"
+// Check if ReturnValue starts with "first_payment" or "cardcom_subscribed"
 if (isset($request_data['ReturnValue'])) {
     $startWithFirstPayment = strpos($request_data['ReturnValue'], 'first_payment') === 0;
-    $startWithSubscribed = strpos($request_data['ReturnValue'], 'subscribed') === 0;
+    $startWithCardcomSubscribed = strpos($request_data['ReturnValue'], 'cardcom_subscribed') === 0;
 
-    if ($startWithFirstPayment || $startWithSubscribed) {
+    if ($startWithFirstPayment || $startWithCardcomSubscribed) {
         // Split ReturnValue into parts
         $parts = explode('-', $request_data['ReturnValue']);
         $user_id = $parts[1] ?? null;
@@ -89,14 +89,14 @@ if (isset($request_data['ReturnValue'])) {
             $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom.php] - Triggering cardcom_subscribe" . PHP_EOL;
             file_put_contents($log_file, $log_data, FILE_APPEND);
             cardcom_subscribe($user_id, $subscription_id, $term_id, $lowprofilecode);
-        } elseif ($startWithSubscribed) {
+        } elseif ($startWithCardcomSubscribed) {
             $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom.php] - Triggering best_subscribe" . PHP_EOL;
             file_put_contents($log_file, $log_data, FILE_APPEND);
             best_subscribe($user_id, $subscription_id, $term_id, $lowprofilecode);
         }
     } else {
-        // Log if ReturnValue does not start with "first_payment" or "subscribed"
-        $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom.php] - payment without 'first_payment' or 'subscribed' in ReturnValue" . PHP_EOL;
+        // Log if ReturnValue does not start with "first_payment" or "cardcom_subscribed"
+        $log_data = date('Y-m-d H:i:s') . "[webhook-cardcom.php] - payment without 'first_payment' or 'cardcom_subscribed' in ReturnValue" . PHP_EOL;
         file_put_contents($log_file, $log_data, FILE_APPEND);
     }
 } else {
