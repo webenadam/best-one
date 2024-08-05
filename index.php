@@ -9,8 +9,8 @@ $featured_pros = get_field('home_featured_pros', 'option');
 
   <inner class="relative flex align-center mobile-flex-column">
     <div class="right" style="z-index:1;">
-      <h1 class="title bottom-gap-xs">הפורטל המוביל למומחי נדל״ן פיננסים ושמאות בישראל</h1>
-      <h2 class="subtitle bottom-gap-l font-xl">הפלטפורמה שלך לבחירת אנשי המקצוע הטובים ביותר בתחום
+      <h1 class="title bottom-gap-xs">הפורטל המוביל למומחי הערכות שווי ופיננסים</h1>
+      <h2 class="subtitle bottom-gap-l font-xl">גישה ישירה למיטב המומחים בתחומי, הנדל"ן, הפיננסים , והעסקים בישראל.
       </h2>
       <?php pros_search_form(); ?>
     </div>
@@ -255,7 +255,7 @@ get_template_part('templates/main-feed', null, array('featured_pros' => $feature
   }
 
   #hero h1 {
-    width: 476px;
+    width: 507px;
     margin-top: 70px;
   }
 

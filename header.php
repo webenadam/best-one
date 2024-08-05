@@ -90,7 +90,7 @@
                 if (!is_user_logged_in()) {
                     // User is not logged in
                 ?>
-                    <div lightbox-type="content" lightbox-content="#signin-signup-pop" class="button nav-main-button"><?= svg_icon('profile', null, null, 19, 19); ?>התחבר / פרסם עכשיו</div>
+                    <div lightbox-type="content" lightbox-content="#signin-signup-pop" class="button nav-main-button"><?= svg_icon('profile', null, null, 19, 19); ?>כניסה למפרסמים</div>
                     <?php
                 } else {
                     // User is logged in

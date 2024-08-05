@@ -74,6 +74,9 @@
                     <a href="#"><img src="<?= theme_uri(); ?>/img/icons/twitter.svg" alt="Twitter" style="width: 18px; height: 18px;"></a>
                     <a href="#"><img src="<?= theme_uri(); ?>/img/icons/instagram.svg" alt="Instagram" style="width: 18px; height: 18px;"></a>
                 </div>
+                <div class="app-links">
+                    <img style="margin-top:15px;" src="<?= theme_uri(); ?>/img/googleplayandappstore.png" alt="app-links-banners" class="app-links-banners">
+                </div>
             </div>
             <!-- Columns 2-5: Category Links using ACF Repeaters -->
             <?php for ($i = 1; $i <= 4; $i++) : ?>
