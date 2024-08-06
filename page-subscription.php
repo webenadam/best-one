@@ -22,10 +22,17 @@ $current_user_id = get_current_user_id(); ?>
     <left class="flex"><div class="men-container relative"><div class="circle absolute grow-shrink"></div><img src="<?= theme_uri('/img/2men3.png'); ?>" alt="למה אצלנו?"></div>
   </left>
   </inner>
+  <div class="sauqre_ico absolute" style="top: 230px;right: -126px;">
+                    <?= svg_icon('square'); ?>
+                </div>
 </section>
 
 
-
+<section id="how-it-works" class="light">
+    <inner>
+        <h2>איך זה עובד?</h2>
+    </inner>
+</section>
 
 
 

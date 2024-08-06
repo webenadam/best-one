@@ -1,5 +1,5 @@
 <?php
-$page_title = isset($args['page_title']) ? $args['page_title'] : get_the_title();
+$page_title = $args['page_title'] ?? get_field('page_header_title') ?? get_the_title();
 $page_sub_title = get_field('page_sub_title') ?? null;
 
 if (has_post_thumbnail()) {

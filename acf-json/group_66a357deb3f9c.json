@@ -3,16 +3,51 @@
     "title": "כותרת משנה לעמוד",
     "fields": [
         {
+            "key": "field_66b233304ffed",
+            "label": "כותרת חילופית",
+            "name": "page_header_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "מאפשר להגדיר כותרת לתצוגה ולהשאיר את כותרת העמוד ל-seo ולשונית.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "readonly": 0,
+            "disabled": 0,
+            "acfe_settings": {
+                "66a3583c12144": {
+                    "acfe_settings_location": "",
+                    "acfe_settings_settings": {
+                        "66a3583f12145": {
+                            "acfe_settings_setting_type": "hide_label",
+                            "acfe_settings_setting_operator": "true"
+                        }
+                    }
+                }
+            },
+            "acfe_validate": "",
+            "maxlength": "",
+            "acfe_permissions": "",
+            "placeholder": "כותרת חילופית",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66a357df82917",
             "label": "כותרת משנה",
             "name": "page_sub_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "מופיע תחת הכותרת הראשית של העמוד",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -64,5 +99,5 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1721992990
+    "modified": 1722954631
 }
