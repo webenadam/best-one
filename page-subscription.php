@@ -1,39 +1,6 @@
 <?php get_header(); ?>
 
 <?php
-$current_user_id = get_current_user_id();
-$args = array(
-    'post_type' => 'pros',
-    'author' => $current_user_id,
-    'posts_per_page' => 1,
-    'post_status'    => 'any'
-);
-
-$pro_subscribed = false;  // Default to false
-$pro_subscription = false; // Default to false
-
-$query = new WP_Query($args);
-if ($query->have_posts()) {
-    $query->the_post();
-    $pro_post_id = $query->post->ID;
-
-    // Check if the current user has an active subscription
-    if (have_rows('ad_subscriptions', $pro_post_id)) {
-        while (have_rows('ad_subscriptions', $pro_post_id)) {
-            the_row();
-            $end_date = get_sub_field('ad_subscription_end_date');
-            $date_object = DateTime::createFromFormat('d/m/Y', $end_date);
-            $current_date = new DateTime('now');
-
-            if ($date_object >= $current_date) {
-                $pro_subscribed = true;
-                $pro_subscription = get_sub_field('ad_subscription_advertise_plan');
-                break;  // Stop the loop if a valid subscription is found
-            }
-        }
-    }
-
-
 
     function generate_subscription_box($title, $subscription_id, $term_id = null, $featured = false)
     {
@@ -69,21 +36,14 @@ if ($query->have_posts()) {
     }
 
 
-
-
-
-
     ?>
-
-    <?php get_template_part('templates/me-hero', null, array('pro_post_id' => $pro_post_id, 'page_title' => 'פרטי מנוי')) ?>
 
 
 
 
     <section id="subscriptions" class="main-content">
         <inner>
-            <div class="subscribe-status bottom-gap-m" style="font-size:var(--font-m);">סטטוס המנוי שלך (<?= get_the_title($pro_post_id); ?>): <?= $pro_subscribed ? '<span style="color:var(--blue);">' . get_the_title($pro_subscription) . '</span>' : '<span style="color:var(--red);">לא מפורסם</span></div>'; ?></div>
-            <?php if (!$pro_subscribed) { ?>
+
                 <!-- Subscription options -->
                 <div class="box stripes subscription bottom-gap-l">
 
@@ -123,64 +83,6 @@ if ($query->have_posts()) {
 
 
                     </div>
-                <?php } else { ?>
-
-
-                    <!--Term Subscription options -->
-                    <?php
-                    // Get the terms for the 'expert' taxonomy
-                    $terms = get_the_terms($pro_post_id, 'expert');
-
-                    if ($terms && !is_wp_error($terms)) {
-
-                        foreach ($terms as $term) { ?>
-
-
-                            <div class="box stripes subscription term-subscription bottom-gap-l">
-
-                                <h2>קידום למומלצים בתחום <span><?= esc_html($term->name); ?></span></h2>
-                                <p class="bottom-gap-m">
-                                    תבלוט בתחום שלך. תהיה ראשון. תקבל את הלקוחות ראשון.
-                                </p>
-
-                                <div class="payment-plans grid-3 bottom-gap-m">
-                                    <div class="dots_ico absolute" style="top: 330px;left: -26px;">
-                                        <?= svg_icon('dots'); ?>
-                                    </div>
-
-                                    <div class="sauqre_ico absolute" style="top: 230px;right: -126px;">
-                                        <?= svg_icon('square'); ?>
-                                    </div>
-
-                                    <?php generate_subscription_box('חודשי', 836, $term->term_id); ?>
-                                    <?php generate_subscription_box('חצי שנתי', 837, $term->term_id); ?>
-                                    <?php generate_subscription_box('שנתי', 838, $term->term_id, $featured = true); ?>
-
-
-                                </div>
-
-                                <div class="subscription-features bottom-gap-l">
-
-                                    <div class="flex-column gap-m">
-                                        <h3 class="check">הופעה במומלצים בדפי התחום ״<?= esc_html($term->name); ?>״</h3>
-                                        <h3 class="check">ראשון בכל תוצאות החיפושים בתחום ״<?= esc_html($term->name); ?>״</h3>
-                                        <h3 class="check">הופעה במומלצים בדף הבית</h3>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-
-
-
-
-                <?php
-                        }
-                    }
-                } ?>
-
-
 
 
         </inner>
@@ -190,11 +92,6 @@ if ($query->have_posts()) {
 
 
 
-<?php
-} else {
-    echo '<p>לא נמצא בעל מקצוע עבור המשתמש הנוכחי.</p>';
-}
-?>
 
 <?php get_footer(); ?>
 

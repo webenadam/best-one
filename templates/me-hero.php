@@ -56,7 +56,6 @@ if ($pro_custom_background) {
                         <?= get_the_title($pro_post_id); ?><?= svg_icon('link'); ?></a></div>
                 <div id="me-links" class="flex-column gap-s" style="margin-bottom: 24px; text-align: center;">
                     <a href="<?= get_permalink(350); ?>">עריכת פרטים</a>
-                    <a href="<?= get_permalink(353); ?>">פרטי מנוי</a>
                     <a href="<?= wp_logout_url(); ?>" style="color: var(--red);">התנתק</a>
 
                 </div>

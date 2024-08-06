@@ -34,6 +34,7 @@ if ($query->have_posts()) {
 
     <section id="edit-form" class="main-content">
         <inner>
+        <div class="subscribe-status bottom-gap-m" style="font-size:var(--font-m);">סטטוס המנוי שלך (<?= get_the_title($pro_post_id); ?>): <?= $pro_subscribed ? '<span style="color:var(--blue);">' . get_the_title($pro_subscription) . '</span>' : '<span style="color:var(--red);">לא מפורסם</span></div>'; ?></div>
             <div class="pro_edit_form bottom-gap-l">
                 <?php acfe_form('edit-pro', array(
                     'post_id' => $pro_post_id
