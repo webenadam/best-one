@@ -421,7 +421,7 @@ box.no-shadow, .box.no-shadow {
   box-shadow:unset;
 }
 
-box.stripes, .box.stripes {
+.stripes {
   background-image:url('img/stripes.png'); ?>;
   background-position: bottom right;
   background-size: 120%;
@@ -1463,7 +1463,7 @@ span.acf-row-number {
 }
 
 span.acf-row-number::before {
-  content: url("https://kos.baypass.me/wp-content/uploads/2023/08/Reorder_icon.png");
+  content: url("img/Reorder_icon.png");
   position: absolute;
   visibility: visible; /* Show the image */
   right: -7px;
@@ -1869,6 +1869,10 @@ exprties::before {
 .grow-shrink {
   display: inline-block;
   animation: growShrink 4s infinite ease-in-out;
+}
+
+[tooltip] {
+  cursor: help;
 }
 
 @keyframes growShrink {

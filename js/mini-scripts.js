@@ -325,5 +325,62 @@ $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
 
 
 
+// Tooltips
+
+    // Function to show tooltip
+    function showTooltip(element) {
+        var tooltipText = $(element).attr('tooltip');
+        var $tooltip = $('<span class="tooltip"></span>').text(tooltipText);
+        $(element).after($tooltip);
+        $tooltip.css({
+            'position': 'absolute',
+            'top': $(element).position().top + $(element).outerHeight() + 5,
+            'left': $(element).position().left,
+            'background-color': 'rgb(22 28 45 / 84%)',
+            'color': 'white',
+            'font-size' : 'var(--font-xs)',
+    'backdrop-filter': 'blur(2px)',
+            'padding': 'var(--gap-xs) var(--gap-s)',
+            'border-radius': '5px',
+            'z-index': 1000
+        }).show();
+    }
+
+    // Function to hide tooltip
+    function hideTooltip() {
+        $('.tooltip').remove();
+    }
+
+    // Check if the device supports touch events
+    if ('ontouchstart' in window || navigator.maxTouchPoints) {
+        // Mobile devices: Use click to show/hide tooltip
+        $(document).on('click', '[tooltip]', function(e) {
+            if ($('.tooltip').length && $('.tooltip').is(':visible')) {
+                hideTooltip();
+            } else {
+                hideTooltip(); // Hide any already visible tooltips
+                showTooltip(this); // Show new tooltip
+            }
+            e.stopPropagation();
+        });
+
+        // Hide tooltip when clicking anywhere else
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('[tooltip]').length) {
+                hideTooltip();
+            }
+        });
+    } else {
+        // Desktop devices: Use hover to show/hide tooltip
+        $(document).on('mouseenter', '[tooltip]', function() {
+            showTooltip(this);
+        }).on('mouseleave', '[tooltip]', function() {
+            hideTooltip();
+        });
+    }
+
+
+
+
   
 });

@@ -5,7 +5,8 @@ $log_file = WP_CONTENT_DIR . '/webhook.log'; // Log file path
 $token_file = WP_CONTENT_DIR . '/morning_token.json'; // Token file path
 
 // Function to get the Morning token
-function getMorningToken($api_key, $api_secret) {
+function getMorningToken($api_key, $api_secret)
+{
     global $token_file, $log_file;
 
     // Request a new token
@@ -106,7 +107,7 @@ function createReceipt($user_id, $subscription_id, $term_id = null, $lowprofilec
     $client_name = $user_info->display_name; // Client's name
     $product_description = get_field('subscription_english_description', $subscription_id); // Product description
     $amount = number_format((float)get_field('subscription_price', $subscription_id), 2, '.', ''); // Subscription price formatted to 2 decimal places
-    
+
 
     // ==========================================
     // STEP 2: PREPARE AND LOG DATA
@@ -134,10 +135,12 @@ function createReceipt($user_id, $subscription_id, $term_id = null, $lowprofilec
         'attachment' => true, // Whether to attach the document
         'lang' => 'he', // Language of the document
         'payment' => [
-            'type' => 3, // Payment method: 3 (Credit Card)
-            'date' => date('Y-m-d'), // Payment date
-            'price' => (float)$amount,
-            'currency' => 'ILS',
+            [
+                'type' => 3, // Payment method: 3 (Credit Card)
+                'date' => date('Y-m-d'), // Payment date
+                'price' => (float)$amount,
+                'currency' => 'ILS',
+            ]
         ],
         'footer' => 'כאן בשביל הקידום שלך - בסט-1.', // Footer text for the document
         'rounding' => false, // Whether to round the total amount (optional)

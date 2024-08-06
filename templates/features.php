@@ -1,3 +1,25 @@
+
+<section id="features">
+  <inner class="flex mobile-flex-column-reverse gap-l align-center">
+    <right class="flex"><div class="men-container relative"><div class="circle absolute grow-shrink"></div><img src="<?= theme_uri('/img/2men3.png'); ?>" alt="למה אצלנו?"><div class="man-details">
+      <h5>נתנאל קטרי</h5>
+      <h6>שמאי רכוש, שמאי חקלאות, סוקר תכולות, שמאי אמנות, עד מומחה, מאתר נזילות</h6>
+    </div></div>
+  </right>
+    <left>
+      <h2>למה אצלנו?</h2>
+      <p class="bottom-gap-s">אצלנו תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
+      <grid class="grid-2 gap-s">
+        <h3 class="check">רק בעלי מקצוע מוסכמים</h3>
+        <h3 class="check">רק עם תעודה בתוקף</h3>
+        <h3 class="check">סינון קל ונוח לפי תחומים</h3>
+        <h3 class="check">פרטים מלאים כל כל בעל מקצוע</h3>
+        <h3 class="check">יצירת קשר ישירה</h3>
+        <h3 class="check">פרטים מעודכנים תמיד</h3>
+      </grid>
+    </left>
+  </inner>
+</section>
 <style>
   #features .man-details {
     position:absolute;
@@ -46,24 +68,3 @@
     vertical-align: middle;
   }
 </style>
-<section id="features">
-  <inner class="flex mobile-flex-column-reverse gap-l align-center">
-    <right class="flex"><div class="men-container relative"><div class="circle absolute grow-shrink"></div><img src="<?= theme_uri('/img/2men3.png'); ?>" alt="למה אצלנו?"><div class="man-details">
-      <h5>נתנאל קטרי</h5>
-      <h6>שמאי רכוש, שמאי חקלאות, סוקר תכולות, שמאי אמנות, עד מומחה, מאתר נזילות</h6>
-    </div></div>
-  </right>
-    <left>
-      <h2>למה אצלנו?</h2>
-      <p class="bottom-gap-s">אצלנו תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
-      <grid class="grid-2 gap-s">
-        <h3 class="check">רק בעלי מקצוע מוסכמים</h3>
-        <h3 class="check">רק עם תעודה בתוקף</h3>
-        <h3 class="check">סינון קל ונוח לפי תחומים</h3>
-        <h3 class="check">פרטים מלאים כל כל בעל מקצוע</h3>
-        <h3 class="check">יצירת קשר ישירה</h3>
-        <h3 class="check">פרטים מעודכנים תמיד</h3>
-      </grid>
-    </left>
-  </inner>
-</section>
