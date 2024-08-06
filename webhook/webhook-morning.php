@@ -8,14 +8,6 @@ $token_file = WP_CONTENT_DIR . '/morning_token.json'; // Token file path
 function getMorningToken($api_key, $api_secret) {
     global $token_file, $log_file;
 
-    // Check if token file exists and read the token
-    if (file_exists($token_file)) {
-        $token_data = json_decode(file_get_contents($token_file), true);
-        if ($token_data && isset($token_data['token']) && isset($token_data['expires_at']) && $token_data['expires_at'] > time()) {
-            return $token_data['token']; // Return existing token if not expired
-        }
-    }
-
     // Request a new token
     $url = 'https://sandbox.d.greeninvoice.co.il/api/v1/account/token'; // API endpoint for token
 
@@ -73,6 +65,7 @@ function getMorningToken($api_key, $api_secret) {
 
     return null;
 }
+
 
 // Function to create a receipt
 function createReceipt($user_id, $subscription_id, $term_id = null, $lowprofilecode = null)
@@ -141,7 +134,7 @@ function createReceipt($user_id, $subscription_id, $term_id = null, $lowprofilec
         'attachment' => true, // Whether to attach the document
         'lang' => 'he', // Language of the document
         'payment' => [
-            'method' => 3, // Payment method: 3 (Credit Card)
+            'type' => 3, // Payment method: 3 (Credit Card)
             'date' => date('Y-m-d'), // Payment date
             'price' => (float)$amount,
             'currency' => 'ILS',
