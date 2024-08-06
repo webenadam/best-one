@@ -152,6 +152,77 @@
             "placeholder": "תיאור באנגלית (פתרון זמני לקארדקום)",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_66b1d0917f006",
+            "label": "פיצ׳רים",
+            "name": "subscription_features",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "הוסף פיצ׳ר לחבילה",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66b1d0bd7f007",
+                    "label": "כותרת",
+                    "name": "feature_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "readonly": 0,
+                    "disabled": 0,
+                    "maxlength": "",
+                    "placeholder": "כותרת",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66b1d0917f006"
+                },
+                {
+                    "key": "field_66b1d0dc7f008",
+                    "label": "תוספת ביאור",
+                    "name": "feature_explain",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "acfe_textarea_code": 0,
+                    "maxlength": "",
+                    "rows": 2,
+                    "placeholder": "תוספת ביאור",
+                    "new_lines": "br",
+                    "parent_repeater": "field_66b1d0917f006"
+                }
+            ],
+            "placeholder": "פיצ׳רים"
         }
     ],
     "location": [
@@ -179,5 +250,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1722536622
+    "modified": 1722929500
 }
