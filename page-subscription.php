@@ -5,47 +5,80 @@ $current_user_id = get_current_user_id(); ?>
 
 
 
-<section id="features" class="stripes">
-  <inner class="flex mobile-flex-column-reverse gap-l align-center">
-    <right>
-      <h2>למה אצלנו?</h2>
-      <p class="bottom-gap-s">אצלנו תמצאו את כל בעלי המקצוע הטובים ביותר מסודרים בצורה נוחה וקלה לחיפוש בכל התחומים.</p>
-      <grid class="grid-2 gap-s">
-        <h3 class="check">רק בעלי מקצוע מוסכמים</h3>
-        <h3 class="check">רק עם תעודה בתוקף</h3>
-        <h3 class="check">סינון קל ונוח לפי תחומים</h3>
-        <h3 class="check">פרטים מלאים כל כל בעל מקצוע</h3>
-        <h3 class="check">יצירת קשר ישירה</h3>
-        <h3 class="check">פרטים מעודכנים תמיד</h3>
-      </grid>
-    </right>
-    <left class="flex"><div class="men-container relative"><div class="circle absolute grow-shrink"></div><img src="<?= theme_uri('/img/2men3.png'); ?>" alt="למה אצלנו?"></div>
-  </left>
-  </inner>
-  <div class="sauqre_ico absolute" style="top: 230px;right: -126px;">
-                    <?= svg_icon('square'); ?>
-                </div>
+<section id="features">
+    <inner class="flex mobile-flex-column-reverse gap-l align-center" style="padding-bottom:var(--gap-xl);">
+        <right style="width:70%">
+            <h2 class="bottom-gap-m">למה BEST-1?</h2>
+            <grid class="grid-1 gap-s">
+                <h3 class="check">נבחרת העילית: רק בעלי מקצוע העומדים בסטנדרטים הגבוהים ביותר נכללים באתר ולכן , גם הלקוחות שלך יהיו כאלו.</h3>
+                <h3 class="check">מגוון תחומים: מתווכים, יועצי משכנתאות, מאתרי ליקויי בניה, שמאים ועוד</h3>
+                <h3 class="check">בקרת איכות: בדיקה מתמדת של שירות, מקצועיות, מחיר וזמינות מה שמעלה את הסמכות שלך בשת.</h3>
+                <h3 class="check">חשיפה ממוקדת: הזרמת תנועה איכותית דרך פעילות אורגנית וממומנת ישירות אליך</h3>
+                <h3 class="check">פרופיל עשיר: הצגת ניסיון, המלצות, הסמכות ואזורי שירות מה שיגדיל את נפח החיפושים שלך ויזרים לך יותר לקוחות.</h3>
+            </grid>
+        </right>
+        <left class="flex">
+            <div class="men-container relative">
+                <div class="circle absolute grow-shrink"></div><img src="<?= theme_uri('/img/2men3.png'); ?>" alt="למה אצלנו?">
+            </div>
+        </left>
+    </inner>
+    <div class="sauqre_ico absolute" style="top: 230px;right: -126px; z-index:90;">
+        <?= svg_icon('square'); ?>
+    </div>
 </section>
 
 
 <section id="how-it-works" class="light">
     <inner>
         <h2>איך זה עובד?</h2>
+        <div class="flow-list grid-3 gap-m">
+            <div class="box flow-item">
+                <div class="step-number">1</div>
+                <div class="step-description">
+                    <h3 class="title">הצטרפות</h3>
+                    <div class="description">בחר את חבילת המנוי המתאימה לך - כל החבילות במחיר השקה כרגע.</div>
+                </div>
+            </div>
+            <div class="box flow-item">
+                <div class="step-number">2</div>
+                <div class="step-description">
+                    <h3 class="title">בניית פרופיל</h3>
+                    <div class="description">צור פרופיל מקצועי ומושקע המציג את כל יתרונותיך שימשוך אליך עוד לקוחות.</div>
+                </div>
+            </div>
+            <div class="box flow-item">
+                <div class="step-number">3</div>
+                <div class="step-description">
+                    <h3 class="title">בקרת איכות</h3>
+                    <div class="description">עבור את תהליך בקרת האיכות שלנו.</div>
+                </div>
+            </div>
+            <div class="box flow-item">
+                <div class="step-number">4</div>
+                <div class="step-description">
+                    <h3 class="title">חשיפה</h3>
+                    <div class="description">קבל חשיפה לקהל יעד איכותי המחפש את שירותיך.</div>
+                </div>
+            </div>
+            <div class="box flow-item">
+                <div class="step-number">5</div>
+                <div class="step-description">
+                    <h3 class="title">צמיחה</h3>
+                    <div class="description">הגדל את מאגר הלקוחות שלך.</div>
+                </div>
+            </div>
+        </div>
     </inner>
 </section>
 
 
 
-<section id="subscriptions" class="main-content">
-    <inner>
+<section id="subscriptions" class="dark weird-background">
+    <inner style="z-index:90;"> 
 
         <!-- Subscription options -->
-        <div class="box stripes subscription bottom-gap-l">
-
-            <h2>חבילת פרסום בסיסי</h2>
-            <p class="bottom-gap-m">
-                רוצה להתחיל לקבל לקוחות רציניים? בחר חבילת פרסום עכשיו ותתחיל לעבוד!
-            </p>
+            <h2 class="text-center">בחר את החבילה המתאימה לך - מחירי השקה!</h2>
 
             <div class="payment-plans grid-3 bottom-gap-l">
                 <div class="dots_ico absolute" style="top: 330px;left: -26px;">
@@ -62,25 +95,40 @@ $current_user_id = get_current_user_id(); ?>
 
 
 
-                <div class="subscription-features bottom-gap-l" style="width: 900px;">
-
-                    <div class="flex-column gap-m">
-                        <h3 class="check">דף עסק דיגיטלי מעוצב, עם כל המידע החשוב על העסק שלך ועליך</h3>
-                        <h3 class="check">נוכחות בולטת ברשת מטורפת לגולשים שמחפשים אותך</h3>
-                        <h3 class="check">ממשק לעדכון עצמאי של דף העסק הכולל ציונים על איכות הפרסום שלך + הצעות לשיפור ויעול</h3>
-                        <h3 class="check">סידרת טיפים למקסום הנוכחות שלך ברשת</h3>
-                        <h3 class="check">אפשרות לפרסם בדף העסק מוצרים, קופונים ומחירונים</h3>
-                        <h3 class="check">הצגת דירוגים וחוות דעת של לקוחות עם אפשרות מענה בדף העסק שלכם</h3>
-                        <h3 class="check">מעקב אחרי ביצועי העמוד שלכם</h3>
-                        <h3 class="check">עדכון תוכן אישי הכולל מאמרים ותוכן מקצועי שיהפכו אותך לאוטוריטה בתחומך</h3>
-                    </div>
-                </div>
-
-
             </div>
 
 
     </inner>
+
+    <!-- Add sprinkle elements -->
+    <?php for ($i = 0; $i < 180; $i++) :
+      $size = rand(2, 11);
+      $animation_class = 'sprinkle';
+      switch (rand(0, 4)) {
+        case 1:
+          $animation_class = 'sprinkle-b';
+          break;
+        case 2:
+          $animation_class = 'sprinkle-c';
+          break;
+        case 3:
+          $animation_class = 'sprinkle-d';
+          break;
+        case 4:
+          $animation_class = 'sprinkle-e';
+          break;
+      }
+    ?>
+      <div class="<?= $animation_class; ?>" style="
+      opacity: <?= mt_rand(0, 10) / 10; ?>;
+      filter:blur(<?= rand(0, 11) ?>px);
+        top: <?= rand(0, 100); ?>%;
+        left: <?= rand(0, 100); ?>%;
+        width: <?= $size; ?>px;
+        height: <?= $size; ?>px;
+        background: <?= rand(0, 1) ? (rand(0, 1) ? 'var(--light-blue)' : 'white') : (rand(0, 1) ? 'var(--blue)' : 'var(--dark-blue)'); ?>;">
+      </div>
+    <?php endfor; ?>
 </section>
 
 
@@ -95,23 +143,42 @@ $current_user_id = get_current_user_id(); ?>
         color: var(--blue);
     }
 
-    .subscription-features h3,
-    .plan-features h3 {
+    h3.check {
         font-weight: 700;
     }
 
-    .subscription-features .check,
-    .plan-features .check {
+    .box.flow-item {
+        position: relative;
+        height: 135px;
+        padding: var(--gap-s) var(--gap-m);
+        border-bottom: 3px solid var(--light-green);
+    }
+
+    .flow-list .step-description {
+        position: relative;
+        z-index: 1;
+    }
+
+    .flow-list .step-number {
+        position: absolute;
+        right: -12px;
+        top: -2px;
+        font-size: 90px;
+        color: var(--light-gray);
+        font-weight: bold;
+        z-index: 0;
+    }
+
+    h3.check {
         display: flex;
         color: var(--blue);
         font-size: var(--font-m);
         position: relative;
-        margin-right: var(--gap-m);
         max-width: 90%;
     }
 
     .check:not(:nth-child(3)) {
-        width: 580px;
+        width: 780px;
     }
 
     .plan-features {
@@ -219,15 +286,12 @@ $current_user_id = get_current_user_id(); ?>
 
     #features {
         overflow: visible;
-        padding-top: var(--gap-l);
+        height: 473px;
     }
 
-    #features .flex.mobile-flex-column-reverse.gap-l.align-center {
-        padding-bottom: 0;
-    }
 
     #features .men-container.relative {
-        margin-bottom: -6px;
+        margin-bottom: -134px;
         margin-top: -247px;
     }
 
@@ -301,6 +365,366 @@ $current_user_id = get_current_user_id(); ?>
             top: 630px !important;
         }
     }
+
+
+    /* Weird Background */
+
+    .leaves_left,
+  .leaves_right {
+    position: absolute;
+    top: 80px;
+  }
+
+  .leaves_left svg,
+  .leaves_right svg {
+    width: 250px;
+    fill: var(--blue);
+  }
+
+  .leaves_left svg path,
+  .leaves_right svg path {
+    fill: #342bb2;
+    opacity: 1;
+  }
+
+  .leaves_right {
+    right: 0.1%;
+    animation: slight-rotate 7s infinite ease-in-out;
+  }
+
+  .leaves_left {
+    left: 0.1%;
+    animation: slight-rotate-reverse 7s infinite ease-in-out;
+  }
+
+  .weird-background .profile-box {
+    z-index: 90;
+  }
+
+  .weird-background h2 {
+    text-shadow: 0 0 45px #ffffff85;
+  }
+
+  @media (min-width: 850px) {
+    .weird-background .profile-box {
+      animation: wave 2.5s infinite ease-in-out;
+    }
+
+    .weird-background .profile-box:nth-child(2) {
+      animation-delay: 0s;
+    }
+
+    .weird-background .profile-box:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .weird-background .profile-box:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .weird-background .profile-box:hover {
+      border-color: var(--green);
+    }
+  }
+
+  @keyframes wave {
+
+    0%,
+    33.33%,
+    100% {
+      transform: translateY(0);
+    }
+
+    16.67% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes slight-rotate {
+    0% {
+      transform: rotateZ(5deg) rotateY(5deg);
+    }
+
+    50% {
+      transform: rotateZ(-5deg) rotateY(-28deg);
+    }
+
+    100% {
+      transform: rotateZ(5deg) rotateY(5deg);
+    }
+  }
+
+  @keyframes slight-rotate-reverse {
+    0% {
+      transform: rotateZ(-5deg) rotateY(-5deg);
+    }
+
+    50% {
+      transform: rotateZ(5deg) rotateY(28deg);
+    }
+
+    100% {
+      transform: rotateZ(-5deg) rotateY(-5deg);
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes sprinkle {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.5);
+    }
+
+    50% {
+      transform: translateY(-30px) translateX(3px) scale(1);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0) scale(0.5);
+    }
+  }
+
+  @keyframes sprinkle-b {
+    0% {
+      transform: translateY(0) translateX(0) scale(1);
+    }
+
+    50% {
+      transform: translateY(80px) translateX(-23px) scale(0.5);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0) scale(1);
+    }
+  }
+
+  @keyframes sprinkle-c {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.5);
+    }
+
+    50% {
+      transform: translateY(-50px) translateX(10px) scale(1.2);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0) scale(0.5);
+    }
+  }
+
+  @keyframes sprinkle-d {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.8);
+    }
+
+    50% {
+      transform: translateY(40px) translateX(-15px) scale(1.1);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0) scale(0.8);
+    }
+  }
+
+  @keyframes sprinkle-e {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.6);
+    }
+
+    50% {
+      transform: translateY(-20px) translateX(5px) scale(1.3);
+    }
+
+    100% {
+      transform: translateY(0) translateX(0) scale(0.6);
+    }
+  }
+
+  .weird-background {
+    background: linear-gradient(100deg, var(--dark-blue), var(--light-blue), var(--dark-blue));
+    background-size: 200% 100%;
+    animation: shine 6s linear infinite;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .weird-background::after {
+    content: '';
+    background: var(--dark-blue);
+    width: 140%;
+    position: absolute;
+    bottom: -90px;
+    left: -20%;
+    right: -20%;
+    height: 360px;
+    filter: blur(125px);
+    pointer-events: none;
+    opacity: 0.8;
+    z-index: 10;
+  }
+
+  .weird-background::before {
+    content: '';
+    background: var(--black);
+    width: 140%;
+    position: absolute;
+    bottom: -120px;
+    left: -20%;
+    right: -20%;
+    height: 300px;
+    filter: blur(125px);
+    pointer-events: none;
+    opacity: 0.8;
+    z-index: 20;
+  }
+
+
+  @media (max-width: 850px) {
+    .weird-background::after {
+      display: none;
+    }
+
+    .weird-background {
+      background: inherit;
+      overflow: visible;
+    }
+
+    .weird-background .circle {
+      top: 80% !important;
+    }
+
+    .leaves_left,
+    .leaves_right {
+      top: -20px;
+    }
+
+    .leaves_left svg,
+    .leaves_right svg {
+      width: 120px;
+    }
+
+    .leaves_right {
+      right: -3%;
+    }
+
+    .leaves_left {
+      left: -3%;
+    }
+  }
+
+  .sprinkle,
+  .sprinkle-b,
+  .sprinkle-c,
+  .sprinkle-d,
+  .sprinkle-e {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: 40;
+  }
+
+  .sprinkle {
+    animation: sprinkle 3s infinite ease-in-out;
+  }
+
+  .sprinkle-b {
+    animation: sprinkle-b 5s infinite ease-in-out;
+  }
+
+  .sprinkle-c {
+    animation: sprinkle-c 4s infinite ease-in-out;
+  }
+
+  .sprinkle-d {
+    animation: sprinkle-d 6s infinite ease-in-out;
+  }
+
+  .sprinkle-e {
+    animation: sprinkle-e 5.5s infinite ease-in-out;
+  }
+
+  .sprinkle:nth-child(odd) {
+    animation-duration: 2.5s;
+  }
+
+  .sprinkle:nth-child(even) {
+    animation-duration: 3.5s;
+  }
+
+  .sprinkle-b:nth-child(odd) {
+    animation-duration: 1.5s;
+  }
+
+  .sprinkle-b:nth-child(even) {
+    animation-duration: 6.5s;
+  }
+
+  .sprinkle-c:nth-child(odd) {
+    animation-duration: 2s;
+  }
+
+  .sprinkle-c:nth-child(even) {
+    animation-duration: 5s;
+  }
+
+  .sprinkle-d:nth-child(odd) {
+    animation-duration: 3s;
+  }
+
+  .sprinkle-d:nth-child(even) {
+    animation-duration: 4.5s;
+  }
+
+  .sprinkle-e:nth-child(odd) {
+    animation-duration: 2.5s;
+  }
+
+  .sprinkle-e:nth-child(even) {
+    animation-duration: 6s;
+  }
+
+  .weird-background .text-shine {
+    background: linear-gradient(281deg, #04060a 30%, #2a334d 50%, #04060a 70%);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shine 9s linear infinite;
+    text-shadow: 0 3px 25px #ffffff29;
+  }
+
+  @keyframes text-shine {
+    0% {
+      background-position: -200% 0;
+    }
+
+    40% {
+      background-position: 200% 0;
+    }
+
+    50% {
+      background-position: 200% 0;
+    }
+
+    90% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+
+
 </style>
 
 

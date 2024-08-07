@@ -78,6 +78,7 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+
 body {
   font-size: var(--font-s);
   line-height:normal;

@@ -538,3 +538,8 @@ svg.white path { fill: white !important; }
 .no-padding {
   padding: 0!important;
 }
+
+
+.overflow-visible {
+  overflow: visible;
+}
