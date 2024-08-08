@@ -90,6 +90,9 @@ function best_subscribe($user_id, $subscription_id, $term_id = null, $lowprofile
     file_put_contents($log_file, $log_data, FILE_APPEND);
 }
 
+
+
+
 function best_create_subscription($client_id, $subscription_id, $term_id, $lowprofilecode)
 {
     // Implementation for creating a new subscription

@@ -10,10 +10,11 @@
       }
 
       $category_terms = implode('/', $category_list);
+      
     ?>
       <box class="box post-box radius-l flex-column no-padding float-up">
         <?php if (has_post_thumbnail($post_id)) : ?>
-          <a class="post-thumbnail" href="<?= get_permalink($post_id); ?>" style="background-size:cover;background-image:url('<?= get_the_post_thumbnail_url($post_id, array(420, 9999)); ?>');height:220px;width:100%;display:block;">
+          <a class="post-thumbnail" href="<?= get_permalink($post_id); ?>" style="background-size:cover;background-image:url('<?= get_the_post_thumbnail_url($post_id, 'medium'); ?>');height:220px;width:100%;display:block;">
 
           </a>
         <?php endif; ?>

@@ -1,7 +1,14 @@
 <?php get_header(); ?>
 <?php get_template_part('templates/singular-hero') ?>
 <?php global $current_user_id;
-$current_user_id = get_current_user_id(); ?>
+$current_user_id = get_current_user_id(); 
+
+
+global $_wp_additional_image_sizes;
+
+
+
+?>
 
 
 
@@ -19,7 +26,7 @@ $current_user_id = get_current_user_id(); ?>
         </right>
         <left class="flex">
             <div class="men-container relative">
-                <div class="circle absolute grow-shrink"></div><img src="<?= theme_uri('/img/2men3.png'); ?>" alt="למה אצלנו?">
+                <div class="circle absolute grow-shrink"></div><img src="<?= theme_uri('/img/medium/2men3.png'); ?>" alt="למה אצלנו?">
             </div>
         </left>
     </inner>
@@ -179,7 +186,7 @@ $current_user_id = get_current_user_id(); ?>
             </div>
         </div>
     </inner>
-    <img class="subscription_man absolute" style="bottom:0;left:5%;" src="<?= theme_uri('/img/man2.png'); ?>" srcset="<?= theme_uri('/img/medium/man2.png'); ?> 1024w, <?= theme_uri('/img/small/man2.png'); ?> 768w" sizes="100vw" alt="man">"
+    <img class="subscription_man absolute" style="bottom:0;left:5%;" src="<?= theme_uri('/img/small/man2.png'); ?>" alt="man">"
 
      <!-- Add sprinkle elements -->
      <?php for ($i = 0; $i < 180; $i++) :
