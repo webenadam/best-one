@@ -17,7 +17,7 @@ if (has_post_thumbnail()) {
 
 <style>
     #hero {
-        background-image: <?= has_post_thumbnail() ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$full_image_url}')" : "url('{$full_image_url}')" ?>;
+        background-image: <?= has_post_thumbnail() ? "linear-gradient(to left, #f8f8f800, #f8f8f800), url('{$full_image_url}')" : "url('{$full_image_url}')" ?>;
         background-position: <?= $default_position ?>;
         background-size: <?= $default_size ?>;
         background-repeat: no-repeat;
@@ -29,7 +29,7 @@ if (has_post_thumbnail()) {
 
         /* Tablet */
         #hero {
-            background-image: <?= has_post_thumbnail() ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$medium_image_url}')" : "url('{$medium_image_url}')" ?>;
+            background-image: <?= has_post_thumbnail() ? "linear-gradient(to left, #f8f8f800, #f8f8f800), url('{$medium_image_url}')" : "url('{$medium_image_url}')" ?>;
         }
     }
 
@@ -37,7 +37,7 @@ if (has_post_thumbnail()) {
 
         /* Mobile */
         #hero {
-            background-image: <?= has_post_thumbnail() ? "linear-gradient(to left, #F8F8F8, #f8f8f887), url('{$thumbnail_image_url}')" : "url('{$thumbnail_image_url}')" ?>;
+            background-image: <?= has_post_thumbnail() ? "linear-gradient(to left, #f8f8f800, #f8f8f800), url('{$thumbnail_image_url}')" : "url('{$thumbnail_image_url}')" ?>;
         }
     }
 </style>
