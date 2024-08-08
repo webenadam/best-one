@@ -3,10 +3,6 @@
 // Function to render the profile box
 function profile_box($pro_post_id, $dark = false, $featured = false)
 {
-    // Enqueue the CSS for the profile box (only once even when used multiple times on page)
-    if (!wp_style_is('profile-box-styles', 'enqueued')) {
-        wp_enqueue_style('profile-box-styles', get_template_directory_uri() . '/elements/profile-box.css');
-    }
 
     // Get the custom fields and taxonomies
     $name = get_the_title($pro_post_id);

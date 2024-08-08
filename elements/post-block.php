@@ -21,7 +21,7 @@
           <div class="post-categories flex gap-xs light-green align-center" style="margin-top:-3px;margin-bottom:6px;">
             <?= $category_terms; ?>
           </div>
-          <h3 class="post-title">
+          <h3 class="post-title font-m">
             <a href="<?= get_permalink($post_id); ?>">
               <?= get_the_title($post_id); ?>
             </a>
