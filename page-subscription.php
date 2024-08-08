@@ -179,6 +179,8 @@ $current_user_id = get_current_user_id(); ?>
             </div>
         </div>
     </inner>
+    <img class="subscription_man absolute" style="bottom:0;left:5%;" src="<?= theme_uri('/img/man2.png'); ?>" srcset="<?= theme_uri('/img/medium/man2.png'); ?> 1024w, <?= theme_uri('/img/small/man2.png'); ?> 768w" sizes="100vw" alt="man">"
+
      <!-- Add sprinkle elements -->
      <?php for ($i = 0; $i < 180; $i++) :
         $size = rand(2, 8);
