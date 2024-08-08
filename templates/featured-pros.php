@@ -1,9 +1,9 @@
 
-<section id="featured-pros" class="align-center relative <?php echo $section_classes; ?>">
+<section id="featured-pros" class="align-center relative <?= $section_classes; ?>">
   <inner>
     <span class="leaves_right"><?= svg_icon('leaves', null, 'flip-h'); ?></span>
     <span class="leaves_left"><?= svg_icon('leaves'); ?></span>
-    <h2 class="black font-800 text-center">המומלצים שלנו ל-<span class="text-shine"><?php echo date('Y'); ?></span></h2>
+    <h2 class="black font-800 text-center">המומלצים שלנו ל-<span class="text-shine"><?= date('Y'); ?></span></h2>
     <grid class="grid-3 relative">
       <div class="circle absolute grow-shrink" style="display:none;z-index:40;top:180px; right:60%; width:235px;height:235px;border-radius:50%;background:var(--light-green);"></div>
       <?php

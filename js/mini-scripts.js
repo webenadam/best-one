@@ -379,7 +379,19 @@ $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
         });
     }
 
+// Scroll animation
 
+
+  document.addEventListener('scroll', function() {
+    const rotateElements = document.querySelectorAll('.scroll-rotate');
+    const rotation = window.scrollY / 15; // Adjust this factor to make rotation slower or faster
+  
+    rotateElements.forEach(element => {
+      element.style.transform = `rotate(${rotation}deg)`;
+    });
+  });
+  
+  
 
 
   

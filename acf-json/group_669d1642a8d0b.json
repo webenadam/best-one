@@ -111,10 +111,10 @@
         },
         {
             "key": "field_669d191ec6631",
-            "label": "חסכון של",
-            "name": "subscription_saving_amount",
+            "label": "סלוגן",
+            "name": "subscription_slogen",
             "aria-label": "",
-            "type": "number",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -124,12 +124,12 @@
                 "id": ""
             },
             "default_value": "",
-            "min": "",
-            "max": "",
-            "placeholder": "חסכון של",
-            "step": "",
+            "readonly": 0,
+            "disabled": 0,
+            "maxlength": "",
+            "placeholder": "סלוגן",
             "prepend": "",
-            "append": "₪"
+            "append": ""
         },
         {
             "key": "field_66ab49c499415",
@@ -175,6 +175,7 @@
             "collapsed": "",
             "button_label": "הוסף פיצ׳ר לחבילה",
             "rows_per_page": 20,
+            "placeholder": "פיצ׳רים",
             "sub_fields": [
                 {
                     "key": "field_66b1d0bd7f007",
@@ -186,7 +187,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "45",
                         "class": "",
                         "id": ""
                     },
@@ -209,7 +210,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "45",
                         "class": "",
                         "id": ""
                     },
@@ -220,9 +221,30 @@
                     "placeholder": "תוספת ביאור",
                     "new_lines": "br",
                     "parent_repeater": "field_66b1d0917f006"
+                },
+                {
+                    "key": "field_66b3190c3e688",
+                    "label": "כלול בחבילה",
+                    "name": "feature_true",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "10",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui_on_text": "לא",
+                    "ui_off_text": "כן",
+                    "ui": 1,
+                    "placeholder": "כלול בחבילה",
+                    "parent_repeater": "field_66b1d0917f006"
                 }
-            ],
-            "placeholder": "פיצ׳רים"
+            ]
         }
     ],
     "location": [
@@ -250,5 +272,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1722929500
+    "modified": 1723015312
 }

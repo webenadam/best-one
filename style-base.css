@@ -301,6 +301,28 @@ grid-6 ,.grid-6 {
   margin-bottom: var(--gap-xl);
 }
 
+.top-gap-xs {
+  margin-top: var(--gap-xs);
+} 
+
+.top-gap-s {
+  margin-top: var(--gap-s);
+}
+
+.top-gap-m {
+  margin-top: var(--gap-m);
+}
+
+.top-gap-l {
+  margin-top: var(--gap-l);
+}
+
+.top-gap-xl {
+  margin-top: var(--gap-xl);
+}
+
+
+
 @media (max-width: 780px) {
   .gap-m {
     gap: var(--gap-s);
@@ -542,4 +564,8 @@ svg.white path { fill: white !important; }
 
 .overflow-visible {
   overflow: visible;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }

@@ -9,7 +9,7 @@
         $category_list[] = '<h6><a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a></h6>';
       }
 
-      $category_terms = implode(', ', $category_list);
+      $category_terms = implode('/', $category_list);
     ?>
       <box class="box post-box radius-l flex-column no-padding float-up">
         <?php if (has_post_thumbnail($post_id)) : ?>
@@ -18,7 +18,7 @@
           </a>
         <?php endif; ?>
         <div class="post-content" style="padding:var(--gap-m);text-align:right;">
-          <div class="post-categories" style="margin-top:-3px;margin-bottom:6px;">
+          <div class="post-categories flex gap-xs light-green align-center" style="margin-top:-3px;margin-bottom:6px;">
             <?= $category_terms; ?>
           </div>
           <h3 class="post-title">

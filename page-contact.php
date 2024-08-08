@@ -40,7 +40,7 @@ $total_pros = wp_count_posts('pros')->publish;
         <div class="flex justify-start align-center gap-m">
           <input type="checkbox" id="terms" name="terms" required>
           <label for="terms">
-            אני מאשר את <a href="<?php echo get_permalink(843); ?>" target="_blank">תנאי שימוש האתר</a>
+            אני מאשר את <a href="<?= get_permalink(843); ?>" target="_blank">תנאי שימוש האתר</a>
           </label>
         </div>
       </form>

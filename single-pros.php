@@ -331,7 +331,7 @@ if ($pro_custom_background) {
 </section>
 
 <section id="expert-terms" class="full relative blue" style="overflow:visible; background-image: url('<?= theme_uri('/img/squares_bg.png'); ?>'); background-repeat: no-repeat; background-position: left center;">
-    <div class="absolute square-thing" style="bottom:-100px;right:-100px;"><?= svg_icon('square'); ?></div>
+    <div class="absolute square-thing scroll-rotate" style="bottom:-100px;right:-100px;"><?= svg_icon('square'); ?></div>
     <inner>
         <h2>תחומי התמחות</h2>
         <grid class="grid-3 bottom-gap-xs">

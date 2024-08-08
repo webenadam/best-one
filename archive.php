@@ -67,8 +67,8 @@ if ($cat_query->have_posts()) {
                 }
                 ?>
             </grid>
-            <a class="show-all-link" href="<?php echo get_term_link($term); ?>" style="color:var(--green); align-self: end; font-size:var(--font-s); font-weight:var(--font-w-600);">
-                הצג את כל הפוסטים בקטגוריה <?php echo $term->name; ?> <?php echo svg_icon('left-arrow'); ?>
+            <a class="show-all-link" href="<?= get_term_link($term); ?>" style="color:var(--green); align-self: end; font-size:var(--font-s); font-weight:var(--font-w-600);">
+                הצג את כל הפוסטים בקטגוריה <?= $term->name; ?> <?= svg_icon('left-arrow'); ?>
             </a>
         </inner>
     </section>

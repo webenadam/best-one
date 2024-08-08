@@ -37,6 +37,7 @@ function svg_icon($icon_name, $icon_color = null, $flip = null, $width = null, $
                 'hamburger' => array('width' => 30, 'height' => 30),
                 'sparkle' => array('width' => 25, 'height' => 25),
                 'leaves' => array('width' => 450, 'height' => 450),
+                'x' => array('width' => 30, 'height' => 30), // Added new icon dimensions
 
         );
 
@@ -51,6 +52,13 @@ function svg_icon($icon_name, $icon_color = null, $flip = null, $width = null, $
         $icons = array(
                 'place' => '<svg' . $class_attribute . ' width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg"' . ($flip_transform ? ' style="transform: ' . $flip_transform . '"' : '') . '>
         <path fill-rule="evenodd" clip-rule="evenodd" d="M5.33333 0C2.71184 0 0 1.97836 0 5.28889C0 8.79978 4.90259 13.702 5.11153 13.9088C5.1702 13.9673 5.2502 14 5.33333 14C5.41647 14 5.49647 13.9673 5.55514 13.9088C5.76408 13.702 10.6667 8.79978 10.6667 5.28889C10.6667 1.97836 7.95482 0 5.33333 0ZM5.33548 7.15557C4.29736 7.15557 3.45312 6.31837 3.45312 5.28891C3.45312 4.25944 4.29736 3.42224 5.33548 3.42224C6.3736 3.42224 7.21783 4.25944 7.21783 5.28891C7.21783 6.31837 6.3736 7.15557 5.33548 7.15557Z" fill="' . ($icon_color ? $icon_color : '#19bb41') . '"/>
+        </svg>',
+                'x' => '<svg' . $class_attribute . ' width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"' . ($flip_transform ? ' style="transform: ' . $flip_transform . '"' : '') . '>
+        <g fill="' . ($icon_color ? $icon_color : '#473BF0') . '" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="44" y1="20" x2="20" y2="44" fill="none" stroke="' . ($icon_color ? $icon_color : '#473BF0') . '" stroke-width="2"></line>
+        <line x1="44" y1="44" x2="20" y2="20" fill="none" stroke="' . ($icon_color ? $icon_color : '#473BF0') . '" stroke-width="2"></line>
+        <circle cx="32" cy="32" r="29" fill="none" stroke="' . ($icon_color ? $icon_color : '#473BF0') . '" stroke-width="2"></circle>
+        </g>
         </svg>',
 
                 'link' => '<svg' . $class_attribute . ' width="' . $icon_width . '" height="' . $icon_height . '" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"' . ($flip_transform ? ' style="transform: ' . $flip_transform . '"' : '') . '>

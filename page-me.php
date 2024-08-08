@@ -160,7 +160,7 @@ if ($query->have_posts()) {
             }
 
             // Current user is author of at least one "post" post type post
-            let userHasPosts = <?php echo json_encode($pro_posts->have_posts()); ?>;
+            let userHasPosts = <?= json_encode($pro_posts->have_posts()); ?>;
             if (userHasPosts) {
                 score += 5;
                 checkedList += `<span class="checked">פורסמו מאמרים מקצועיים</span>`;
@@ -169,7 +169,7 @@ if ($query->have_posts()) {
             }
 
             // Check if there is at least one customer review
-            let userHasReviews = <?php echo json_encode($review_query->have_posts()); ?>;
+            let userHasReviews = <?= json_encode($review_query->have_posts()); ?>;
             if (userHasReviews) {
                 score += 5;
                 checkedList += `<span class="checked">יש לפחות ביקורת לקוחות אחת</span>`;

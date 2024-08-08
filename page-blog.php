@@ -47,11 +47,11 @@ get_header(); ?>
 
             if ($cat_query->have_posts()) {
                 ?>
-                <section class="category-section <?php echo ($i % 2 == 1) ? 'dark' : 'light'; ?>">
+                <section class="category-section <?= ($i % 2 == 1) ? 'dark' : 'light'; ?>">
                 <inner>
                     <h2 class="category-title" style="margin-bottom:var(--gap-s);">
-                        <a href="<?php echo get_category_link($category->term_id); ?>">
-                            <?php echo $category->name; ?>
+                        <a href="<?= get_category_link($category->term_id); ?>">
+                            <?= $category->name; ?>
                         </a>
                     </h2>
                     <grid class="grid-3" style="margin-bottom:var(--gap-l);">
@@ -62,8 +62,8 @@ get_header(); ?>
                         }
                         ?>
                     </grid>
-                    <a class="show-all-link" href="<?php echo get_category_link($category->term_id); ?>" style="color:var(--green); align-self: end; font-size:var(--font-s); font-weight:var(--font-w-600);">
-                        הצג את כל הפוסטים בקטגוריה <?php echo $category->name; ?> <?php echo svg_icon('left-arrow'); ?>
+                    <a class="show-all-link" href="<?= get_category_link($category->term_id); ?>" style="color:var(--green); align-self: end; font-size:var(--font-s); font-weight:var(--font-w-600);">
+                        הצג את כל הפוסטים בקטגוריה <?= $category->name; ?> <?= svg_icon('left-arrow'); ?>
                     </a>
                     </inner>
                 </section>
